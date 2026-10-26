@@ -194,7 +194,7 @@ Restoration gets some of the most recognizable imports. Swiftmend moves to sixte
 
 So, if you know Classic deeply, Druid might be the class where you notice the changes the most. Weapon upgrades matter in forms. Powershifting is formalized. Bears have better threat tools. Balance has a real spell cycle. And Resto gets the core healing tools it was always missing. It's still unmistakably a Vanilla Druid, just without a remarkable number of its old oddities.
 
-## Choosing your class {#choose}
+## Choosing a class {#choose}
 
 So that's all nine. Let's pull it together. How should a veteran actually choose?
 

@@ -1,6 +1,6 @@
 {
  "src": "audio/forever-codex-classes.mp3",
- "duration": 2303.63,
+ "duration": 2306.74,
  "chapters": [
   {
    "id": "intro",
@@ -12,73 +12,73 @@
    "id": "systems",
    "title": "System changes",
    "start": 109.68,
-   "end": 292.75
+   "end": 295.87
   },
   {
    "id": "warrior",
    "title": "Warrior",
-   "start": 295.19,
-   "end": 494.34
+   "start": 298.31,
+   "end": 497.46
   },
   {
    "id": "paladin",
    "title": "Paladin",
-   "start": 496.78,
-   "end": 740.06
+   "start": 499.9,
+   "end": 743.17
   },
   {
    "id": "hunter",
    "title": "Hunter",
-   "start": 742.5,
-   "end": 945.06
+   "start": 745.61,
+   "end": 948.17
   },
   {
    "id": "rogue",
    "title": "Rogue",
-   "start": 947.5,
-   "end": 1097.84
+   "start": 950.61,
+   "end": 1100.96
   },
   {
    "id": "priest",
    "title": "Priest",
-   "start": 1100.28,
-   "end": 1304.05
+   "start": 1103.4,
+   "end": 1307.16
   },
   {
    "id": "shaman",
    "title": "Shaman",
-   "start": 1306.49,
-   "end": 1523.66
+   "start": 1309.6,
+   "end": 1526.77
   },
   {
    "id": "mage",
    "title": "Mage",
-   "start": 1526.1,
-   "end": 1736.53
+   "start": 1529.21,
+   "end": 1739.64
   },
   {
    "id": "warlock",
    "title": "Warlock",
-   "start": 1738.97,
-   "end": 1898.87
+   "start": 1742.08,
+   "end": 1901.98
   },
   {
    "id": "druid",
    "title": "Druid",
-   "start": 1901.31,
-   "end": 2115.59
+   "start": 1904.42,
+   "end": 2118.71
   },
   {
    "id": "choose",
-   "title": "Choosing your class",
-   "start": 2118.03,
-   "end": 2258.7
+   "title": "Choosing a class",
+   "start": 2121.15,
+   "end": 2261.81
   },
   {
    "id": "closing",
    "title": "Closing",
-   "start": 2261.14,
-   "end": 2302.83
+   "start": 2264.25,
+   "end": 2305.94
   }
  ]
 }
