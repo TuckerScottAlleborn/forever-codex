@@ -1,0 +1,62 @@
+<!doctype html>
+<!-- Source for ../og.png (1200x630 link-preview image for the codex home). Regenerate with python og/build.py -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya:ital@0;1&family=Alegreya+Sans+SC:wght@700&display=swap">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden }
+  body {
+    background:
+      radial-gradient(ellipse 900px 420px at 50% -90px, rgba(207,154,82,.32), transparent 70%),
+      radial-gradient(ellipse 520px 320px at 1080px 560px, rgba(58,108,208,.22), transparent 70%),
+      radial-gradient(ellipse 520px 320px at 120px 560px, rgba(95,202,215,.12), transparent 70%),
+      #0d0c14;
+    color: #ece3cc; font-family: "Alegreya", Georgia, serif; position: relative;
+  }
+  .frame {
+    position: absolute; inset: 28px; border: 2px solid rgba(207,154,82,.55);
+    box-shadow: inset 0 0 0 6px #0d0c14, inset 0 0 0 8px rgba(207,154,82,.22);
+  }
+  .frame::before, .frame::after, .d1, .d2 { content: ""; position: absolute; width: 16px; height: 16px; background: #cf9a52; transform: rotate(45deg) }
+  .frame::before { top: -9px; left: -9px } .frame::after { top: -9px; right: -9px }
+  .d1 { bottom: -9px; left: -9px } .d2 { bottom: -9px; right: -9px }
+  .inner { position: absolute; left: 60px; right: 60px; top: 62px; display: grid; justify-items: center; gap: 12px; text-align: center }
+  .glass { width: 78px; height: 78px; color: #f4c76b; filter: drop-shadow(0 0 22px rgba(207,154,82,.6)) }
+  .eyebrow { font-family: "Alegreya Sans SC", sans-serif; font-weight: 700; letter-spacing: .14em; font-size: 24px; color: #cf9a52; text-transform: lowercase }
+  h1 {
+    margin: 0; font-family: "Marcellus SC", Georgia, serif; font-weight: 400; font-size: 118px; line-height: 1.02; letter-spacing: .02em;
+    background: linear-gradient(180deg, #f4c76b, #cf9a52 75%); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 3px 0 rgba(0,0,0,.6));
+  }
+  .books { position: absolute; left: 80px; right: 80px; bottom: 84px; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 26px; text-align: center }
+  .bk { display: grid; gap: 4px }
+  .bk .n { font-family: "Alegreya Sans SC", sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .14em; text-transform: lowercase }
+  .bk b { font-family: "Marcellus SC", Georgia, serif; font-weight: 400; font-size: 46px; line-height: 1.05 }
+  .bk i { font-size: 23px; color: #b9ae96 }
+  .lore .n, .lore b { color: #f4c76b }
+  .cls .n, .cls b { color: #8fb0f2 }
+  .race .n, .race b { color: #c39af2 }
+  .sep { width: 18px; height: 18px; background: #cf9a52; transform: rotate(45deg); box-shadow: 0 0 0 7px #0d0c14, 0 0 0 9px rgba(207,154,82,.45) }
+</style>
+</head>
+<body>
+<div class="frame"><i class="d1"></i><i class="d2"></i></div>
+<div class="inner">
+  <svg class="glass" viewBox="0 0 24 24">
+    <path d="M5 2.5h14v2H5zM5 19.5h14v2H5z" fill="currentColor"/>
+    <path d="M7 4.5c0 4.6 4.2 6 4.2 7.5S7 14.9 7 19.5h10c0-4.6-4.2-6-4.2-7.5S17 9.1 17 4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M8.7 7h6.6c-.7 1.8-2.5 2.9-3.3 4.3C11.2 9.9 9.4 8.8 8.7 7zM8.4 19.5c.4-2.3 2.2-3.5 3.6-3.8 1.4.3 3.2 1.5 3.6 3.8z" fill="currentColor"/>
+  </svg>
+  <div class="eyebrow">world of warcraft: forever · a codex for veterans</div>
+  <h1>Forever Codex</h1>
+</div>
+<div class="books">
+  <div class="bk lore"><span class="n">book i</span><b>The Lore</b><i>precedent, not destiny</i></div>
+  <span class="sep"></span>
+  <div class="bk cls"><span class="n">book ii</span><b>The Classes</b><i>Classic, finished</i></div>
+  <span class="sep"></span>
+  <div class="bk race"><span class="n">book iii</span><b>The Races</b><i>a kind of power</i></div>
+</div>
+</body>
+</html>

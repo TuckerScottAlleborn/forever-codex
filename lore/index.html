@@ -1,0 +1,1231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="What’s canon, what’s new and what’s still unwritten in World of Warcraft: Forever, in three parts: the history already written, the page where Forever picks the story up, and the pages still unwritten.">
+<meta property="og:title" content="The Lore · Forever Codex">
+<meta property="og:description" content="What’s canon, what’s new and what’s still unwritten in World of Warcraft: Forever, in three parts: the history already written, the page where Forever picks the story up, and the pages still unwritten.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Forever Codex">
+<meta property="og:url" content="https://tuckerscottalleborn.github.io/forever-codex/lore/">
+<meta property="og:image" content="https://tuckerscottalleborn.github.io/forever-codex/lore/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Lore, book one of the Forever Codex: a timeline from the War of the Ancients to Year 1, where it splits into the old rails and Forever">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Lore · Forever Codex">
+<meta name="twitter:image" content="https://tuckerscottalleborn.github.io/forever-codex/lore/og.png">
+<meta name="theme-color" content="#cf9a52">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://tuckerscottalleborn.github.io/forever-codex/lore/">
+<title>The Lore · Forever Codex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya:ital,wght@0,400;0,600;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../codex.css">
+<style>
+/* Book I of the Forever Codex (tokens, frames, masthead and the bar's shell are in codex.css).
+   Layout: one reading column, top to bottom, like a codex, in three parts. A title page with
+   the branch-point diagram, a sticky bar, then Part one (the settled history, on a solid
+   rail), Part two (Year 1 and what's on the ground) and Part three (speculation, on dashed
+   rails, flagged as soft spoilers), each opened by a full-width title band in its own colour.
+   Epilogue and reading stack close the book. */
+body.lore {
+  --atmos:
+    radial-gradient(ellipse 70rem 36rem at 50% -12rem, color-mix(in oklab, var(--glow) 20%, transparent), transparent 70%),
+    radial-gradient(ellipse 46rem 30rem at 92% 10rem, color-mix(in oklab, var(--s-bridge) 8%, transparent), transparent 70%);
+}
+.col { max-width: 48rem; margin-inline: auto }
+
+/* status tags: shape and word, never colour alone */
+.tag {
+  display: inline-flex; align-items: center; gap: .4em; vertical-align: middle;
+  font-family: var(--f-label); font-weight: 700; font-size: .78rem; letter-spacing: .06em; text-transform: lowercase; line-height: 1.5;
+  color: var(--st, var(--muted)); white-space: nowrap;
+  border: 1px solid color-mix(in oklab, var(--st, var(--muted)) 45%, transparent);
+  background: color-mix(in oklab, var(--st, var(--muted)) 10%, transparent);
+  border-radius: 999px; padding: 0 .65em .05em;
+}
+.tag::before { content: ""; flex: none; width: .5em; height: .5em; background: currentColor; transform: rotate(45deg) }
+.tag.st-bridge::before { width: .8em; height: .42em; background: none; border: 2px solid currentColor; border-bottom: 0; border-radius: .8em .8em 0 0; transform: none }
+.tag.st-forever::before { width: .8em; height: .8em; transform: none; clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%) }
+.tag.st-unspec::before { content: "?"; width: auto; height: auto; background: none; transform: none; font-family: var(--f-display); font-size: 1.1em; line-height: 1 }
+.tag.st-other::before { width: .62em; height: .62em; background: none; border: 1.5px dashed currentColor; border-radius: 50%; transform: none }
+.tag.st-warn::before { content: "!"; width: auto; height: auto; background: none; transform: none; font-family: var(--f-display); font-size: 1.05em; line-height: 1 }
+.tag.st-bad::before { content: "×"; width: auto; height: auto; background: none; transform: none; font-size: 1.15em; line-height: 1 }
+.tag.st-theory::before { width: .55em; height: .55em; background: none; border: 1.5px solid currentColor; border-radius: 50%; transform: none }
+.tag.g-check::before { width: .32em; height: .62em; background: none; border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-.1em) rotate(45deg) }
+.tag.st-spoil::before, .spoil::before { width: 1.15em; height: 1.15em; transform: none; -webkit-mask: var(--i-spoil) center / contain no-repeat; mask: var(--i-spoil) center / contain no-repeat }
+
+/* ---------- sequences: lists that read down their own rail ---------- */
+.seq { list-style: none; margin: 0; padding: 0; display: grid }
+.seq > li { position: relative; padding: 0 0 2.25rem 3.6rem; min-width: 0 }
+.seq > li:last-child { padding-bottom: 0 }
+.seq > li::before {
+  content: ""; position: absolute; left: calc(1.2rem - 1px); top: 2.7rem; bottom: .3rem; width: 2px;
+  background: color-mix(in oklab, var(--st, var(--bronze)) 45%, transparent);
+}
+.seq > li:last-child::before { display: none }
+.mk {
+  position: absolute; left: 0; top: 0; width: 2.4rem; height: 2.4rem; display: grid; place-items: center;
+  border-radius: 50%; border: 2px solid var(--st, var(--bronze)); background: var(--bg); color: var(--st, var(--bronze));
+  font-family: var(--f-caps); font-size: 1.05rem; line-height: 1; box-shadow: 0 0 0 4px var(--bg), 0 0 14px -6px var(--st, var(--bronze));
+}
+.mk.g::before { content: ""; display: block; background: currentColor }
+.mk.g-diamond::before { width: .62rem; height: .62rem; transform: rotate(45deg) }
+.mk.g-arch::before { width: 1rem; height: .52rem; background: none; border: 2.5px solid currentColor; border-bottom: 0; border-radius: 1rem 1rem 0 0; transform: translateY(.1rem) }
+.mk.g-ring::before { width: .85rem; height: .85rem; background: none; border: 2px dashed currentColor; border-radius: 50% }
+.mk.g-q::before, .mk.g-x::before { background: none; font-family: var(--f-display); font-size: 1.3rem; line-height: 1 }
+.mk.g-q::before { content: "?" }
+.mk.g-x::before { content: "×"; font-family: var(--f-ui); font-size: 1.5rem }
+@media (max-width: 30rem) {
+  .seq > li { padding-left: 3.1rem }
+  .mk { width: 2.15rem; height: 2.15rem; font-size: .95rem }
+  .seq > li::before { left: calc(1.075rem - 1px); top: 2.45rem }
+}
+
+/* ---------- title page ---------- */
+.hero { padding-block: clamp(2.75rem, 7vw, 5rem) 1rem; display: grid; gap: 1.25rem; justify-items: start }
+.thesis { font-size: clamp(1.4rem, 1.1rem + 1.2vw, 1.85rem); line-height: 1.35; max-width: 30ch }
+.thesis em { color: var(--bronze-hi); font-style: normal }
+.lede { font-size: 1.05rem }
+.lede .p1t { color: var(--pc1) } .lede .p2t { color: var(--pc2) } .lede .p3t { color: var(--pc3) }
+
+/* the branch diagram */
+.branch {
+  --rx: .875rem; --pl: 2.25rem;
+  width: 100%; margin: 1rem 0 0; padding: 1.25rem 1.4rem 1.5rem; display: grid; align-content: start; min-width: 0;
+  background:
+    radial-gradient(circle at 78% 90%, color-mix(in oklab, var(--s-forever) 14%, transparent), transparent 44%),
+    var(--panel);
+}
+@media (max-width: 26rem) { .branch { --pl: 1.9rem; padding-inline: 1rem } }
+.branch figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .2rem 1rem; margin-bottom: .9rem }
+.cap-note { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted) }
+.phase { position: relative; padding-left: var(--pl) }
+.phase::before { content: ""; position: absolute; left: calc(var(--rx) - 1px); top: 0; bottom: 0; width: 2px; background: var(--st) }
+.phase-l, .phase-s { display: block; font-family: var(--f-label); font-weight: 700; text-transform: lowercase; text-decoration: none; padding: .05rem 0 .4rem }
+.phase-l { font-size: .82rem; letter-spacing: .1em; color: var(--pt) }
+.phase-l:hover { text-decoration: underline; text-underline-offset: 3px }
+.phase-s { font-size: .74rem; letter-spacing: .08em; color: var(--st) }
+.phase ol { list-style: none; margin: 0; padding: 0 }
+.phase li { position: relative; padding-bottom: .75rem }
+.phase li::before {
+  content: ""; position: absolute; left: calc(var(--rx) - var(--pl) - .36rem); top: .4rem;
+  width: .72rem; height: .72rem; background: var(--panel); border: 2px solid var(--st); transform: rotate(45deg);
+}
+.phase a.ev { display: grid; text-decoration: none; color: inherit; gap: .05rem }
+.phase a.ev b { font-family: var(--f-display); font-weight: 400; font-size: 1.05rem; line-height: 1.25; color: var(--ink) }
+.phase a.ev span { font-family: var(--f-ui); font-size: .9rem; color: var(--muted); line-height: 1.35 }
+.phase a.ev:hover b { text-decoration: underline; text-decoration-color: var(--st); text-underline-offset: 3px }
+.phase li.y1 { padding-top: .2rem; padding-bottom: .6rem }
+.phase li.y1::before { display: none }
+.phase li.y1 a.ev { padding-left: .4rem }
+.phase li.y1 b { color: var(--pc2); font-size: 1.25rem }
+.y1-mark {
+  position: absolute; left: calc(var(--rx) - var(--pl) - 1.05rem); top: 0; width: 2.1rem; height: 2.1rem; padding: .32rem;
+  border-radius: 50%; background: var(--panel); border: 2px solid var(--pc2); color: var(--pc2);
+  box-shadow: 0 0 0 3px var(--panel), 0 0 18px -2px var(--pc2);
+}
+.fork { display: block; margin-left: var(--rx); width: calc(50% + .5rem); height: 2.75rem; overflow: visible }
+.fork path { fill: none; stroke-width: 2px; vector-effect: non-scaling-stroke }
+.fork .f-old { stroke: var(--s-other); stroke-dasharray: 5 5 }
+.fork .f-new { stroke: var(--s-forever) }
+.tracks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem }
+.track { position: relative; padding-left: var(--pl); min-width: 0; --st: var(--s-other) }
+.track.new { --st: var(--s-forever) }
+.track::before { content: ""; position: absolute; left: calc(var(--rx) - 1px); top: 0; bottom: .2rem; width: 2px }
+.track.old::before { background: repeating-linear-gradient(180deg, var(--st) 0 5px, transparent 5px 10px) }
+.track.new::before { background: linear-gradient(180deg, var(--st) 0 58%, transparent 58%), repeating-linear-gradient(180deg, var(--st) 0 4px, transparent 4px 8px) }
+.track-h { font-family: var(--f-display); color: var(--st); font-size: 1.1rem; line-height: 1.2; padding: .05rem 0 .5rem }
+.track ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem }
+.track li { position: relative; font-family: var(--f-ui); font-size: .9rem; line-height: 1.35; color: var(--muted); overflow-wrap: break-word }
+.track li::before {
+  content: ""; position: absolute; left: calc(var(--rx) - var(--pl) - .3rem); top: .33rem;
+  width: .6rem; height: .6rem; border-radius: 50%; border: 2px solid var(--st); background: var(--panel);
+}
+.track.new li { color: var(--ink) }
+.track.new li b { display: block; font-family: var(--f-label); font-weight: 700; font-size: .76rem; letter-spacing: .06em; text-transform: lowercase; color: var(--st) }
+.track.new li.q::before { border-style: dashed }
+.track.new li.q b { color: var(--pc3); font-size: .82rem; letter-spacing: .1em }
+.track a { color: inherit; text-decoration: none; display: block }
+.track a:hover { text-decoration: underline; text-decoration-color: var(--st); text-underline-offset: 3px }
+.track .cd { color: var(--pc2) }
+.track .cd::before { content: " · "; color: var(--st) }
+.track-f { font-style: italic; font-size: .9rem; line-height: 1.4; color: var(--muted); margin-top: .65rem }
+.spoil { display: flex; align-items: center; gap: .35em; margin-top: .2rem; font-family: var(--f-label); font-weight: 700; font-size: .74rem; letter-spacing: .06em; text-transform: lowercase; color: var(--s-warn) }
+.spoil::before { content: ""; flex: none; background: currentColor }
+
+
+/* ---------- the three parts ---------- */
+.part { --pc: var(--pc1); display: grid; gap: 2rem; padding-top: clamp(3.25rem, 8vw, 5rem); min-width: 0 }
+.p2 { --pc: var(--pc2) }
+.p3 { --pc: var(--pc3) }
+.part-head {
+  margin-inline: calc(50% - 50vw); padding: clamp(2.25rem, 6vw, 3.5rem) 16px clamp(2.25rem, 5.5vw, 3.25rem);
+  display: grid; justify-items: center; gap: .55rem; text-align: center;
+  background:
+    radial-gradient(ellipse 50rem 16rem at 50% 0, color-mix(in oklab, var(--pc) 20%, transparent), transparent 72%),
+    linear-gradient(180deg, color-mix(in oklab, var(--pc) 8%, transparent), color-mix(in oklab, var(--pc) 2%, transparent));
+  border-block: 1px solid color-mix(in oklab, var(--pc) 38%, transparent);
+}
+.part-motif { width: 1.5rem; height: 3rem; color: var(--pc); overflow: visible }
+.p2 .part-motif { width: 3.2rem; height: 3.2rem; filter: drop-shadow(0 0 10px color-mix(in oklab, var(--pc) 55%, transparent)) }
+.part-n { font-family: var(--f-label); font-weight: 700; font-size: .92rem; letter-spacing: .34em; text-transform: lowercase; color: var(--pc); padding-left: .34em }
+.part-head h2 { font-family: var(--f-caps); font-size: clamp(2.4rem, 1.5rem + 3.6vw, 3.9rem); letter-spacing: .02em; line-height: 1.02; color: var(--pc) }
+.part-sub { color: var(--ink); opacity: .82; max-width: 44ch; font-size: 1.1rem; line-height: 1.5 }
+/* the soft-spoiler notice in part three's title band */
+.spoilers { position: relative; display: grid; justify-items: center; gap: .5rem; max-width: 42ch; margin-top: .6rem; padding-top: 1.15rem }
+.spoilers::before { content: ""; position: absolute; top: 0; left: 50%; width: 3.5rem; height: 1px; transform: translateX(-50%); background: color-mix(in oklab, var(--pc) 50%, transparent) }
+.spoilers .tag { font-size: .88rem; padding: .05em .85em .1em; background: color-mix(in oklab, var(--st) 10%, var(--panel)) }
+.spoilers p { font-family: var(--f-ui); font-size: .98rem; line-height: 1.45; color: var(--muted); text-wrap: pretty }
+.spoilers a { color: var(--s-warn); text-underline-offset: 3px }
+.part-end { display: grid; justify-items: center; gap: .4rem; text-align: center; font-style: italic; color: var(--muted); padding-top: .5rem }
+.part-end::before { content: ""; width: 2px; height: 2.25rem; background: linear-gradient(var(--pc), transparent) }
+
+.block { display: grid; gap: 1rem; min-width: 0 }
+.block + .block { padding-top: 2rem; border-top: 1px solid var(--line-soft) }
+.block > h3 { display: flex; align-items: center; gap: .75rem; font-size: var(--step-2); color: var(--ink) }
+.block > h3::before { content: ""; flex: none; width: .7rem; height: .7rem; border-radius: 50%; background: var(--pc); box-shadow: 0 0 10px -1px var(--pc) }
+.p3 .block > h3::before { background: none; border: 2px dashed var(--pc); box-shadow: none; width: .8rem; height: .8rem }
+.block-l { display: flex; flex-wrap: wrap; gap: .4rem .75rem; align-items: center; font-family: var(--f-label); font-weight: 700; color: var(--muted); letter-spacing: .06em; text-transform: lowercase; font-size: .88rem }
+.block .intro { color: var(--muted); max-width: 62ch }
+
+.key {
+  list-style: none; margin: 0; padding: 1rem 1.15rem; display: grid; gap: .6rem;
+  border: 1px solid var(--line-soft); background: color-mix(in oklab, var(--panel) 65%, transparent);
+  font-family: var(--f-ui); font-size: .95rem; color: var(--muted)
+}
+.key-h { font-family: var(--f-label); font-weight: 700; font-size: .82rem; letter-spacing: .08em; text-transform: lowercase; color: var(--bronze) }
+.key li { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: .25rem .9rem; align-items: center }
+.key .tag { justify-self: start }
+@media (max-width: 30rem) { .key li { grid-template-columns: minmax(0, 1fr) } }
+
+/* ---------- part one: the chronicle ---------- */
+.chron { list-style: none; margin: 0; padding: 0; display: grid }
+.era { position: relative; display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 0 1.1rem; padding-bottom: 3rem }
+.era::before { content: ""; position: absolute; left: calc(1.5rem - 1px); top: 1.5rem; bottom: 0; width: 2px; background: color-mix(in oklab, var(--st) 65%, transparent) }
+.era:last-child { padding-bottom: 0 }
+.era:last-child::before { background: linear-gradient(color-mix(in oklab, var(--st) 65%, transparent), transparent) }
+.era-mark { position: relative; z-index: 1; width: 3rem; height: 3rem; display: grid; place-items: center }
+.era-mark span {
+  width: 2.15rem; height: 2.15rem; display: grid; place-items: center; transform: rotate(45deg);
+  background: var(--bg); border: 2px solid var(--st); box-shadow: 0 0 0 4px var(--bg), 0 0 16px -6px var(--st);
+}
+.era-mark b { transform: rotate(-45deg); font-family: var(--f-caps); font-weight: 400; color: var(--st); font-size: .95rem; line-height: 1 }
+.era-body { display: grid; gap: .85rem; min-width: 0; padding-top: .45rem; align-content: start }
+.era-when { display: flex; flex-wrap: wrap; gap: .4rem .75rem; align-items: center; font-family: var(--f-label); font-weight: 700; color: var(--muted); letter-spacing: .06em; text-transform: lowercase; font-size: .88rem }
+.era h3 { font-size: var(--step-2); color: var(--ink) }
+@media (max-width: 30rem) {
+  .era { grid-template-columns: 2.5rem minmax(0, 1fr); gap: 0 .85rem }
+  .era::before { left: calc(1.25rem - 1px) }
+  .era-mark { width: 2.5rem }
+  .era-mark span { width: 1.85rem; height: 1.85rem }
+}
+.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem }
+.ticks li { position: relative; padding-left: 1.2rem }
+.ticks li::before { content: ""; position: absolute; left: .1rem; top: .62em; width: .42rem; height: .42rem; background: var(--st, var(--bronze)); transform: rotate(45deg) }
+.note {
+  border-left: 3px solid var(--st); background: color-mix(in oklab, var(--st) 7%, var(--panel));
+  padding: .8rem 1rem .9rem; display: grid; gap: .45rem; font-size: 1rem; max-width: 64ch
+}
+.note-l { font-family: var(--f-label); font-weight: 700; font-size: .82rem; letter-spacing: .07em; text-transform: lowercase; color: var(--st) }
+.note b { color: var(--ink) }
+.note a { color: var(--st); text-underline-offset: 3px }
+/* an illuminated first letter for the first chapter */
+#ancient .prose > p:first-child::first-letter {
+  float: left; font-family: var(--f-caps); font-size: 3.35em; line-height: .82; margin: .07em .12em 0 0; color: var(--bronze-hi);
+}
+
+/* canon checks, set inside the chapter they correct */
+.ck {
+  border: 1px solid color-mix(in oklab, var(--st) 38%, transparent); border-left: 3px solid var(--st);
+  background: color-mix(in oklab, var(--st) 6%, var(--panel)); padding: .75rem 1rem .85rem; display: grid; gap: .4rem; max-width: 64ch
+}
+.ck-top { display: flex; flex-wrap: wrap; gap: .3rem .65rem; align-items: center }
+.ck-l { font-family: var(--f-label); font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: lowercase; color: var(--muted) }
+.ck-q { font-style: italic; color: var(--muted) }
+.ck-a { font-weight: 600 }
+
+/* ---------- part two ---------- */
+.dungeons { list-style: none; margin: 0; padding: 0; display: grid; gap: .7rem }
+.dungeons li { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: .7rem; align-items: start }
+.dungeons svg { width: 1.6rem; height: 1.6rem; color: var(--pc) }
+.dungeons b { font-family: var(--f-display); font-weight: 400; font-size: 1.08rem; line-height: 1.3 }
+.dungeons span { font-family: var(--f-ui); font-size: .98rem; color: var(--muted) }
+.raid {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.25rem; padding: .95rem 1.25rem;
+  border: 1px solid color-mix(in oklab, var(--pc) 40%, transparent); border-left: 3px solid var(--pc);
+  background: linear-gradient(90deg, color-mix(in oklab, var(--pc) 13%, var(--panel)), var(--panel));
+}
+.raid .when { display: grid; font-family: var(--f-display); color: var(--pc); font-size: 1.3rem; line-height: 1.25 }
+.raid .when .label { font-size: .78rem; color: var(--muted) }
+.raid .names { font-family: var(--f-ui); color: var(--ink); font-size: 1rem; flex: 1 1 16rem }
+.raid .names i { color: var(--muted); font-style: normal }
+.raid .cd { font-size: .86rem; letter-spacing: .05em }
+
+/* the tree */
+.web-hint { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted); display: flex; flex-wrap: wrap; gap: .35rem 1.25rem; align-items: center }
+.web-hint span { display: inline-flex; align-items: center; gap: .45rem }
+.web-hint i { display: inline-block; width: 1.6rem; height: 0; border-top: 2px solid var(--bronze-hi) }
+.web-hint i.tie { border-top-style: dashed }
+.tree { position: relative; padding: 1.1rem 3.1rem 1.3rem 1.1rem; border: 1px solid var(--line-soft); background: color-mix(in oklab, var(--panel) 60%, transparent) }
+@media (max-width: 30rem) { .tree { padding: .9rem 2.6rem 1.1rem .8rem } }
+.web-lines { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 3 }
+.web-lines path { fill: none; stroke: var(--bronze-hi); stroke-width: 1.75; stroke-linecap: round }
+.web-lines path.tie { stroke-dasharray: 5 5 }
+.web-lines circle { fill: var(--bronze-hi) }
+.t-root { display: flex; flex-wrap: wrap; gap: .1rem .7rem; align-items: baseline; font-family: var(--f-display); font-size: 1.3rem; color: var(--pc); line-height: 1.3 }
+.t-root small { font-family: var(--f-ui); font-size: .9rem; color: var(--muted) }
+.tree ul { list-style: none; margin: 0; padding-left: 1.55rem }
+.tree li { position: relative; padding-top: .5rem }
+.tree li::before { content: ""; position: absolute; left: -1rem; top: 0; height: 1.6rem; width: .8rem; border-left: 1px solid var(--line); border-bottom: 1px solid var(--line); border-bottom-left-radius: 7px }
+.tree li:not(:last-child)::after { content: ""; position: absolute; left: -1rem; top: 1.5rem; bottom: 0; border-left: 1px solid var(--line) }
+.cl { --cl: var(--bronze) }
+.cl-alli { --cl: var(--f-alliance) }
+.cl-horde { --cl: var(--f-horde) }
+.cl-night { --cl: var(--f-elves) }
+.cl-sky { --cl: var(--s-forever) }
+.cl > ul { padding-bottom: .35rem }
+.cl-h { display: block; padding: .3rem .55rem; border-radius: 3px; font-family: var(--f-display); font-size: 1.22rem; line-height: 1.3; color: var(--cl); position: relative; z-index: 4; transition: box-shadow .15s }
+.cl-h.is-tied { box-shadow: 0 0 0 2px var(--bronze-hi) }
+.node {
+  width: 100%; text-align: left; display: grid; gap: .05rem; cursor: pointer; margin: 0; position: relative; z-index: 4;
+  padding: .45rem .7rem; border: 1px solid transparent; border-radius: 3px; border-left: 3px solid color-mix(in oklab, var(--cl) 70%, transparent);
+  background: var(--panel-2); color: var(--ink); font-family: var(--f-ui); font-size: .98rem; font-weight: 500; line-height: 1.3;
+  transition: opacity .15s, border-color .15s, box-shadow .15s;
+}
+.node small { color: var(--muted); font-size: .84rem; font-weight: 400 }
+.node .thread { color: var(--bronze); font-size: .82rem; font-weight: 500 }
+.node:hover { border-color: var(--line); border-left-color: var(--cl) }
+.node.is-sel { border-color: var(--bronze-hi); box-shadow: 0 0 0 1px var(--bronze-hi), 0 0 16px -4px var(--bronze-hi) }
+.node.is-tied { border-color: color-mix(in oklab, var(--bronze-hi) 70%, transparent) }
+.tree.has-sel .node:not(.is-sel):not(.is-tied) { opacity: .72 }
+
+/* ---------- part three ---------- */
+/* the unwritten part runs on dashed rails */
+.p3 .seq > li::before { background: repeating-linear-gradient(180deg, color-mix(in oklab, var(--st, var(--pc)) 60%, transparent) 0 5px, transparent 5px 10px) }
+.boundary { padding: 1.4rem 1.5rem; display: grid; gap: .6rem; margin: 0 }
+.boundary p:not(.label) { font-size: var(--step-1); line-height: 1.45 }
+.boundary b { color: var(--pc); font-weight: 400 }
+.chk { display: grid; gap: .6rem; padding-top: .25rem; justify-items: start }
+.chk h4 { font-size: 1.32rem; color: var(--ink) }
+.chk dl { margin: 0; display: grid; gap: .45rem .9rem; width: 100% }
+.chk dt { font-family: var(--f-label); font-weight: 700; font-size: .78rem; letter-spacing: .07em; text-transform: lowercase; color: var(--muted); padding-top: .2rem }
+.chk dd { margin: 0; font-size: 1.02rem; max-width: 60ch }
+.chk dd.assume { font-style: italic; color: var(--muted) }
+@media (min-width: 40rem) { .chk dl { grid-template-columns: 7.5rem minmax(0, 1fr) } }
+.chk .so { font-weight: 600; padding: .55rem .85rem; border-left: 3px solid var(--st); background: color-mix(in oklab, var(--st) 8%, transparent); width: 100% }
+
+/* the quest log index: an in-game frame, identical in both themes */
+.qindex { border: 1px solid #000; border-radius: 4px; overflow: hidden; background: #0f0c08; box-shadow: inset 0 0 0 1px #6b5330, 0 12px 32px -16px #000; color-scheme: dark }
+.ql-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .55rem .95rem; background: linear-gradient(180deg, #3b2d18, #1f170c); border-bottom: 1px solid #000; box-shadow: inset 0 -1px 0 #6b5330 }
+.ql-top b { font-family: var(--f-display); font-weight: 400; color: var(--marker); font-size: 1.1rem; text-shadow: 0 1px 0 #000 }
+.ql-top span { font-family: var(--f-ui); color: #e5d9bd; font-size: .88rem; font-variant-numeric: tabular-nums }
+.qindex ol { list-style: none; margin: 0; padding: .45rem }
+.qindex a {
+  display: flex; align-items: center; gap: .6rem; padding: .5rem .65rem; border-radius: 2px; text-decoration: none;
+  color: var(--marker); font-family: var(--f-ui); font-size: 1.02rem; font-weight: 500; line-height: 1.3;
+}
+.qindex a:hover { background: rgba(255, 209, 0, .1); color: #fff }
+.qindex a:focus-visible { outline-color: var(--marker); outline-offset: -2px }
+.bang { flex: none; width: .7rem; height: 1.25rem }
+.qindex .qt { flex: 1; min-width: 0 }
+.qtag { color: #b9b09d; font-family: var(--f-ui); font-size: .86rem; font-weight: 400; white-space: nowrap }
+
+/* the questline */
+.p3 .qline > li::before { background: repeating-linear-gradient(180deg, color-mix(in oklab, var(--marker) 50%, #6b5330) 0 5px, transparent 5px 10px) }
+.qmk { border-color: #6b5330; background: #0f0c08; box-shadow: 0 0 0 4px var(--bg), 0 0 14px -4px rgba(255, 209, 0, .55) }
+.qmk svg { width: .78rem; height: 1.4rem }
+.quest { border: 1px solid #000; border-radius: 3px; overflow: hidden; box-shadow: 0 12px 30px -18px #000; color-scheme: dark }
+.q-bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .9rem; padding: .6rem 1.1rem; background: linear-gradient(180deg, #2c2213, #16110a); border-bottom: 1px solid #000; box-shadow: inset 0 -1px 0 #6b5330 }
+.q-bar h4 { flex: 1 1 auto; font-family: var(--f-display); color: var(--marker); font-size: 1.32rem; text-shadow: 0 1px 0 #000 }
+.q-page {
+  padding: 1.15rem 1.35rem 1.35rem; display: grid; gap: .55rem; color: var(--q-ink);
+  background:
+    var(--grain-brown),
+    radial-gradient(ellipse at 25% 15%, rgba(255, 250, 235, .55), transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(140, 95, 35, .22), transparent 60%),
+    linear-gradient(180deg, var(--q-bg1), var(--q-bg2));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3), inset 0 0 36px rgba(120, 80, 30, .25);
+  color-scheme: light;
+  --s-forever: #0b6b78; --s-theory: #6b4a1a; --s-unspec: #4a5880;
+}
+.q-obj { font-style: italic; font-size: 1.08rem; padding-bottom: .5rem; border-bottom: 1px solid rgba(91, 55, 8, .25) }
+.q-page h5 { font-family: var(--f-display); color: var(--q-head); font-size: 1.1rem; margin-top: .4rem; display: flex; flex-wrap: wrap; gap: .3rem .6rem; align-items: center }
+.q-page p { font-size: 1.02rem }
+.qm {
+  display: inline-grid; place-items: center; width: 1.25rem; height: 1.25rem; font-family: var(--f-display); font-size: 1.15rem; line-height: 1;
+  color: #c9c9c9; text-shadow: 0 0 1px #000, 0 0 2px #000, 0 1px 0 #000;
+}
+.beats > li { padding-bottom: 1.6rem }
+.beats .mk { border-style: dashed }
+.beats b { display: block; font-family: var(--f-display); font-weight: 400; color: var(--ink); font-size: 1.12rem; line-height: 1.3; padding-top: .3rem }
+.fine { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted); display: flex; flex-wrap: wrap; gap: .3rem .5rem; align-items: center }
+.diverge { padding: 1.35rem 1.5rem; display: grid; gap: .6rem }
+.diverge .label { display: flex; flex-wrap: wrap; gap: .4rem .75rem; align-items: center; color: var(--pc) }
+.diverge p:not(.label) { font-size: var(--step-1); line-height: 1.45 }
+.diverge b { color: var(--pc); font-weight: 400 }
+
+/* ---------- epilogue and appendix ---------- */
+.sec { padding-block: clamp(3.25rem, 8vw, 5rem) 0; display: grid; gap: 1.6rem; min-width: 0 }
+.sec::before {
+  content: ""; height: 12px;
+  background:
+    radial-gradient(circle, var(--bronze) 2.5px, transparent 3px) center / 12px 12px no-repeat,
+    linear-gradient(90deg, transparent, var(--line) 18%, var(--line) 82%, transparent) center / 100% 1px no-repeat;
+}
+.sec-head { display: grid; gap: .5rem }
+.sec-head h2 { font-size: var(--step-3); color: var(--bronze-hi) }
+.sec-head p:not(.label) { color: var(--muted); max-width: 62ch }
+.sub-l { margin-top: .75rem }
+.bins > li { padding-bottom: 1.4rem }
+.bin { padding: 1rem 1.15rem 1.1rem; border: 1px solid color-mix(in oklab, var(--st) 40%, transparent); background: color-mix(in oklab, var(--st) 7%, var(--panel)); display: grid; gap: .45rem; justify-items: start }
+.bin h3 { color: var(--st); font-size: var(--step-1) }
+.bin p { font-size: 1.02rem }
+.tt {
+  max-width: 34rem; background: color-mix(in oklab, var(--tt-bg) 95%, transparent);
+  border: 1px solid var(--tt-line); border-radius: 4px;
+  box-shadow: inset 0 0 0 1px #000, 0 6px 18px -8px #000;
+  padding: .85rem .95rem; font-family: var(--f-ui); font-size: .94rem; line-height: 1.38; color: var(--tt-white);
+  display: grid; gap: .3rem; align-content: start; justify-items: start; color-scheme: dark;
+  --s-found: #e2b366; --s-bridge: #b796ee; --s-forever: #5fcad7;
+}
+.tt-h { font-size: 1.05rem; font-weight: 700 }
+.tt-sub { color: var(--tt-grey); font-size: .85rem }
+.tt-use { color: var(--tt-green) }
+.tt-flav { color: var(--tt-gold) }
+.tt .tag { margin-top: .3rem }
+.books > li { padding-bottom: 1.4rem }
+
+</style>
+</head>
+<body class="lore">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-glass" viewBox="0 0 24 24">
+      <path d="M5 2.5h14v2H5zM5 19.5h14v2H5z" fill="currentColor"/>
+      <path d="M7 4.5c0 4.6 4.2 6 4.2 7.5S7 14.9 7 19.5h10c0-4.6-4.2-6-4.2-7.5S17 9.1 17 4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M8.7 7h6.6c-.7 1.8-2.5 2.9-3.3 4.3C11.2 9.9 9.4 8.8 8.7 7zM8.4 19.5c.4-2.3 2.2-3.5 3.6-3.8 1.4.3 3.2 1.5 3.6 3.8z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-bang" viewBox="0 0 12 24">
+      <path d="M3 2.2h6L7.7 15.6H4.3z" fill="#ffd100" stroke="#3b2600" stroke-width="1.3" stroke-linejoin="round"/>
+      <circle cx="6" cy="20" r="2.4" fill="#ffd100" stroke="#3b2600" stroke-width="1.3"/>
+    </symbol>
+    <symbol id="i-door" viewBox="0 0 24 24">
+      <path d="M4.5 21.5V11a7.5 7.5 0 0 1 15 0v10.5z" fill="currentColor" opacity=".18"/>
+      <path d="M4.5 21.5V11a7.5 7.5 0 0 1 15 0v10.5M2.5 21.5h19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M8.5 21.5V12a3.5 3.5 0 0 1 7 0v9.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    </symbol>
+  </defs>
+</svg>
+<a class="skip" href="#written">Skip to part one</a>
+
+<header class="mast">
+  <div class="mast-in">
+    <a class="mast-brand" href="../"><svg aria-hidden="true"><use href="#i-glass"/></svg>Forever Codex</a>
+    <nav class="mast-books" aria-label="Books">
+      <a href="../lore/" aria-current="page"><span class="bk-n">I</span>Lore</a>
+      <a href="../classes/"><span class="bk-n">II</span>Classes</a>
+      <a href="../races/"><span class="bk-n">III</span>Races</a>
+    </nav>
+  </div>
+</header>
+
+<header class="hero col" id="top">
+  <p class="label">forever codex · book i · lore and canon</p>
+  <h1 class="title">The Lore</h1>
+  <p class="thesis">History up to Year 1 is <em>foundation</em>. Everything after it is <em>precedent, not destiny</em>.</p>
+  <div class="prose lede">
+    <p>Forever isn’t Vanilla again, and it isn’t retail rewound. Blizzard is treating it as a new, permanent branch of Warcraft continuity that lives in its own “time bubble”: the established history stays, and from original WoW onward, events are free to unfold differently.</p>
+    <p>So this book comes in three parts: the history that’s <b class="p1t">already written</b>, the <b class="p2t">page one</b> where Forever picks up the story, and the pages <b class="p3t">still unwritten</b>.</p>
+  </div>
+
+  <figure class="branch frame" aria-labelledby="branch-cap">
+    <figcaption id="branch-cap"><span class="label">the branch point</span><span class="cap-note">the timeline, in this book’s three parts</span></figcaption>
+    <div class="phase st-found" style="--pt: var(--pc1)">
+      <a class="phase-l" href="#written">part i · already written</a>
+      <ol>
+        <li><a class="ev" href="#ancient"><b>~10,000 years ago</b><span>The War of the Ancients</span></a></li>
+        <li><a class="ev" href="#first-war"><b>First War</b><span>The Dark Portal opens. Stormwind falls.</span></a></li>
+        <li><a class="ev" href="#second-war"><b>Second War</b><span>The Alliance wins. The orcs are interned.</span></a></li>
+        <li><a class="ev" href="#third-war"><b>Third War</b><span>Lordaeron falls. Archimonde is defeated at Hyjal.</span></a></li>
+      </ol>
+    </div>
+    <div class="phase st-bridge">
+      <p class="phase-s">the bridge</p>
+      <ol><li><a class="ev" href="#bridge"><b>Forsaken Kingdom</b><span>The four-year gap, filled.</span></a></li></ol>
+    </div>
+    <div class="phase st-now" style="--pt: var(--pc2)">
+      <a class="phase-l" href="#page-one">part ii · page one</a>
+      <ol><li class="y1"><svg class="y1-mark" aria-hidden="true"><use href="#i-glass"/></svg><a class="ev" href="#page-one"><b>Year 1</b><span>Where Forever picks up the story.</span></a></li></ol>
+    </div>
+    <svg class="fork" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path class="f-old" d="M0 0V60"/>
+      <path class="f-new" d="M0 0C0 36 200 24 200 60"/>
+    </svg>
+    <div class="tracks">
+      <div class="track old">
+        <p class="track-h">The old rails</p>
+        <ul>
+          <li>Molten Core</li>
+          <li>Kazzak reopens the Dark Portal</li>
+          <li>Outland</li>
+          <li>Northrend</li>
+        </ul>
+        <p class="track-f">Another continuity. Precedent, not destiny.</p>
+      </div>
+      <div class="track new">
+        <p class="track-h">Forever</p>
+        <ul>
+          <li><b>Nov 4, 2026 · launch</b>New paths through Hyjal, Riverglades, Shen’dralas and Zephras Isle</li>
+          <li><a href="#raids"><b>Dec 9, 2026<span class="cd" data-raid-cd hidden></span></b>Barrow Deeps, Hyjal Summit, Onyxia’s Lair</a></li>
+          <li class="q"><a href="#unwritten"><b>part iii · still unwritten</b>Where the story could go<span class="spoil">soft spoilers</span></a></li>
+        </ul>
+        <p class="track-f">Its own time bubble.</p>
+      </div>
+    </div>
+  </figure>
+</header>
+
+<nav class="bar" aria-label="Parts">
+  <div class="bar-in">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#i-glass"/></svg><span>The Lore</span></a>
+    <a class="sec-link" href="#written"><span class="rn">I</span><span class="lg">Already written</span><span class="sh">Written</span></a>
+    <a class="sec-link" href="#page-one"><span class="rn">II</span>Page one</a>
+    <a class="sec-link" href="#unwritten"><span class="rn">III</span><span class="lg">Still unwritten</span><span class="sh">Unwritten</span></a>
+    <a class="sec-link" href="#reading">Reading</a>
+  </div>
+</nav>
+
+<main class="col">
+
+<!-- ======================= PART ONE ======================= -->
+<section class="part p1" id="written" aria-labelledby="p1-h">
+  <header class="part-head">
+    <svg class="part-motif" viewBox="0 0 24 48" aria-hidden="true" focusable="false"><line x1="12" y1="0" x2="12" y2="31" stroke="currentColor" stroke-width="2"/><rect x="6.5" y="30.5" width="11" height="11" transform="rotate(45 12 36)" fill="currentColor"/></svg>
+    <p class="part-n">part one</p>
+    <h2 id="p1-h">Already Written</h2>
+    <p class="part-sub">The history Forever inherits: settled canon, from the War of the Ancients through <i>Forsaken Kingdom</i>. Most of it is familiar ground, so the canon checks flag where the usual shorthand slips.</p>
+  </header>
+
+  <ul class="key" aria-label="What the tags mean">
+    <li class="key-h">the tags used throughout</li>
+    <li><span class="tag st-found">Foundation</span>history before the branch point</li>
+    <li><span class="tag st-bridge">Bridge</span>new canon leading into Forever</li>
+    <li><span class="tag st-forever">Forever canon</span>new, Forever-specific lore</li>
+    <li><span class="tag st-unspec">Unspecified</span>Blizzard hasn’t said</li>
+    <li><span class="tag st-other">Another continuity</span>what came next in retail</li>
+  </ul>
+
+  <ol class="chron">
+    <li class="era st-found" id="ancient">
+      <div class="era-mark" aria-hidden="true"><span><b>I</b></span></div>
+      <div class="era-body">
+        <p class="era-when">~10,000 years ago <span class="tag st-found">Foundation</span></p>
+        <h3>Titans, Sargeras and the War of the Ancients</h3>
+        <div class="prose">
+          <p>Long before the Alliance or the Horde, Azeroth sits in a cosmos shaped by powers such as the <b>Titans</b>. One of them, <b>Sargeras</b>, turns against his former purpose and becomes master of the Burning Legion.</p>
+          <p>The Legion’s invasion, roughly ten thousand years before modern Warcraft, culminates in the <b>War of the Ancients</b>: the catastrophe underneath most of night-elven history, and the source of the lasting fault lines between night elves and Highborne.</p>
+        </div>
+        <div class="ck st-warn">
+          <p class="ck-top"><span class="ck-l">canon check</span><span class="tag st-warn">Oversimplified</span></p>
+          <p class="ck-q">“The Titans created Azeroth.”</p>
+          <p class="ck-a">Blizzard describes them as great cosmic powers that shape and order worlds. “Shaped and ordered” is safer than “created everything.”</p>
+        </div>
+        <aside class="note st-forever"><p class="note-l">forever adds a branch here</p><p>Highborne rebels who fled Eldre’Thalas after the war eventually become the <b>Skyborne</b>. <a href="#skyborne">More on page one.</a></p></aside>
+      </div>
+    </li>
+
+    <li class="era st-found" id="first-war">
+      <div class="era-mark" aria-hidden="true"><span><b>II</b></span></div>
+      <div class="era-body">
+        <p class="era-when">The First War <span class="tag st-found">Foundation</span></p>
+        <h3>The Dark Portal</h3>
+        <div class="prose">
+          <p><b>Medivh</b>, Guardian of Tirisfal but corrupted through Sargeras, conspires with the orc warlock <b>Gul’dan</b> to open the <b>Dark Portal</b> between Azeroth and Draenor. The Horde that comes through has itself been transformed by demonic influence.</p>
+          <p>Stormwind eventually falls. <b>Garona</b> assassinates King Llane, and <b>Anduin Lothar</b> leads the survivors north.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="era st-found" id="second-war">
+      <div class="era-mark" aria-hidden="true"><span><b>III</b></span></div>
+      <div class="era-body">
+        <p class="era-when">The Second War <span class="tag st-found">Foundation</span></p>
+        <h3>The Alliance of Lordaeron</h3>
+        <div class="prose">
+          <p>Lothar convinces <b>King Terenas Menethil II</b> and the other human kingdoms that the Horde is an existential threat, and the Alliance of Lordaeron forms with dwarven and high-elven support. <b>Gul’dan</b> abandons the Horde’s war for his own ambitions, and the Alliance recovers and wins.</p>
+          <p>Lothar dies fighting <b>Orgrim Doomhammer</b>, <b>Turalyon</b> rallies the Alliance, and many of the surviving orcs end up in internment camps. Then the Alliance itself begins to fracture.</p>
+        </div>
+        <div class="ck st-found">
+          <p class="ck-top"><span class="ck-l">canon check</span><span class="tag st-found g-check">Holds</span></p>
+          <p class="ck-q">The standard account of the First and Second Wars.</p>
+          <p class="ck-a">It stands. Nothing to update.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="era st-found" id="third-war">
+      <div class="era-mark" aria-hidden="true"><span><b>IV</b></span></div>
+      <div class="era-body">
+        <p class="era-when">The Third War <span class="tag st-found">Foundation</span></p>
+        <h3>Arthas, Thrall and the Legion</h3>
+        <div class="prose">
+          <p><b>Thrall</b>, a liberated orc who rejects the Horde’s demonic past, frees other orcs from internment and builds a new Horde in Kalimdor. <b>Jaina Proudmoore</b>, a gifted human mage, becomes one of the leaders willing to work across faction lines when a greater threat appears.</p>
+          <p><b>Arthas Menethil</b>, Prince of Lordaeron and a paladin, chases the plague of undeath through an increasingly ruthless campaign, takes up Frostmourne and falls into the Lich King’s service. He destroys Lordaeron and devastates Quel’Thalas. Among his victims is <b>Sylvanas Windrunner</b>, Ranger-General of Silvermoon, whom he kills and raises into undeath. She later breaks free of the Scourge and leads the <b>Forsaken</b>: undead who have their own will back.</p>
+          <p>Meanwhile the Burning Legion invades Kalimdor. <b>Tyrande Whisperwind</b> and <b>Malfurion Stormrage</b> lead the night-elven resistance, and <b>Illidan Stormrage</b>, imprisoned for millennia, is released in the emergency. Horde, human and night-elf forces fight together against Archimonde’s advance, and <b>Archimonde is defeated at Mount Hyjal</b>.</p>
+        </div>
+        <div class="ck st-found">
+          <p class="ck-top"><span class="ck-l">canon check</span><span class="tag st-found">Settled</span></p>
+          <p class="ck-q">“Forever could change how Hyjal went.”</p>
+          <p class="ck-a">It can’t. Archimonde’s defeat is already part of Forever’s history, and Forever explores what came after it. The branch comes later.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="era st-found" id="settlement">
+      <div class="era-mark" aria-hidden="true"><span><b>V</b></span></div>
+      <div class="era-body">
+        <p class="era-when">After the Third War <span class="tag st-found">Foundation</span></p>
+        <h3>The settlement</h3>
+        <div class="prose">
+          <p>The familiar map emerges. Thrall’s Horde establishes itself in Kalimdor, Jaina’s people found <b>Theramore</b>, the night elves recover from Hyjal, and Stormwind remains the main human power in the south.</p>
+          <p>Northern Lordaeron becomes a battlefield for Scourge remnants, the Forsaken, the Scarlet Crusade and others.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="era st-bridge" id="bridge">
+      <div class="era-mark" aria-hidden="true"><span><b>VI</b></span></div>
+      <div class="era-body">
+        <p class="era-when">The four-year gap <span class="tag st-bridge">Bridge</span></p>
+        <h3><i>Forsaken Kingdom</i></h3>
+        <div class="prose">
+          <p><i>Warcraft III Reforged: Forsaken Kingdom</i> picks up after Arthas returns to Lordaeron and fills the four years before WoW, following Sylvanas’s Forsaken as they establish Undercity and join the Horde. Its two new leads are <b>Garek Bandarion</b>, a newly risen Forsaken warrior, and <b>Dark Ranger Anya</b>. It covers:</p>
+          <ul class="ticks">
+            <li>how Undercity was created</li>
+            <li>how Forsaken society took shape</li>
+            <li>why the Scourge didn’t simply take Lordaeron back</li>
+            <li>how the Forsaken came to join the Horde</li>
+            <li>where <b>Forsaken Paladins</b> come from, a storyline that continues directly into Forever</li>
+          </ul>
+        </div>
+        <div class="ck st-bridge">
+          <p class="ck-top"><span class="ck-l">canon check</span><span class="tag st-bridge">Updated</span></p>
+          <p class="ck-q">“<i>Frozen Throne</i> Sylvanas, then straight to Vanilla Undercity.”</p>
+          <p class="ck-a">That gap is filled now. <i>Forsaken Kingdom</i> is the direct prelude to Forever.</p>
+        </div>
+      </div>
+    </li>
+  </ol>
+  <p class="part-end">That’s the written record. The page turns here.</p>
+</section>
+
+<!-- ======================= PART TWO ======================= -->
+<section class="part p2" id="page-one" aria-labelledby="p2-h">
+  <header class="part-head">
+    <svg class="part-motif" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><svg x="11" y="11" width="26" height="26"><use href="#i-glass"/></svg></svg>
+    <p class="part-n">part two</p>
+    <h2 id="p2-h">Page One</h2>
+    <p class="part-sub">Year 1: where Forever picks up the story, and what’s waiting on the ground when it does.</p>
+  </header>
+
+  <div class="block" id="year-one">
+    <p class="block-l">early Year 1 <span class="tag st-forever">Forever canon</span></p>
+    <h3>The starting line</h3>
+    <div class="prose">
+      <p>Forever begins after <i>Forsaken Kingdom</i>, before Molten Core, and before Kazzak reopens the Dark Portal: early Year 1, before later journeys such as Northrend reshape the story.</p>
+      <p>So it inherits original Azeroth’s unresolved world, not its later answers. Its launch world heads for the unfinished-looking corners of the old map: Lordaeron, Dalaran, Alcaz Island, Un’Goro, Azshara and more. The big new threads:</p>
+      <ul class="ticks st-forever">
+        <li><b>Hyjal</b>, in the aftermath of its legendary battle.</li>
+        <li><b>The Shen’dralar</b> and Eldre’Thalas, given more attention.</li>
+        <li><b>Riverglades</b>, opening territory between familiar Eastern Kingdoms regions.</li>
+        <li><b>Forsaken Paladins</b>, pursuing the Light while their own society distrusts them.</li>
+        <li><b>The Skyborne</b>, arriving from a civilization that has been hidden from the world.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block" id="skyborne">
+    <h3>The Skyborne, briefly</h3>
+    <div class="prose">
+      <p><b>Shen’dorei</b> means “hidden people.” They descend from Highborne rebels who fled Eldre’Thalas after the War of the Ancients, found refuge tied to Skywall and its elemental wind spirits, and built a civilization of their own.</p>
+      <p>Now their wind patrons have disappeared and their home is failing. At character creation, the <b>Windshapers</b> side with the Horde and the <b>High Order</b> with the Alliance.</p>
+    </div>
+    <aside class="note st-forever"><p class="note-l">in books ii and iii</p><p>Alliance Skyborne can be Warriors, Hunters, Rogues, Druids and Mages, with always-on haste and a glide of their own. <a href="../races/#skyborne">Their racials, in the races book.</a></p></aside>
+    <div class="ck st-forever">
+      <p class="ck-top"><span class="ck-l">canon check</span><span class="tag st-forever">New canon</span></p>
+      <p class="ck-q">“They aren’t in the old lore, so they’re a retcon.”</p>
+      <p class="ck-a">No contradiction inside Forever: they’re official Forever lore. Their place in modern retail continuity is unspecified.</p>
+    </div>
+  </div>
+
+  <div class="block" id="waiting">
+    <h3>What’s waiting</h3>
+    <p class="intro">Of the nine new dungeons, five read like Classic mysteries made playable:</p>
+    <ul class="dungeons">
+      <li><svg aria-hidden="true"><use href="#i-door"/></svg><p><b>A ruin in Lordaeron</b><br><span>haunted by the Scourge</span></p></li>
+      <li><svg aria-hidden="true"><use href="#i-door"/></svg><p><b>City of Dalaran</b><br><span>in Alterac, with its old barrier down</span></p></li>
+      <li><svg aria-hidden="true"><use href="#i-door"/></svg><p><b>Alcaz Prison</b><br><span>open at last, with Defias and naga inside</span></p></li>
+      <li><svg aria-hidden="true"><use href="#i-door"/></svg><p><b>Blackmaw Hold</b><br><span>descending beneath Azshara</span></p></li>
+      <li><svg aria-hidden="true"><use href="#i-door"/></svg><p><b>Shaper’s Terrace</b><br><span>an ancient installation in Un’Goro</span></p></li>
+    </ul>
+    <div class="raid" id="raids">
+      <p class="when"><span class="label">first raid tier</span>December 9, 2026</p>
+      <p class="names">Barrow Deeps · Hyjal Summit · Onyxia’s Lair <i>are scheduled to unlock</i></p>
+      <span class="cd tag st-now" data-raid-cd hidden></span>
+    </div>
+  </div>
+
+  <div class="block" id="web">
+    <h3>Who’s tied to what</h3>
+    <p class="intro">Azeroth on page one, from the factions down to the mysteries. A thread is a link, not an alliance: nobody here is necessarily cooperating. Hovering over or tapping a name draws its threads.</p>
+    <p class="web-hint"><span><i class="tie"></i>tension or history</span><span><i></i>belongs to, or leads to</span></p>
+    <div class="tree" id="webmap">
+      <svg class="web-lines" aria-hidden="true" focusable="false"></svg>
+      <p class="t-root">Azeroth in Forever<small>early Year 1</small></p>
+      <ul>
+        <li class="cl cl-horde">
+          <span class="cl-h" data-node="horde">Horde</span>
+          <ul>
+            <li><button type="button" class="node" data-node="thrall">Thrall<small>Warchief of the new Horde</small></button></li>
+            <li><button type="button" class="node" data-node="forsaken">The Forsaken<small>undead with their own will</small></button>
+              <ul>
+                <li><button type="button" class="node" data-node="sylvanas">Sylvanas Windrunner<small>leader of the Forsaken</small></button></li>
+                <li><button type="button" class="node" data-node="garek">Garek Bandarion &amp; Dark Ranger Anya<small><i>Forsaken Kingdom</i>’s new leads</small></button>
+                  <ul><li><button type="button" class="node" data-node="fpal">Forsaken Paladins<small>a contested use of the Light</small></button></li></ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="cl cl-alli">
+          <span class="cl-h" data-node="alliance">Alliance</span>
+          <ul>
+            <li><button type="button" class="node" data-node="stormwind">Stormwind<small>the main human power in the south</small></button>
+              <ul><li><button type="button" class="node" data-node="varian">Varian Wrynn<small>status: a mystery, unspecified</small></button></li></ul>
+            </li>
+            <li><button type="button" class="node" data-node="jaina">Jaina Proudmoore<small>Theramore</small><span class="thread">⇢ Thrall: Third War cooperation</span></button></li>
+          </ul>
+        </li>
+        <li class="cl cl-night">
+          <span class="cl-h" data-node="nightelves">Night elves and Hyjal</span>
+          <ul>
+            <li><button type="button" class="node" data-node="tyrande">Tyrande Whisperwind<span class="thread">⇢ Illidan: freed him in the Third War</span></button></li>
+            <li><button type="button" class="node" data-node="malfurion">Malfurion Stormrage<span class="thread">⇢ Illidan: brother, and conflict</span></button></li>
+            <li><button type="button" class="node" data-node="illidan">Illidan Stormrage<small>his Forever future: unspecified</small></button></li>
+          </ul>
+        </li>
+        <li class="cl cl-sky">
+          <span class="cl-h" data-node="skyborne-h">Skyborne</span>
+          <ul>
+            <li><button type="button" class="node" data-node="skyborne">The shen’dorei<small>“hidden people,” new to Forever</small><span class="thread">⇢ Eldre’Thalas: ancient origin</span></button>
+              <ul>
+                <li><button type="button" class="node" data-node="windshapers">Windshapers<small>side with the Horde</small></button></li>
+                <li><button type="button" class="node" data-node="highorder">High Order<small>side with the Alliance</small></button></li>
+              </ul>
+            </li>
+            <li><button type="button" class="node" data-node="eldre">Eldre’Thalas<small>the Highborne legacy</small></button>
+              <ul><li><button type="button" class="node" data-node="shendralar">Shen’dralar<small>the Highborne who stayed</small></button></li></ul>
+            </li>
+          </ul>
+        </li>
+        <li class="cl cl-myst">
+          <span class="cl-h" data-node="mysteries">Unresolved threats</span>
+          <ul>
+            <li><button type="button" class="node" data-node="onyxia">Onyxia<small>intrigue in Stormwind</small><span class="thread">⇢ Stormwind: a plot at court</span></button></li>
+            <li><button type="button" class="node" data-node="alcaz">Alcaz Prison<small>Defias vs. naga</small><span class="thread">⇢ Varian Wrynn: old rumors</span></button></li>
+            <li><button type="button" class="node" data-node="barrow">Barrow Deeps<small>Illidan’s former prison</small><span class="thread">⇢ Illidan: a historical link</span></button></li>
+            <li><button type="button" class="node" data-node="blackmaw">Blackmaw Hold<small>corruption beneath Azshara</small><span class="thread">→ Barrow Deeps: connected below</span></button></li>
+            <li><button type="button" class="node" data-node="shaper">Shaper’s Terrace<small>an ancient Un’Goro mystery</small></button></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <p class="part-end">That’s what’s on the page. Everything after it is a guess.</p>
+</section>
+
+<!-- ======================= PART THREE ======================= -->
+<section class="part p3" id="unwritten" aria-labelledby="p3-h">
+  <header class="part-head">
+    <svg class="part-motif" viewBox="0 0 24 48" aria-hidden="true" focusable="false"><line x1="12" y1="0" x2="12" y2="27" stroke="currentColor" stroke-width="2" stroke-dasharray="3 4"/><circle cx="12" cy="37" r="9" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/><text x="12" y="42" text-anchor="middle" font-family="Marcellus, Georgia, serif" font-size="14" fill="currentColor">?</text></svg>
+    <p class="part-n">part three</p>
+    <h2 id="p3-h">Still Unwritten</h2>
+    <p class="part-sub">Where the story could go from here. Everything in this part is inference, unless it’s marked as announced.</p>
+    <div class="spoilers" role="note">
+      <span class="tag st-spoil">Soft spoilers</span>
+      <p>These guesses build on Blizzard’s dungeon and raid previews, and any of them could turn out right. Anyone going in blind can <a href="#rule">skip ahead to the epilogue</a>.</p>
+    </div>
+  </header>
+
+  <blockquote class="boundary frame">
+    <p class="label">before guessing</p>
+    <p>Later Warcraft knowledge helps explain these characters, but it shouldn’t be quietly imported into Forever as future canon. That’s the <b>continuity boundary</b>, and Blizzard has deliberately left room to surprise players.</p>
+  </blockquote>
+
+  <div class="block" id="assumptions">
+    <h3>Three things not to assume</h3>
+    <ol class="seq checks">
+      <li class="st-bad">
+        <span class="mk g g-x" aria-hidden="true"></span>
+        <article class="chk">
+          <span class="tag st-bad">Doesn’t hold</span>
+          <h4>“Forever is the Vanilla timeline”</h4>
+          <dl>
+            <dt>the shorthand</dt><dd class="assume">“TBC and Wrath are coming. We know how this goes.”</dd>
+            <dt>canon</dt><dd>Forever starts in early Year 1, but in its own time bubble.</dd>
+          </dl>
+          <p class="so">Later retail outcomes aren’t predetermined.</p>
+        </article>
+      </li>
+      <li class="st-unspec">
+        <span class="mk g g-q" aria-hidden="true"></span>
+        <article class="chk">
+          <span class="tag st-unspec">Unspecified</span>
+          <h4>“Outland comes next”</h4>
+          <dl>
+            <dt>the shorthand</dt><dd class="assume">“The Dark Portal reopens and we head to Outland.”</dd>
+            <dt>canon</dt><dd>Forever begins before Kazzak reopens the Dark Portal, and Blizzard hasn’t committed it to replaying TBC.</dd>
+          </dl>
+          <p class="so">Open. Nothing has been announced.</p>
+        </article>
+      </li>
+      <li class="st-other">
+        <span class="mk g g-ring" aria-hidden="true"></span>
+        <article class="chk">
+          <span class="tag st-other">Memory, not prophecy</span>
+          <h4>Arthas, Illidan and the later expansions</h4>
+          <dl>
+            <dt>the shorthand</dt><dd class="assume">“We know where Arthas and Illidan end up.”</dd>
+            <dt>canon</dt><dd>Their histories before Forever still matter, and Arthas’s path has led him toward the Lich King. But Blizzard hasn’t announced that Forever must reproduce <i>Wrath of the Lich King</i>, or any of their later retail endpoints.</dd>
+          </dl>
+          <p class="so">Their Forever futures are unspecified.</p>
+        </article>
+      </li>
+    </ol>
+  </div>
+
+  <div class="block" id="quests">
+    <h3>The open quests</h3>
+    <p class="intro">Blizzard wants Forever’s stories to feel as if they always existed behind Classic’s closed gates, unfinished roads and background mysteries. That suggests a shape: start with the questions players could physically see in old Azeroth, let local stories interlock, then reveal that some of them are pieces of something larger. Each hook below starts from what’s been announced.</p>
+
+    <nav class="qindex" aria-label="Quest log">
+      <p class="ql-top"><b>Quest Log</b><span>8/20</span></p>
+      <ol>
+        <li><a href="#q-stormwind"><svg class="bang" aria-hidden="true"><use href="#i-bang"/></svg><span class="qt">The Stormwind Conspiracy</span><span class="qtag">(Dungeon)</span></a></li>
+        <li><a href="#q-barrow"><svg class="bang" aria-hidden="true"><use href="#i-bang"/></svg><span class="qt">The Barrow Deeps</span><span class="qtag">(Raid)</span></a></li>
+        <li><a href="#q-hyjal"><svg class="bang" aria-hidden="true"><use href="#i-bang"/></svg><span class="qt">Rebuilding Hyjal</span><span class="qtag">(Raid)</span></a></li>
+        <li><a href="#q-highborne"><svg class="bang" aria-hidden="true"><use href="#i-bang"/></svg><span class="qt">Two Highborne Answers</span></a></li>
+        <li><a href="#q-forsaken"><svg class="bang" aria-hidden="true"><use href="#i-bang"/></svg><span class="qt">The Light Among the Forsaken</span></a></li>
+        <li><a href="#q-below"><svg class="bang" aria-hidden="true"><use href="#i-bang"/></svg><span class="qt">Farther Below Azeroth</span><span class="qtag">(Dungeon)</span></a></li>
+        <li><a href="#q-dalaran"><svg class="bang" aria-hidden="true"><use href="#i-bang"/></svg><span class="qt">The Violet City</span><span class="qtag">(Dungeon)</span></a></li>
+        <li><a href="#q-portal"><svg class="bang" aria-hidden="true"><use href="#i-bang"/></svg><span class="qt">The Portal Stays Shut</span></a></li>
+      </ol>
+    </nav>
+
+    <ol class="seq qline">
+      <li id="q-stormwind">
+        <span class="mk qmk" aria-hidden="true"><svg><use href="#i-bang"/></svg></span>
+        <article class="quest" aria-labelledby="qh-stormwind">
+          <header class="q-bar"><h4 id="qh-stormwind">The Stormwind Conspiracy</h4><span class="qtag">(Dungeon)</span></header>
+          <div class="q-page">
+            <p class="q-obj">Varian, Onyxia, the Defias and the naga turn out to be one larger political mystery.</p>
+            <h5>Announced <span class="tag st-forever">Forever canon</span></h5>
+            <p>Alcaz Prison deliberately calls back the old rumors that high-ranking prisoners, King Varian Wrynn among them, passed through Alcaz. Inside, the Defias and the naga are fighting each other. Meanwhile, Onyxia’s Lair is a launch-tier raid.</p>
+            <h5>Why it’s a hook</h5>
+            <p>Two of Vanilla’s most famous Stormwind mysteries are being put in the spotlight at the same time.</p>
+            <h5>Where it could lead <span class="tag st-theory">Inference</span></h5>
+            <p>Stormwind’s legitimacy, its noble politics and the Defias grievance could get a more coherent arc than Vanilla ever gave them.</p>
+            <h5><span class="qm" aria-hidden="true">?</span>Still unknown</h5>
+            <p>Varian’s exact situation. The wording is rumor, not confirmation that he’s sitting in a cell.</p>
+          </div>
+        </article>
+      </li>
+
+      <li id="q-barrow">
+        <span class="mk qmk" aria-hidden="true"><svg><use href="#i-bang"/></svg></span>
+        <article class="quest" aria-labelledby="qh-barrow">
+          <header class="q-bar"><h4 id="qh-barrow">The Barrow Deeps</h4><span class="qtag">(Raid)</span></header>
+          <div class="q-page">
+            <p class="q-obj">Illidan’s old prison reopens, and brings a night-elven reckoning with it.</p>
+            <h5>Announced <span class="tag st-forever">Forever canon</span></h5>
+            <p>Barrow Deeps is the underground complex tied to Illidan’s ten-thousand-year imprisonment, with entrances linked to Hyjal, Winterspring and Blackmaw Hold. It’s one of the three raids scheduled for December 9.</p>
+            <h5>Why it’s a hook</h5>
+            <p>The place is bound up with Tyrande, Malfurion and Illidan, and with how the night elves treat dangerous magic.</p>
+            <h5>Where it could lead <span class="tag st-theory">Inference</span></h5>
+            <p>Forever can ask whether locking Illidan away was a single moral failure, or a sign of deeper divisions in kaldorei society.</p>
+            <h5><span class="qm" aria-hidden="true">?</span>Still unknown</h5>
+            <p>What is actually awakening in the Deeps, and whether Illidan himself comes back into the story.</p>
+          </div>
+        </article>
+      </li>
+
+      <li id="q-hyjal">
+        <span class="mk qmk" aria-hidden="true"><svg><use href="#i-bang"/></svg></span>
+        <article class="quest" aria-labelledby="qh-hyjal">
+          <header class="q-bar"><h4 id="qh-hyjal">Rebuilding Hyjal</h4><span class="qtag">(Raid)</span></header>
+          <div class="q-page">
+            <p class="q-obj">Hyjal becomes a reconstruction story, not just sacred scenery.</p>
+            <h5>Announced <span class="tag st-forever">Forever canon</span></h5>
+            <p>Forever visits Hyjal in the aftermath of Archimonde’s defeat. Hyjal Summit is a substantial 20-player raid with 13 bosses.</p>
+            <h5>Why it’s a hook</h5>
+            <p>The Third War saved the world and wrecked the heart of night-elven civilization.</p>
+            <h5>Where it could lead <span class="tag st-theory">Inference</span></h5>
+            <p>Druids, priestesses, ancients and outsiders could split over how to rebuild, who gets access to Hyjal, and how much arcane power should be tolerated again.</p>
+            <h5><span class="qm" aria-hidden="true">?</span>Still unknown</h5>
+            <p>How any of it resolves politically.</p>
+          </div>
+        </article>
+      </li>
+
+      <li id="q-highborne">
+        <span class="mk qmk" aria-hidden="true"><svg><use href="#i-bang"/></svg></span>
+        <article class="quest" aria-labelledby="qh-highborne">
+          <header class="q-bar"><h4 id="qh-highborne">Two Highborne Answers</h4></header>
+          <div class="q-page">
+            <p class="q-obj">The Shen’dralar and the Skyborne give competing answers to the Highborne question.</p>
+            <h5>Announced <span class="tag st-forever">Forever canon</span></h5>
+            <p>Eldre’Thalas, old Dire Maul, holds one surviving Highborne tradition: the Shen’dralar. Forever adds a second branch, the Skyborne, whose ancestors fled Eldre’Thalas and built a civilization around the wind, away from Azeroth. Their Windshapers join the Horde, their High Order the Alliance.</p>
+            <h5>Why it’s a hook</h5>
+            <p>They’re perfect mirrors: the same ancestry, and radically different ways of surviving.</p>
+            <h5>Where it could lead <span class="tag st-theory">Inference</span></h5>
+            <p>The night elves may have to rethink ancient prejudices, and Alliance and Horde recruitment of rival Skyborne movements turns an old elven dispute into present-day faction politics.</p>
+            <h5><span class="qm" aria-hidden="true">?</span>Still unknown</h5>
+            <p>How politically important the Skyborne end up being.</p>
+          </div>
+        </article>
+      </li>
+
+      <li id="q-forsaken">
+        <span class="mk qmk" aria-hidden="true"><svg><use href="#i-bang"/></svg></span>
+        <article class="quest" aria-labelledby="qh-forsaken">
+          <header class="q-bar"><h4 id="qh-forsaken">The Light Among the Forsaken</h4></header>
+          <div class="q-page">
+            <p class="q-obj">Forsaken Paladins start a fight over what “Forsaken” means.</p>
+            <h5>Announced <span class="tag st-forever">Forever canon</span></h5>
+            <p>Their story continues from <i>Forsaken Kingdom</i> into Forever and centers on Bandarion Keep. These Light-wielding undead are mistrusted even by other Forsaken.</p>
+            <h5>Why it’s a hook</h5>
+            <p>Nothing attacks the old belief that the Light has abandoned the Forsaken more directly than undead who can wield it.</p>
+            <h5>Where it could lead <span class="tag st-theory">Inference</span></h5>
+            <p>Friction with Sylvanas’s leadership, the Scarlet Crusade, the surviving paladin traditions and ordinary Forsaken.</p>
+            <h5><span class="qm" aria-hidden="true">?</span>Still unknown</h5>
+            <p>Whether it ends in reconciliation, persecution or schism.</p>
+          </div>
+        </article>
+      </li>
+
+      <li id="q-below">
+        <span class="mk qmk" aria-hidden="true"><svg><use href="#i-bang"/></svg></span>
+        <article class="quest" aria-labelledby="qh-below">
+          <header class="q-bar"><h4 id="qh-below">Farther Below Azeroth</h4><span class="qtag">(Dungeon)</span></header>
+          <div class="q-page">
+            <p class="q-obj">The underground clues are converging on something bigger.</p>
+            <h5>Announced <span class="tag st-forever">Forever canon</span></h5>
+            <p>Corruption is spreading through Blackmaw Hold, a furbolg city beneath Azshara, and Blizzard’s description teases a route “farther below Azeroth.” Barrow Deeps connects to Blackmaw. Shaper’s Terrace is an ancient facility in Un’Goro, a zone that has always been full of Titan mysteries.</p>
+            <h5>Why it’s a hook</h5>
+            <p>Blizzard is laying a trail across the map, not building isolated instances.</p>
+            <h5>Where it could lead <span class="tag st-theory">Inference</span></h5>
+            <p>A grounded Classic adventure could open onto Titan, elemental or other ancient forces without jumping straight to retail’s cosmic scale.</p>
+            <h5><span class="qm" aria-hidden="true">?</span>Still unknown</h5>
+            <p>The culprit. Naming an Old God, a Titan keeper or the Void right now is theory.</p>
+          </div>
+        </article>
+      </li>
+
+      <li id="q-dalaran">
+        <span class="mk qmk" aria-hidden="true"><svg><use href="#i-bang"/></svg></span>
+        <article class="quest" aria-labelledby="qh-dalaran">
+          <header class="q-bar"><h4 id="qh-dalaran">The Violet City</h4><span class="qtag">(Dungeon)</span></header>
+          <div class="q-page">
+            <p class="q-obj">Dalaran comes back early, as a contested magical power.</p>
+            <h5>Announced <span class="tag st-forever">Forever canon</span></h5>
+            <p>The new City of Dalaran dungeon is set in Alterac. Players get in after earning the Kirin Tor’s trust, and the city’s old magical situation is disrupted: its barrier is down.</p>
+            <h5>Why it’s a hook</h5>
+            <p>Dalaran sits, geographically and politically, between Alliance interests, Forsaken Lordaeron and Scourge territory.</p>
+            <h5>Where it could lead <span class="tag st-theory">Inference</span></h5>
+            <p>The Kirin Tor could become a real regional power instead of waiting around for Northrend.</p>
+            <h5><span class="qm" aria-hidden="true">?</span>Still unknown</h5>
+            <p>Kael’thas, the high elves and any blood-elf future are tempting connections. Their Forever paths are unspecified.</p>
+          </div>
+        </article>
+      </li>
+
+      <li id="q-portal">
+        <span class="mk qmk" aria-hidden="true"><svg><use href="#i-bang"/></svg></span>
+        <article class="quest" aria-labelledby="qh-portal">
+          <header class="q-bar"><h4 id="qh-portal">The Portal Stays Shut</h4></header>
+          <div class="q-page">
+            <p class="q-obj">The Dark Portal stays closed long enough for Azeroth itself to be the protagonist.</p>
+            <h5>Announced <span class="tag st-forever">Forever canon</span></h5>
+            <p>Blizzard keeps describing Azeroth and exploration as central to Forever, and it starts the branch before Kazzak reopens the Portal.</p>
+            <h5>Why it’s a hook</h5>
+            <p>Replaying TBC right away would undercut the whole premise: finding more inside the original continents.</p>
+            <h5>Where it could lead <span class="tag st-theory">Inference</span></h5>
+            <p>Illidan, Quel’Thalas, Kael’thas and Outland could return in radically different contexts, or not at all.</p>
+            <h5><span class="qm" aria-hidden="true">?</span>Still unknown</h5>
+            <p>Whether and when the Dark Portal reopens. Of all the big questions, this one is the most open.</p>
+          </div>
+        </article>
+      </li>
+    </ol>
+  </div>
+
+  <div class="block" id="unfold">
+    <h3>How it might unfold</h3>
+    <ol class="seq beats">
+      <li><span class="mk">1</span><p><b>Launch</b>Faction problems and the lost corners of Azeroth.</p></li>
+      <li><span class="mk">2</span><p><b>The first raid tier</b>Onyxia, Hyjal and Barrow Deeps get resolved, or complicated.</p></li>
+      <li><span class="mk">3</span><p><b>After that</b>Lordaeron, Dalaran and Forsaken politics connect to deeper Titan or corruption mysteries.</p></li>
+      <li><span class="mk">4</span><p><b>Much later</b>Forever decides whether the Dark Portal, Outland and the old expansion path still matter.</p></li>
+    </ol>
+    <p class="fine"><span class="tag st-theory">Inference</span>Blizzard has announced the first raids, not this sequence.</p>
+  </div>
+
+  <div class="diverge frame">
+    <p class="label">the big picture <span class="tag st-theory">Inference</span></p>
+    <p>Put together, these hooks suggest Forever’s most interesting possibility isn’t one shocking retcon. It’s <b>causal divergence</b>: familiar people start in familiar places, but Vanilla’s half-told stories resolve differently, and the Azeroth that results slowly stops lining up with the expansions veterans remember.</p>
+  </div>
+</section>
+
+<!-- ======================= EPILOGUE AND APPENDIX ======================= -->
+<section class="sec" id="rule" aria-labelledby="rule-h">
+  <div class="sec-head">
+    <p class="label">epilogue</p>
+    <h2 id="rule-h">How to file old knowledge</h2>
+    <p>Warcraft has an intimidating amount of lore, but Forever’s canon boundary is unusually simple. Every piece of remembered lore lands in one of three places.</p>
+  </div>
+  <ol class="seq bins">
+    <li class="st-found"><span class="mk g g-diamond" aria-hidden="true"></span>
+      <div class="bin">
+        <span class="tag st-found">Foundation</span>
+        <h3>Useful background</h3>
+        <p>Everything that establishes the world, through the settlement after Warcraft III.</p>
+      </div>
+    </li>
+    <li class="st-bridge"><span class="mk g g-arch" aria-hidden="true"></span>
+      <div class="bin">
+        <span class="tag st-bridge">Bridge</span>
+        <h3>Essential</h3>
+        <p><i>Forsaken Kingdom</i>, Forever’s own connective tissue.</p>
+      </div>
+    </li>
+    <li class="st-other"><span class="mk g g-ring" aria-hidden="true"></span>
+      <div class="bin">
+        <span class="tag st-other">Another continuity</span>
+        <h3>Precedent, not destiny</h3>
+        <p>Anything from later expansions. It belongs under “what happened in another Warcraft continuity after this point” until Forever itself confirms it.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section class="sec" id="reading" aria-labelledby="reading-h">
+  <div class="sec-head">
+    <p class="label">appendix</p>
+    <h2 id="reading-h">The reading stack</h2>
+    <p>The primary sources worth reading, in the order that’s most useful for Forever.</p>
+  </div>
+  <p class="label">start here</p>
+  <ol class="seq books">
+    <li class="st-found"><span class="mk" aria-hidden="true">1</span>
+      <div class="tt">
+        <p class="tt-h">Warcraft III: The Story So Far</p>
+        <p class="tt-sub">Blizzard · retrospective</p>
+        <p class="tt-use">Use: Covers the Warcraft I and II foundations.</p>
+        <span class="tag st-found">Foundation</span>
+      </div>
+    </li>
+    <li class="st-bridge"><span class="mk" aria-hidden="true">2</span>
+      <div class="tt">
+        <p class="tt-h">Warcraft III Reforged: Forsaken Kingdom</p>
+        <p class="tt-sub">Blizzard · campaign</p>
+        <p class="tt-use">Use: Fills in the four years between Arthas’s return and WoW: Undercity, Garek, Anya and the first Forsaken Paladins.</p>
+        <p class="tt-flav">“The new immediate prequel.”</p>
+        <span class="tag st-bridge">Bridge</span>
+      </div>
+    </li>
+    <li class="st-forever"><span class="mk" aria-hidden="true">3</span>
+      <div class="tt">
+        <p class="tt-h">Found Photos</p>
+        <p class="tt-sub">Blizzard · Forever recap</p>
+        <p class="tt-use">Use: Explains the continuity rules: the time bubble, early Year 1, and stories that could always have existed behind Classic’s closed gates.</p>
+        <span class="tag st-forever">Forever canon</span>
+      </div>
+    </li>
+    <li class="st-forever"><span class="mk" aria-hidden="true">4</span>
+      <div class="tt">
+        <p class="tt-h">What’s Next</p>
+        <p class="tt-sub">Blizzard · Forever recap</p>
+        <p class="tt-use">Use: Covers the continuity rules and the new zones.</p>
+        <span class="tag st-forever">Forever canon</span>
+      </div>
+    </li>
+    <li class="st-forever"><span class="mk" aria-hidden="true">5</span>
+      <div class="tt">
+        <p class="tt-h">The new dungeon and raid overviews</p>
+        <p class="tt-sub">Blizzard · Forever previews</p>
+        <p class="tt-use">Use: Lays out the concrete hooks: Alcaz Prison, Barrow Deeps, Blackmaw Hold, Shaper’s Terrace, City of Dalaran and Hyjal Summit.</p>
+        <span class="tag st-forever">Forever canon</span>
+      </div>
+    </li>
+  </ol>
+  <p class="label sub-l">go deeper</p>
+  <ol class="seq books" start="6">
+    <li class="st-found"><span class="mk" aria-hidden="true">6</span>
+      <div class="tt">
+        <p class="tt-h">Arthas: Rise of the Lich King</p>
+        <p class="tt-sub">Christie Golden · novel</p>
+        <p class="tt-use">Use: Follows Arthas’s descent, start to finish.</p>
+        <span class="tag st-found">Foundation</span>
+      </div>
+    </li>
+    <li class="st-found"><span class="mk" aria-hidden="true">7</span>
+      <div class="tt">
+        <p class="tt-h">World of Warcraft: Chronicle, Volume 1</p>
+        <p class="tt-sub">Blizzard · reference</p>
+        <p class="tt-use">Use: Covers Azeroth’s ancient, mythic history.</p>
+        <span class="tag st-found">Foundation</span>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<nav class="next-book" aria-label="Next book">
+  <a class="nb frame" href="../classes/" style="--nb-c: var(--f-alliance)">
+    <span class="label">book ii · read on</span>
+    <span class="nb-t">The Classes</span>
+    <span class="nb-s">How Forever changes the nine Alliance classes compared with Vanilla.</span>
+    <span class="nb-arrow" aria-hidden="true">→</span>
+  </a>
+</nav>
+
+<footer class="foot">
+  <p>Compiled in October 2026 from Blizzard’s Warcraft retrospective, <i>Warcraft III Reforged: Forsaken Kingdom</i>, Forever’s Found Photos and What’s Next recaps, and the new dungeon and raid overviews.</p>
+  <p>The story directions are inference, not an announced roadmap. Anything marked unspecified hasn’t been announced.</p>
+  <p>Part of the <a href="../">Forever Codex</a>. A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
+</footer>
+</main>
+
+<script>
+(function () {
+  var d = document;
+
+  // first-raid countdown
+  try {
+    var raid = new Date(2026, 11, 9), now = new Date();
+    var days = Math.round((raid - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5);
+    var txt = days > 1 ? "in " + days + " days" : days === 1 ? "tomorrow" : days === 0 ? "today" : "";
+    if (txt) d.querySelectorAll("[data-raid-cd]").forEach(function (el) { el.textContent = txt; el.hidden = false; });
+  } catch (e) {}
+
+  // the bar: the current part, in its colour
+  var bar = d.querySelector(".bar"), barIn = d.querySelector(".bar-in");
+  var links = [].slice.call(barIn.querySelectorAll(".sec-link"));
+  if ("IntersectionObserver" in window && links.length) {
+    var byId = {};
+    links.forEach(function (a) { byId[a.hash.slice(1)] = a; });
+    var setActive = function (el) {
+      var a = byId[el.id] || null;
+      links.forEach(function (l) {
+        l.classList.toggle("active", l === a);
+        if (l === a) l.setAttribute("aria-current", "location"); else l.removeAttribute("aria-current");
+      });
+      var c = el.classList.contains("part") ? getComputedStyle(el).getPropertyValue("--pc").trim() : "";
+      if (c) bar.style.setProperty("--bar-c", c); else bar.style.removeProperty("--bar-c");
+      if (a && barIn.scrollWidth > barIn.clientWidth) {
+        barIn.scrollTo({ left: Math.max(0, a.offsetLeft - (barIn.clientWidth - a.offsetWidth) / 2), behavior: "smooth" });
+      }
+    };
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) setActive(en.target); });
+    }, { rootMargin: "-30% 0px -65% 0px" });
+    d.querySelectorAll("#top, main > section[id]").forEach(function (s) { io.observe(s); });
+  }
+
+  // the tree: hover, focus or tap a name to draw its threads in the right margin
+  var web = d.getElementById("webmap");
+  if (web) {
+    // [from, to, kind]: "t" = tension or history (dashed), "l" = belongs to or leads to (solid)
+    var EDGES = [
+      ["onyxia", "stormwind", "t"], ["alcaz", "varian", "t"], ["jaina", "thrall", "t"],
+      ["tyrande", "illidan", "t"], ["malfurion", "illidan", "t"], ["barrow", "illidan", "t"],
+      ["skyborne", "eldre", "t"], ["barrow", "nightelves", "l"], ["blackmaw", "barrow", "l"],
+      ["windshapers", "horde", "l"], ["highorder", "alliance", "l"]
+    ];
+    var NS = "http://www.w3.org/2000/svg";
+    var svg = web.querySelector(".web-lines");
+    var nodes = {}, sel = null, pinned = "barrow", userPinned = false;
+    [].forEach.call(web.querySelectorAll("[data-node]"), function (n) { nodes[n.getAttribute("data-node")] = n; });
+    var tiesOf = function (id) { return EDGES.filter(function (e) { return e[0] === id || e[1] === id; }); };
+    var draw = function () {
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      if (!sel || !nodes[sel]) return;
+      var box = web.getBoundingClientRect();
+      svg.setAttribute("viewBox", "0 0 " + box.width + " " + box.height);
+      var at = function (n) {
+        var r = n.getBoundingClientRect();
+        return { x: r.right - box.left, y: r.top - box.top + Math.min(r.height / 2, 17) };
+      };
+      var A = at(nodes[sel]);
+      tiesOf(sel).forEach(function (e, i) {
+        var other = nodes[e[0] === sel ? e[1] : e[0]];
+        if (!other) return;
+        var B = at(other), gx = Math.max(A.x, B.x) + 16 + i * 8;
+        var p = d.createElementNS(NS, "path");
+        p.setAttribute("d", "M" + A.x + " " + A.y + "C" + gx + " " + A.y + " " + gx + " " + B.y + " " + B.x + " " + B.y);
+        p.setAttribute("class", e[2] === "t" ? "tie" : "link");
+        svg.appendChild(p);
+        [A, B].forEach(function (pt) {
+          var c = d.createElementNS(NS, "circle");
+          c.setAttribute("cx", pt.x); c.setAttribute("cy", pt.y); c.setAttribute("r", 3);
+          svg.appendChild(c);
+        });
+      });
+    };
+    var show = function (id, dim) {
+      sel = id;
+      var tied = {};
+      if (id) tiesOf(id).forEach(function (e) { tied[e[0]] = true; tied[e[1]] = true; });
+      Object.keys(nodes).forEach(function (k) {
+        nodes[k].classList.toggle("is-sel", k === id);
+        nodes[k].classList.toggle("is-tied", k !== id && !!tied[k]);
+      });
+      web.classList.toggle("has-sel", !!id && dim);
+      draw();
+    };
+    // back to the pinned name; the opening example stays undimmed until someone picks a name
+    var rest = function () {
+      show(pinned, userPinned);
+      Object.keys(nodes).forEach(function (k) {
+        if (nodes[k].tagName === "BUTTON") nodes[k].setAttribute("aria-pressed", String(userPinned && k === pinned));
+      });
+    };
+    var nodeOf = function (ev) { var n = ev.target.closest("button[data-node]"); return n && web.contains(n) ? n.getAttribute("data-node") : null; };
+    web.addEventListener("click", function (ev) {
+      var id = nodeOf(ev);
+      if (!id) return;
+      if (userPinned && pinned === id) { pinned = null; userPinned = false; } else { pinned = id; userPinned = true; }
+      rest();
+    });
+    if (window.matchMedia("(hover: hover)").matches) {
+      web.addEventListener("mouseover", function (ev) { var id = nodeOf(ev); if (id && id !== sel) show(id, true); });
+      web.addEventListener("mouseleave", rest);
+    }
+    web.addEventListener("focusin", function (ev) { var id = nodeOf(ev); if (id) show(id, true); });
+    web.addEventListener("focusout", function (ev) { if (!web.contains(ev.relatedTarget)) rest(); });
+    web.addEventListener("keydown", function (ev) { if (ev.key === "Escape") { pinned = null; userPinned = false; rest(); } });
+    rest();
+    if ("ResizeObserver" in window) new ResizeObserver(draw).observe(web); else window.addEventListener("resize", draw);
+    if (d.fonts && d.fonts.ready) d.fonts.ready.then(draw);
+  }
+})();
+</script>
+<script src="../codex.js"></script>
+</body>
+</html>

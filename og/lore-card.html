@@ -1,0 +1,99 @@
+<!doctype html>
+<!-- Source for ../lore/og.png (1200x630 link-preview image). Regenerate with python og/build.py -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya:ital@0;1&family=Alegreya+Sans+SC:wght@700&display=swap">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden }
+  body {
+    background:
+      radial-gradient(ellipse 900px 420px at 50% -90px, rgba(207,154,82,.32), transparent 70%),
+      radial-gradient(ellipse 520px 300px at 1030px 600px, rgba(95,202,215,.16), transparent 70%),
+      #0d0c14;
+    color: #ece3cc; font-family: "Alegreya", Georgia, serif; position: relative;
+  }
+  .frame {
+    position: absolute; inset: 28px; border: 2px solid rgba(207,154,82,.55);
+    box-shadow: inset 0 0 0 6px #0d0c14, inset 0 0 0 8px rgba(207,154,82,.22);
+  }
+  .frame::before, .frame::after, .d1, .d2 { content: ""; position: absolute; width: 16px; height: 16px; background: #cf9a52; transform: rotate(45deg) }
+  .frame::before { top: -9px; left: -9px } .frame::after { top: -9px; right: -9px }
+  .d1 { bottom: -9px; left: -9px } .d2 { bottom: -9px; right: -9px }
+  .inner { position: absolute; left: 60px; right: 60px; top: 64px; display: grid; justify-items: center; gap: 14px; text-align: center }
+  .eyebrow { font-family: "Alegreya Sans SC", sans-serif; font-weight: 700; letter-spacing: .14em; font-size: 25px; color: #cf9a52; text-transform: lowercase }
+  h1 {
+    margin: 0; font-family: "Marcellus SC", Georgia, serif; font-weight: 400; font-size: 104px; line-height: 1.02; letter-spacing: .02em;
+    background: linear-gradient(180deg, #f4c76b, #cf9a52 75%); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 3px 0 rgba(0,0,0,.6));
+  }
+  .thesis { margin: 0; font-size: 36px; font-style: italic }
+  .thesis b { font-style: normal; font-weight: 400; color: #f4c76b }
+  svg.branch { position: absolute; left: 70px; top: 350px; width: 1060px; height: 230px; overflow: visible }
+  .lbl { font-family: "Alegreya Sans SC", sans-serif; font-weight: 700; font-size: 23px; letter-spacing: .04em; fill: #b9ae96 }
+  .lbl.fk { fill: #b796ee }
+  .lbl.y1 { fill: #f4c76b; font-size: 27px }
+  .ph { font-family: "Alegreya Sans SC", sans-serif; font-weight: 700; font-size: 19px; letter-spacing: .12em; fill: #e2b366 }
+  .ph.fk { fill: #b796ee }
+  .trk { font-family: "Marcellus", Georgia, serif; font-size: 30px }
+  .sub { font-family: "Alegreya", Georgia, serif; font-style: italic; font-size: 21px }
+</style>
+</head>
+<body>
+<div class="frame"><i class="d1"></i><i class="d2"></i></div>
+<div class="inner">
+  <div class="eyebrow">forever codex · book i · lore and canon</div>
+  <h1>The Lore</h1>
+  <p class="thesis">Everything after Year 1 is <b>precedent, not destiny.</b></p>
+</div>
+<svg class="branch" viewBox="0 0 1060 230">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <symbol id="glass" viewBox="0 0 24 24">
+      <path d="M5 2.5h14v2H5zM5 19.5h14v2H5z" fill="currentColor"/>
+      <path d="M7 4.5c0 4.6 4.2 6 4.2 7.5S7 14.9 7 19.5h10c0-4.6-4.2-6-4.2-7.5S17 9.1 17 4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M8.7 7h6.6c-.7 1.8-2.5 2.9-3.3 4.3C11.2 9.9 9.4 8.8 8.7 7zM8.4 19.5c.4-2.3 2.2-3.5 3.6-3.8 1.4.3 3.2 1.5 3.6 3.8z" fill="currentColor"/>
+    </symbol>
+  </defs>
+
+  <!-- phases -->
+  <path d="M60 86V78H465V86" fill="none" stroke="rgba(226,179,102,.5)" stroke-width="2"/>
+  <text class="ph" x="262" y="66" text-anchor="middle">foundation · warcraft i–iii</text>
+  <text class="ph fk" x="595" y="66" text-anchor="middle">the bridge</text>
+
+  <!-- rail -->
+  <line x1="60" y1="110" x2="465" y2="110" stroke="#e2b366" stroke-width="3"/>
+  <line x1="465" y1="110" x2="690" y2="110" stroke="#b796ee" stroke-width="3"/>
+  <g fill="#0d0c14" stroke="#e2b366" stroke-width="3">
+    <rect x="50" y="100" width="20" height="20" transform="rotate(45 60 110)"/>
+    <rect x="185" y="100" width="20" height="20" transform="rotate(45 195 110)"/>
+    <rect x="320" y="100" width="20" height="20" transform="rotate(45 330 110)"/>
+    <rect x="455" y="100" width="20" height="20" transform="rotate(45 465 110)"/>
+  </g>
+  <rect x="585" y="100" width="20" height="20" transform="rotate(45 595 110)" fill="#0d0c14" stroke="#b796ee" stroke-width="3"/>
+  <text class="lbl" x="60" y="152" text-anchor="middle"><tspan x="60">war of the</tspan><tspan x="60" dy="25">ancients</tspan></text>
+  <text class="lbl" x="195" y="152" text-anchor="middle">first war</text>
+  <text class="lbl" x="330" y="152" text-anchor="middle">second war</text>
+  <text class="lbl" x="465" y="152" text-anchor="middle">third war</text>
+  <text class="lbl fk" x="595" y="152" text-anchor="middle"><tspan x="595">forsaken</tspan><tspan x="595" dy="25">kingdom</tspan></text>
+
+  <!-- the branch -->
+  <path d="M745 110C810 110 818 50 880 50H1000" fill="none" stroke="#948d85" stroke-width="3" stroke-dasharray="9 8"/>
+  <path d="M745 110C810 110 818 170 880 170H996" fill="none" stroke="#5fcad7" stroke-width="3.5" filter="url(#glow)"/>
+  <circle cx="1014" cy="170" r="17" fill="#0d0c14" stroke="#5fcad7" stroke-width="3"/>
+  <text x="1014" y="180" text-anchor="middle" font-family="Marcellus, Georgia, serif" font-size="28" fill="#5fcad7">?</text>
+  <text class="trk" x="880" y="34" fill="#948d85">the old rails</text>
+  <text class="sub" x="880" y="84" fill="#948d85">another continuity</text>
+  <text class="trk" x="880" y="154" fill="#5fcad7">Forever</text>
+  <text class="sub" x="880" y="204" fill="#8fb9bf">its own time bubble</text>
+
+  <!-- Year 1 -->
+  <circle cx="716" cy="110" r="29" fill="#0d0c14" stroke="#f4c76b" stroke-width="3" filter="url(#glow)"/>
+  <svg x="698" y="92" width="36" height="36" color="#f4c76b"><use href="#glass"/></svg>
+  <text class="lbl y1" x="716" y="170" text-anchor="middle">year 1</text>
+</svg>
+</body>
+</html>

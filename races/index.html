@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="How WoW: Forever changes the five Alliance races compared with Vanilla: every racial after Blizzard’s final October 26 tuning pass, what each race is for, and race leans for every class and spec.">
+<meta property="og:title" content="The Races · Forever Codex">
+<meta property="og:description" content="How WoW: Forever changes the five Alliance races compared with Vanilla: every racial after Blizzard’s final October 26 tuning pass, what each race is for, and race leans for every class and spec.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Forever Codex">
+<meta property="og:url" content="https://tuckerscottalleborn.github.io/forever-codex/races/">
+<meta property="og:image" content="https://tuckerscottalleborn.github.io/forever-codex/races/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Races, book three of the Forever Codex: crests for Human, Dwarf, Night Elf, Gnome and High Order Skyborne">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Races · Forever Codex">
+<meta name="twitter:image" content="https://tuckerscottalleborn.github.io/forever-codex/races/og.png">
+<meta name="theme-color" content="#cf9a52">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://tuckerscottalleborn.github.io/forever-codex/races/">
+<title>The Races · Forever Codex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya:ital,wght@0,400;0,600;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../codex.css">
+<style>
+/* Book III of the Forever Codex (tokens, frames, masthead, the bar's shell, slots and pills are in
+   codex.css). Layout: a hero with the October 26 patch ledger, the five races at a glance, a sheet
+   per race (crest + ledger aside; racials as in-game tooltips, then leveling, PvE and PvP), the
+   races that aren't on the roster, race leans for every class and spec, tooltip checks, the
+   tuning history and a bottom line. */
+body.races {
+  --atmos:
+    radial-gradient(ellipse 80rem 40rem at 50% -10rem, color-mix(in oklab, var(--races) 16%, transparent), transparent 70%),
+    radial-gradient(ellipse 40rem 26rem at 100% 20rem, color-mix(in oklab, var(--glow) 9%, transparent), transparent 70%);
+}
+html { scroll-padding-top: 5.25rem }
+.wrap { max-width: var(--wide); margin-inline: auto }
+h1, h2, h3, h4 { font-family: var(--f-caps) }
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(2.5rem, 6vw, 5rem) 2rem; display: grid; gap: 2rem }
+.hero-top { display: grid; gap: 1.25rem; justify-items: start }
+.thesis { font-size: var(--step-1); max-width: 40ch; line-height: 1.45 }
+.thesis em { color: var(--bronze-hi); font-style: normal }
+.hero-grid { display: grid; gap: 1.5rem; grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 60rem) { .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) } }
+.hero-copy { padding: 1.5rem; display: grid; gap: 1rem; align-content: start }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: .75rem; margin-top: .5rem }
+.fact { border-top: 1px solid var(--line); padding-top: .5rem }
+.fact b { display: block; font-family: var(--f-caps); font-size: var(--step-1); color: var(--bronze-hi); font-weight: 400; font-variant-numeric: tabular-nums }
+.fact span { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted) }
+
+/* in-game tooltip ledger, as on the class sheets */
+.tt {
+  background: color-mix(in oklab, var(--tt-bg) 94%, transparent);
+  border: 1px solid var(--tt-line); border-radius: 4px;
+  box-shadow: inset 0 0 0 1px #000, 0 6px 18px -8px #000;
+  padding: .8rem .9rem; font-family: var(--f-ui); font-size: .9rem; line-height: 1.35; color: var(--tt-white); color-scheme: dark;
+}
+.tt-h { font-size: 1.02rem; font-weight: 700; color: var(--tt-white) }
+.tt-sub { color: var(--tt-gold); font-size: .82rem; margin-bottom: .5rem }
+.tt ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem }
+.tt li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .1rem .75rem }
+.tt li > span:first-child { min-width: 0 }
+.tt li > span:last-child { color: var(--tt-green); font-variant-numeric: tabular-nums; text-align: right; margin-left: auto }
+.tt li > span.gone { color: #ff6b5b }
+.tt s { color: var(--tt-grey); text-decoration-thickness: 1px; margin-right: .3rem }
+.tt-foot { color: var(--tt-grey); font-size: .78rem; margin-top: .55rem; font-style: italic }
+.patch { padding: 1.1rem 1.2rem; align-self: start }
+.patch .tt-h { font-size: 1.15rem }
+.patch li b { color: var(--tt-gold); font-weight: 500 }
+
+/* ---------- the bar: five crests, then sections ---------- */
+.bar-r .bar-in { gap: .35rem }
+.bar-r .slot { width: 2.45rem; height: 2.45rem }
+.bar-r .sep { flex: none; width: 1px; height: 1.6rem; background: var(--line); margin: 0 .35rem }
+@media (max-width: 40rem) { .bar-r .brand { display: none } }
+
+/* ---------- sections ---------- */
+.sec { padding-block: clamp(3rem, 7vw, 5rem) 0; display: grid; gap: 1.75rem; min-width: 0 }
+.sec-head { display: grid; gap: .5rem; max-width: 62ch }
+.sec-head h2 { font-size: var(--step-3); color: var(--bronze-hi) }
+.sec-head p:not(.label) { color: var(--muted) }
+
+/* the five at a glance */
+.glance { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr)) }
+.plate {
+  display: grid; gap: .55rem; align-content: start; padding: 1.1rem 1.15rem 1.2rem; text-decoration: none; color: inherit;
+  border: 1px solid color-mix(in oklab, var(--cc) 35%, var(--line-soft)); border-top: 3px solid var(--cc);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--cc) 9%, var(--panel)), var(--panel) 60%);
+  transition: transform .15s, box-shadow .15s;
+}
+.plate:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -14px color-mix(in oklab, var(--cc) 70%, #000) }
+.plate-top { display: flex; align-items: center; gap: .7rem }
+.plate .slot { width: 2.4rem; height: 2.4rem }
+.plate h3 { font-size: 1.3rem; line-height: 1.1; color: var(--cc-ink) }
+.plate dl { margin: 0; display: grid; gap: .45rem }
+.plate dt { font-family: var(--f-label); font-weight: 700; font-size: .74rem; letter-spacing: .07em; text-transform: lowercase; color: var(--muted) }
+.plate dd { margin: 0; font-family: var(--f-ui); font-size: .93rem; line-height: 1.4 }
+
+/* ---------- race sheets ---------- */
+.race { padding-block: clamp(3rem, 7vw, 5rem) 0; display: grid; gap: 1.75rem; grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 62rem) { .race { grid-template-columns: 19rem minmax(0, 1fr); gap: 2.5rem } }
+.race-aside { display: grid; gap: 1.25rem; align-content: start; min-width: 0 }
+.crest { display: flex; gap: 1rem; align-items: center }
+.crest .slot { width: 4.25rem; height: 4.25rem; border-radius: 4px }
+.crest h2 { font-size: var(--step-3); line-height: 1.05; color: var(--cc-ink) }
+.crest .alt { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted); margin-top: .2rem }
+.plays { display: grid; gap: .45rem }
+.plays > div { display: flex; flex-wrap: wrap; gap: .35rem }
+.read { padding: 1.1rem 1.25rem; display: grid; gap: .5rem }
+.read p:not(.label) { font-style: italic; font-size: 1rem }
+.race-main { display: grid; gap: 2rem; min-width: 0 }
+.lede { font-size: var(--step-1); line-height: 1.45; max-width: 46ch }
+.race h3 { font-size: var(--step-2); color: var(--bronze-hi) }
+
+/* racials as in-game spell tooltips */
+.spells { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)) }
+.spell {
+  display: grid; gap: .3rem; align-content: start; padding: .85rem .95rem .9rem; border-radius: 4px; color-scheme: dark;
+  background: color-mix(in oklab, var(--tt-bg) 95%, transparent); border: 1px solid var(--tt-line);
+  box-shadow: inset 0 0 0 1px #000, 0 6px 18px -10px #000; font-family: var(--f-ui); font-size: .94rem; line-height: 1.4; color: var(--tt-white);
+}
+.sp-h { display: flex; justify-content: space-between; align-items: baseline; gap: .75rem }
+.sp-h b { font-size: 1.06rem }
+.sp-h span, .sp-meta { color: var(--tt-grey); font-size: .84rem }
+.sp-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .1rem .75rem }
+.sp-fx { color: var(--tt-gold) }
+.sp-vs { display: flex; flex-wrap: wrap; gap: .25rem .55rem; align-items: baseline; margin-top: .35rem; padding-top: .5rem; border-top: 1px solid rgba(124, 132, 166, .35); color: #c9c9d6; font-size: .86rem }
+/* how a racial compares with Vanilla: shape and word, never colour alone */
+.vs {
+  display: inline-flex; align-items: center; gap: .35em; white-space: nowrap; border-radius: 999px; padding: 0 .6em .05em;
+  font-family: var(--f-label); font-weight: 700; font-size: .74rem; letter-spacing: .06em; text-transform: lowercase; line-height: 1.5;
+  color: var(--v); border: 1px solid color-mix(in oklab, var(--v) 50%, transparent); background: color-mix(in oklab, var(--v) 12%, transparent);
+}
+.vs::before { content: ""; width: .5em; height: .5em; background: currentColor; transform: rotate(45deg) }
+.vs-new { --v: #5fcad7 } .vs-new::before { width: .8em; height: .8em; transform: none; clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%) }
+.vs-kept { --v: #e2b366 }
+.vs-changed { --v: #f2a744 } .vs-changed::before { content: "↻"; width: auto; height: auto; background: none; transform: none; font-size: 1.1em; line-height: 1 }
+
+.situ { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)) }
+.situ article { display: grid; gap: .45rem; align-content: start; padding-top: .8rem; border-top: 2px solid color-mix(in oklab, var(--cc) 55%, transparent) }
+.situ h4 { font-family: var(--f-label); font-weight: 700; font-size: .85rem; letter-spacing: .08em; text-transform: lowercase; color: var(--cc-ink) }
+.situ p { font-size: 1rem }
+
+.priest-rc { display: grid; gap: .9rem; padding: 1.2rem 1.3rem 1.3rem }
+.priest-rc .head { display: flex; align-items: center; gap: .75rem }
+.priest-rc .slot { width: 2.2rem; height: 2.2rem }
+.priest-rc h4 { font-size: 1.25rem; color: var(--ink) }
+.priest-rc .spells { grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)) }
+.priest-rc > p { font-size: 1rem; max-width: 66ch }
+.note { border-left: 3px solid var(--cc); background: color-mix(in oklab, var(--cc) 7%, var(--panel)); padding: .8rem 1rem .9rem; display: grid; gap: .4rem; font-size: 1rem; max-width: 66ch }
+.note-l { font-family: var(--f-label); font-weight: 700; font-size: .8rem; letter-spacing: .07em; text-transform: lowercase; color: var(--cc-ink) }
+.note a, .xref { color: var(--bronze-hi); text-underline-offset: 3px }
+
+/* ---------- not on the roster ---------- */
+.absent { padding: 1.4rem 1.5rem; display: grid; gap: .9rem }
+.absent ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .45rem }
+.absent li { font-family: var(--f-label); font-weight: 700; font-size: .9rem; letter-spacing: .04em; color: var(--muted); padding: .1rem .65rem; border: 1px dashed var(--line); border-radius: 3px; text-decoration: line-through; text-decoration-color: color-mix(in oklab, var(--s-bad) 70%, transparent) }
+.absent p { max-width: 70ch }
+
+/* ---------- by class ---------- */
+.bc-index { display: flex; flex-wrap: wrap; gap: 6px }
+.bc-grid { display: grid; gap: 1.5rem }
+.bc { display: grid; gap: .8rem; padding: 1.2rem 1.3rem 1.3rem; border: 1px solid var(--line-soft); border-left: 3px solid var(--cc); background: color-mix(in oklab, var(--panel) 75%, transparent) }
+.bc-h { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .8rem }
+.bc-h .slot { width: 2.3rem; height: 2.3rem }
+.bc-h h3 { font-size: var(--step-2); color: var(--cc-ink) }
+.bc-h a.to { margin-left: auto; font-family: var(--f-label); font-weight: 700; font-size: .85rem; letter-spacing: .05em; text-transform: lowercase; color: var(--muted); text-decoration: none }
+.bc-h a.to:hover { color: var(--ink) }
+.leans { width: 100%; border-collapse: collapse; font-family: var(--f-ui); font-size: .95rem; line-height: 1.4 }
+.leans th, .leans td { text-align: left; vertical-align: top; padding: .6rem .7rem .6rem 0; border-top: 1px solid var(--line-soft) }
+.leans thead th { border-top: 0; padding-top: 0; font-family: var(--f-label); font-weight: 700; font-size: .76rem; letter-spacing: .07em; text-transform: lowercase; color: var(--muted) }
+.leans tbody th { font-family: var(--f-display); font-weight: 400; font-size: 1.08rem; color: var(--ink); white-space: nowrap }
+.leans td.chips > span { display: inline-flex; margin: 0 .25rem .3rem 0 }
+.leans td.why { color: var(--muted) }
+.leans col.c-spec { width: 9rem } .leans col.c-pve { width: 25% } .leans col.c-pvp { width: 20% }
+.bc-note { font-size: .98rem; color: var(--ink); max-width: 72ch; padding-left: .8rem; border-left: 2px solid var(--line) }
+@media (max-width: 46rem) {
+  .leans, .leans tbody, .leans tr, .leans td, .leans tbody th { display: block; width: auto }
+  .leans thead, .leans colgroup { display: none }
+  .leans tr { padding: .7rem 0; border-top: 1px solid var(--line-soft) }
+  .leans th, .leans td { border: 0; padding: .15rem 0 }
+  .leans td::before { content: attr(data-l); display: block; font-family: var(--f-label); font-weight: 700; font-size: .72rem; letter-spacing: .07em; text-transform: lowercase; color: var(--muted); margin-top: .35rem }
+}
+
+/* ---------- tooltip checks ---------- */
+.checks { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)) }
+.chk {
+  --st: var(--s-bad); display: grid; gap: .45rem; align-content: start; padding: .95rem 1.1rem 1.05rem;
+  border: 1px solid color-mix(in oklab, var(--st) 38%, transparent); border-left: 3px solid var(--st); background: color-mix(in oklab, var(--st) 6%, var(--panel))
+}
+.chk.stale { --st: var(--s-warn) }
+.chk.unspec { --st: var(--s-unspec) }
+.chk-top { display: flex; flex-wrap: wrap; gap: .3rem .65rem; align-items: center }
+.chk-l { font-family: var(--f-label); font-weight: 700; font-size: .76rem; letter-spacing: .08em; text-transform: lowercase; color: var(--muted) }
+.verd {
+  display: inline-flex; align-items: center; gap: .35em; white-space: nowrap; border-radius: 999px; padding: 0 .6em .05em;
+  font-family: var(--f-label); font-weight: 700; font-size: .76rem; letter-spacing: .06em; text-transform: lowercase; line-height: 1.5;
+  color: var(--st); border: 1px solid color-mix(in oklab, var(--st) 45%, transparent); background: color-mix(in oklab, var(--st) 10%, transparent)
+}
+.verd::before { content: "×"; font-size: 1.15em; line-height: 1 }
+.stale .verd::before { content: "!"; font-family: var(--f-display) }
+.unspec .verd::before { content: "?"; font-family: var(--f-display) }
+.chk-q { font-style: italic; color: var(--muted) }
+.chk-a { font-weight: 600 }
+
+/* ---------- tuning history ---------- */
+.hist { list-style: none; margin: 0; padding: 0; display: grid; max-width: 52rem }
+.hist > li { position: relative; display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: .2rem 1.4rem; padding-bottom: 1.6rem }
+.hist > li::before { content: ""; position: absolute; left: calc(6.5rem + .7rem - 1px); top: .9rem; bottom: -.2rem; width: 2px; background: var(--line) }
+.hist > li:last-child::before { display: none }
+.hist time { font-family: var(--f-caps); font-size: 1.15rem; color: var(--muted); text-align: right; line-height: 1.4 }
+.hist .ev { position: relative; padding-left: 1.4rem; display: grid; gap: .35rem }
+.hist .ev::before { content: ""; position: absolute; left: -.05rem; top: .45rem; width: .75rem; height: .75rem; transform: rotate(45deg); background: var(--bg); border: 2px solid var(--bronze); box-shadow: 0 0 0 3px var(--bg) }
+.hist .ev b { font-family: var(--f-display); font-weight: 400; font-size: 1.12rem; color: var(--ink) }
+.hist .ev p { color: var(--muted); font-size: 1rem; max-width: 64ch }
+.hist li.key time { color: var(--pc2) }
+.hist li.key .ev::before { border-color: var(--pc2); background: color-mix(in oklab, var(--pc2) 35%, var(--bg)); box-shadow: 0 0 0 3px var(--bg), 0 0 14px 1px color-mix(in oklab, var(--pc2) 55%, transparent) }
+.hist ul { margin: .2rem 0 0; padding-left: 1.1rem; display: grid; gap: .2rem; color: var(--ink); font-size: .98rem }
+@media (max-width: 34rem) {
+  .hist > li { grid-template-columns: minmax(0, 1fr); padding-left: 1.6rem }
+  .hist > li::before { left: .3rem; top: .9rem }
+  .hist time { text-align: left }
+  .hist .ev { padding-left: 0 }
+  .hist .ev::before { left: -1.65rem; top: -1.45rem }
+}
+
+/* ---------- bottom line ---------- */
+.bottom { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)) }
+.bl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .4rem .9rem; align-items: start; padding: 1.1rem 1.2rem 1.2rem }
+.bl .slot { width: 2.6rem; height: 2.6rem; grid-row: 1 / span 2 }
+.bl h3 { font-size: 1.3rem; color: var(--cc-ink) }
+.bl p { font-size: 1rem }
+.verdict { padding: clamp(1.5rem, 4vw, 2.5rem); display: grid; gap: 1rem }
+.verdict p.big { font-family: var(--f-display); font-size: var(--step-2); line-height: 1.3; color: var(--bronze-hi); max-width: 36ch }
+.verdict p { max-width: 68ch }
+</style>
+</head>
+<body class="races">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-glass" viewBox="0 0 24 24">
+      <path d="M5 2.5h14v2H5zM5 19.5h14v2H5z" fill="currentColor"/>
+      <path d="M7 4.5c0 4.6 4.2 6 4.2 7.5S7 14.9 7 19.5h10c0-4.6-4.2-6-4.2-7.5S17 9.1 17 4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M8.7 7h6.6c-.7 1.8-2.5 2.9-3.3 4.3C11.2 9.9 9.4 8.8 8.7 7zM8.4 19.5c.4-2.3 2.2-3.5 3.6-3.8 1.4.3 3.2 1.5 3.6 3.8z" fill="currentColor"/>
+    </symbol>
+    <!-- race crests -->
+    <symbol id="i-human" viewBox="0 0 24 24"><path d="M12 2.5 L20 5.5 V11.5 C20 16.5 16.6 20 12 21.5 C7.4 20 4 16.5 4 11.5 V5.5 Z" fill="currentColor"/><path d="M12 6.5v10M8 10.5h8" stroke="#07090e" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-dwarf" viewBox="0 0 24 24"><path d="M2.5 7.5h12.5c0 2.6 2.2 4.2 6.5 4.2V13.6h-6l-1.3 3.4h2.8v2.5H7v-2.5h2.8L8.5 13.6H6.2C4 13.6 2.5 11.2 2.5 7.5z" fill="currentColor"/></symbol>
+    <symbol id="i-nightelf" viewBox="0 0 24 24"><path d="M15.5 2.8A9.3 9.3 0 1 0 21.2 17.6 7.6 7.6 0 0 1 15.5 2.8z" fill="currentColor"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor"/></symbol>
+    <symbol id="i-gnome" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.3" fill="none" stroke="currentColor" stroke-width="3.2"/><path d="M12 2.6v3M12 18.4v3M2.6 12h3M18.4 12h3M5.4 5.4l2.1 2.1M16.5 16.5l2.1 2.1M5.4 18.6l2.1-2.1M16.5 7.5l2.1-2.1" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-skyborne" viewBox="0 0 24 24"><path d="M3 8.5h10.5a3 3 0 1 0-3-3M3 12.5h14.5a3 3 0 1 1-3 3M3 16.5h6.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></symbol>
+    <!-- class icons, for the leans -->
+    <symbol id="i-warrior" viewBox="0 0 24 24"><path d="M20 4 L9.5 14.5 M6.5 11.5 L12.5 17.5 M8.5 15.5 L4 20 M20 4 L16 4.6 M20 4 L19.4 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-paladin" viewBox="0 0 24 24"><path d="M12.5 3.5 L20.5 11.5 L17.5 14.5 L9.5 6.5 Z" fill="currentColor"/><path d="M14 10 L4 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-hunter" viewBox="0 0 24 24"><path d="M7 3 Q 21 12 7 21" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M7 3 L7 21" stroke="currentColor" stroke-width="1"/><path d="M3 12 L18 12 M15 9.5 L18 12 L15 14.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-rogue" viewBox="0 0 24 24"><path d="M20.5 3.5 L18.5 8.5 L11.5 15.5 L8.5 12.5 L15.5 5.5 Z" fill="currentColor"/><path d="M7 11 L13 17 M9.5 14.5 L4.5 19.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-priest" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/><path d="M12 2.5 V5.5 M12 18.5 V21.5 M2.5 12 H5.5 M18.5 12 H21.5 M5.3 5.3 L7.4 7.4 M16.6 16.6 L18.7 18.7 M5.3 18.7 L7.4 16.6 M16.6 7.4 L18.7 5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-shaman" viewBox="0 0 24 24"><path d="M13.5 2 L5 13.5 H11 L10 22 L19 10 H13 Z" fill="currentColor"/></symbol>
+    <symbol id="i-mage" viewBox="0 0 24 24"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/></symbol>
+    <symbol id="i-warlock" viewBox="0 0 24 24"><path d="M12 2 C16 7 19 10 19 14.5 A7 7 0 0 1 5 14.5 C5 11.5 6.8 9.3 8.8 7.2 C9 10 10 11.2 11.6 11.8 C11 8.5 11 5 12 2 Z" fill="currentColor"/></symbol>
+    <symbol id="i-druid" viewBox="0 0 24 24"><path d="M5 19 C5 9 11 4 20 4 C20 13 15 19 5 19 Z" fill="currentColor"/><path d="M5 19 L14 10" stroke="#07090e" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+<a class="skip" href="#glance">Skip to the five races</a>
+
+<header class="mast">
+  <div class="mast-in">
+    <a class="mast-brand" href="../"><svg aria-hidden="true"><use href="#i-glass"/></svg>Forever Codex</a>
+    <nav class="mast-books" aria-label="Books">
+      <a href="../lore/"><span class="bk-n">I</span>Lore</a>
+      <a href="../classes/"><span class="bk-n">II</span>Classes</a>
+      <a href="../races/" aria-current="page"><span class="bk-n">III</span>Races</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+<header class="hero" id="top">
+  <div class="hero-top">
+    <p class="label">forever codex · book iii · alliance races, read against vanilla</p>
+    <h1 class="title">The Races</h1>
+    <p class="thesis">Weapon skill is gone for good. A race now picks <em>a kind of power</em>, not a weapon.</p>
+  </div>
+  <div class="hero-grid">
+    <div class="hero-copy frame">
+      <div class="prose">
+        <p>Vanilla’s Alliance race choice ran through Human weapon skill and a handful of resistances. Forever retires both on purpose. Blizzard says weapon specializations stay gone so that future dungeon and raid loot isn’t judged by a race’s “required” weapon type.</p>
+        <p>What’s left is sharper and more active: <b>Human</b> control-breaking and Spirit, <b>Dwarf</b> hit and defense, <b>Night Elf</b> timed crit and stealth, <b>Gnome</b> resources and escapes, and <b>Skyborne</b> sustained haste and traversal. For most specs no race is wrong, but the choices are now about whether progression hit, timed burst, sustained throughput, PvP control answers, personal defense or leveling convenience matters most.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>5 races</b><span>Human, Dwarf, Night Elf, Gnome, High Order Skyborne</span></div>
+        <div class="fact"><b>3 new pairs</b><span>Human Hunter, Gnome Priest, Dwarf Shaman</span></div>
+        <div class="fact"><b>0</b><span>weapon-skill racials left</span></div>
+        <div class="fact"><b id="cd">Nov 4</b><span id="cd-sub">launch</span></div>
+      </div>
+    </div>
+    <aside class="tt patch" aria-labelledby="patch-h">
+      <p class="tt-h" id="patch-h">Final pre-launch pass</p>
+      <p class="tt-sub">October 26, 2026 · supersedes the October 16 values still shown in many race pages and class guides</p>
+      <ul>
+        <li><span><b>Human</b> · Ruthless</span><span><s>+2% crit</s> +1% crit</span></li>
+        <li><span><b>Human</b> · The Human Spirit</span><span><s>+5% Spirit</s> +10% Spirit</span></li>
+        <li><span><b>Dwarf</b> · Earth Fury</span><span class="gone">Removed</span></li>
+        <li><span><b>Dwarf</b> · Artisan’s Precision</span><span>New: +1% hit</span></li>
+        <li><span><b>Skyborne</b> · Wind-Blessed</span><span><s>+3% haste</s> +2% haste</span></li>
+        <li><span><b>Skyborne</b> · Read Leyline</span><span>Redesigned</span></li>
+      </ul>
+      <p class="tt-foot">Night Elf and Gnome weren’t touched in this pass, so their October 16 values stand. With the pass landing nine days before launch, no mature level-60 parses or simulations exist for this racial set yet: every lean in this book is pre-launch inference.</p>
+    </aside>
+  </div>
+</header>
+</div>
+
+<nav class="bar bar-r" aria-label="Jump to race or section">
+  <div class="bar-in">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#i-glass"/></svg><span>The Races</span></a>
+    <a class="slot c-human" href="#human"><svg aria-hidden="true"><use href="#i-human"/></svg><span class="sr">Human</span></a>
+    <a class="slot c-dwarf" href="#dwarf"><svg aria-hidden="true"><use href="#i-dwarf"/></svg><span class="sr">Dwarf</span></a>
+    <a class="slot c-nightelf" href="#nightelf"><svg aria-hidden="true"><use href="#i-nightelf"/></svg><span class="sr">Night Elf</span></a>
+    <a class="slot c-gnome" href="#gnome"><svg aria-hidden="true"><use href="#i-gnome"/></svg><span class="sr">Gnome</span></a>
+    <a class="slot c-skyborne" href="#skyborne"><svg aria-hidden="true"><use href="#i-skyborne"/></svg><span class="sr">High Order Skyborne</span></a>
+    <span class="sep" aria-hidden="true"></span>
+    <a class="sec-link" href="#by-class"><span class="lg">By class</span><span class="sh">Leans</span></a>
+    <a class="sec-link" href="#checks">Checks</a>
+    <a class="sec-link" href="#history">History</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ======================= AT A GLANCE ======================= -->
+<section class="sec" id="glance" aria-labelledby="glance-h">
+  <div class="sec-head">
+    <p class="label">the roster</p>
+    <h2 id="glance-h">Five races at a glance</h2>
+    <p>The four original Alliance races, plus High Order Skyborne, the Alliance branch of Forever’s one new race.</p>
+  </div>
+  <div class="glance">
+    <a class="plate c-human" href="#human">
+      <span class="plate-top"><span class="slot c-human"><svg aria-hidden="true"><use href="#i-human"/></svg></span><h3>Human</h3></span>
+      <dl><dt>defining package</dt><dd>Stun break, Perception, +1% crit, +10% Spirit</dd><dt>biggest departure</dt><dd>Diplomacy and weapon skill gone; Spirit doubled</dd><dt>leans toward</dt><dd>Broad PvP, Spirit-heavy Priest, a safe all-rounder</dd></dl>
+    </a>
+    <a class="plate c-dwarf" href="#dwarf">
+      <span class="plate-top"><span class="slot c-dwarf"><svg aria-hidden="true"><use href="#i-dwarf"/></svg></span><h3>Dwarf</h3></span>
+      <dl><dt>defining package</dt><dd>Stoneform, +1% hit, +5% vs. Beasts, better Find Treasure</dd><dt>biggest departure</dt><dd>Gun and Frost racials gone; Stoneform is flat Physical reduction</dd><dt>leans toward</dt><dd>Tanks, hit-starved DPS, Shaman, anti-Rogue PvP</dd></dl>
+    </a>
+    <a class="plate c-nightelf" href="#nightelf">
+      <span class="plate-top"><span class="slot c-nightelf"><svg aria-hidden="true"><use href="#i-nightelf"/></svg></span><h3>Night Elf</h3></span>
+      <dl><dt>defining package</dt><dd>+10% crit for 15 sec, combat Shadowmeld, +1% dodge, +2% speed</dd><dt>biggest departure</dt><dd>A new offensive cooldown; Nature Resistance gone</dd><dt>leans toward</dt><dd>Burst windows, Hunter and Feral, Disc, stealth PvP</dd></dl>
+    </a>
+    <a class="plate c-gnome" href="#gnome">
+      <span class="plate-top"><span class="slot c-gnome"><svg aria-hidden="true"><use href="#i-gnome"/></svg></span><h3>Gnome</h3></span>
+      <dl><dt>defining package</dt><dd>Eureka!, +5% max resource, instant Escape Artist with immunity, safer Engineering</dd><dt>biggest departure</dt><dd>Intellect becomes resource cap; Engineering skill becomes reliability</dd><dt>leans toward</dt><dd>Mage, Warlock, Priest; Engineering PvP; anti-root melee</dd></dl>
+    </a>
+    <a class="plate c-skyborne" href="#skyborne">
+      <span class="plate-top"><span class="slot c-skyborne"><svg aria-hidden="true"><use href="#i-skyborne"/></svg></span><h3>Skyborne</h3></span>
+      <dl><dt>defining package</dt><dd>+2% haste, Read Leyline sustain, a glide, +5% vs. Elementals</dd><dt>biggest departure</dt><dd>An entirely new race</dd><dt>leans toward</dt><dd>Sustained PvE, Mage, Druid, Hunter, traversal</dd></dl>
+    </a>
+  </div>
+</section>
+
+<!-- ======================= HUMAN ======================= -->
+<section class="race c-human" id="human" aria-labelledby="human-h">
+  <aside class="race-aside">
+    <div class="crest"><span class="slot c-human"><svg aria-hidden="true"><use href="#i-human"/></svg></span><div><h2 id="human-h">Human</h2><p class="alt">Will to Survive · Perception · Ruthless · The Human Spirit</p></div></div>
+    <div class="plays"><p class="label">classes</p><div>
+      <a class="rp c-warrior" href="../classes/#warrior">Warrior</a><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><a class="rp c-hunter" href="../classes/#hunter">Hunter <small>new</small></a><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><a class="rp c-priest" href="../classes/#priest">Priest</a><a class="rp c-mage" href="../classes/#mage">Mage</a><a class="rp c-warlock" href="../classes/#warlock">Warlock</a>
+    </div></div>
+    <div class="read frame"><p class="label">verdict</p><p>The safest Alliance pick for a character that will PvP a lot, and a coherent Spirit-healing Priest. Human lost the old reason to be mandatory for melee PvE and gained a much stronger control-breaking identity.</p></div>
+    <div class="tt" role="group" aria-label="Human against Vanilla">
+      <p class="tt-h">Against Vanilla</p><p class="tt-sub">Human</p>
+      <ul>
+        <li><span>Diplomacy</span><span class="gone"><s>+10% rep</s> Gone</span></li>
+        <li><span>Sword, Mace Specialization</span><span><s>+5 skill</s> +1% crit</span></li>
+        <li><span>The Human Spirit</span><span><s>+5%</s> +10% Spirit</span></li>
+        <li><span>Perception</span><span>Kept</span></li>
+        <li><span>Will to Survive</span><span>New stun break</span></li>
+      </ul>
+    </div>
+  </aside>
+  <div class="race-main">
+    <p class="lede">No longer the default melee race. Human trades weapon skill and Diplomacy for two control answers and a doubled Spirit bonus.</p>
+    <div class="spells">
+      <article class="spell"><p class="sp-h"><b>Will to Survive</b><span>Racial</span></p><p class="sp-meta"><span>Instant</span><span>3 min cooldown</span></p><p class="sp-fx">Removes all Stun effects.</p><p class="sp-vs"><span class="vs vs-new">New</span>No Vanilla Human equivalent.</p></article>
+      <article class="spell"><p class="sp-h"><b>Perception</b><span>Racial</span></p><p class="sp-meta"><span>Instant</span><span>3 min cooldown</span></p><p class="sp-fx">Dramatically increases stealth detection for 20 sec.</p><p class="sp-vs"><span class="vs vs-kept">Kept</span>Fundamentally the Classic racial.</p></article>
+      <article class="spell"><p class="sp-h"><b>Ruthless</b><span>Passive</span></p><p class="sp-fx">+1% critical strike chance.</p><p class="sp-vs"><span class="vs vs-changed">Replaces</span>+5 Sword and +5 Mace skill. It was +2% for ten days from October 16.</p></article>
+      <article class="spell"><p class="sp-h"><b>The Human Spirit</b><span>Passive</span></p><p class="sp-fx">+10% Spirit.</p><p class="sp-vs"><span class="vs vs-changed">Doubled</span>Classic gave +5%; raised on October 26.</p></article>
+    </div>
+    <div class="situ">
+      <article><h4>leveling</h4><p>Losing Diplomacy is the biggest quality-of-life nerf against Vanilla: no automatic 10% on every reputation grind. In exchange, +10% Spirit trims downtime for classes that actually lean on Spirit regeneration, and the stun break helps in dangerous questing and world PvP.</p></article>
+      <article><h4>dungeons and raids</h4><p>+1% crit is universal and weapon-agnostic, but a Human Warrior, Rogue or Ret Paladin no longer gets anything like the boss-level weight of +5 weapon skill. Dwarf hit, Night Elf timed crit and Skyborne haste are now real competitors, which is the outcome Blizzard says it wanted.</p></article>
+      <article><h4>pvp</h4><p>Perception keeps its answer to Rogue and Druid openers; Will to Survive adds an instant stun escape. Two separate common problems, answered without giving up a combat passive. Gnome is still better into roots and snares, and Dwarf into Bleeds, Poisons and Diseases.</p></article>
+    </div>
+    <div class="priest-rc frame">
+      <div class="head"><span class="slot c-priest"><svg aria-hidden="true"><use href="#i-priest"/></svg></span><h4>Human Priest</h4></div>
+      <div class="spells">
+        <article class="spell"><p class="sp-h"><b>Divine Grace</b><span>Level 10</span></p><p class="sp-meta"><span>Instant · 40 yd</span><span>10 min cooldown</span></p><p class="sp-fx">Heals a friendly target below 50% health and removes Weakened Soul. Can’t be self-cast.</p><p class="sp-vs"><span class="vs vs-changed">Replaces</span>Desperate Prayer. Announced at a 5 min cooldown on September 30, since lengthened.</p></article>
+        <article class="spell"><p class="sp-h"><b>Feedback</b><span>Priest racial</span></p><p class="sp-fx">The second Human-specific Priest spell.</p><p class="sp-vs"><span class="vs vs-kept">Kept</span>From Classic.</p></article>
+      </div>
+      <p>+10% Spirit, +1% crit, a targeted emergency heal that clears Weakened Soul, and Feedback make Human coherent for Holy and Discipline. Forever’s Meditation lets 50% of Spirit regeneration continue while casting, which gives the Spirit bonus real endgame weight. For Shadow the Spirit matters less, though the PvP kit is still excellent.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= DWARF ======================= -->
+<section class="race c-dwarf" id="dwarf" aria-labelledby="dwarf-h">
+  <aside class="race-aside">
+    <div class="crest"><span class="slot c-dwarf"><svg aria-hidden="true"><use href="#i-dwarf"/></svg></span><div><h2 id="dwarf-h">Dwarf</h2><p class="alt">Stoneform · Artisan’s Precision · Big Game Hunter · Find Treasure</p></div></div>
+    <div class="plays"><p class="label">classes</p><div>
+      <a class="rp c-warrior" href="../classes/#warrior">Warrior</a><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><a class="rp c-priest" href="../classes/#priest">Priest</a><a class="rp c-shaman" href="../classes/#shaman">Shaman <small>new</small></a>
+    </div></div>
+    <div class="read frame"><p class="label">verdict</p><p>The strongest-looking provisional pick for tanks and for anyone who expects to care about hit, and the only choice for Alliance Shaman. Its power is dependable rather than parked behind a three-minute burst window.</p></div>
+    <div class="tt" role="group" aria-label="Dwarf against Vanilla">
+      <p class="tt-h">Against Vanilla</p><p class="tt-sub">Dwarf</p>
+      <ul>
+        <li><span>Gun Specialization</span><span class="gone"><s>+5 skill</s> Gone</span></li>
+        <li><span>Frost Resistance</span><span class="gone"><s>+10</s> Gone</span></li>
+        <li><span>Stoneform</span><span><s>+10% armor</s> −10% Physical</span></li>
+        <li><span>Find Treasure</span><span>+ extra chest loot</span></li>
+        <li><span>Artisan’s Precision</span><span>New: +1% hit</span></li>
+        <li><span>Big Game Hunter</span><span>New: +5% vs. Beasts</span></li>
+      </ul>
+      <p class="tt-foot">The offensive passive went from a beta Mace Specialization to Earth Fury (+2% crit damage and healing) on October 16, then to +1% hit on October 26.</p>
+    </div>
+  </aside>
+  <div class="race-main">
+    <p class="lede">The strangest late-beta journey of any Alliance race, ending somewhere very useful: universal hit, the cleanest defensive cooldown, and the only Alliance Shaman.</p>
+    <div class="spells">
+      <article class="spell"><p class="sp-h"><b>Stoneform</b><span>Racial</span></p><p class="sp-meta"><span>Instant</span><span>3 min cooldown</span></p><p class="sp-fx">Removes Bleed, Poison and Disease effects and grants immunity to them. Physical damage taken reduced by 10% for 8 sec.</p><p class="sp-vs"><span class="vs vs-changed">Changed</span>Classic gave +10% Armor instead. Flat reduction doesn’t depend on how armor interacts with a given hit.</p></article>
+      <article class="spell"><p class="sp-h"><b>Artisan’s Precision</b><span>Passive</span></p><p class="sp-fx">+1% chance to hit with spells and attacks.</p><p class="sp-vs"><span class="vs vs-new">New</span>Added October 26, replacing Earth Fury.</p></article>
+      <article class="spell"><p class="sp-h"><b>Big Game Hunter</b><span>Passive</span></p><p class="sp-fx">+5% damage against Beasts.</p><p class="sp-vs"><span class="vs vs-new">New</span>Takes over Dwarf Hunter flavor from +5 Gun skill.</p></article>
+      <article class="spell"><p class="sp-h"><b>Find Treasure</b><span>Tracking</span></p><p class="sp-fx">Tracks nearby treasure alongside other tracking, with a chance of extra items from most chests.</p><p class="sp-vs"><span class="vs vs-changed">Improved</span>Classic competed with normal tracking. No proc rate has been published.</p></article>
+    </div>
+    <div class="situ">
+      <article><h4>leveling</h4><p>Much better than the raw Classic list suggests. +1% hit trims frustrating misses, +5% against Beasts covers a large share of open-world mobs, Find Treasure can turn up real extra loot, and Stoneform is a genuine emergency button.</p></article>
+      <article><h4>dungeons and raids</h4><p>Until a hit requirement is met, Artisan’s Precision is straight reliability and throughput; past it, the hit can still free an item or talent point for something stronger, and is only wasted when it can’t be converted. The most complete tank package for Protection Warrior and Paladin. Hit does nothing for healing.</p></article>
+      <article><h4>pvp</h4><p>Extremely matchup-dependent and extremely good in the matchups it answers. Rogues are the obvious case: Poison and Bleed removal plus a Physical reduction window go straight at their pressure. Stoneform does nothing for a stun, which is why Dwarf and Human aren’t interchangeable PvP races.</p></article>
+    </div>
+    <aside class="note"><p class="note-l">dwarf shaman</p><p>Dwarf is the only Alliance Shaman race at launch, so Alliance Shaman has no racial decision to make. The kit is genuinely useful anyway: Elemental and Enhancement use the hit directly, all three specs get Stoneform, and Enhancement occasionally gets Big Game Hunter. <a href="../classes/#shaman">The Shaman sheet.</a></p></aside>
+    <div class="priest-rc frame">
+      <div class="head"><span class="slot c-priest"><svg aria-hidden="true"><use href="#i-priest"/></svg></span><h4>Dwarf Priest, no longer the Fear Ward race</h4></div>
+      <div class="spells">
+        <article class="spell"><p class="sp-h"><b>Desperate Prayer</b><span>Priest racial</span></p><p class="sp-fx">The Dwarf’s self-heal.</p><p class="sp-vs"><span class="vs vs-kept">Kept</span>From Classic.</p></article>
+        <article class="spell"><p class="sp-h"><b>Chastise</b><span>Priest racial</span></p><p class="sp-meta"><span>Instant</span><span>2 min cooldown</span></p><p class="sp-fx">Holy damage that immobilizes a Humanoid for 2 sec.</p><p class="sp-vs"><span class="vs vs-new">New</span>Introduced in the September 30 Priest deep dive.</p></article>
+      </div>
+      <p>Fear Ward is now learned by every Priest at level 20, which dismantles the reason Vanilla raids defaulted to Dwarf Priests. Dwarf becomes a defensive and PvP pick, or a Shadow hit pick, rather than the obvious raid Priest. Healers still appreciate Stoneform and Desperate Prayer, but the hit adds nothing to healing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= NIGHT ELF ======================= -->
+<section class="race c-nightelf" id="nightelf" aria-labelledby="nightelf-h">
+  <aside class="race-aside">
+    <div class="crest"><span class="slot c-nightelf"><svg aria-hidden="true"><use href="#i-nightelf"/></svg></span><div><h2 id="nightelf-h">Night Elf</h2><p class="alt">Elune’s Light · Shadowmeld · Quickness · Wisp Spirit</p></div></div>
+    <div class="plays"><p class="label">classes</p><div>
+      <a class="rp c-warrior" href="../classes/#warrior">Warrior</a><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><a class="rp c-priest" href="../classes/#priest">Priest</a><a class="rp c-druid" href="../classes/#druid">Druid</a>
+    </div></div>
+    <div class="read frame"><p class="label">verdict</p><p>The playmaker’s race: burst timing, movement and stealth, with the best Alliance “press during the burn” racial and real Hunter, Feral and Discipline synergy. Not a source of Retail-style Shadowmeld restealth.</p></div>
+    <div class="tt" role="group" aria-label="Night Elf against Vanilla">
+      <p class="tt-h">Against Vanilla</p><p class="tt-sub">Night Elf</p>
+      <ul>
+        <li><span>Nature Resistance</span><span class="gone"><s>+10</s> Gone</span></li>
+        <li><span>Wisp Spirit</span><span><s>+50%</s> +75%</span></li>
+        <li><span>Quickness</span><span>+2% speed added</span></li>
+        <li><span>Shadowmeld in combat</span><span>New, Fade-like</span></li>
+        <li><span>Elune’s Light</span><span>New crit cooldown</span></li>
+      </ul>
+    </div>
+  </aside>
+  <div class="race-main">
+    <p class="lede">Burst crit plus mobility and stealth: one of the most obviously Classic-plus redesigns.</p>
+    <div class="spells">
+      <article class="spell"><p class="sp-h"><b>Elune’s Light</b><span>Racial</span></p><p class="sp-meta"><span>Instant</span><span>3 min cooldown</span></p><p class="sp-fx">+10% critical strike chance with all spells and attacks for 15 sec.</p><p class="sp-vs"><span class="vs vs-new">New</span>Classic had nothing like it.</p></article>
+      <article class="spell"><p class="sp-h"><b>Shadowmeld</b><span>Racial</span></p><p class="sp-meta"><span>Instant</span><span>10 sec cooldown · 2 min in combat</span></p><p class="sp-fx">Stealth while stationary. Used in combat, it discourages enemies from attacking.</p><p class="sp-vs"><span class="vs vs-changed">Changed</span>Classic was out-of-combat stealth only. In combat it works like Fade, not Vanish: no Stealth-required abilities.</p></article>
+      <article class="spell"><p class="sp-h"><b>Quickness</b><span>Passive</span></p><p class="sp-fx">+1% dodge and +2% movement speed, stacking with other speed effects. Night Elf Rogues and Druids are detected in stealth as if one level higher.</p><p class="sp-vs"><span class="vs vs-changed">Expanded</span>Classic had the dodge; the movement speed is new.</p></article>
+      <article class="spell"><p class="sp-h"><b>Wisp Spirit</b><span>Passive</span></p><p class="sp-fx">+75% movement speed while dead.</p><p class="sp-vs"><span class="vs vs-changed">Raised</span>From Classic’s +50%.</p></article>
+    </div>
+    <div class="situ">
+      <article><h4>leveling</h4><p>+2% always-on movement looks tiny on a character sheet and compounds over dozens of hours. Elune’s Light is a real “kill this elite now” button, Shadowmeld keeps its open-world safety uses, and corpse runs get faster in a Classic-shaped world.</p></article>
+      <article><h4>dungeons and raids</h4><p>Fifteen seconds of every 180 is a crude 0.83 points of average crit when used on cooldown, which understates it whenever a short fight, burn phase or major cooldown lets the whole window land where it matters. It boosts healing crits too, and Hunter pets now inherit the player’s crit, so the window reaches the pet.</p></article>
+      <article><h4>pvp</h4><p>Especially strong on Rogue and Druid because it stacks several relevant pieces: harder-to-detect stealth, extra speed, combat Shadowmeld and a large crit window. Human, Gnome and Dwarf have cleaner hard counters to stuns, roots and poisons; Night Elf is about initiative and playmaking.</p></article>
+    </div>
+    <div class="priest-rc frame">
+      <div class="head"><span class="slot c-priest"><svg aria-hidden="true"><use href="#i-priest"/></svg></span><h4>Night Elf Priest</h4></div>
+      <div class="spells">
+        <article class="spell"><p class="sp-h"><b>Starshards</b><span>Priest racial</span></p><p class="sp-meta"><span></span><span>30 sec cooldown</span></p><p class="sp-fx">Damage increased substantially.</p><p class="sp-vs"><span class="vs vs-changed">Changed</span>Now on a 30-second cooldown.</p></article>
+        <article class="spell"><p class="sp-h"><b>Elune’s Grace</b><span>Priest racial</span></p><p class="sp-meta"><span>3% of base mana</span><span>5 min cooldown</span></p><p class="sp-fx">Enemies’ chance to hit the Priest with melee and ranged attacks reduced by 50% for 15 sec, or until three attacks miss.</p><p class="sp-vs"><span class="vs vs-changed">Changed</span>Reworked into a physical-avoidance panic button.</p></article>
+      </div>
+      <p>Especially interesting for Discipline: Elune’s Light forces a high-crit healing window that feeds Divine Aegis, and Elune’s Grace is a substantial physical-avoidance panic button.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= GNOME ======================= -->
+<section class="race c-gnome" id="gnome" aria-labelledby="gnome-h">
+  <aside class="race-aside">
+    <div class="crest"><span class="slot c-gnome"><svg aria-hidden="true"><use href="#i-gnome"/></svg></span><div><h2 id="gnome-h">Gnome</h2><p class="alt">Eureka! · Escape Artist · Expansive Mind · Engineering Specialization</p></div></div>
+    <div class="plays"><p class="label">classes</p><div>
+      <a class="rp c-warrior" href="../classes/#warrior">Warrior</a><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><a class="rp c-priest" href="../classes/#priest">Priest <small>new</small></a><a class="rp c-mage" href="../classes/#mage">Mage</a><a class="rp c-warlock" href="../classes/#warlock">Warlock</a>
+    </div></div>
+    <div class="read frame"><p class="label">verdict</p><p>The most coherent caster and Priest package, the anti-root race for Warrior and Rogue, and the Engineering PvP race. Gnome Priest is one of Forever’s most consequential new pairings.</p></div>
+    <div class="tt" role="group" aria-label="Gnome against Vanilla">
+      <p class="tt-h">Against Vanilla</p><p class="tt-sub">Gnome</p>
+      <ul>
+        <li><span>Arcane Resistance</span><span class="gone"><s>+10</s> Gone</span></li>
+        <li><span>Expansive Mind</span><span><s>+5% Int</s> +5% max resource</span></li>
+        <li><span>Engineering Specialization</span><span><s>+15 skill</s> −20% failures</span></li>
+        <li><span>Escape Artist</span><span>Instant, 3 sec immunity</span></li>
+        <li><span>Eureka!</span><span>New burn cooldown</span></li>
+      </ul>
+    </div>
+  </aside>
+  <div class="race-main">
+    <p class="lede">The race that feels least like Vanilla numbers shuffled around. Every part of the kit is more deliberate.</p>
+    <div class="spells">
+      <article class="spell"><p class="sp-h"><b>Eureka!</b><span>Racial</span></p><p class="sp-meta"><span>Instant</span><span>2 min cooldown</span></p><p class="sp-fx">For 8 sec, the class’s damaging abilities cost 10% less and deal 10% more damage. The Priest version also covers healing and Power Word: Shield.</p><p class="sp-vs"><span class="vs vs-new">New</span>A “next three abilities” charge model until October 16. Non-periodic damage only.</p></article>
+      <article class="spell"><p class="sp-h"><b>Escape Artist</b><span>Racial</span></p><p class="sp-meta"><span>Instant</span><span>2 min cooldown</span></p><p class="sp-fx">Removes movement-impairing effects and grants immunity to them for 3 sec.</p><p class="sp-vs"><span class="vs vs-changed">Changed</span>Classic was a cast on a shorter cooldown, with no immunity window.</p></article>
+      <article class="spell"><p class="sp-h"><b>Expansive Mind</b><span>Passive</span></p><p class="sp-fx">+5% maximum Mana, Energy or Rage, by class.</p><p class="sp-vs"><span class="vs vs-changed">Changed</span>Classic gave +5% Intellect, with no Energy or Rage version.</p></article>
+      <article class="spell"><p class="sp-h"><b>Engineering Specialization</b><span>Passive</span></p><p class="sp-fx">Engineering devices fail or backfire 20% less often.</p><p class="sp-vs"><span class="vs vs-changed">Changed</span>Classic gave +15 Engineering skill: early recipes then, reliability now.</p></article>
+    </div>
+    <div class="situ">
+      <article><h4>leveling</h4><p>Exceptionally coherent for resource-using solo classes. More resource, a real burn cooldown, an emergency root and snare escape and fewer Engineering mishaps all pay off before raid gear matters.</p></article>
+      <article><h4>dungeons and raids</h4><p>Mage, Warlock and the new Gnome Priest stand out: a bigger reservoir plus a window of cheaper, stronger casts. Eureka’s 8 of every 120 seconds is 6.67% uptime, roughly 0.67% on the damage it touches, so comparing it with an always-on passive by tooltip alone misleads. It favors direct casts; DoT ticks aren’t boosted, so Affliction gets less.</p></article>
+      <article><h4>pvp</h4><p>Still the anti-movement-control race, now more all-in per press: instant, two minutes, three seconds of immunity. A 20% cut to Engineering failures matters in organized PvP. Eureka from stealth is undocumented, an awkward October 16 note that October 26 didn’t resolve, so it’s worth verifying at launch rather than building a Rogue around.</p></article>
+    </div>
+    <div class="priest-rc frame">
+      <div class="head"><span class="slot c-priest"><svg aria-hidden="true"><use href="#i-priest"/></svg></span><h4>Gnome Priest, a real reason to choose the race</h4></div>
+      <div class="spells">
+        <article class="spell"><p class="sp-h"><b>Confounding Flash</b><span>Priest racial</span></p><p class="sp-meta"><span>0.5 sec cast · 3% of base mana</span><span>2 min cooldown</span></p><p class="sp-fx">Confuses up to five enemies within 8 yards for 3 sec. Damage breaks the effect.</p><p class="sp-vs"><span class="vs vs-new">New</span>Gnomes couldn’t be Priests in Vanilla.</p></article>
+        <article class="spell"><p class="sp-h"><b>Contingency Plan</b><span>Priest racial</span></p><p class="sp-meta"><span>Instant · 30 yd</span><span>10 min cooldown</span></p><p class="sp-fx">A 30 sec ward on a friendly target. Below 35% health it triggers an absorb and a heal over time. Coexists with Renew and Power Word: Shield; one per target.</p><p class="sp-vs"><span class="vs vs-new">New</span>Announced at a 5 min cooldown on September 30, since lengthened.</p></article>
+      </div>
+      <p>With Eureka (now counting Power Word: Shield), +5% maximum Mana and Escape Artist, current Discipline and Holy guidance puts Gnome among the strongest-looking Alliance Priests.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SKYBORNE ======================= -->
+<section class="race c-skyborne" id="skyborne" aria-labelledby="skyborne-h">
+  <aside class="race-aside">
+    <div class="crest"><span class="slot c-skyborne"><svg aria-hidden="true"><use href="#i-skyborne"/></svg></span><div><h2 id="skyborne-h">High Order Skyborne</h2><p class="alt">Wind-Blessed · Read Leyline · Walk on Air · Elemental Insight</p></div></div>
+    <div class="plays"><p class="label">classes</p><div>
+      <a class="rp c-warrior" href="../classes/#warrior">Warrior</a><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><a class="rp c-mage" href="../classes/#mage">Mage</a><a class="rp c-druid" href="../classes/#druid">Druid</a>
+    </div></div>
+    <div class="read frame"><p class="label">verdict</p><p>The pick for an always-on offensive passive over a burst button, especially on Mage, Druid and Hunter, or for traversal. The racial whose true level-60 value most needs post-launch simulation.</p></div>
+    <div class="tt" role="group" aria-label="Skyborne tuning history">
+      <p class="tt-h">Beta ledger</p><p class="tt-sub">High Order Skyborne</p>
+      <ul>
+        <li><span>Wind-Blessed haste</span><span><s>1%</s> <s>3%</s> 2%</span></li>
+        <li><span>Walk on Air cooldown</span><span><s>2 min</s> 90 sec</span></li>
+        <li><span>Read Leyline</span><span>Usable moving</span></li>
+        <li><span>Ley Line spawns</span><span>Increased</span></li>
+        <li><span>Attuned</span><span>New: 1 hr, keeps</span></li>
+      </ul>
+      <p class="tt-foot">The Horde’s Windshapers share several racials but get Shaman instead of Mage.</p>
+    </div>
+  </aside>
+  <div class="race-main">
+    <p class="lede">The only entirely new race: always-on haste, sustain, and a glide no other Alliance character has.</p>
+    <div class="spells">
+      <article class="spell"><p class="sp-h"><b>Wind-Blessed</b><span>Passive</span></p><p class="sp-fx">+2% melee, ranged and spellcasting haste.</p><p class="sp-vs"><span class="vs vs-new">New</span>1% originally, 3% on October 16, 2% for launch.</p></article>
+      <article class="spell"><p class="sp-h"><b>Read Leyline</b><span>Racial</span></p><p class="sp-meta"><span>2 sec cast, usable while moving</span><span>2 min cooldown</span></p><p class="sp-fx">+50% Health and Mana regeneration for 15 sec, anywhere. Used at a Ley Line it grants Attuned for 1 hour, which persists through death and raises the effect to +100%. Can’t be used while Innervate is active.</p><p class="sp-vs"><span class="vs vs-new">New</span>Redesigned on October 26.</p></article>
+      <article class="spell"><p class="sp-h"><b>Walk on Air</b><span>Racial</span></p><p class="sp-meta"><span>Instant</span><span>90 sec cooldown</span></p><p class="sp-fx">A controlled downward glide for 10 sec.</p><p class="sp-vs"><span class="vs vs-new">New</span>Cooldown cut from 2 min on October 16.</p></article>
+      <article class="spell"><p class="sp-h"><b>Elemental Insight</b><span>Passive</span></p><p class="sp-fx">+5% damage against Elementals.</p><p class="sp-vs"><span class="vs vs-new">New</span>Strong where encounters are Elementals, zero elsewhere.</p></article>
+    </div>
+    <div class="situ">
+      <article><h4>leveling</h4><p>Walk on Air takes terrain lines ordinary Classic characters can’t comfortably take, though ten seconds and a cooldown keep it far from flight. Read Leyline trims downtime anywhere, and more so once Attuned.</p></article>
+      <article><h4>dungeons and raids</h4><p>Potentially the cleanest sustained offensive passive on the Alliance, but 2% haste isn’t 2% DPS: it depends on how much of a spec responds to attack and cast speed under Classic-derived timing. Mage is the cleanest fit, Hunter uses ranged haste, Warrior and Rogue melee haste, and Druid both. Elemental Insight’s raid value depends on encounter rosters.</p></article>
+      <article><h4>pvp</h4><p>No stun break, cleanse or root escape. Skyborne’s edge is speed of execution, glide positioning and sustain, so other races lean ahead for PvP unless Walk on Air or the class’s own control enables a particular strategy.</p></article>
+    </div>
+    <aside class="note"><p class="note-l">read leyline, before and after</p><p>Most criticism before October 26 was about finding Ley Lines at all, in dungeons, battlegrounds and some zones. October 16 added spawn locations; October 26’s one-hour Attuned state travels with the character, even through death. Older complaints describe a version that isn’t the launch design, and the final version has barely been tested by anyone yet.</p></aside>
+    <aside class="note"><p class="note-l">in the lore book</p><p>Highborne rebels who fled Eldre’Thalas after the War of the Ancients, now losing their wind patrons. <a href="../lore/#skyborne">Who the Skyborne are.</a></p></aside>
+  </div>
+</section>
+
+<!-- ======================= ABSENT ======================= -->
+<section class="sec" id="absent" aria-labelledby="absent-h">
+  <div class="absent frame">
+    <p class="label">not on the roster</p>
+    <h2 id="absent-h" class="sr">Races not in Forever</h2>
+    <ul aria-label="Not playable in Forever">
+      <li>Draenei</li><li>Worgen</li><li>Void Elf</li><li>Dark Iron Dwarf</li><li>Kul Tiran</li><li>Lightforged Draenei</li><li>Pandaren</li><li>Mechagnome</li>
+    </ul>
+    <p>No Draenei or Worgen at launch, and none of Retail’s later Alliance races. There’s no Heroic Presence math to do and no Darkflight decision to make. Blizzard has said more race and class <i>combinations</i> can come in future updates, which isn’t the same as announcing new playable races.</p>
+  </div>
+</section>
+
+<!-- ======================= BY CLASS ======================= -->
+<section class="sec" id="by-class" aria-labelledby="bc-h">
+  <div class="sec-head">
+    <p class="label">for every spec</p>
+    <h2 id="bc-h">Race leans by class</h2>
+    <p>Pre-launch leans, not a simulated ranking: the October 26 tuning is too new for a trustworthy level-60 racial table, and some class guides still use October 16 values. Where the choice is close, several races are listed in order.</p>
+  </div>
+  <div class="bc-index" aria-label="Jump to class">
+    <a class="slot c-warrior" href="#by-warrior"><svg aria-hidden="true"><use href="#i-warrior"/></svg><span class="sr">Warrior</span></a>
+    <a class="slot c-paladin" href="#by-paladin"><svg aria-hidden="true"><use href="#i-paladin"/></svg><span class="sr">Paladin</span></a>
+    <a class="slot c-hunter" href="#by-hunter"><svg aria-hidden="true"><use href="#i-hunter"/></svg><span class="sr">Hunter</span></a>
+    <a class="slot c-rogue" href="#by-rogue"><svg aria-hidden="true"><use href="#i-rogue"/></svg><span class="sr">Rogue</span></a>
+    <a class="slot c-priest" href="#by-priest"><svg aria-hidden="true"><use href="#i-priest"/></svg><span class="sr">Priest</span></a>
+    <a class="slot c-shaman" href="#by-shaman"><svg aria-hidden="true"><use href="#i-shaman"/></svg><span class="sr">Shaman</span></a>
+    <a class="slot c-mage" href="#by-mage"><svg aria-hidden="true"><use href="#i-mage"/></svg><span class="sr">Mage</span></a>
+    <a class="slot c-warlock" href="#by-warlock"><svg aria-hidden="true"><use href="#i-warlock"/></svg><span class="sr">Warlock</span></a>
+    <a class="slot c-druid" href="#by-druid"><svg aria-hidden="true"><use href="#i-druid"/></svg><span class="sr">Druid</span></a>
+  </div>
+  <div class="bc-grid">
+    <article class="bc c-warrior" id="by-warrior" aria-labelledby="by-warrior-h">
+      <header class="bc-h"><span class="slot c-warrior"><svg aria-hidden="true"><use href="#i-warrior"/></svg></span><h3 id="by-warrior-h">Warrior</h3><a class="to" href="../classes/#warrior">the Warrior sheet →</a></header>
+      <table class="leans">
+        <colgroup><col class="c-spec"><col class="c-pve"><col class="c-pvp"><col></colgroup>
+        <thead><tr><th scope="col">Spec</th><th scope="col">PvE lean</th><th scope="col">PvP lean</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Arms</th><td class="chips" data-l="PvE"><span><a class="rp c-dwarf" href="#dwarf">Dwarf <small>while hit-starved</small></a></span><span><a class="rp c-nightelf" href="#nightelf">Night Elf <small>for burn windows</small></a></span><span><a class="rp c-skyborne" href="#skyborne">Skyborne <small>for sustained haste</small></a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">+1% hit helps through progression; Elune’s Light front-loads crit. Gnome breaks and blocks movement control; Human breaks stuns.</td></tr>
+          <tr><th scope="row">Fury</th><td class="chips" data-l="PvE"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span><span><a class="rp c-skyborne" href="#skyborne">Skyborne</a></span><span><a class="rp c-nightelf" href="#nightelf">Night Elf <small>burst alternative</small></a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Fury turns consistent hit and attack speed into value; Elune’s Light is the cooldown option.</td></tr>
+          <tr><th scope="row">Protection</th><td class="chips" data-l="PvE"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span><span><a class="rp c-gnome" href="#gnome">Gnome</a></span></td><td class="why" data-l="Why">Stoneform plus +1% hit is the most complete tank package; Gnome’s anti-root kit helps when mobility denial matters.</td></tr>
+        </tbody>
+      </table>
+      <p class="bc-note">Human is no longer automatically the melee PvE answer: losing +5 Sword and Mace skill matters far more than the gap between 1% crit and the other races’ new passives.</p>
+    </article>
+    <article class="bc c-paladin" id="by-paladin" aria-labelledby="by-paladin-h">
+      <header class="bc-h"><span class="slot c-paladin"><svg aria-hidden="true"><use href="#i-paladin"/></svg></span><h3 id="by-paladin-h">Paladin</h3><a class="to" href="../classes/#paladin">the Paladin sheet →</a></header>
+      <table class="leans">
+        <colgroup><col class="c-spec"><col class="c-pve"><col class="c-pvp"><col></colgroup>
+        <thead><tr><th scope="col">Spec</th><th scope="col">PvE lean</th><th scope="col">PvP lean</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Holy</th><td class="chips" data-l="PvE"><span><a class="rp c-human" href="#human">Human</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Human brings crit and +10% Spirit; Dwarf’s hit doesn’t help heals, but Stoneform is a superb personal defensive.</td></tr>
+          <tr><th scope="row">Protection</th><td class="chips" data-l="PvE"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span></td><td class="why" data-l="Why">+1% hit plus Stoneform is an unusually direct tank pairing.</td></tr>
+          <tr><th scope="row">Retribution</th><td class="chips" data-l="PvE"><span><a class="rp c-dwarf" href="#dwarf">Dwarf <small>while hit-limited</small></a></span><span><a class="rp c-human" href="#human">Human <small>once gear evens out</small></a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Dwarf brings progression consistency; Human brings crit, and a stun break for PvP.</td></tr>
+        </tbody>
+      </table>
+      <p class="bc-note">Only Human and Dwarf can be Alliance Paladins.</p>
+    </article>
+    <article class="bc c-hunter" id="by-hunter" aria-labelledby="by-hunter-h">
+      <header class="bc-h"><span class="slot c-hunter"><svg aria-hidden="true"><use href="#i-hunter"/></svg></span><h3 id="by-hunter-h">Hunter</h3><a class="to" href="../classes/#hunter">the Hunter sheet →</a></header>
+      <table class="leans">
+        <colgroup><col class="c-spec"><col class="c-pve"><col class="c-pvp"><col></colgroup>
+        <thead><tr><th scope="col">Spec</th><th scope="col">PvE lean</th><th scope="col">PvP lean</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Beast Mastery</th><td class="chips" data-l="PvE"><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span><span><a class="rp c-skyborne" href="#skyborne">Skyborne</a></span><span><a class="rp c-dwarf" href="#dwarf">Dwarf <small>if hit-starved</small></a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Elune’s Light is a concentrated crit window that pets now inherit; Skyborne gives sustained ranged haste.</td></tr>
+          <tr><th scope="row">Marksmanship</th><td class="chips" data-l="PvE"><span><a class="rp c-skyborne" href="#skyborne">Skyborne</a></span><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span><span><a class="rp c-nightelf" href="#nightelf">Night Elf <small>for planned burns</small></a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">2% ranged haste suits sustained shooting, +1% hit suits gearing, and Elune’s Light concentrates damage into Aimed Shot and burn windows.</td></tr>
+          <tr><th scope="row">Survival</th><td class="chips" data-l="PvE"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Hit and Stoneform are reliable; Night Elf adds movement, burst crit and Shadowmeld.</td></tr>
+        </tbody>
+      </table>
+      <p class="bc-note">Human Hunter is new in Forever, so the choice is no longer just Dwarf or Night Elf; Will to Survive and Perception make Human credible for PvP.</p>
+    </article>
+    <article class="bc c-rogue" id="by-rogue" aria-labelledby="by-rogue-h">
+      <header class="bc-h"><span class="slot c-rogue"><svg aria-hidden="true"><use href="#i-rogue"/></svg></span><h3 id="by-rogue-h">Rogue</h3><a class="to" href="../classes/#rogue">the Rogue sheet →</a></header>
+      <table class="leans">
+        <colgroup><col class="c-spec"><col class="c-pve"><col class="c-pvp"><col></colgroup>
+        <thead><tr><th scope="col">Spec</th><th scope="col">PvE lean</th><th scope="col">PvP lean</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Assassination</th><td class="chips" data-l="PvE"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span><span><a class="rp c-skyborne" href="#skyborne">Skyborne</a></span><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Hit is clean progression value, haste is sustained, Night Elf is burst. Stoneform is extraordinary in Rogue matchups.</td></tr>
+          <tr><th scope="row">Combat</th><td class="chips" data-l="PvE"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span><span><a class="rp c-skyborne" href="#skyborne">Skyborne</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Combat’s sustained profile makes hit and haste the intuitive picks.</td></tr>
+          <tr><th scope="row">Subtlety</th><td class="chips" data-l="PvE"><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span><span><a class="rp c-human" href="#human">Human</a></span><span><a class="rp c-gnome" href="#gnome">Gnome</a></span></td><td class="why" data-l="Why">Elune’s Light and the stealth package suit an initiative style; Human answers enemy openers, Gnome answers movement control.</td></tr>
+        </tbody>
+      </table>
+      <p class="bc-note">Combat Shadowmeld is not another Vanish: it behaves like Fade and doesn’t enable Stealth-required abilities.</p>
+    </article>
+    <article class="bc c-priest" id="by-priest" aria-labelledby="by-priest-h">
+      <header class="bc-h"><span class="slot c-priest"><svg aria-hidden="true"><use href="#i-priest"/></svg></span><h3 id="by-priest-h">Priest</h3><a class="to" href="../classes/#priest">the Priest sheet →</a></header>
+      <table class="leans">
+        <colgroup><col class="c-spec"><col class="c-pve"><col class="c-pvp"><col></colgroup>
+        <thead><tr><th scope="col">Spec</th><th scope="col">PvE lean</th><th scope="col">PvP lean</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Discipline</th><td class="chips" data-l="PvE"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Eureka now buffs Power Word: Shield; +5% Mana and Contingency Plan are excellent. Human brings +10% Spirit; Elune’s Light can drive Divine Aegis crit windows.</td></tr>
+          <tr><th scope="row">Holy</th><td class="chips" data-l="PvE"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Gnome has Eureka, max Mana and an emergency ward; Human has Spirit and Divine Grace; Dwarf trades throughput for Stoneform, Desperate Prayer and Chastise.</td></tr>
+          <tr><th scope="row">Shadow</th><td class="chips" data-l="PvE"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span><span><a class="rp c-nightelf" href="#nightelf">Night Elf <small>burst option</small></a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span></td><td class="why" data-l="Why">Dwarf’s +1% spell hit matters before cap; Gnome brings resource and control, Human crit and PvP tools, Night Elf a timed crit window.</td></tr>
+        </tbody>
+      </table>
+      <p class="bc-note">Every race also has two Priest-only racial spells, so the four shared racials mislead most here. Gnome is the more active healer kit, Human the more passive Spirit kit, and Night Elf Discipline the one-enormous-crit-window option.</p>
+    </article>
+    <article class="bc c-shaman" id="by-shaman" aria-labelledby="by-shaman-h">
+      <header class="bc-h"><span class="slot c-shaman"><svg aria-hidden="true"><use href="#i-shaman"/></svg></span><h3 id="by-shaman-h">Shaman</h3><a class="to" href="../classes/#shaman">the Shaman sheet →</a></header>
+      <table class="leans">
+        <colgroup><col class="c-spec"><col class="c-pve"><col class="c-pvp"><col></colgroup>
+        <thead><tr><th scope="col">Spec</th><th scope="col">PvE lean</th><th scope="col">PvP lean</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Elemental</th><td class="chips" data-l="PvE"><span><a class="rp c-dwarf" href="#dwarf">Dwarf <small>the only choice</small></a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span></td><td class="why" data-l="Why">+1% spell hit is directly useful; Stoneform is a substantial defensive.</td></tr>
+          <tr><th scope="row">Enhancement</th><td class="chips" data-l="PvE"><span><a class="rp c-dwarf" href="#dwarf">Dwarf <small>the only choice</small></a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span></td><td class="why" data-l="Why">+1% attack hit, Stoneform, and occasional Beast damage.</td></tr>
+          <tr><th scope="row">Restoration</th><td class="chips" data-l="PvE"><span><a class="rp c-dwarf" href="#dwarf">Dwarf <small>the only choice</small></a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-dwarf" href="#dwarf">Dwarf</a></span></td><td class="why" data-l="Why">Hit doesn’t help healing, but Stoneform is still excellent.</td></tr>
+        </tbody>
+      </table>
+      <p class="bc-note">Dwarf is the only Alliance Shaman race, one of the launch’s advertised new combinations.</p>
+    </article>
+    <article class="bc c-mage" id="by-mage" aria-labelledby="by-mage-h">
+      <header class="bc-h"><span class="slot c-mage"><svg aria-hidden="true"><use href="#i-mage"/></svg></span><h3 id="by-mage-h">Mage</h3><a class="to" href="../classes/#mage">the Mage sheet →</a></header>
+      <table class="leans">
+        <colgroup><col class="c-spec"><col class="c-pve"><col class="c-pvp"><col></colgroup>
+        <thead><tr><th scope="col">Spec</th><th scope="col">PvE lean</th><th scope="col">PvP lean</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Arcane</th><td class="chips" data-l="PvE"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-skyborne" href="#skyborne">Skyborne</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Gnome brings +5% max Mana and Eureka; Skyborne has always-on cast haste. PvP picks root immunity, or a stun break and Perception.</td></tr>
+          <tr><th scope="row">Fire</th><td class="chips" data-l="PvE"><span><a class="rp c-skyborne" href="#skyborne">Skyborne</a></span><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-human" href="#human">Human</a></span><span><a class="rp c-gnome" href="#gnome">Gnome</a></span></td><td class="why" data-l="Why">Fire can use Human crit, but cast haste and Eureka are credible alternatives; final sims will decide.</td></tr>
+          <tr><th scope="row">Frost</th><td class="chips" data-l="PvE"><span><a class="rp c-skyborne" href="#skyborne">Skyborne</a></span><span><a class="rp c-gnome" href="#gnome">Gnome</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Gnome’s mana and Eureka package is broad, and Escape Artist adds a layer in control-heavy PvP.</td></tr>
+        </tbody>
+      </table>
+      <p class="bc-note">One of the classes where Skyborne may genuinely compete with Gnome, because cast haste never goes on cooldown. A theory until level-60 casting models exist.</p>
+    </article>
+    <article class="bc c-warlock" id="by-warlock" aria-labelledby="by-warlock-h">
+      <header class="bc-h"><span class="slot c-warlock"><svg aria-hidden="true"><use href="#i-warlock"/></svg></span><h3 id="by-warlock-h">Warlock</h3><a class="to" href="../classes/#warlock">the Warlock sheet →</a></header>
+      <table class="leans">
+        <colgroup><col class="c-spec"><col class="c-pve"><col class="c-pvp"><col></colgroup>
+        <thead><tr><th scope="col">Spec</th><th scope="col">PvE lean</th><th scope="col">PvP lean</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Affliction</th><td class="chips" data-l="PvE"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human <small>close, by direct-damage share</small></a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">+5% Mana always helps, but Eureka boosts direct damage, not DoT ticks, so Affliction gets less from it.</td></tr>
+          <tr><th scope="row">Demonology</th><td class="chips" data-l="PvE"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Mana pool plus Eureka is broad; Human trades that for 1% crit and anti-stun and anti-stealth tools.</td></tr>
+          <tr><th scope="row">Destruction</th><td class="chips" data-l="PvE"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-gnome" href="#gnome">Gnome</a></span><span><a class="rp c-human" href="#human">Human</a></span></td><td class="why" data-l="Why">Direct casts line up cleanly with Eureka; Human stays compelling when PvP comes first.</td></tr>
+        </tbody>
+      </table>
+      <p class="bc-note">The Vanilla “Gnome for +5% Intellect” argument has changed: Forever Gnome gets +5% maximum Mana directly, plus Eureka and steadier Engineering.</p>
+    </article>
+    <article class="bc c-druid" id="by-druid" aria-labelledby="by-druid-h">
+      <header class="bc-h"><span class="slot c-druid"><svg aria-hidden="true"><use href="#i-druid"/></svg></span><h3 id="by-druid-h">Druid</h3><a class="to" href="../classes/#druid">the Druid sheet →</a></header>
+      <table class="leans">
+        <colgroup><col class="c-spec"><col class="c-pve"><col class="c-pvp"><col></colgroup>
+        <thead><tr><th scope="col">Spec</th><th scope="col">PvE lean</th><th scope="col">PvP lean</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Balance</th><td class="chips" data-l="PvE"><span><a class="rp c-skyborne" href="#skyborne">Skyborne</a></span><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span></td><td class="why" data-l="Why">2% cast haste against a 10% crit burn window; Night Elf has the richer PvP kit.</td></tr>
+          <tr><th scope="row">Feral, cat</th><td class="chips" data-l="PvE"><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span><span><a class="rp c-skyborne" href="#skyborne">Skyborne</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span></td><td class="why" data-l="Why">Elune’s Light is excellent burst; Skyborne has sustained melee haste.</td></tr>
+          <tr><th scope="row">Feral, bear</th><td class="chips" data-l="PvE"><span><a class="rp c-nightelf" href="#nightelf">Night Elf <small>for avoidance</small></a></span><span><a class="rp c-skyborne" href="#skyborne">Skyborne <small>for threat</small></a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span></td><td class="why" data-l="Why">Quickness gives +1% dodge; Skyborne’s haste is offensive and threat-oriented.</td></tr>
+          <tr><th scope="row">Restoration</th><td class="chips" data-l="PvE"><span><a class="rp c-skyborne" href="#skyborne">Skyborne</a></span><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span></td><td class="chips" data-l="PvP"><span><a class="rp c-nightelf" href="#nightelf">Night Elf</a></span></td><td class="why" data-l="Why">Cast haste and regeneration point Skyborne at sustained PvE; Night Elf offers a crit-healing window and far better stealth and movement in PvP.</td></tr>
+        </tbody>
+      </table>
+      <p class="bc-note">Only Night Elf and Skyborne can be Alliance Druids. Read Leyline can’t run while Innervate is active, and Innervate replaces it, so the two don’t stack.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ======================= CHECKS ======================= -->
+<section class="sec" id="checks" aria-labelledby="checks-h">
+  <div class="sec-head">
+    <p class="label">field notes</p>
+    <h2 id="checks-h">Tooltip checks</h2>
+    <p>The racial assumptions most likely to mislead a veteran, or to survive in a guide written before the last two passes.</p>
+  </div>
+  <div class="checks">
+    <article class="chk"><p class="chk-top"><span class="chk-l">tooltip check</span><span class="verd">Doesn’t hold</span></p><p class="chk-q">“Shadowmeld is a second Vanish.”</p><p class="chk-a">In combat it works like Fade: threat and targeting relief, no access to Stealth-required abilities. Probably the edge case most likely to betray Retail muscle memory.</p></article>
+    <article class="chk"><p class="chk-top"><span class="chk-l">tooltip check</span><span class="verd">Doesn’t hold</span></p><p class="chk-q">“Eureka is +10% damage on everything for eight seconds.”</p><p class="chk-a">Only non-periodic damage, so DoT-heavy builds discount the headline. It also stopped being three charges on October 16 and gained Power Word: Shield support.</p></article>
+    <article class="chk"><p class="chk-top"><span class="chk-l">tooltip check</span><span class="verd">Doesn’t hold</span></p><p class="chk-q">“Alliance raids want Dwarf Priests for Fear Ward.”</p><p class="chk-a">Every Priest learns Fear Ward at level 20, and Devouring Plague is baseline too.</p></article>
+    <article class="chk stale"><p class="chk-top"><span class="chk-l">tooltip check</span><span class="verd">Stale</span></p><p class="chk-q">“Human gets 2% crit.”</p><p class="chk-a">That was October 16. The launch target is +1% crit with +10% Spirit; the general race guides still show 2% and 5%.</p></article>
+    <article class="chk stale"><p class="chk-top"><span class="chk-l">tooltip check</span><span class="verd">Stale</span></p><p class="chk-q">“Dwarf is the crit-damage race.”</p><p class="chk-a">Earth Fury lasted ten days. Dwarf theorycraft written between October 16 and 26 is already obsolete: it’s +1% hit now.</p></article>
+    <article class="chk stale"><p class="chk-top"><span class="chk-l">tooltip check</span><span class="verd">Stale</span></p><p class="chk-q">“Skyborne get 3% haste, but need a Ley Line inside every instance.”</p><p class="chk-a">Both describe earlier builds. Launch is 2% haste, and the hour-long Attuned buff travels with the character.</p></article>
+    <article class="chk unspec"><p class="chk-top"><span class="chk-l">tooltip check</span><span class="verd">Unspecified</span></p><p class="chk-q">“Find Treasure is worth so much gold an hour.”</p><p class="chk-a">The extra-loot proc is real, but no rate has been published, so there’s no responsible way to price it yet.</p></article>
+    <article class="chk unspec"><p class="chk-top"><span class="chk-l">tooltip check</span><span class="verd">Unspecified</span></p><p class="chk-q">“Hunter pets don’t care about player racials.”</p><p class="chk-a">October 16 fixed pets to inherit the player’s higher melee or ranged crit, and class testing treats Elune’s Light as pet burst. How much it adds at 60 is still unmeasured.</p></article>
+  </div>
+</section>
+
+<!-- ======================= HISTORY ======================= -->
+<section class="sec" id="history" aria-labelledby="history-h">
+  <div class="sec-head">
+    <p class="label">the timeline is part of the answer</p>
+    <h2 id="history-h">Tuning history</h2>
+  </div>
+  <ol class="hist">
+    <li><time datetime="2026-09-12">Sep 12</time><div class="ev"><b>Forever revealed</b><p>The Skyborne and the broad direction for updated racials, alongside Forever as a permanent level-60 branch.</p></div></li>
+    <li><time datetime="2026-09-22">Sep 22</time><div class="ev"><b>Race and class combinations</b><p>High Order and Windshaper Skyborne split by faction; Human Hunter, Gnome Priest and Dwarf Shaman highlighted for the Alliance.</p></div></li>
+    <li><time datetime="2026-09-30">Sep 30</time><div class="ev"><b>Priest deep dive</b><p>Fear Ward and Devouring Plague made baseline; Gnome’s Confounding Flash and Contingency Plan, Human Divine Grace and Dwarf Chastise introduced; Night Elf Starshards and Elune’s Grace changed. Divine Grace and Contingency Plan have since gone from 5 to 10 minute cooldowns.</p></div></li>
+    <li><time datetime="2026-10-08">Oct 8</time><div class="ev"><b>Another pass signaled</b><p>Lead developer commentary after community concern about strong active racials and weapon-skill disparities.</p></div></li>
+    <li><time datetime="2026-10-16">Oct 16</time><div class="ev"><b>The first major pass</b>
+      <ul>
+        <li>Human Sword Specialization becomes Ruthless, +2% crit</li>
+        <li>Dwarf’s beta Mace Specialization becomes Earth Fury; Find Treasure gains bonus chest loot</li>
+        <li>Wind-Blessed 1% → 3%; Walk on Air to a 90 sec cooldown; Read Leyline usable while moving, with more Ley Lines</li>
+        <li>Eureka becomes an 8 sec window with no charges, and supports Power Word: Shield</li>
+        <li>Quickness’s movement speed made to stack</li>
+      </ul></div></li>
+    <li class="key"><time datetime="2026-10-26">Oct 26</time><div class="ev"><b>The final pre-launch pass</b>
+      <ul>
+        <li>Ruthless 2% → 1%; The Human Spirit 5% → 10%</li>
+        <li>Earth Fury removed; Artisan’s Precision, +1% hit, added</li>
+        <li>Wind-Blessed 3% → 2%; Read Leyline redesigned around 15 sec of +50% regeneration and an hour-long Attuned state at +100%</li>
+      </ul>
+      <p>Blizzard framed it as prioritizing racial identity without racials so strong they override player preference, and kept weapon specializations out.</p></div></li>
+    <li class="key"><time datetime="2026-11-04">Nov 4</time><div class="ev"><b>Launch</b><p>After a pass only nine days earlier, every absolute “best race” ranking is provisional until level-60 data exists.</p></div></li>
+  </ol>
+</section>
+
+<!-- ======================= BOTTOM LINE ======================= -->
+<section class="sec" id="bottom" aria-labelledby="bottom-h">
+  <div class="sec-head">
+    <p class="label">the bottom line</p>
+    <h2 id="bottom-h">Choosing a race</h2>
+  </div>
+  <div class="bottom">
+    <article class="bl frame c-human"><span class="slot c-human"><svg aria-hidden="true"><use href="#i-human"/></svg></span><h3>Human</h3><p>When PvP is a major priority, or for a Spirit-using Priest. The old melee-PvE mandate is gone; a control-breaking identity replaces it.</p></article>
+    <article class="bl frame c-dwarf"><span class="slot c-dwarf"><svg aria-hidden="true"><use href="#i-dwarf"/></svg></span><h3>Dwarf</h3><p>For the strongest-looking progression and tank package, anyone who expects to care about hit, Stoneform, Alliance Shaman, or racial power that’s dependable rather than tied to a burst window.</p></article>
+    <article class="bl frame c-nightelf"><span class="slot c-nightelf"><svg aria-hidden="true"><use href="#i-nightelf"/></svg></span><h3>Night Elf</h3><p>For burst timing, movement, stealth, Hunter and Feral synergy, or the most playmaking Alliance kit, without expecting Retail-style Shadowmeld restealth.</p></article>
+    <article class="bl frame c-gnome"><span class="slot c-gnome"><svg aria-hidden="true"><use href="#i-gnome"/></svg></span><h3>Gnome</h3><p>For the most coherent caster and Priest package, Engineering-heavy PvP, or a Warrior or Rogue for whom breaking roots and snares defines the class.</p></article>
+    <article class="bl frame c-skyborne"><span class="slot c-skyborne"><svg aria-hidden="true"><use href="#i-skyborne"/></svg></span><h3>Skyborne</h3><p>For an always-on offensive passive over a burst button, especially on Mage, Druid or Hunter, or for traversal. The 2% haste is promising and the least proven.</p></article>
+  </div>
+  <div class="verdict frame">
+    <p class="label">the conclusion</p>
+    <p class="big">Vanilla asked which weapon a race was good with. Forever asks which kind of power a character should carry.</p>
+    <p>Human control-breaking and Spirit, Dwarf hit and defense, Night Elf timed crit and stealth, Gnome resources, cooldowns and escapes, Skyborne sustained haste and traversal. The tuning is close enough, and new enough, that for most specs no race is defensibly wrong, but the trade-offs are sharper than they have ever been on the Alliance.</p>
+  </div>
+</section>
+
+<nav class="next-book" aria-label="The first book">
+  <a class="nb frame" href="../lore/">
+    <span class="label">book i · back to the beginning</span>
+    <span class="nb-t">The Lore</span>
+    <span class="nb-s">What’s canon, what’s new and what’s still unwritten: the history Forever inherits, the page where it picks up the story, and the pages still blank.</span>
+    <span class="nb-arrow" aria-hidden="true">→</span>
+  </a>
+</nav>
+
+<footer class="foot">
+  <p>Compiled October 26, 2026. Blizzard’s October 26 racial tuning notes take precedence wherever sources disagree; also drawn from the October 16 development notes, the Priest deep dive and race and class reveal, Wowhead’s racial coverage, current Forever spell data and class guides, Classic racial references, and public beta feedback. Unattributed Discord claims aren’t treated as evidence.</p>
+  <p>Forever hasn’t launched, and no mature level-60 parses or simulations exist for this racial set. The leans separate hard mechanical advantages from educated pre-launch inference; none is a ranking. Race colors here are the codex’s own, not Blizzard’s.</p>
+  <p>Part of the <a href="../">Forever Codex</a>. A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
+</footer>
+</main>
+
+<script>
+(function () {
+  var d = document;
+  // launch countdown
+  try {
+    var launch = new Date(2026, 10, 4), now = new Date();
+    var days = Math.round((launch - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5);
+    var cd = d.getElementById("cd"), sub = d.getElementById("cd-sub");
+    if (days > 1) { cd.textContent = days + " days"; sub.textContent = "until launch, Nov 4"; }
+    else if (days === 1) { cd.textContent = "Tomorrow"; sub.textContent = "launch, Nov 4"; }
+    else if (days === 0) { cd.textContent = "Today"; sub.textContent = "launch day, Nov 4"; }
+    else { sub.textContent = "launched"; }
+  } catch (e) {}
+
+  // highlight the race or section in view
+  var links = [].slice.call(d.querySelectorAll(".bar .slot, .bar .sec-link"));
+  if ("IntersectionObserver" in window) {
+    var byId = {};
+    links.forEach(function (a) { byId[a.hash.slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var a = byId[en.target.id] || null;
+        links.forEach(function (l) {
+          l.classList.toggle("active", l === a);
+          if (l === a) l.setAttribute("aria-current", "location"); else l.removeAttribute("aria-current");
+        });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    d.querySelectorAll("#top, main > section[id]").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+<script src="../codex.js"></script>
+</body>
+</html>

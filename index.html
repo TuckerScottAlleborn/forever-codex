@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="A codex to World of Warcraft: Forever for Warcraft veterans, in three books: the lore, on what’s canon and what’s still unwritten; the classes, on how the nine Alliance classes change against Vanilla; and the five Alliance races after the final racial pass.">
+<meta property="og:title" content="Forever Codex">
+<meta property="og:description" content="A codex to World of Warcraft: Forever for Warcraft veterans, in three books: the lore, on what’s canon and what’s still unwritten; the classes, on how the nine Alliance classes change against Vanilla; and the five Alliance races after the final racial pass.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Forever Codex">
+<meta property="og:url" content="https://tuckerscottalleborn.github.io/forever-codex/">
+<meta property="og:image" content="https://tuckerscottalleborn.github.io/forever-codex/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Forever Codex: an hourglass above its three books, The Lore, The Classes and The Races">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Forever Codex">
+<meta name="twitter:image" content="https://tuckerscottalleborn.github.io/forever-codex/og.png">
+<meta name="theme-color" content="#cf9a52">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://tuckerscottalleborn.github.io/forever-codex/">
+<title>Forever Codex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya:ital,wght@0,400;0,600;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="codex.css">
+<style>
+/* The codex's title page (tokens, frames and the masthead are in codex.css). A title, the
+   calendar Forever runs on, then one framed cover per book with its table of contents. A new
+   book is one more <article class="book"> in .books; the grid makes room for it. */
+body.home {
+  --atmos:
+    radial-gradient(ellipse 70rem 34rem at 50% -12rem, color-mix(in oklab, var(--glow) 22%, transparent), transparent 70%),
+    radial-gradient(ellipse 40rem 26rem at 100% 30rem, color-mix(in oklab, var(--alliance) 12%, transparent), transparent 70%),
+    radial-gradient(ellipse 40rem 26rem at 0 34rem, color-mix(in oklab, var(--s-forever) 7%, transparent), transparent 70%);
+}
+.home-col { max-width: 80rem; margin-inline: auto }
+.home-col > .hero, .home-col > .cal { max-width: 66rem; margin-inline: auto }
+
+/* ---------- title ---------- */
+.hero { padding-block: clamp(3rem, 8vw, 5.5rem) 0; display: grid; gap: 1.25rem; justify-items: center; text-align: center }
+.emblem { width: 4.25rem; height: 4.25rem; color: var(--bronze-hi); filter: drop-shadow(0 0 18px color-mix(in oklab, var(--glow) 45%, transparent)) }
+.hero .title { font-size: clamp(3rem, 1.8rem + 5.6vw, 5.6rem); line-height: 1 }
+.thesis { font-size: clamp(1.35rem, 1.1rem + 1.1vw, 1.8rem); line-height: 1.35; max-width: 32ch }
+.thesis em { color: var(--bronze-hi); font-style: normal }
+.lede { max-width: 60ch; color: var(--muted); font-size: 1.08rem; text-wrap: pretty }
+
+/* ---------- the calendar ---------- */
+.cal { margin-top: clamp(2.5rem, 6vw, 3.5rem); display: grid; gap: .9rem; justify-items: center }
+.cal-rail { --n: 4; list-style: none; margin: 0; padding: 0; width: 100%; max-width: 60rem; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); position: relative }
+.cal-rail::before { content: ""; position: absolute; left: calc(50% / var(--n)); right: calc(50% / var(--n)); top: .9rem; height: 2px; background: linear-gradient(90deg, var(--line), var(--bronze) 50%, var(--line)) }
+.cal-rail li { position: relative; display: grid; justify-items: center; align-content: start; gap: .15rem; text-align: center; padding: 0 .5rem; min-width: 0 }
+.cal-mk {
+  width: 1.15rem; height: 1.15rem; margin: .32rem 0 .7rem; transform: rotate(45deg);
+  background: var(--bg); border: 2px solid var(--bronze); box-shadow: 0 0 0 4px var(--bg);
+}
+.cal-rail b { font-family: var(--f-caps); font-weight: 400; font-size: 1.45rem; line-height: 1.1; color: var(--ink) }
+.cal-rail span { font-family: var(--f-ui); font-size: .95rem; line-height: 1.35; color: var(--muted); max-width: 18ch }
+.cal-rail .cd { font-family: var(--f-label); font-weight: 700; font-size: .82rem; letter-spacing: .06em; text-transform: lowercase; color: var(--pc2); margin-top: .25rem }
+.cal-rail li.past .cal-mk { background: var(--bronze); border-color: var(--bronze) }
+.cal-rail li.past b { color: var(--muted) }
+.cal-rail li.next .cal-mk { border-color: var(--pc2); background: color-mix(in oklab, var(--pc2) 30%, var(--bg)); box-shadow: 0 0 0 4px var(--bg), 0 0 16px 2px color-mix(in oklab, var(--pc2) 55%, transparent) }
+.cal-rail li.next b { color: var(--pc2) }
+@media (max-width: 40rem) {
+  .cal-rail { grid-template-columns: minmax(0, 1fr); gap: 1.1rem; max-width: 22rem }
+  .cal-rail::before { left: calc(.575rem + 6px); right: auto; top: 1rem; bottom: 1rem; width: 2px; height: auto; background: linear-gradient(180deg, var(--line), var(--bronze) 50%, var(--line)) }
+  .cal-rail li { grid-template-columns: 1.15rem minmax(0, 1fr); justify-items: start; text-align: left; column-gap: 1rem; padding: 0 0 0 6px }
+  .cal-mk { grid-row: 1 / span 3; margin: .4rem 0 0 }
+  .cal-rail span { max-width: none }
+}
+
+/* ---------- the books ---------- */
+.books-h { margin-top: clamp(3.5rem, 8vw, 5rem); display: flex; align-items: center; gap: 1rem; justify-content: center }
+.books-h::before, .books-h::after { content: ""; flex: 1; max-width: 12rem; height: 1px; background: linear-gradient(90deg, transparent, var(--line)) }
+.books-h::after { background: linear-gradient(90deg, var(--line), transparent) }
+/* one column, then two with the third book across both, then three */
+.books { margin-top: 1.5rem; display: grid; gap: 1.75rem; grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 52rem) { .books { grid-template-columns: repeat(2, minmax(0, 1fr)) } .books > .book:nth-child(odd):last-child { grid-column: 1 / -1 } }
+@media (min-width: 72rem) { .books { grid-template-columns: repeat(3, minmax(0, 1fr)) } .books > .book:nth-child(odd):last-child { grid-column: auto } }
+.book { align-content: start }
+.book {
+  --bk: var(--bronze-hi);
+  display: grid; gap: 1.25rem; padding: clamp(1.25rem, 3vw, 1.75rem); min-width: 0;
+  background: radial-gradient(ellipse 34rem 14rem at 50% 0, color-mix(in oklab, var(--bk) 13%, transparent), transparent 72%), var(--panel);
+}
+.bk-cls { --bk: var(--f-alliance) }
+.bk-race { --bk: var(--races) }
+.cover { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .25rem 1.1rem; align-items: center; text-decoration: none; color: inherit }
+.cover-motif {
+  grid-row: 1 / span 2; width: 4rem; height: 4rem; padding: .85rem; border-radius: 50%; color: var(--bk);
+  border: 2px solid color-mix(in oklab, var(--bk) 70%, transparent); background: var(--bg);
+  box-shadow: 0 0 0 4px var(--panel), 0 0 22px -6px var(--bk);
+}
+.cover .label { color: var(--bk); align-self: end }
+.cover h2 { font-family: var(--f-caps); font-size: var(--step-3); line-height: 1.05; color: var(--ink); align-self: start; display: flex; align-items: baseline; gap: .6rem }
+.cover h2 i { font-style: normal; font-family: var(--f-ui); font-size: 1.5rem; color: var(--bk); transition: transform .15s }
+.cover:hover h2 span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; text-decoration-color: var(--bk) }
+.cover:hover h2 i { transform: translateX(4px) }
+.book-thesis { font-size: 1.12rem; line-height: 1.45; font-style: italic; padding-bottom: 1rem; border-bottom: 1px solid var(--line-soft) }
+.book-thesis em { font-style: normal; color: var(--bk) }
+
+.toc { list-style: none; margin: 0; padding: 0; display: grid }
+.toc li { --pc: var(--bronze); position: relative }
+.toc li + li { border-top: 1px solid var(--line-soft) }
+.toc > li > a { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: .05rem .5rem; padding: .7rem 0; text-decoration: none; color: inherit }
+.toc .rn {
+  grid-row: 1 / span 2; width: 1.9rem; height: 1.9rem; margin-top: .05rem; display: grid; place-items: center; border-radius: 50%;
+  border: 2px solid var(--pc); color: var(--pc); font-family: var(--f-caps); font-size: .85rem; line-height: 1
+}
+.toc li.dash .rn { border-style: dashed }
+.toc b { font-family: var(--f-display); font-weight: 400; font-size: 1.15rem; line-height: 1.3; color: var(--ink) }
+.toc > li > a > span:last-child { font-family: var(--f-ui); font-size: .95rem; line-height: 1.4; color: var(--muted) }
+.toc > li > a:hover b { text-decoration: underline; text-decoration-color: var(--pc); text-underline-offset: 3px }
+.spoil-n { display: inline-flex; align-items: center; gap: .3em; margin-left: .35rem; font-family: var(--f-label); font-weight: 700; font-size: .78rem; letter-spacing: .06em; text-transform: lowercase; color: var(--s-warn); white-space: nowrap }
+.spoil-n::before { content: ""; width: 1.1em; height: 1.1em; background: currentColor; -webkit-mask: var(--i-spoil) center / contain no-repeat; mask: var(--i-spoil) center / contain no-repeat }
+
+/* the nine class sheets, as an action bar */
+.toc .sheets { padding: .7rem 0 .8rem; display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: .5rem .5rem }
+.sheets .rn { grid-row: 1 / span 2 }
+.sheets-t { text-decoration: none; color: inherit; align-self: center }
+.sheets-t:hover b { text-decoration: underline; text-decoration-color: var(--pc); text-underline-offset: 3px }
+.sheets .slots { display: grid; grid-template-columns: repeat(var(--k, 9), minmax(0, 2.35rem)); gap: 5px; grid-column: 2 }
+.sheets .slots.five { --k: 5 }
+.sheets .slot { width: auto; height: auto; aspect-ratio: 1 }
+@media (max-width: 26rem) { .sheets .slot kbd { display: none } }
+</style>
+</head>
+<body class="home">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-glass" viewBox="0 0 24 24">
+      <path d="M5 2.5h14v2H5zM5 19.5h14v2H5z" fill="currentColor"/>
+      <path d="M7 4.5c0 4.6 4.2 6 4.2 7.5S7 14.9 7 19.5h10c0-4.6-4.2-6-4.2-7.5S17 9.1 17 4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M8.7 7h6.6c-.7 1.8-2.5 2.9-3.3 4.3C11.2 9.9 9.4 8.8 8.7 7zM8.4 19.5c.4-2.3 2.2-3.5 3.6-3.8 1.4.3 3.2 1.5 3.6 3.8z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-scroll" viewBox="0 0 24 24">
+      <path d="M6.5 3.5h11a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2h-11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M6.5 3.5a2 2 0 0 0-2 2v1.5h4V5.5a2 2 0 0 0-2-2zM6.5 20.5a2 2 0 0 1-2-2V17h4v1.5a2 2 0 0 1-2 2z" fill="currentColor"/>
+      <path d="M6.5 7v10M11 8.5h5M11 12h5M11 15.5h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-crest" viewBox="0 0 24 24">
+      <path d="M12 2.2 L21.8 12 L12 21.8 L2.2 12 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+      <path d="M12 7.1 L16.9 12 L12 16.9 L7.1 12 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-banner" viewBox="0 0 24 24">
+      <path d="M6 2.5v19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M6.9 3.5h12l-2.6 4.2 2.6 4.3h-12z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-human" viewBox="0 0 24 24"><path d="M12 2.5 L20 5.5 V11.5 C20 16.5 16.6 20 12 21.5 C7.4 20 4 16.5 4 11.5 V5.5 Z" fill="currentColor"/><path d="M12 6.5v10M8 10.5h8" stroke="#07090e" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-dwarf" viewBox="0 0 24 24"><path d="M2.5 7.5h12.5c0 2.6 2.2 4.2 6.5 4.2V13.6h-6l-1.3 3.4h2.8v2.5H7v-2.5h2.8L8.5 13.6H6.2C4 13.6 2.5 11.2 2.5 7.5z" fill="currentColor"/></symbol>
+    <symbol id="i-nightelf" viewBox="0 0 24 24"><path d="M15.5 2.8A9.3 9.3 0 1 0 21.2 17.6 7.6 7.6 0 0 1 15.5 2.8z" fill="currentColor"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor"/></symbol>
+    <symbol id="i-gnome" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.3" fill="none" stroke="currentColor" stroke-width="3.2"/><path d="M12 2.6v3M12 18.4v3M2.6 12h3M18.4 12h3M5.4 5.4l2.1 2.1M16.5 16.5l2.1 2.1M5.4 18.6l2.1-2.1M16.5 7.5l2.1-2.1" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-skyborne" viewBox="0 0 24 24"><path d="M3 8.5h10.5a3 3 0 1 0-3-3M3 12.5h14.5a3 3 0 1 1-3 3M3 16.5h6.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></symbol>
+    <symbol id="i-warrior" viewBox="0 0 24 24"><path d="M20 4 L9.5 14.5 M6.5 11.5 L12.5 17.5 M8.5 15.5 L4 20 M20 4 L16 4.6 M20 4 L19.4 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-paladin" viewBox="0 0 24 24"><path d="M12.5 3.5 L20.5 11.5 L17.5 14.5 L9.5 6.5 Z" fill="currentColor"/><path d="M14 10 L4 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-hunter" viewBox="0 0 24 24"><path d="M7 3 Q 21 12 7 21" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M7 3 L7 21" stroke="currentColor" stroke-width="1"/><path d="M3 12 L18 12 M15 9.5 L18 12 L15 14.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-rogue" viewBox="0 0 24 24"><path d="M20.5 3.5 L18.5 8.5 L11.5 15.5 L8.5 12.5 L15.5 5.5 Z" fill="currentColor"/><path d="M7 11 L13 17 M9.5 14.5 L4.5 19.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-priest" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/><path d="M12 2.5 V5.5 M12 18.5 V21.5 M2.5 12 H5.5 M18.5 12 H21.5 M5.3 5.3 L7.4 7.4 M16.6 16.6 L18.7 18.7 M5.3 18.7 L7.4 16.6 M16.6 7.4 L18.7 5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-shaman" viewBox="0 0 24 24"><path d="M13.5 2 L5 13.5 H11 L10 22 L19 10 H13 Z" fill="currentColor"/></symbol>
+    <symbol id="i-mage" viewBox="0 0 24 24"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/></symbol>
+    <symbol id="i-warlock" viewBox="0 0 24 24"><path d="M12 2 C16 7 19 10 19 14.5 A7 7 0 0 1 5 14.5 C5 11.5 6.8 9.3 8.8 7.2 C9 10 10 11.2 11.6 11.8 C11 8.5 11 5 12 2 Z" fill="currentColor"/></symbol>
+    <symbol id="i-druid" viewBox="0 0 24 24"><path d="M5 19 C5 9 11 4 20 4 C20 13 15 19 5 19 Z" fill="currentColor"/><path d="M5 19 L14 10" stroke="#07090e" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+<a class="skip" href="#books">Skip to the books</a>
+
+<header class="mast">
+  <div class="mast-in">
+    <a class="mast-brand" href="./" aria-current="page"><svg aria-hidden="true"><use href="#i-glass"/></svg>Forever Codex</a>
+    <nav class="mast-books" aria-label="Books">
+      <a href="lore/"><span class="bk-n">I</span>Lore</a>
+      <a href="classes/"><span class="bk-n">II</span>Classes</a>
+      <a href="races/"><span class="bk-n">III</span>Races</a>
+    </nav>
+  </div>
+</header>
+
+<main class="home-col">
+  <header class="hero">
+    <svg class="emblem" aria-hidden="true"><use href="#i-glass"/></svg>
+    <p class="label">world of warcraft: forever · a codex for veterans</p>
+    <h1 class="title">Forever Codex</h1>
+    <p class="thesis">The old world on a new branch: its story is <em>precedent, not destiny</em>, and its classes are <em>Classic, finished</em>.</p>
+    <p class="lede">Forever isn’t Vanilla again, and it isn’t retail rewound. It keeps the world and the history Warcraft veterans know, then lets both move. This codex reads it in three books: the lore, on what’s canon and what’s still unwritten; the classes, on how the nine Alliance classes play against Vanilla; and the races, on what each Alliance race is for now that weapon skill is gone.</p>
+  </header>
+
+  <section class="cal" aria-labelledby="cal-h">
+    <h2 class="label" id="cal-h">the calendar</h2>
+    <ol class="cal-rail">
+      <li data-date="2026-10-16"><i class="cal-mk" aria-hidden="true"></i><b>Oct 16</b><span>The last beta build with class changes</span></li>
+      <li data-date="2026-10-26"><i class="cal-mk" aria-hidden="true"></i><b>Oct 26</b><span>The final racial tuning pass</span><span class="cd" hidden></span></li>
+      <li data-date="2026-11-04"><i class="cal-mk" aria-hidden="true"></i><b>Nov 4</b><span>Launch, early Year 1</span><span class="cd" hidden></span></li>
+      <li data-date="2026-12-09"><i class="cal-mk" aria-hidden="true"></i><b>Dec 9</b><span>First raids: Barrow Deeps, Hyjal Summit, Onyxia’s Lair</span><span class="cd" hidden></span></li>
+    </ol>
+  </section>
+
+  <h2 class="books-h label" id="books">the books</h2>
+  <div class="books">
+
+    <article class="book bk-lore frame" aria-labelledby="bk1-h">
+      <a class="cover" href="lore/">
+        <svg class="cover-motif" aria-hidden="true"><use href="#i-scroll"/></svg>
+        <span class="label">book i · lore and canon</span>
+        <h2 id="bk1-h"><span>The Lore</span><i aria-hidden="true">→</i></h2>
+      </a>
+      <p class="book-thesis">History up to Year 1 is <em>foundation</em>. Everything after it is <em>precedent, not destiny</em>.</p>
+      <ol class="toc" aria-label="The Lore: contents">
+        <li style="--pc: var(--pc1)"><a href="lore/#written"><span class="rn">I</span><b>Already written</b><span>From the War of the Ancients to <i>Forsaken Kingdom</i>, with canon checks</span></a></li>
+        <li style="--pc: var(--pc2)"><a href="lore/#page-one"><span class="rn">II</span><b>Page one</b><span>Year 1, the Skyborne, and who’s tied to what</span></a></li>
+        <li class="dash" style="--pc: var(--pc3)"><a href="lore/#unwritten"><span class="rn">III</span><b>Still unwritten</b><span>Eight open quests and how they might unfold<span class="spoil-n">soft spoilers</span></span></a></li>
+        <li><a href="lore/#rule"><span class="rn">✦</span><b>Epilogue and reading stack</b><span>How to file old knowledge, and what to read</span></a></li>
+      </ol>
+    </article>
+
+    <article class="book bk-cls frame" aria-labelledby="bk2-h">
+      <a class="cover" href="classes/">
+        <svg class="cover-motif" aria-hidden="true"><use href="#i-crest"/></svg>
+        <span class="label">book ii · alliance classes</span>
+        <h2 id="bk2-h"><span>The Classes</span><i aria-hidden="true">→</i></h2>
+      </a>
+      <p class="book-thesis">A <em>Classic skeleton</em> with more complete specs and less mandatory jank.</p>
+      <ol class="toc" aria-label="The Classes: contents">
+        <li><a href="classes/#systems"><span class="rn">I</span><b>System changes</b><span>Talent milestones, dual spec, merged hit and crit, raid-wide buffs</span></a></li>
+        <li style="--pc: var(--f-alliance)">
+          <div class="sheets">
+            <span class="rn">II</span>
+            <a class="sheets-t" href="classes/#warrior"><b>Nine class sheets</b></a>
+            <div class="slots">
+              <a class="slot c-warrior" href="classes/#warrior"><svg aria-hidden="true"><use href="#i-warrior"/></svg><kbd>1</kbd><span class="sr">Warrior</span></a>
+              <a class="slot c-paladin" href="classes/#paladin"><svg aria-hidden="true"><use href="#i-paladin"/></svg><kbd>2</kbd><span class="sr">Paladin</span></a>
+              <a class="slot c-hunter" href="classes/#hunter"><svg aria-hidden="true"><use href="#i-hunter"/></svg><kbd>3</kbd><span class="sr">Hunter</span></a>
+              <a class="slot c-rogue" href="classes/#rogue"><svg aria-hidden="true"><use href="#i-rogue"/></svg><kbd>4</kbd><span class="sr">Rogue</span></a>
+              <a class="slot c-priest" href="classes/#priest"><svg aria-hidden="true"><use href="#i-priest"/></svg><kbd>5</kbd><span class="sr">Priest</span></a>
+              <a class="slot c-shaman" href="classes/#shaman"><svg aria-hidden="true"><use href="#i-shaman"/></svg><kbd>6</kbd><span class="sr">Shaman</span></a>
+              <a class="slot c-mage" href="classes/#mage"><svg aria-hidden="true"><use href="#i-mage"/></svg><kbd>7</kbd><span class="sr">Mage</span></a>
+              <a class="slot c-warlock" href="classes/#warlock"><svg aria-hidden="true"><use href="#i-warlock"/></svg><kbd>8</kbd><span class="sr">Warlock</span></a>
+              <a class="slot c-druid" href="classes/#druid"><svg aria-hidden="true"><use href="#i-druid"/></svg><kbd>9</kbd><span class="sr">Druid</span></a>
+            </div>
+          </div>
+        </li>
+        <li><a href="classes/#choose"><span class="rn">III</span><b>Choosing a path</b><span>Eight veteran motivations and a shortlist, ranked for novelty, not power</span></a></li>
+        <li><a href="classes/#top"><span class="rn"><svg width="12" height="12" aria-hidden="true"><use href="#i-play"/></svg></span><b>The narrated episode</b><span>About 38 minutes, with a chapter for each class</span></a></li>
+      </ol>
+    </article>
+
+    <article class="book bk-race frame" aria-labelledby="bk3-h">
+      <a class="cover" href="races/">
+        <svg class="cover-motif" aria-hidden="true"><use href="#i-banner"/></svg>
+        <span class="label">book iii · alliance races</span>
+        <h2 id="bk3-h"><span>The Races</span><i aria-hidden="true">→</i></h2>
+      </a>
+      <p class="book-thesis">Weapon skill is gone for good. A race now picks <em>a kind of power</em>, not a weapon.</p>
+      <ol class="toc" aria-label="The Races: contents">
+        <li style="--pc: var(--races)">
+          <div class="sheets">
+            <span class="rn">I</span>
+            <a class="sheets-t" href="races/#glance"><b>Five race sheets</b></a>
+            <div class="slots five">
+              <a class="slot c-human" href="races/#human"><svg aria-hidden="true"><use href="#i-human"/></svg><span class="sr">Human</span></a>
+              <a class="slot c-dwarf" href="races/#dwarf"><svg aria-hidden="true"><use href="#i-dwarf"/></svg><span class="sr">Dwarf</span></a>
+              <a class="slot c-nightelf" href="races/#nightelf"><svg aria-hidden="true"><use href="#i-nightelf"/></svg><span class="sr">Night Elf</span></a>
+              <a class="slot c-gnome" href="races/#gnome"><svg aria-hidden="true"><use href="#i-gnome"/></svg><span class="sr">Gnome</span></a>
+              <a class="slot c-skyborne" href="races/#skyborne"><svg aria-hidden="true"><use href="#i-skyborne"/></svg><span class="sr">High Order Skyborne</span></a>
+            </div>
+          </div>
+        </li>
+        <li><a href="races/#by-class"><span class="rn">II</span><b>Race leans by class</b><span>PvE and PvP leans for every spec of all nine classes</span></a></li>
+        <li><a href="races/#checks"><span class="rn">III</span><b>Tooltip checks</b><span>Stale guide values and assumptions that don’t hold</span></a></li>
+        <li><a href="races/#history"><span class="rn">✦</span><b>Tuning history and bottom line</b><span>From the September reveal to the final October 26 pass</span></a></li>
+      </ol>
+    </article>
+
+  </div>
+
+  <footer class="foot">
+    <p>Compiled in October 2026 from Blizzard’s Forever recaps, class deep dives and dungeon and raid previews, beta development notes through the October 16 build, the October 26 racial tuning pass, and <i>Warcraft III Reforged: Forsaken Kingdom</i>. Each book lists its own sources.</p>
+    <p>A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
+  </footer>
+</main>
+
+<script>
+// the calendar: past dates fill in, the next one glows and counts down
+(function () {
+  try {
+    var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate()), next = null;
+    document.querySelectorAll(".cal-rail li[data-date]").forEach(function (li) {
+      var p = li.dataset.date.split("-"), day = new Date(+p[0], p[1] - 1, +p[2]);
+      var days = Math.round((day - today) / 864e5), cd = li.querySelector(".cd");
+      if (days < 0) { li.classList.add("past"); return; }
+      if (!next) { next = li; li.classList.add("next"); }
+      if (cd) { cd.textContent = days > 1 ? "in " + days + " days" : days === 1 ? "tomorrow" : "today"; cd.hidden = false; }
+    });
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

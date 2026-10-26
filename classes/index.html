@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="A class-by-class guide to how WoW: Forever changes the nine Alliance classes compared with Vanilla, written for Classic veterans.">
+<meta property="og:title" content="The Classes · Forever Codex">
+<meta property="og:description" content="A class-by-class guide to how WoW: Forever changes the nine Alliance classes compared with Vanilla, written for Classic veterans.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Forever Codex">
+<meta property="og:url" content="https://tuckerscottalleborn.github.io/forever-codex/classes/">
+<meta property="og:image" content="https://tuckerscottalleborn.github.io/forever-codex/classes/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Classes, book two of the Forever Codex: the nine Alliance class icons on an action bar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Classes · Forever Codex">
+<meta name="twitter:image" content="https://tuckerscottalleborn.github.io/forever-codex/classes/og.png">
+<meta name="theme-color" content="#cf9a52">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://tuckerscottalleborn.github.io/forever-codex/classes/">
+<title>The Classes · Forever Codex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya:ital,wght@0,400;0,600;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../codex.css">
+<style>
+/* Book II of the Forever Codex (tokens, frames, masthead and the bar's shell are in codex.css).
+   Layout: Alliance UI frame. A hero codex plate, a sticky 1–9 action bar, then one
+   "character sheet" per class (crest + ledger aside, spec column), ending in a choose-your-path board. */
+body.classes {
+  --atmos: radial-gradient(ellipse 80rem 40rem at 50% -10rem, color-mix(in oklab, var(--alliance) 22%, transparent), transparent 70%);
+}
+html { scroll-padding-top: 5.5rem }
+.wrap { max-width: var(--wide); margin-inline: auto }
+/* this book speaks in small capitals throughout */
+h1, h2, h3, h4 { font-family: var(--f-caps) }
+.prose { max-width: 66ch }
+.cls .prose b { color: var(--cc-ink) }
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(2.5rem, 6vw, 5rem) 2rem; display: grid; gap: 2rem }
+.hero-top { display: grid; gap: 1.25rem; justify-items: start }
+.thesis { font-size: var(--step-1); max-width: 40ch; line-height: 1.45 }
+.thesis em { color: var(--bronze-hi); font-style: normal }
+.hero-grid { display: grid; gap: 1.5rem; grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 60rem) { .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) } }
+.hero-copy { padding: 1.5rem; display: grid; gap: 1rem; align-content: start }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: .75rem; margin-top: .5rem }
+.fact { border-top: 1px solid var(--line); padding-top: .5rem }
+.fact b { display: block; font-family: var(--f-display); font-size: var(--step-1); color: var(--bronze-hi); font-weight: 400; font-variant-numeric: tabular-nums }
+.fact span { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted) }
+
+/* distance meter (XP-bar style) */
+.meter { padding: 1.5rem; display: grid; gap: .9rem }
+.meter-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; align-items: baseline }
+.meter-head h2 { font-size: var(--step-1) }
+.meter-head p { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted) }
+.m-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem }
+.m-row { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) 6.5rem; gap: .75rem; align-items: center; text-decoration: none }
+.m-row .nm { font-family: var(--f-display); color: var(--cc-ink); font-size: 1rem }
+.m-row .lv { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted); text-align: right }
+.xp { height: .8rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 2px; background: #000; border: 1px solid var(--line); border-radius: 2px }
+.xp i { display: block; background: color-mix(in oklab, var(--cc) 12%, #1a1a1a) }
+.xp i.on { background: linear-gradient(180deg, color-mix(in oklab, var(--cc) 75%, #fff), var(--cc) 55%, color-mix(in oklab, var(--cc) 60%, #000)) }
+.xp i.half { background: linear-gradient(90deg, var(--cc) 50%, color-mix(in oklab, var(--cc) 12%, #1a1a1a) 50%) }
+.m-row:hover .nm { text-decoration: underline; text-underline-offset: 3px }
+.m-scale { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) 6.5rem; gap: .75rem; font-family: var(--f-label); font-size: .75rem; color: var(--muted); letter-spacing: .05em }
+.m-scale span:nth-child(2) { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center }
+@media (max-width: 30rem) {
+  .m-row, .m-scale { grid-template-columns: 4.6rem minmax(0, 1fr) }
+  .m-row .lv, .m-scale > span:last-child { display: none }
+  .m-scale { font-size: .68rem; letter-spacing: .02em }
+  .m-scale span span { white-space: nowrap }
+}
+
+/* ---------- the bar: an action bar, keys 1–9 ---------- */
+.bar-cls { padding-block: .5rem }
+.bar-cls .bar-in { gap: .35rem }
+.bar-lbl { font-family: var(--f-label); font-size: .8rem; color: var(--muted); margin-right: .5rem; white-space: nowrap; letter-spacing: .06em }
+@media (max-width: 40rem) {
+  .bar-cls .brand, .bar-lbl { display: none }
+  .bar-cls .bar-in { gap: 4px; justify-content: space-between }
+  .bar .slot { width: min(2.6rem, calc((100vw - 32px - 32px) / 9)); height: auto; aspect-ratio: 1 }
+}
+
+/* ---------- sections ---------- */
+.sec { padding-block: clamp(3rem, 7vw, 5rem) 0; display: grid; gap: 1.75rem }
+.sec-head { display: grid; gap: .5rem; max-width: 60ch }
+.sec-head h2 { font-size: var(--step-3); color: var(--bronze-hi) }
+.sec-head p { color: var(--muted) }
+.rule { height: 12px; border: 0; margin: 0; background:
+  radial-gradient(circle, var(--bronze) 2.5px, transparent 3px) center / 12px 12px no-repeat,
+  linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent) center / 100% 1px no-repeat }
+
+.sys-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)) }
+.sys { padding: 1.25rem 1.35rem; display: grid; gap: .55rem; align-content: start; min-width: 0 }
+.sys h3 { font-size: var(--step-1); color: var(--bronze-hi) }
+.sys p { font-size: 1rem }
+.sys b { color: var(--ink) }
+.sys.alt { background: var(--panel-2) }
+.xref { color: var(--bronze-hi); text-underline-offset: 3px; font-style: italic }
+.races-l { display: grid; gap: .45rem }
+.races-l > div { display: flex; flex-wrap: wrap; gap: .35rem; align-items: center }
+.races-l small { font-family: var(--f-ui); font-size: .82rem; color: var(--muted) }
+.races-l .xref { font-size: .95rem }
+
+/* ---------- class sheets ---------- */
+.cls { padding-block: clamp(3rem, 7vw, 5rem) 0; display: grid; gap: 1.75rem; grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 62rem) { .cls { grid-template-columns: 19rem minmax(0, 1fr); gap: 2.5rem } }
+.cls-aside { display: grid; gap: 1.25rem; align-content: start; min-width: 0 }
+.crest { display: flex; gap: 1rem; align-items: center }
+.crest .slot { width: 4.25rem; height: 4.25rem; border-radius: 4px; pointer-events: none }
+.crest .slot kbd { font-size: .8rem }
+.crest h2 { font-size: var(--step-3); color: var(--cc-ink) }
+.crest .specs-l { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted); margin-top: .2rem }
+.dist { display: grid; gap: .35rem }
+.dist .xp { height: .9rem }
+.dist p { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted); display: flex; justify-content: space-between }
+.dist p b { color: var(--cc-ink) }
+
+.read { padding: 1.1rem 1.25rem; display: grid; gap: .5rem }
+.read p { font-style: italic; font-size: 1rem }
+
+/* in-game tooltip ledger */
+.tt {
+  background: color-mix(in oklab, var(--tt-bg) 94%, transparent);
+  border: 1px solid var(--tt-line); border-radius: 4px;
+  box-shadow: inset 0 0 0 1px #000, 0 6px 18px -8px #000;
+  padding: .8rem .9rem; font-family: var(--f-ui); font-size: .9rem; line-height: 1.35; color: var(--tt-white);
+}
+.tt-h { font-size: 1.02rem; font-weight: 700; color: var(--tt-white) }
+.tt-sub { color: var(--tt-gold); font-size: .82rem; margin-bottom: .5rem }
+.tt ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem }
+.tt li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .1rem .75rem }
+.tt li > span:first-child { min-width: 0 }
+.tt li > span:last-child { color: var(--tt-green); font-variant-numeric: tabular-nums; text-align: right; margin-left: auto }
+.tt s { color: var(--tt-grey); text-decoration-thickness: 1px; margin-right: .3rem }
+.tt-foot { color: var(--tt-grey); font-size: .78rem; margin-top: .55rem; font-style: italic }
+
+.cls-main { display: grid; gap: 2rem; min-width: 0 }
+.lede { font-size: var(--step-1); line-height: 1.45; max-width: 46ch; font-family: var(--f-body) }
+.base { display: grid; gap: .75rem }
+.base h3, .spec h3 { font-size: var(--step-2) }
+.base h3 { color: var(--bronze-hi) }
+.specs { display: grid; gap: 1.75rem }
+.spec { display: grid; gap: .75rem; padding-top: 1.5rem; border-top: 1px solid var(--line-soft) }
+.spec-head { display: flex; flex-wrap: wrap; gap: .6rem 1rem; align-items: baseline; justify-content: space-between }
+.spec h3 { color: var(--cc-ink) }
+.ms-row { display: flex; flex-wrap: wrap; gap: .4rem }
+.ms {
+  display: inline-flex; align-items: center; gap: .4rem; padding: .15rem .6rem .15rem .2rem;
+  border: 1px solid var(--line); border-radius: 999px; font-family: var(--f-ui); font-size: .82rem; color: var(--ink);
+  background: var(--panel);
+}
+.ms i {
+  font-style: normal; font-weight: 700; font-size: .72rem; width: 1.45rem; height: 1.45rem; border-radius: 50%;
+  display: grid; place-items: center; font-variant-numeric: tabular-nums;
+  background: linear-gradient(160deg, #e8e8ee, #8d8f9a); color: #15161b;
+}
+.ms.g16 i { background: linear-gradient(160deg, #ffe680, #c8901a 65%, #8a5a0a); color: #2a1800 }
+.ms.g31 i { background: linear-gradient(160deg, #ffb27a, #b8521c 65%, #6e2a08); color: #fff4e8 }
+
+/* ---------- choose your path ---------- */
+.paths { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)) }
+.path { padding: 1.25rem 1.35rem; display: grid; gap: .6rem; align-content: start }
+.path h3 { font-size: var(--step-1); color: var(--bronze-hi) }
+.path p { font-size: 1rem }
+.pills { display: flex; flex-wrap: wrap; gap: .4rem }
+.pill {
+  font-family: var(--f-label); font-weight: 700; font-size: .85rem; letter-spacing: .04em; text-decoration: none;
+  color: var(--cc-ink); padding: .1rem .6rem; border-radius: 3px;
+  border: 1px solid color-mix(in oklab, var(--cc) 55%, transparent);
+  background: color-mix(in oklab, var(--cc) 10%, transparent);
+}
+.pill:hover { background: color-mix(in oklab, var(--cc) 22%, transparent) }
+
+.tiers { list-style: none; margin: 0; padding: 0; display: grid; border: 1px solid var(--line); background: var(--panel) }
+.tier { display: grid; grid-template-columns: 3rem 13rem minmax(0, 1fr); gap: 1rem; align-items: center; padding: .9rem 1.25rem; border-bottom: 1px solid var(--line-soft) }
+.tier:last-child { border-bottom: 0 }
+.tier .rk { font-family: var(--f-display); font-size: var(--step-2); color: var(--bronze); font-variant-numeric: tabular-nums }
+.tier .who { display: grid; gap: .3rem }
+.tier .who span { font-family: var(--f-label); font-size: .8rem; color: var(--muted); letter-spacing: .05em }
+.tier p { font-size: 1rem; min-width: 0 }
+@media (max-width: 44rem) {
+  .tier { grid-template-columns: 2.25rem minmax(0, 1fr); gap: .35rem .75rem; align-items: start }
+  .tier p { grid-column: 2 }
+}
+
+.verdict { padding: clamp(1.5rem, 4vw, 2.5rem); display: grid; gap: 1rem; text-align: left }
+.verdict p.big { font-family: var(--f-display); font-size: var(--step-2); line-height: 1.3; color: var(--bronze-hi); max-width: 34ch }
+.verdict p { max-width: 66ch }
+
+/* ---------- podcast ---------- */
+.i-pause { display: none }
+.is-playing .i-play { display: none }
+.is-playing .i-pause { display: inline }
+.listen-hero { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; margin-top: .25rem }
+.wow-btn {
+  display: inline-flex; align-items: center; gap: .55rem; cursor: pointer;
+  font-family: var(--f-display); font-size: 1.05rem; letter-spacing: .03em; color: var(--btn-text);
+  padding: .6rem 1.2rem .6rem 1rem; border: 1px solid #000; border-radius: 4px;
+  background: linear-gradient(180deg, var(--btn-top), var(--btn-bot));
+  box-shadow: inset 0 0 0 1px var(--btn-edge), inset 0 2px 0 rgba(255,255,255,.22), 0 2px 0 #000;
+  text-shadow: 0 1px 0 #000;
+}
+.wow-btn:hover { filter: brightness(1.15) }
+.wow-btn:active { transform: translateY(1px) }
+.wow-btn svg { width: 1.05rem; height: 1.05rem; fill: currentColor }
+.listen-meta { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted) }
+.listen {
+  justify-self: start; display: inline-flex; align-items: center; gap: .5rem; cursor: pointer;
+  font-family: var(--f-ui); font-size: .92rem; font-weight: 500; color: var(--ink);
+  padding: .4rem .8rem .4rem .45rem; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--panel);
+}
+.listen:hover { border-color: var(--bronze) }
+.listen .ico { width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center; background: var(--panel-2); border: 1px solid var(--line) }
+.listen svg { width: .8rem; height: .8rem; fill: var(--cc-ink, var(--bronze-hi)) }
+.listen .dur { color: var(--muted); font-variant-numeric: tabular-nums }
+.listen.is-playing { border-color: var(--bronze-hi); box-shadow: 0 0 0 1px var(--bronze-hi) }
+.sec-head .listen { margin-top: .4rem }
+
+.player {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  padding: .6rem 16px calc(.6rem + env(safe-area-inset-bottom, 0px));
+  background: color-mix(in oklab, var(--bg) 92%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line); box-shadow: 0 -8px 24px -12px #000;
+}
+.player-in { max-width: 74rem; margin-inline: auto; display: grid; grid-template-columns: auto auto auto minmax(0, 1fr) auto; gap: .5rem; align-items: center }
+.pl-btn {
+  width: 2.5rem; height: 2.5rem; display: grid; place-items: center; cursor: pointer; padding: 0;
+  border: 1px solid #000; border-radius: 3px; color: var(--btn-text);
+  background: radial-gradient(circle at 35% 30%, #2a3348, #07090e 85%);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--btn-edge) 60%, transparent);
+}
+.pl-btn:hover { box-shadow: inset 0 0 0 1px var(--btn-text) }
+.pl-btn svg { width: 1.1rem; height: 1.1rem; fill: currentColor }
+.pl-btn.main { width: 2.9rem; height: 2.9rem }
+.pl-btn.main svg { width: 1.3rem; height: 1.3rem }
+.pl-info { min-width: 0; display: grid; gap: .15rem }
+.pl-title { font-family: var(--f-display); color: var(--bronze-hi); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1rem }
+.pl-title span { font-family: var(--f-ui); color: var(--muted); font-size: .8rem; margin-left: .4rem }
+.pl-track { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .6rem; align-items: center }
+.pl-track input { width: 100%; min-width: 0; margin: 0; accent-color: var(--bronze-hi) }
+.pl-time { font-family: var(--f-ui); font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap }
+.pl-close { background: none; border: 0; color: var(--muted); font-size: 1.5rem; line-height: 1; cursor: pointer; padding: .25rem .4rem }
+.pl-close:hover { color: var(--ink) }
+body.player-open { padding-bottom: 6rem }
+@media (max-width: 30rem) {
+  .player-in { gap: .35rem }
+  .pl-btn { width: 2.2rem; height: 2.2rem }
+  .pl-btn.main { width: 2.6rem; height: 2.6rem }
+  .pl-time { font-size: .72rem }
+}
+</style>
+</head>
+<body class="classes">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-warrior" viewBox="0 0 24 24"><path d="M20 4 L9.5 14.5 M6.5 11.5 L12.5 17.5 M8.5 15.5 L4 20 M20 4 L16 4.6 M20 4 L19.4 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-paladin" viewBox="0 0 24 24"><path d="M12.5 3.5 L20.5 11.5 L17.5 14.5 L9.5 6.5 Z" fill="currentColor"/><path d="M14 10 L4 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-hunter" viewBox="0 0 24 24"><path d="M7 3 Q 21 12 7 21" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M7 3 L7 21" stroke="currentColor" stroke-width="1"/><path d="M3 12 L18 12 M15 9.5 L18 12 L15 14.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-rogue" viewBox="0 0 24 24"><path d="M20.5 3.5 L18.5 8.5 L11.5 15.5 L8.5 12.5 L15.5 5.5 Z" fill="currentColor"/><path d="M7 11 L13 17 M9.5 14.5 L4.5 19.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-priest" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/><path d="M12 2.5 V5.5 M12 18.5 V21.5 M2.5 12 H5.5 M18.5 12 H21.5 M5.3 5.3 L7.4 7.4 M16.6 16.6 L18.7 18.7 M5.3 18.7 L7.4 16.6 M16.6 7.4 L18.7 5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-shaman" viewBox="0 0 24 24"><path d="M13.5 2 L5 13.5 H11 L10 22 L19 10 H13 Z" fill="currentColor"/></symbol>
+    <symbol id="i-mage" viewBox="0 0 24 24"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="currentColor"/></symbol>
+    <symbol id="i-warlock" viewBox="0 0 24 24"><path d="M12 2 C16 7 19 10 19 14.5 A7 7 0 0 1 5 14.5 C5 11.5 6.8 9.3 8.8 7.2 C9 10 10 11.2 11.6 11.8 C11 8.5 11 5 12 2 Z" fill="currentColor"/></symbol>
+    <symbol id="i-druid" viewBox="0 0 24 24"><path d="M5 19 C5 9 11 4 20 4 C20 13 15 19 5 19 Z" fill="currentColor"/><path d="M5 19 L14 10" stroke="#07090e" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-glass" viewBox="0 0 24 24">
+      <path d="M5 2.5h14v2H5zM5 19.5h14v2H5z" fill="currentColor"/>
+      <path d="M7 4.5c0 4.6 4.2 6 4.2 7.5S7 14.9 7 19.5h10c0-4.6-4.2-6-4.2-7.5S17 9.1 17 4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M8.7 7h6.6c-.7 1.8-2.5 2.9-3.3 4.3C11.2 9.9 9.4 8.8 8.7 7zM8.4 19.5c.4-2.3 2.2-3.5 3.6-3.8 1.4.3 3.2 1.5 3.6 3.8z" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+<a class="skip" href="#systems">Skip to the system changes</a>
+
+<header class="mast">
+  <div class="mast-in">
+    <a class="mast-brand" href="../"><svg aria-hidden="true"><use href="#i-glass"/></svg>Forever Codex</a>
+    <nav class="mast-books" aria-label="Books">
+      <a href="../lore/"><span class="bk-n">I</span>Lore</a>
+      <a href="../classes/" aria-current="page"><span class="bk-n">II</span>Classes</a>
+      <a href="../races/"><span class="bk-n">III</span>Races</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+<header class="hero" id="top">
+  <div class="hero-top">
+    <p class="label">forever codex · book ii · alliance classes, read against vanilla</p>
+    <h1 class="title">The Classes</h1>
+    <p class="thesis">A Classic skeleton with more complete specs and less mandatory jank.</p>
+    <div class="listen-hero" data-pod>
+      <button type="button" class="wow-btn" id="play-all"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg><span class="lbl">Listen to the episode</span></button>
+      <p class="listen-meta"><span id="pod-len">About 40 minutes</span>, narrated, with a chapter for each class</p>
+    </div>
+  </div>
+  <div class="hero-grid">
+    <div class="hero-copy frame">
+      <div class="prose">
+        <p>Forever is not Vanilla with every spec swapped for its modern Retail version. Outdoor mobs are still meant to take 10–15 seconds to kill. Threat, crowd control, mana, weapon swings, positioning and tactical dungeon play all still matter.</p>
+        <p>What changed are the places where Vanilla classes were incomplete, awkward or too passive, or had specs that barely did the job they advertised. New abilities rarely turn a class into Wrath, Cata or modern rotational WoW. Mostly they add a meaningful action every few seconds, repair a broken resource loop, make a spec viable, or give the old toolkit a real capstone to revolve around.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><b id="cd">Nov 4, 2026</b><span id="cd-sub">launch date</span></div>
+        <div class="fact"><b>Oct 16</b><span>latest build with class changes</span></div>
+        <div class="fact"><b>Level 40</b><span>dual specialization</span></div>
+        <div class="fact"><b>16 points</b><span>new gold-medal milestone</span></div>
+      </div>
+    </div>
+    <section class="meter frame" aria-labelledby="dist-h">
+      <div class="meter-head">
+        <h2 id="dist-h">Distance from Vanilla</h2>
+        <p>Editorial assessment, not Blizzard’s ranking</p>
+      </div>
+      <ol class="m-list">
+        <li><a class="m-row c-paladin" href="#paladin"><span class="nm">Paladin</span><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="lv">Very high</span></a></li>
+        <li><a class="m-row c-shaman" href="#shaman"><span class="nm">Shaman</span><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="lv">Very high</span></a></li>
+        <li><a class="m-row c-druid" href="#druid"><span class="nm">Druid</span><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="lv">Very high</span></a></li>
+        <li><a class="m-row c-hunter" href="#hunter"><span class="nm">Hunter</span><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="lv">High</span></a></li>
+        <li><a class="m-row c-priest" href="#priest"><span class="nm">Priest</span><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="lv">High</span></a></li>
+        <li><a class="m-row c-mage" href="#mage"><span class="nm">Mage</span><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="lv">High</span></a></li>
+        <li><a class="m-row c-warlock" href="#warlock"><span class="nm">Warlock</span><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="lv">High</span></a></li>
+        <li><a class="m-row c-rogue" href="#rogue"><span class="nm">Rogue</span><span class="xp"><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="lv">Moderate</span></a></li>
+        <li><a class="m-row c-warrior" href="#warrior"><span class="nm">Warrior</span><span class="xp"><i class="on"></i><i class="half"></i><i></i><i></i></span><span class="lv">Low–moderate</span></a></li>
+      </ol>
+      <div class="m-scale" aria-hidden="true"><span></span><span><span>low</span><span>moderate</span><span>high</span><span>very high</span></span><span></span></div>
+    </section>
+  </div>
+</header>
+</div>
+
+<nav class="bar bar-cls" aria-label="Jump to class">
+  <div class="bar-in">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#i-glass"/></svg><span>The Classes</span></a>
+    <span class="bar-lbl">press 1–9</span>
+    <a class="slot c-warrior" href="#warrior" data-k="1"><svg><use href="#i-warrior"/></svg><kbd>1</kbd><span class="sr">Warrior</span></a>
+    <a class="slot c-paladin" href="#paladin" data-k="2"><svg><use href="#i-paladin"/></svg><kbd>2</kbd><span class="sr">Paladin</span></a>
+    <a class="slot c-hunter" href="#hunter" data-k="3"><svg><use href="#i-hunter"/></svg><kbd>3</kbd><span class="sr">Hunter</span></a>
+    <a class="slot c-rogue" href="#rogue" data-k="4"><svg><use href="#i-rogue"/></svg><kbd>4</kbd><span class="sr">Rogue</span></a>
+    <a class="slot c-priest" href="#priest" data-k="5"><svg><use href="#i-priest"/></svg><kbd>5</kbd><span class="sr">Priest</span></a>
+    <a class="slot c-shaman" href="#shaman" data-k="6"><svg><use href="#i-shaman"/></svg><kbd>6</kbd><span class="sr">Shaman</span></a>
+    <a class="slot c-mage" href="#mage" data-k="7"><svg><use href="#i-mage"/></svg><kbd>7</kbd><span class="sr">Mage</span></a>
+    <a class="slot c-warlock" href="#warlock" data-k="8"><svg><use href="#i-warlock"/></svg><kbd>8</kbd><span class="sr">Warlock</span></a>
+    <a class="slot c-druid" href="#druid" data-k="9"><svg><use href="#i-druid"/></svg><kbd>9</kbd><span class="sr">Druid</span></a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ======================= SYSTEMS ======================= -->
+<section class="sec" id="systems" aria-labelledby="sys-h">
+  <div class="sec-head">
+    <p class="label">read this first</p>
+    <h2 id="sys-h">System changes that touch every class</h2>
+    <p>These change how every class feels before a single talent point is spent.</p>
+    <button type="button" class="listen" data-ch="systems" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to this chapter</span><span class="dur"></span></button>
+  </div>
+  <div class="sys-grid">
+    <article class="sys frame">
+      <h3>Classic trees, more checkpoints</h3>
+      <p>Rows still unlock progressively and the 31-point tree is intact. A new <b>16-point gold-medal milestone</b> joins the 11, 21 and 31 breakpoints. Talents that used to be bought just to make the class function, like <b>Divine Spirit</b>, <b>Blessing of Kings</b> and Improved Mark of the Wild–style effects, are now baseline. That frees points for actual decisions.</p>
+    </article>
+    <article class="sys frame">
+      <h3>Dual spec at level 40</h3>
+      <p>A huge lifestyle change for hybrids. Paladins, Priests, Druids and Shamans no longer pay the same respec tax for keeping a healing set and a solo set. Liking two specs of a class is now a good reason to pick it.</p>
+    </article>
+    <article class="sys frame">
+      <h3>Merged hit and crit</h3>
+      <p>Hit and crit are no longer split into physical and spell versions. Caster weapons carry real spell-power value, and <b>healing power counts one-third as damage</b>, so healing gear no longer makes solo play miserable.</p>
+    </article>
+    <article class="sys frame">
+      <h3>Downranking curtailed</h3>
+      <p>Spells far below the caster’s level get reduced benefit from spell power and lower proc chances. Blizzard’s example is a level 60 Mage spamming Rank 1 Frostbolt, which no longer gets normal Frostbite behavior. Where the trick did something useful, they add a real spell instead, such as the Mage’s <b>Frost Blast</b>.</p>
+    </article>
+    <article class="sys frame">
+      <h3>Raid-wide utility</h3>
+      <p>Late beta made <b>Battle Shout</b>, <b>Trueshot Aura</b>, <b>Moonkin Aura</b>, <b>Leader of the Pack</b>, and Shaman <b>Grace of Air, Strength of Earth, Windfury and Flametongue</b> all raid-wide. Salvation no longer competes with other Blessings. There is far less shuffling of five-player buff groups and stacking copies of a class to cover each subgroup.</p>
+    </article>
+    <article class="sys frame alt">
+      <h3>Alliance-specific notes</h3>
+      <p><b>Dwarf Shaman</b> is now an Alliance option. <b>Human Hunter</b> and <b>Gnome Priest</b> are also new combinations. The new <b>Skyborne</b> race can be Warriors, Hunters, Rogues, Druids and Mages. <a class="xref" href="../lore/#skyborne">Who the Skyborne are, in the lore book.</a></p>
+      <p>Weapon-skill racials are gone for good. After the final pre-launch pass on Oct 26, Human Sword Specialization is <b>Ruthless</b> (+1% crit, alongside +10% Spirit) and Dwarf’s short-lived Earth Fury is <b>Artisan’s Precision</b> (+1% hit). So Human is no longer the default melee race just because of swords. <a class="xref" href="../races/">Every racial, race by race, in the races book.</a></p>
+    </article>
+  </div>
+</section>
+
+<!-- ======================= WARRIOR ======================= -->
+<section class="cls c-warrior" id="warrior" aria-labelledby="warrior-h">
+  <aside class="cls-aside">
+    <div class="crest"><span class="slot c-warrior"><svg><use href="#i-warrior"/></svg><kbd>1</kbd></span><div><h2 id="warrior-h">Warrior</h2><p class="specs-l">Arms · Fury · Protection</p></div></div>
+    <div class="dist"><span class="xp"><i class="on"></i><i class="half"></i><i></i><i></i></span><p><span>Distance from Vanilla</span><b>Low–moderate</b></p></div>
+    <button type="button" class="listen" data-ch="warrior" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Warrior chapter</span><span class="dur"></span></button>
+    <div class="read frame"><p class="label">verdict</p><p>Warrior is the pick for a player who specifically doesn’t want Forever to feel like another expansion’s class design. Rage, stances, weapon swings and threat all still need managing. Forever mostly removes the places where Vanilla Warrior fought its own mechanics.</p></div>
+    <div class="races-l"><p class="label">race leans</p><div><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a></div><a class="xref" href="../races/#by-warrior">Spec by spec, in the races book</a></div>
+    <div class="tt" role="group" aria-label="Late-beta changes">
+      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Warrior</p>
+      <ul>
+        <li><span>Tactical Mastery</span><span>Baseline, lvl 14</span></li>
+        <li><span>Rage kept on stance swap</span><span>10</span></li>
+        <li><span>Victory Rush (lvl 20)</span><span>Heals 10% max HP</span></li>
+        <li><span>Retaliation / Shield Wall</span><span>15 min, unshared</span></li>
+        <li><span>Battle Shout</span><span><s>Party</s> Raid-wide</span></li>
+        <li><span>Slam</span><span>Immune to pushback</span></li>
+      </ul>
+    </div>
+  </aside>
+  <div class="cls-main">
+    <p class="lede">The safest pick for Classic, just better. Of all nine Alliance classes, Warrior changes least in concept.</p>
+    <div class="base">
+      <h3>Baseline</h3>
+      <div class="prose">
+        <p><b>Rage generation</b> is the first big change. Rage from taking damage is calculated before armor and absorbs, so better gear or a Priest shield no longer starves the Warrior of rage. Offensive rage is normalized much more tightly around weapon speed, and crits generate extra. Rage gets more predictable, but it still has to be managed.</p>
+        <p><b>Tactical Mastery</b> is baseline at level 14 and keeps 10 rage through stance changes at first. Stance dancing stays, but it no longer costs deep Arms points to make it pleasant. <b>Victory Rush</b> at level 20 heals for 10% of max health after a qualifying kill, so a low health bar no longer kills leveling momentum.</p>
+        <p><b>Recklessness, Retaliation and Shield Wall</b> no longer share a cooldown, and Retaliation and Shield Wall drop to 15 minutes. Rend and Thunder Clap scale with attack power, Thunder Clap works in Defensive Stance, and Sunder Armor threat scales with AP.</p>
+      </div>
+    </div>
+    <div class="specs">
+      <article class="spec">
+        <div class="spec-head"><h3>Arms</h3><div class="ms-row"><span class="ms g16"><i>16</i>Spearing Strike</span></div></div>
+        <div class="prose"><p><b>Weaponmaster</b> consolidates the old sword, axe and mace specializations. Axes and polearms favor crit, maces and staves get armor penetration, and swords keep their extra attacks. Arms is no longer locked to whichever weapon type the talents went into. <b>Bloodthrill</b> lets Rend enable Overpower, and Improved Slam no longer delays or interrupts the auto swing. Arms is now a deliberate weapon-master spec built around Overpower, Rend and Slam, not a wait for Mortal Strike.</p></div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Fury</h3><div class="ms-row"><span class="ms g16"><i>16</i>Raging Blows</span></div></div>
+        <div class="prose"><p><b>Raging Blows</b> improves Whirlwind’s dual-wield interaction and makes Cleave cheaper. Dual Wield Specialization helps the off-hand hit problem, Unbridled Rage works better with two-handers, and Enrage can trigger from taking damage, not only from crits. Death Wish now costs increased damage taken instead of armor and resistances. <b>Bloodthirst</b> loses its small heal and grants movement speed instead.</p></div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Protection</h3></div>
+        <div class="prose"><p>Still recognizable sword-and-board, with cleaner resource and threat systems. Shield Specialization gives more rage from blocks. <b>Master of Defense</b> generates rage from shield avoidance, <b>Vanguard</b> lets Charge lead into Defensive Stance play, and <b>Focused Rage</b> trims ability costs. Shield Slam scales better with block value. Improved Shield Block and Improved Taunt functionality move toward baseline.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PALADIN ======================= -->
+<section class="cls c-paladin" id="paladin" aria-labelledby="paladin-h">
+  <aside class="cls-aside">
+    <div class="crest"><span class="slot c-paladin"><svg><use href="#i-paladin"/></svg><kbd>2</kbd></span><div><h2 id="paladin-h">Paladin</h2><p class="specs-l">Holy · Protection · Retribution</p></div></div>
+    <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><p><span>Distance from Vanilla</span><b>Very high</b></p></div>
+    <button type="button" class="listen" data-ch="paladin" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Paladin chapter</span><span class="dur"></span></button>
+    <div class="read frame"><p class="label">verdict</p><p>For anyone who liked the idea of Vanilla Paladin but not what happened when tanking or playing Ret at 60, this is the clearest “play it again, it’s different” pick. It is still slow, mana-hungry, seal-and-judgment Paladin, but all three specs finally have enough to work with.</p></div>
+    <div class="races-l"><p class="label">race leans</p><div><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><a class="rp c-human" href="../races/#human">Human</a></div><a class="xref" href="../races/#by-paladin">Spec by spec, in the races book</a></div>
+    <div class="tt" role="group" aria-label="Late-beta changes">
+      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Paladin</p>
+      <ul>
+        <li><span>Consecration</span><span>Baseline, lvl 20</span></li>
+        <li><span>Consecration full effect</span><span>First 4 targets</span></li>
+        <li><span>Righteous Fury Holy threat</span><span><s>60%</s> 90%</span></li>
+        <li><span>Champion of the Light (Int→SP)</span><span><s>20/40/60%</s> 10/20/30%</span></li>
+        <li><span>Reckoning charges</span><span>Up to 4</span></li>
+        <li><span>Salvation</span><span>No longer a Blessing slot</span></li>
+      </ul>
+      <p class="tt-foot">Consecration’s spell power coefficient was also lowered significantly.</p>
+    </div>
+  </aside>
+  <div class="cls-main">
+    <p class="lede">One of the biggest overhauls in the game. Paladin is built to be a real healer, tank or Retribution damage dealer.</p>
+    <div class="base">
+      <h3>Baseline</h3>
+      <div class="prose">
+        <p>Paladins learn <b>Holy Strike</b>, an instant Holy weapon attack, early in leveling. More importantly, <b>Judgment no longer consumes the Seal</b>. That one change removes the judge-and-reseal routine that made Vanilla Paladin feel so passive.</p>
+        <p><b>Consecration</b> is baseline at 20 instead of a Holy talent. Only the first four enemies take full damage and threat. Late tuning cut its coefficient and raised Righteous Fury’s Holy threat from 60% to 90%, steering Prot toward deliberate tank threat instead of a scaling AoE bomb.</p>
+        <p><b>Reckoning</b> keeps its Classic behavior. It stores up to four charges and releases them on the next autoattack, and instant attacks no longer reset the swing.</p>
+      </div>
+    </div>
+    <div class="specs">
+      <article class="spec">
+        <div class="spec-head"><h3>Protection</h3><div class="ms-row"><span class="ms"><i>★</i>Seal of Fury</span></div></div>
+        <div class="prose">
+          <p><b>Seal of Fury</b> is the center of the spec. It adds Holy damage, favors fast attacks, and turns some of that into absorb shields while a shield is equipped. Its <b>Judgment taunts</b>, so Alliance Paladins finally have a real taunt.</p>
+          <p>Talents build around it. The Seal’s mitigation returns mana, <b>Swift Judgment</b> recovers Judgment faster, <b>Iron Creed</b> ties Holy Strike to mitigation, and <b>Templar’s Bulwark</b> is a big absorb cooldown based on max health. Prot now has a tank seal, a taunt, baseline Consecration, stronger threat, real mitigation, mana sustain and a serious defensive cooldown. Five-man groups no longer have to work around a missing taunt.</p>
+        </div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Retribution</h3><div class="ms-row"><span class="ms g16"><i>16</i>Sacred Arbiter</span></div></div>
+        <div class="prose">
+          <p><b>Sacred Arbiter</b> empowers Holy Strike and refreshes active Judgments. <b>Champion of the Light</b> converts Intellect into spell damage, cut late from 20/40/60% to 10/20/30%. <b>Vindication</b> now lowers the enemy’s attack power and raises the Paladin’s, and <b>Instrument of Law</b> improves Hammer of Wrath and threat.</p>
+          <p><b>Twist of Light</b> makes seal twisting a talent. Instead of an accidental swing-timer trick, the previous Seal echoes into the next melee hit. Ret keeps seal twisting, but it’s learned from the tree, not from a latency guide.</p>
+        </div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Holy</h3><div class="ms-row"><span class="ms g16"><i>16</i>Divine Favor</span><span class="ms g31"><i>31</i>Light’s Vigil</span></div></div>
+        <div class="prose">
+          <p>The smallest role change, but much more choice in which spell to cast. <b>Voice of Truth</b> resists silences and interrupts, <b>Reverence</b> improves in-combat Spirit regen, and <b>Infusion of Light</b> makes Holy Shock and Flash of Light crits speed up Holy Light. Holy Shock sits deeper in the tree on a much shorter cooldown than in Vanilla.</p>
+          <p><b>Light’s Vigil</b> is an expensive spell that resets Holy Shock, then adds a damage or party-heal payoff depending on the target. Holy now runs on Holy Shock instead of collapsing into rank-picked Flash of Light and Holy Light spam.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= HUNTER ======================= -->
+<section class="cls c-hunter" id="hunter" aria-labelledby="hunter-h">
+  <aside class="cls-aside">
+    <div class="crest"><span class="slot c-hunter"><svg><use href="#i-hunter"/></svg><kbd>3</kbd></span><div><h2 id="hunter-h">Hunter</h2><p class="specs-l">Beast Mastery · Marksmanship · Survival</p></div></div>
+    <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p><span>Distance from Vanilla</span><b>High</b></p></div>
+    <button type="button" class="listen" data-ch="hunter" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Hunter chapter</span><span class="dur"></span></button>
+    <div class="read frame"><p class="label">verdict</p><p>A Hunter that still follows old-school Hunter rules but has three genuinely different fantasies. Compared with Vanilla, Survival is close to a new spec.</p></div>
+    <div class="races-l"><p class="label">race leans</p><div><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a></div><a class="xref" href="../races/#by-hunter">Spec by spec, in the races book</a></div>
+    <div class="tt" role="group" aria-label="Late-beta changes">
+      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Hunter</p>
+      <ul>
+        <li><span>Aimed Shot</span><span>All Hunters, lvl 20</span></li>
+        <li><span>Croc Dismember heal cut</span><span><s>50%</s> 25%</span></li>
+        <li><span>Bat Sonic Blast cast slow</span><span>Halved</span></li>
+        <li><span>Trueshot Aura</span><span>Raid-wide</span></li>
+        <li><span>Active traps</span><span>1 Fire + 1 Ice</span></li>
+        <li><span>Auto Shot stand still</span><span>0.5 sec</span></li>
+      </ul>
+      <p class="tt-foot">Dismember’s duration and cooldown were also nerfed, and Bird of Prey’s Mine! was restrained.</p>
+    </div>
+  </aside>
+  <div class="cls-main">
+    <p class="lede">More changed than the ranged rotation suggests. The three trees are now different ways to play, not three ways to amplify the same ranged pet base.</p>
+    <div class="base">
+      <h3>Baseline</h3>
+      <div class="prose">
+        <p><b>Aimed Shot</b> is learned by every Hunter at 20. Arcane Shot no longer shares a cooldown with it; <b>Multi-Shot does</b>. Traps work in combat, and fire and ice traps run on separate cooldowns. The latest build fixed it so one Fire Trap and one Ice Trap can be active at once. Traps become part of combat, not just pull prep and Feign Death gymnastics.</p>
+        <p><b>Pets</b> get one of the deepest redesigns. They inherit stats from the Hunter’s gear, every family gets basic tools such as Bite or Claw and Dash or Dive, and each family has its own <b>utility ability</b>. Blizzard keeps nerfing the strongest of those, so family choice matters more than in Vanilla, but early-beta pet utility is unlikely to survive intact.</p>
+        <p>The Oct 16 build added an option to switch automatically between Auto Attack and Auto Shot. Auto Shot still needs half a second standing still, but it can fire during Aimed and Sniper Shot casts. Shot timing remains part of the class.</p>
+      </div>
+    </div>
+    <div class="specs">
+      <article class="spec">
+        <div class="spec-head"><h3>Beast Mastery</h3><div class="ms-row"><span class="ms g16"><i>16</i>Summon Hawk</span></div></div>
+        <div class="prose"><p><b>Focused Fire</b> and <b>Summon Hawk</b>, a temporary second attacker tied to the Hunter’s target, make BM more active. It isn’t modern BM’s constant zoo, but there is more going on than a bigger pet auto-attack.</p></div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Marksmanship</h3><div class="ms-row"><span class="ms g31"><i>31</i>Sniper Shot</span></div></div>
+        <div class="prose"><p><b>Lone Wolf</b> gives a large damage bonus when played without a pet. Trueshot Aura moves deeper into MM and becomes raid-wide. <b>Sniper Shot</b>, the 31-point capstone, is a long-cast, extreme-range precision shot. For Hunters who only kept a pet because Vanilla forced it, this spec explicitly supports leaving it behind.</p></div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Survival</h3><div class="ms-row"><span class="ms"><i>★</i>Melee hybrid</span></div></div>
+        <div class="prose">
+          <p>The dramatic one. Survival is no longer mostly a PvP and control talent collection. It is an intentional <b>melee and ranged hybrid</b>. <b>Predator’s Edge</b> boosts melee crit damage and off-hand play, <b>Expose Prey</b> lets attacks on a marked target enable Mongoose Bite, <b>Strider Kick</b> is a weapon attack tied to movement, and <b>Lacerating Strikes</b> turns repeated Mongoose Bites into a bleed. Resourcefulness folds traps and crits from both ranges into the spec.</p>
+          <p>The Classic <b>dead zone</b> remains. Survival is designed to move through the ranges with useful actions on both sides, not to erase range management.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ROGUE ======================= -->
+<section class="cls c-rogue" id="rogue" aria-labelledby="rogue-h">
+  <aside class="cls-aside">
+    <div class="crest"><span class="slot c-rogue"><svg><use href="#i-rogue"/></svg><kbd>4</kbd></span><div><h2 id="rogue-h">Rogue</h2><p class="specs-l">Assassination · Combat · Subtlety</p></div></div>
+    <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i></i><i></i></span><p><span>Distance from Vanilla</span><b>Moderate</b></p></div>
+    <button type="button" class="listen" data-ch="rogue" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Rogue chapter</span><span class="dur"></span></button>
+    <div class="read frame"><p class="label">verdict</p><p>For someone who already likes Classic Rogue and wants better-defined trees. It is not the class for anyone after something radically new.</p></div>
+    <div class="races-l"><p class="label">race leans</p><div><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a></div><a class="xref" href="../races/#by-rogue">Spec by spec, in the races book</a></div>
+    <div class="tt" role="group" aria-label="Late-beta changes">
+      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Rogue</p>
+      <ul>
+        <li><span>Expose Armor</span><span>= 5 Sunders</span></li>
+        <li><span>Expose Armor + Sunder</span><span>Both can apply</span></li>
+        <li><span>Mutilate</span><span>2 combo points</span></li>
+        <li><span>Sap</span><span>Doesn’t break Stealth</span></li>
+        <li><span>Poisons + stones</span><span>Coexist</span></li>
+        <li><span>One-handed axes</span><span>Usable</span></li>
+      </ul>
+    </div>
+  </aside>
+  <div class="cls-main">
+    <p class="lede">Classic Rogue with clearer specs, not a reinvention. Energy, combo points, positionals, poisons, stealth and control are all kept.</p>
+    <div class="base">
+      <h3>Baseline</h3>
+      <div class="prose">
+        <p><b>Poisons</b> carry more charges and stack with sharpening and weight stones. Sap no longer breaks Stealth. Distract also lowers enemy stealth detection. <b>Expose Armor</b> equals five Sunders and no longer blocks Warriors from applying Sunder Armor, which ends an old raid-debuff conflict.</p>
+        <p>Blizzard’s stated target is for Rogue to have <b>the highest or among the highest single-target damage</b> in a Patchwerk-style fight, trading utility and range for raw melee damage. That is a design goal, not proof of launch balance, so it’s no reason on its own to pick Rogue.</p>
+      </div>
+    </div>
+    <div class="specs">
+      <article class="spec">
+        <div class="spec-head"><h3>Assassination</h3><div class="ms-row"><span class="ms"><i>21</i>Mutilate</span><span class="ms g31"><i>31</i>Venom</span></div></div>
+        <div class="prose"><p>The tree that changes most. It becomes the explicit <b>dagger and poison spec</b>. <b>Mutilate</b> hits with both daggers, does more to poisoned targets and awards two combo points. <b>Venom</b> is a finisher that buffs poison damage and application. PvE play centers on keeping <b>Slice and Dice and Venom</b> up, with poisons as the core of the spec. Malice feeds poison crits, and Improved Poisons is about keeping the poison engine running.</p></div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Combat</h3></div>
+        <div class="prose"><p>Still the most recognizably Classic tree. <b>Hack and Slash</b> merges several weapon specializations, so a raid weapon drop is rarely the wrong type for the talents. Precision applies more broadly, including to poisons and spell effects, Backstab gets more support, and <b>Flawless Execution</b> lowers Eviscerate’s energy cost so finishers flow better.</p></div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Subtlety</h3><div class="ms-row"><span class="ms g16"><i>16</i>Premeditation</span><span class="ms g31"><i>31</i>Thousand Cuts</span></div></div>
+        <div class="prose"><p>Still the stealth, setup and control tree, now with a clearer damage loop. Hemorrhage now boosts the Rogue’s own Rupture instead of acting mainly as a raid physical-damage debuff. <b>Cutthroat</b> lets Backstab open up Ambush-like attacks in combat, and <b>Thousand Cuts</b> makes Rupture ticks lower the energy cost of Hemorrhage and Backstab.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PRIEST ======================= -->
+<section class="cls c-priest" id="priest" aria-labelledby="priest-h">
+  <aside class="cls-aside">
+    <div class="crest"><span class="slot c-priest"><svg><use href="#i-priest"/></svg><kbd>5</kbd></span><div><h2 id="priest-h">Priest</h2><p class="specs-l">Discipline · Holy · Shadow</p></div></div>
+    <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p><span>Distance from Vanilla</span><b>High</b></p></div>
+    <button type="button" class="listen" data-ch="priest" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Priest chapter</span><span class="dur"></span></button>
+    <div class="read frame"><p class="label">verdict</p><p>Priest suits a player who wants to stay recognizably Classic but feel the spec matter in every fight. Disc is the spec veterans will most need to relearn.</p></div>
+    <div class="races-l"><p class="label">race leans</p><div><a class="rp c-gnome" href="../races/#gnome">Gnome</a><a class="rp c-human" href="../races/#human">Human</a><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a></div><a class="xref" href="../races/#by-priest">Spec by spec, in the races book</a></div>
+    <div class="tt" role="group" aria-label="Late-beta changes">
+      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Priest</p>
+      <ul>
+        <li><span>Devouring Plague cooldown</span><span><s>60 sec</s> 24 sec</span></li>
+        <li><span>Shadow Word: Death cooldown</span><span><s>12 sec</s> 18 sec</span></li>
+        <li><span>Vampiric Embrace</span><span>30 sec CD, unresistable</span></li>
+        <li><span>Devouring Contagion</span><span>+2 targets</span></li>
+        <li><span>Fear Ward, Devouring Plague</span><span>All races</span></li>
+        <li><span>Lightwell</span><span>Removed</span></li>
+      </ul>
+    </div>
+  </aside>
+  <div class="cls-main">
+    <p class="lede">Many tools from later expansions, with Classic mana management and cast speed intact. All three specs become much more complete.</p>
+    <div class="base">
+      <h3>Baseline</h3>
+      <div class="prose">
+        <p><b>Fear Ward and Devouring Plague are no longer race-locked</b>, and every race still gets two racial Priest spells of its own. <b>Divine Spirit</b> and <b>Shadow Word: Death</b> are baseline. Prayer of Healing can target another party, several Priests can keep Renew on one target, and Fade drops more threat.</p>
+        <p>For the Alliance, Humans have Divine Grace and Feedback, Dwarves Desperate Prayer and Chastise, Night Elves a reworked Starshards and Elune’s Grace, and new <b>Gnome Priests</b> Confounding Flash and Contingency Plan. Race still matters, but raids no longer need a Dwarf for Fear Ward. <a class="xref" href="../races/#by-priest">Race leans for each Priest spec.</a></p>
+      </div>
+    </div>
+    <div class="specs">
+      <article class="spec">
+        <div class="spec-head"><h3>Discipline</h3><div class="ms-row"><span class="ms"><i>21</i>Penance</span></div></div>
+        <div class="prose">
+          <p>The biggest change from Vanilla. Disc used to be the tree holding Power Infusion, Inner Focus, mana efficiency and some shields. Now it is a <b>shield-healing and damage-weaving</b> spec. <b>Penance</b> can damage or heal. <b>Soul Warding</b> improves repeated shields, <b>Renewed Hope</b> keys off Weakened Soul, and <b>Divine Aegis</b> turns direct-heal crits into absorbs.</p>
+          <p><b>Power in Light</b> links Smite and Penance to targets carrying Holy Fire or Shadow Word: Pain, so damage gets woven in on purpose, not just when healing is quiet. The Oct 16 build refined this further and moved Mental Strength earlier in the tree.</p>
+        </div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Holy</h3><div class="ms-row"><span class="ms g16"><i>16</i>Binding Heal</span><span class="ms g31"><i>31</i>Prayer of Mending</span></div></div>
+        <div class="prose"><p><b>Litany of Light</b> rewards switching between different heals instead of repeating one. <b>Prayer of Mending</b> bounces between allies, as veterans remember it. Lightwell is removed. Vanilla Holy had many good ranks but settled on the efficient few, and Forever rewards using the whole healing kit.</p></div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Shadow</h3></div>
+        <div class="prose">
+          <p>Fixes famous Vanilla limits without becoming modern Shadow. Shadowform allows more non-healing spells and adds big mana efficiency and crit damage. <b>Shadow Weaving is now a personal buff</b>, so a Shadow Priest is less likely to be brought just as the Warlocks’ debuff Priest.</p>
+          <p><b>Vampiric Embrace</b> becomes an activated 30-second cooldown. <b>Devouring Contagion</b> spreads Devouring Plague to two more targets, and <b>Early Demise</b> gives Shadow Word: Death an execute role. <b>Dark Inspiration</b> makes Mind Blast and fully channeled Mind Flays raise Spirit for the party, and Improved Mind Flay ramps damage on each tick, so the filler finally has a reason to finish the channel.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SHAMAN ======================= -->
+<section class="cls c-shaman" id="shaman" aria-labelledby="shaman-h">
+  <aside class="cls-aside">
+    <div class="crest"><span class="slot c-shaman"><svg><use href="#i-shaman"/></svg><kbd>6</kbd></span><div><h2 id="shaman-h">Shaman</h2><p class="specs-l">Elemental · Enhancement · Restoration</p></div></div>
+    <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><p><span>Distance from Vanilla</span><b>Very high</b></p></div>
+    <button type="button" class="listen" data-ch="shaman" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Shaman chapter</span><span class="dur"></span></button>
+    <div class="read frame"><p class="label">verdict</p><p>For an Alliance veteran who wants something that still feels like old WoW but couldn’t be played on Alliance before, Dwarf Shaman belongs high on the shortlist. Totems still get placed and thought about. They just stop eating half the globals to rebuild the same four.</p></div>
+    <div class="races-l"><p class="label">race leans</p><div><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a> <small>the only Alliance Shaman race</small></div><a class="xref" href="../races/#by-shaman">Spec by spec, in the races book</a></div>
+    <div class="tt" role="group" aria-label="Late-beta changes">
+      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Shaman</p>
+      <ul>
+        <li><span>Totem global cooldown</span><span><s>1.5 sec</s> 1 sec</span></li>
+        <li><span>Buff totem duration</span><span><s>2 min</s> 5 min</span></li>
+        <li><span>Chain Lightning mana</span><span>About −35%</span></li>
+        <li><span>Grace of Air + Windfury/FT</span><span>Coexist</span></li>
+        <li><span>Elemental Mastery</span><span>Back at 31, 3 min</span></li>
+        <li><span>Mana Tide</span><span>New rank at lvl 38</span></li>
+      </ul>
+      <p class="tt-foot">Fire Nova trades coefficient and base damage for a large mana cost cut.</p>
+    </div>
+  </aside>
+  <div class="cls-main">
+    <p class="lede">The most novel Alliance choice by definition: Alliance couldn’t roll a Shaman in Vanilla. It is also heavily redesigned.</p>
+    <div class="base">
+      <h3>Baseline</h3>
+      <div class="prose">
+        <p>Even for someone who knows Horde Vanilla Shaman well, this has one of the longest quality-of-life lists in the game. Totems use a <b>one-second GCD</b>, and long buff totems last <b>five minutes</b>. There is a dedicated totem interface. Weapon imbues last much longer and stack with temporary weapon enchants. <b>Fire Nova</b> is now a spell fired through the placed fire totem.</p>
+        <p><b>Totemic Recall</b> refunds some mana and <b>Totemic Projection</b> moves existing totems. Three presets, <b>Call of the Elements, Call of the Spirits and Call of the Ancestors</b>, drop a whole set at once, which removes most of the four-global totem piano.</p>
+        <p>As of Oct 16, Grace of Air can run alongside Windfury or Flametongue, though those two still exclude each other. Grace of Air, Strength of Earth, Windfury and Flametongue are all raid-wide.</p>
+      </div>
+    </div>
+    <div class="specs">
+      <article class="spec">
+        <div class="spec-head"><h3>Elemental</h3><div class="ms-row"><span class="ms g16"><i>16</i>Earthbound</span><span class="ms"><i>21</i>Lava Burst</span><span class="ms g31"><i>31</i>Elemental Mastery</span></div></div>
+        <div class="prose">
+          <p>Lightning Bolt and Chain Lightning have faster base casts than in Vanilla. An earlier deep dive dropped Elemental Mastery and put Lava Burst deeper in the tree. The <b>Oct 16 build reversed that</b>: Lava Burst moved up to 21 and Elemental Mastery returned at 31.</p>
+          <p><b>Elemental Mastery</b> is a three-minute cooldown. For 15 seconds it shortens Lightning Bolt and Lava Burst casts and removes Chain Lightning’s cooldown. <b>Earthbound</b> builds on Earthbind and roots, Lightning Overload keeps the proc identity, and Flame Shock duration feeds Lava Burst. That makes a Flame Shock, Lava Burst, Lightning Bolt and Chain Lightning rotation with a burst window.</p>
+        </div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Enhancement</h3><div class="ms-row"><span class="ms g16"><i>16</i>Stormstrike</span></div></div>
+        <div class="prose">
+          <p><b>Mental Dexterity</b> and <b>Mental Quickness</b>-style talents convert Intellect into attack power and spell or healing power. Improved Ghost Wolf works better indoors and can become instant. <b>Stormstrike</b> moves up to 16 points on an eight-second cooldown, and its debuff boosts the next Lightning Bolt, Chain Lightning or Earth Shock. <b>Maelstrom Weapon</b> speeds those casts as the fight goes on, potentially to instant.</p>
+          <p>The two-handed axe and mace fantasy stays. It isn’t Retail’s dual-wield-only Enhancement, but melee and spellcasting are now connected instead of sitting side by side. Spirit Weapons and Rockbiter give it some threat and defense, but Blizzard frames that as <b>off-tanking or small-group tanking</b>, not a fourth fully supported raid tank.</p>
+        </div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Restoration</h3><div class="ms-row"><span class="ms g16"><i>16</i>Mana Tide</span><span class="ms g31"><i>31</i>Riptide</span></div></div>
+        <div class="prose"><p><b>Water Shield</b> restores mana and can now trigger from any Shaman spell crit, not just heal crits. <b>Riptide</b> is an instant heal plus HoT that strengthens Chain Heal on that target. With better Spirit regen while casting, Resto is about setting up Chain Heal and juggling several spells, not just spamming it.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= MAGE ======================= -->
+<section class="cls c-mage" id="mage" aria-labelledby="mage-h">
+  <aside class="cls-aside">
+    <div class="crest"><span class="slot c-mage"><svg><use href="#i-mage"/></svg><kbd>7</kbd></span><div><h2 id="mage-h">Mage</h2><p class="specs-l">Arcane · Fire · Frost</p></div></div>
+    <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p><span>Distance from Vanilla</span><b>High</b></p></div>
+    <button type="button" class="listen" data-ch="mage" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Mage chapter</span><span class="dur"></span></button>
+    <div class="read frame"><p class="label">verdict</p><p>A strong pick for anyone whose Vanilla complaint was that the toolkit is great but raiding becomes one button. Forever’s answer isn’t Retail Mage. It’s Classic Mage with an engine for each spec. Arcane in particular is a newly legitimate spec.</p></div>
+    <div class="races-l"><p class="label">race leans</p><div><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-gnome" href="../races/#gnome">Gnome</a><a class="rp c-human" href="../races/#human">Human</a></div><a class="xref" href="../races/#by-mage">Spec by spec, in the races book</a></div>
+    <div class="tt" role="group" aria-label="Late-beta changes">
+      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Mage</p>
+      <ul>
+        <li><span>Arcane Blast cast</span><span>1.5 sec</span></li>
+        <li><span>Arcane Blast stack</span><span>+15% Int as SP, ×4</span></li>
+        <li><span>Arcane Blast stack duration</span><span>15 sec from first stack</span></li>
+        <li><span>Arcane Blast damage</span><span>−40%</span></li>
+        <li><span>Ice Lance vs. frozen</span><span><s>+300%</s> +200%</span></li>
+        <li><span>Critical Mass (5 pts)</span><span>10% crit</span></li>
+        <li><span>Fire Power</span><span>Up to 12%</span></li>
+        <li><span>Frost Blast (lvl 24)</span><span>1.5 sec, 40% slow</span></li>
+      </ul>
+    </div>
+  </aside>
+  <div class="cls-main">
+    <p class="lede">The same Classic control chassis with much more developed damage specs. Blizzard adds rotation without replacing the utility and control class.</p>
+    <div class="base">
+      <h3>Baseline</h3>
+      <div class="prose">
+        <p><b>Frostfire Bolt</b> arrives at 40. It counts as both Fire and Frost, taking whichever resistance and damage interactions are better, and exists to make Fire/Frost hybrid builds legitimate.</p>
+        <p>Blizzard also goes after the most degenerate mass-control and farming patterns. Improved Blizzard slows less, and Cone of Cold’s large-group control was toned down. The October build restored full Cone control on the <b>first four targets</b>, keeping small-pack power without letting Mages dominate huge mob trains.</p>
+        <p>Rank 1 Frostbolt is penalized, so <b>Frost Blast</b> arrives at 24: a 1.5-second Frost cast with a 40% slow that benefits from Frostbolt talents. It keeps the control Rank 1 Frostbolt used to provide and closes the downranking loophole.</p>
+      </div>
+    </div>
+    <div class="specs">
+      <article class="spec">
+        <div class="spec-head"><h3>Arcane</h3><div class="ms-row"><span class="ms g16"><i>16</i>Arcane Wrath</span></div></div>
+        <div class="prose">
+          <p>No longer a support tree for another school. It is a real damage spec. Each <b>Arcane Blast</b> grants spell damage equal to 15% of the Mage’s Intellect, up to four stacks, and makes the next one cost more. Stacks last 15 seconds from the first application. Raw damage was cut 40% as part of that redesign.</p>
+          <p>That makes a Classic resource puzzle: ramp up a large spell-power state, then decide how hard to push it before the mana cost ramp hurts. <b>Missile Barrage</b> can proc from Arcane Missiles and moved much earlier. <b>Arcane Wrath</b> is a long cast that scales partly from <b>maximum mana</b>, so the mana pool becomes an offensive stat.</p>
+        </div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Fire</h3></div>
+        <div class="prose"><p>Much more proc-driven. <b>Heating Up</b> builds toward faster Pyroblasts: every Fire Blast adds a charge, and a Fire Blast crit adds two. <b>Critical Mass</b> reaches 10% crit at five points. <b>Fire Power</b> adds damage per Fire effect of the Mage’s on the target, up to 12%. Ignite is tracked per caster, ending the old shared-Ignite ownership mess. The play is stacking Fire effects on a target and turning crits into Pyroblasts, instead of spamming Fireball, keeping Scorch up and hoping Ignite behaves.</p></div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Frost</h3></div>
+        <div class="prose">
+          <p>Gets the most familiar later-WoW imports. <b>Fingers of Frost</b> lets attacks treat the target as frozen for Shatter, and <b>Ice Lance</b> hits much harder on frozen targets (+200%, down from +300%).</p>
+          <p><b>Winter’s Chill</b> is completely redesigned. It is no longer a stacking Frost crit debuff. Frostbolt, Frost Blast and Fingers-empowered Ice Lance build stacks, and the next <b>Cone of Cold</b> consumes them for much more damage. Cone becomes the finisher of a single-target or small-pack combo, not just an emergency slow.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= WARLOCK ======================= -->
+<section class="cls c-warlock" id="warlock" aria-labelledby="warlock-h">
+  <aside class="cls-aside">
+    <div class="crest"><span class="slot c-warlock"><svg><use href="#i-warlock"/></svg><kbd>8</kbd></span><div><h2 id="warlock-h">Warlock</h2><p class="specs-l">Affliction · Demonology · Destruction</p></div></div>
+    <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p><span>Distance from Vanilla</span><b>High</b></p></div>
+    <button type="button" class="listen" data-ch="warlock" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Warlock chapter</span><span class="dur"></span></button>
+    <div class="read frame"><p class="label">verdict</p><p>Fewer headline fixes than Paladin or Druid, because Vanilla Warlock already worked, but the specs are much better defined. For anyone who loves the Classic Warlock toolbox but dislikes how optimal PvE builds blur the trees together, this is a big improvement.</p></div>
+    <div class="races-l"><p class="label">race leans</p><div><a class="rp c-gnome" href="../races/#gnome">Gnome</a><a class="rp c-human" href="../races/#human">Human</a></div><a class="xref" href="../races/#by-warlock">Spec by spec, in the races book</a></div>
+    <div class="tt" role="group" aria-label="Late-beta changes">
+      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Warlock</p>
+      <ul>
+        <li><span>Shadow Mastery</span><span><s>1–5%</s> 2/4/6/8/10%</span></li>
+        <li><span>Malediction</span><span>Replaced by Grim Reach</span></li>
+        <li><span>Curse of Agony / Doom</span><span>Now Banes</span></li>
+        <li><span>Curse of Shadow</span><span>Removed</span></li>
+        <li><span>Life Tap</span><span>Scales with Spirit</span></li>
+        <li><span>Firestone / Spellstone</span><span>Imbues, coexist with oils</span></li>
+      </ul>
+    </div>
+  </aside>
+  <div class="cls-main">
+    <p class="lede">The cleanest three-way spec split among the pure casters.</p>
+    <div class="base">
+      <h3>Baseline</h3>
+      <div class="prose">
+        <p><b>Curse of Agony and Curse of Doom become Banes</b>, a separate category from utility Curses, so a Warlock’s DoT no longer replaces the group’s utility curse. Curse of the Elements now covers more magic schools, and Curse of Shadow is removed as redundant.</p>
+        <p>Firestones and Spellstones are weapon imbues that stack with oils. <b>Life Tap scales with Spirit</b>, tying caster gear directly to the health-to-mana engine. Drain Soul generates Soul Shards more reliably during the channel, and demons inherit more of the Warlock’s stats.</p>
+      </div>
+    </div>
+    <div class="specs">
+      <article class="spec">
+        <div class="spec-head"><h3>Affliction</h3><div class="ms-row"><span class="ms g31"><i>31</i>Wrack</span></div></div>
+        <div class="prose"><p>A real <b>DoT, crit and drain</b> spec. <b>Pandemic</b> lets DoTs and drains crit, <b>Soul Siphon</b> rewards stacking Affliction effects on a target, and <b>Wrack</b> is a channeled Shadow filler that amplifies the DoTs already running. Grim Reach extends Affliction range. Deep Affliction now has a reason to stay deep at endgame instead of being a utility stop before Shadow Bolt spam takes over.</p></div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Demonology</h3><div class="ms-row"><span class="ms g31"><i>31</i>Demonic Pact</span></div></div>
+        <div class="prose"><p><b>Demonic Sacrifice</b> moves much earlier, and <b>Demonic Pact</b> keeps one demon’s sacrifice bonus while summoning and keeping another. That resolves the Vanilla joke that the famous Demo-adjacent playstyle was killing the demon for a buff. <b>Decimation</b> adds a Soul Fire execute, <b>Demonic Brand</b> improves pet threat and damage, and Soul Link sits in the deeper survivability package.</p></div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Destruction</h3><div class="ms-row"><span class="ms g16"><i>16</i>Conflagrate</span><span class="ms g31"><i>31</i>Incinerate</span></div></div>
+        <div class="prose"><p>Shadow and Fire casts now strengthen each other through new talents. <b>Bane of Havoc</b> marks a second target that takes part of the damage dealt elsewhere, adding deliberate two-target cleave. <b>Incinerate</b> hits much harder on targets with Immolate, giving Fire Destro a real filler instead of a set of talents around Shadow Bolt and Conflagrate.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= DRUID ======================= -->
+<section class="cls c-druid" id="druid" aria-labelledby="druid-h">
+  <aside class="cls-aside">
+    <div class="crest"><span class="slot c-druid"><svg><use href="#i-druid"/></svg><kbd>9</kbd></span><div><h2 id="druid-h">Druid</h2><p class="specs-l">Balance · Feral · Restoration</p></div></div>
+    <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><p><span>Distance from Vanilla</span><b>Very high</b></p></div>
+    <button type="button" class="listen" data-ch="druid" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Druid chapter</span><span class="dur"></span></button>
+    <div class="read frame"><p class="label">verdict</p><p>Anyone who knows Classic deeply will notice the changes constantly. Weapon upgrades matter in forms, powershifting is formalized, Bear has better threat tools, Balance has a spell cycle and Resto gets core healing tools. It is still Vanilla Druid, minus a remarkable number of its structural oddities.</p></div>
+    <div class="races-l"><p class="label">race leans</p><div><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a></div><a class="xref" href="../races/#by-druid">Spec by spec, in the races book</a></div>
+    <div class="tt" role="group" aria-label="Late-beta changes">
+      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Druid</p>
+      <ul>
+        <li><span>Omen of Clarity</span><span>Baseline, lvl 20</span></li>
+        <li><span>Lacerate</span><span>Baseline, lvl 42</span></li>
+        <li><span>Tiger’s Fury</span><span><s>Removed</s> Shifting Power</span></li>
+        <li><span>Furor, Cat → Bear → Cat</span><span>Energy kept</span></li>
+        <li><span>Moonkin Aura</span><span>Raid-wide, spell crit</span></li>
+        <li><span>Barkskin</span><span>Usable in forms</span></li>
+      </ul>
+      <p class="tt-foot">Energy does not regenerate while in Bear Form.</p>
+    </div>
+  </aside>
+  <div class="cls-main">
+    <p class="lede">Perhaps the deepest Classic-plus redesign. The changes reach the engine level.</p>
+    <div class="base">
+      <h3>Baseline</h3>
+      <div class="prose">
+        <p><b>Shapeshifted melee damage scales with the weapon’s DPS</b>, while forms keep fixed attack speeds. That ends the Vanilla assumption that a Feral weapon is a stat stick and that oddities like Manual Crowd Pummeler define the spec. Better weapons now mean better Cat and Bear damage, and weapon effects can work in forms.</p>
+        <p>Forms can use more objects, consumables and racials, and <b>Barkskin works while shifted</b>. Entangling Roots works indoors, Nature’s Grasp is baseline early, <b>Omen of Clarity</b> is baseline at 20, and Druids finally get an out-of-combat <b>Revive</b>. Bear gets <b>Lacerate</b> at 42 for stacking bleed and threat, and Swipe scales with AP. Forms are immune to Disarm once shifted, but a Disarm landed before the shift still hurts.</p>
+      </div>
+    </div>
+    <div class="specs">
+      <article class="spec">
+        <div class="spec-head"><h3>Balance</h3><div class="ms-row"><span class="ms g16"><i>16</i>Insect Swarm</span></div></div>
+        <div class="prose"><p>Built around a new <b>Eclipse</b>, not the modern self-oscillating bar. Casting Wrath shortens the next Starfires, giving a reason to alternate the two nukes. Nature’s Splendor extends the Druid’s effects, and Moonkin Form allows more non-healing spells. Omen of Clarity does more for casters in Moonkin, and Moonglow helps mana efficiency. It is no longer a Starfire/Wrath caster with chronic mana problems and a novelty aura. It’s still slow-cast Classic Balance, with no Retail Astral Power.</p></div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Feral</h3><div class="ms-row"><span class="ms"><i>★</i>Shifting Power</span><span class="ms g31"><i>↓</i>Berserk</span></div></div>
+        <div class="prose">
+          <p>The most fascinating change for anyone who understands Classic powershifting. Tiger’s Fury is gone, replaced by <b>Shifting Power</b>, which converts a chunk of base mana into Energy on a cooldown. Mana stays a secondary resource spent for Cat damage, but as a deliberate talent, not by canceling and re-entering Cat Form with Wolfshead Helm and Furor.</p>
+          <p>Claw, Shred and Rake scale better, and <b>Primal Bite</b> becomes a key active attack. <b>Berserk</b>, deep in the tree, removes Primal Bite’s cooldown, makes it hit several enemies and greatly raises the combo-point builders’ crit chance. The rhythm itself changes. Blizzard took powershifting’s core resource-conversion idea and made it supported design.</p>
+        </div>
+      </article>
+      <article class="spec">
+        <div class="spec-head"><h3>Restoration</h3><div class="ms-row"><span class="ms g16"><i>16</i>Swiftmend</span><span class="ms g31"><i>31</i>Wild Growth</span></div></div>
+        <div class="prose"><p><b>Swiftmend no longer consumes the HoT it uses</b>, a big usability win. <b>Wild Growth</b> heals several party or group members over time. <b>Gift of the Earthmother</b> speeds up the global cooldown on Rejuvenation, Swiftmend and Wild Growth. Mark of the Wild upgrades no longer eat premium talent points, and Spirit regen is better. Resto keeps its Classic HoT and Healing Touch identity and gains a real instant reactive heal and a sustained group HoT.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CHOOSE ======================= -->
+<section class="sec" id="choose" aria-labelledby="choose-h">
+  <div class="sec-head">
+    <p class="label">for the veteran</p>
+    <h2 id="choose-h">Choosing a path</h2>
+    <p>Veterans know what a Warrior is. The useful question is which familiar class makes for an interesting Forever experience.</p>
+    <button type="button" class="listen" data-ch="choose" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to this chapter</span><span class="dur"></span></button>
+  </div>
+  <div class="paths">
+    <article class="path frame">
+      <h3>The most improved version of a familiar class</h3>
+      <p>The new design changes the moment-to-moment play often enough that it keeps registering as “oh, this is Forever”: Prot’s taunt and mitigation, Ret’s Holy Strike and Seals, Druid forms and Shifting Power, Shaman totems, melee Survival, Penance Disc and the Arcane engine.</p>
+      <div class="pills"><a class="pill c-paladin" href="#paladin">Paladin</a><a class="pill c-druid" href="#druid">Druid</a><a class="pill c-shaman" href="#shaman">Shaman</a><a class="pill c-hunter" href="#hunter">Hunter</a><a class="pill c-priest" href="#priest">Priest</a><a class="pill c-mage" href="#mage">Mage</a></div>
+    </article>
+    <article class="path frame">
+      <h3>Vanilla feel, rough edges sanded off</h3>
+      <p>Warrior still revolves around rage, swings, stances and threat. Rogue still revolves around energy, combo points, poisons, positionals and stealth. The changes fix friction and make the trees less arbitrary instead of inventing new combat models.</p>
+      <div class="pills"><a class="pill c-warrior" href="#warrior">Warrior</a><a class="pill c-rogue" href="#rogue">Rogue</a></div>
+    </article>
+    <article class="path frame">
+      <h3>The hybrid tax was the problem</h3>
+      <p>Prot Paladin has a real taunt and baseline AoE tanking. Feral weapon scaling and supported energy conversion fix long-standing oddities, Balance gets a spell loop, and Ret becomes an intentionally supported damage spec.</p>
+      <div class="pills"><a class="pill c-paladin" href="#paladin">Paladin</a><a class="pill c-druid" href="#druid">Druid</a></div>
+    </article>
+    <article class="path frame">
+      <h3>The single most novel Alliance experience</h3>
+      <p>A whole class Vanilla Alliance never had, and not just Horde Shaman moved to the Alliance side. Five-minute totems, one-second totem globals, Call presets, Projection, Recall, raid-wide buffs, Lava Burst, Maelstrom Weapon and Riptide make a much richer Shaman.</p>
+      <div class="pills"><a class="pill c-shaman" href="#shaman">Dwarf Shaman</a></div>
+    </article>
+    <article class="path frame">
+      <h3>Survival should mean the Hunter who fights up close</h3>
+      <p>Strider Kick, Mongoose Bite interactions, melee crit and off-hand talents and traps make it probably the biggest identity break among pure DPS. Dual spec still covers petless Lone Wolf MM or pet-heavy BM.</p>
+      <div class="pills"><a class="pill c-hunter" href="#hunter">Hunter</a></div>
+    </article>
+    <article class="path frame">
+      <h3>Priest healing trees felt the same</h3>
+      <p>Disc may be the biggest sleeper pick. Penance, Divine Aegis, better shields and damage weaving make it a real spec. Holy gets Binding Heal, Prayer of Mending and rewards for alternating spells.</p>
+      <div class="pills"><a class="pill c-priest" href="#priest">Priest</a></div>
+    </article>
+    <article class="path frame">
+      <h3>The Mage complaint was raid boredom</h3>
+      <p>The Arcane Blast stack-versus-mana puzzle, Arcane Wrath scaling from max mana, Heating Up Pyroblasts and the Fingers, Ice Lance and Winter’s Chill combo all add more to think about. Blink, Polymorph, Counterspell, Frost Nova and Classic casting all stay.</p>
+      <div class="pills"><a class="pill c-mage" href="#mage">Mage</a></div>
+    </article>
+    <article class="path frame">
+      <h3>The Warlock toolbox, without the blurry trees</h3>
+      <p>Affliction ends in DoT and drain gameplay, Demonology keeps the demon central while still using Demonic Sacrifice, and Destruction has a coherent Immolate, Incinerate, Conflagrate and second-target package.</p>
+      <div class="pills"><a class="pill c-warlock" href="#warlock">Warlock</a></div>
+    </article>
+  </div>
+
+  <div class="sec-head" style="margin-top:1rem">
+    <h2 style="font-size:var(--step-2)">The shortlist</h2>
+    <p>For a veteran who wants to experience what Forever changes, not just replay a familiar Classic main. This is not a power tier list.</p>
+  </div>
+  <ol class="tiers">
+    <li class="tier"><span class="rk">I</span><div class="who"><span>top tier for novelty</span><div class="pills"><a class="pill c-shaman" href="#shaman">Shaman</a></div></div><p>New to Alliance, plus a huge modernization of totems and specs.</p></li>
+    <li class="tier"><span class="rk">I</span><div class="who"><span>top tier, repaired fantasy</span><div class="pills"><a class="pill c-paladin" href="#paladin">Paladin</a></div></div><p>Every spec fixes something fundamental that Vanilla was missing.</p></li>
+    <li class="tier"><span class="rk">I</span><div class="who"><span>top tier, mechanical depth</span><div class="pills"><a class="pill c-druid" href="#druid">Druid</a></div></div><p>Form gearing and resource behavior change, and all three trees are materially different.</p></li>
+    <li class="tier"><span class="rk">I</span><div class="who"><span>top tier pure dps</span><div class="pills"><a class="pill c-hunter" href="#hunter">Hunter</a></div></div><p>Three much clearer identities, especially melee Survival.</p></li>
+    <li class="tier"><span class="rk">II</span><div class="who"><span>excellent caster refresh</span><div class="pills"><a class="pill c-priest" href="#priest">Priest</a><a class="pill c-mage" href="#mage">Mage</a></div></div><p>Disc and Arcane in particular are essentially newly complete specs.</p></li>
+    <li class="tier"><span class="rk">III</span><div class="who"><span>excellent, more evolutionary</span><div class="pills"><a class="pill c-warlock" href="#warlock">Warlock</a></div></div><p>Much clearer specs without abandoning Classic Warlock.</p></li>
+    <li class="tier"><span class="rk">IV</span><div class="who"><span>classic-plus</span><div class="pills"><a class="pill c-warrior" href="#warrior">Warrior</a><a class="pill c-rogue" href="#rogue">Rogue</a></div></div><p>Best if keeping the Vanilla identity is the point.</p></li>
+  </ol>
+
+  <div class="verdict frame">
+    <p class="label">the conclusion</p>
+    <p class="big">The question isn’t which Vanilla class is already the favorite. It’s which one had a fantasy worth loving and mechanics Blizzard never finished.</p>
+    <p>Forever’s class work is aimed overwhelmingly at that second question. Paladin, Druid and Shaman are the most transformed. Hunter, Priest, Mage and Warlock gain distinct spec loops. Warrior and Rogue stay closest to refined Classic originals.</p>
+    <p>Final raid DPS, the tank hierarchy and healing throughput are the things most likely to move. In mid-October Blizzard was still changing coefficients, talent positions, raid buffs and cooldowns. The same late build redesigned Arcane Blast, moved Lava Burst, restored Elemental Mastery, cut Champion of the Light, changed Paladin threat, nerfed Hunter pet abilities, adjusted Ice Lance and revised Shadow talents. Mechanical identity is a better guide than an October beta damage ranking.</p>
+  </div>
+</section>
+
+<nav class="next-book" aria-label="Next book">
+  <a class="nb frame" href="../races/" style="--nb-c: var(--races)">
+    <span class="label">book iii · read on</span>
+    <span class="nb-t">The Races</span>
+    <span class="nb-s">The five Alliance races against Vanilla, after Blizzard’s final October 26 pass, with race leans for every spec.</span>
+    <span class="nb-arrow" aria-hidden="true">→</span>
+  </a>
+</nav>
+
+<footer class="foot">
+  <p>Compiled October 22, 2026 from Blizzard’s class deep dives, beta development notes through the October 16 build, datamined client changes and current class guides. The October 21 activity was the public stress test, not a new class pass.</p>
+  <p>Everything here is launch-candidate. Blizzard has said repeatedly that talents and abilities can keep changing during beta. The “distance from Vanilla” ratings and the shortlist are editorial judgments, not Blizzard rankings. Racial values follow Blizzard’s October 26 tuning pass, which landed after this book was compiled.</p>
+  <p>Part of the <a href="../">Forever Codex</a>. A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
+</footer>
+</main>
+
+<div class="player" id="player" hidden>
+  <div class="player-in">
+    <button type="button" class="pl-btn" id="pl-prev" aria-label="Previous chapter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h2.5v14H6zM20 5v14L9.5 12z"/></svg></button>
+    <button type="button" class="pl-btn main" id="pl-toggle" aria-label="Play"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></button>
+    <button type="button" class="pl-btn" id="pl-next" aria-label="Next chapter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5H18v14h-2.5zM4 5v14l10.5-7z"/></svg></button>
+    <div class="pl-info">
+      <p class="pl-title" id="pl-title">Introduction</p>
+      <div class="pl-track"><input type="range" id="pl-seek" min="0" max="1000" step="1" value="0" aria-label="Position in episode"><span class="pl-time" id="pl-time">0:00</span></div>
+    </div>
+    <button type="button" class="pl-close" id="pl-close" aria-label="Close player">&times;</button>
+  </div>
+  <audio id="pod" preload="none"></audio>
+</div>
+<script type="application/json" id="podcast-data">{"src": "audio/forever-codex-classes.mp3", "duration": 2303.63, "chapters": [{"id": "intro", "title": "Introduction", "start": 0.5, "end": 107.24}, {"id": "systems", "title": "System changes", "start": 109.68, "end": 292.75}, {"id": "warrior", "title": "Warrior", "start": 295.19, "end": 494.34}, {"id": "paladin", "title": "Paladin", "start": 496.78, "end": 740.06}, {"id": "hunter", "title": "Hunter", "start": 742.5, "end": 945.06}, {"id": "rogue", "title": "Rogue", "start": 947.5, "end": 1097.84}, {"id": "priest", "title": "Priest", "start": 1100.28, "end": 1304.05}, {"id": "shaman", "title": "Shaman", "start": 1306.49, "end": 1523.66}, {"id": "mage", "title": "Mage", "start": 1526.1, "end": 1736.53}, {"id": "warlock", "title": "Warlock", "start": 1738.97, "end": 1898.87}, {"id": "druid", "title": "Druid", "start": 1901.31, "end": 2115.59}, {"id": "choose", "title": "Choosing your class", "start": 2118.03, "end": 2258.7}, {"id": "closing", "title": "Closing", "start": 2261.14, "end": 2302.83}]}</script>
+
+<script>
+(function () {
+  // launch countdown
+  try {
+    var launch = new Date(2026, 10, 4);
+    var now = new Date();
+    var days = Math.round((launch - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5);
+    var cd = document.getElementById("cd"), sub = document.getElementById("cd-sub");
+    if (days > 1) { cd.textContent = days + " days"; sub.textContent = "until launch, Nov 4, 2026"; }
+    else if (days === 1) { cd.textContent = "Tomorrow"; sub.textContent = "launch, Nov 4, 2026"; }
+    else if (days === 0) { cd.textContent = "Today"; sub.textContent = "launch day, Nov 4, 2026"; }
+    else { sub.textContent = "launched"; }
+  } catch (e) {}
+
+  // keybinds 1–9 jump to classes, like an action bar
+  var slots = Array.prototype.slice.call(document.querySelectorAll(".bar .slot"));
+  document.addEventListener("keydown", function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var t = e.target;
+    if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+    var s = slots.find(function (a) { return a.dataset.k === e.key; });
+    if (!s) return;
+    e.preventDefault();
+    var target = document.querySelector(s.getAttribute("href"));
+    if (target) target.scrollIntoView({ block: "start" });
+  });
+
+  // highlight the class in view
+  if ("IntersectionObserver" in window) {
+    var map = {};
+    slots.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        slots.forEach(function (a) { a.classList.remove("active"); });
+        var a = map[en.target.id];
+        if (a) a.classList.add("active");
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    document.querySelectorAll("section.cls").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+<script>
+// podcast player: one MP3, chapters from #podcast-data (written by podcast/build.py)
+(function () {
+  var data;
+  try { data = JSON.parse(document.getElementById("podcast-data").textContent); } catch (e) { data = {}; }
+  var pods = document.querySelectorAll("[data-pod]");
+  if (!data || !data.chapters || !data.chapters.length) { pods.forEach(function (el) { el.hidden = true; }); return; }
+
+  var ch = data.chapters, audio = document.getElementById("pod"), player = document.getElementById("player");
+  var $ = function (id) { return document.getElementById(id); };
+  var seek = $("pl-seek"), title = $("pl-title"), time = $("pl-time"), toggle = $("pl-toggle"), all = $("play-all");
+  var stopAt = null, scrubbing = false;
+  var fmt = function (s) { s = Math.max(0, Math.round(s)); var m = Math.floor(s / 60); return m + ":" + String(s % 60).padStart(2, "0"); };
+  var idxOf = function (id) { for (var i = 0; i < ch.length; i++) if (ch[i].id === id) return i; return -1; };
+  var at = function (t) { for (var i = ch.length - 1; i >= 0; i--) if (t >= ch[i].start - 0.05) return i; return 0; };
+
+  $("pod-len").textContent = Math.round(data.duration / 60) + " minutes";
+  document.querySelectorAll(".listen[data-ch]").forEach(function (b) {
+    var c = ch[idxOf(b.dataset.ch)];
+    if (!c) { b.hidden = true; return; }
+    b.querySelector(".dur").textContent = fmt(c.end - c.start);
+    b.dataset.label = b.querySelector(".lbl").textContent;
+    b.addEventListener("click", function () { playChapter(b.dataset.ch); });
+  });
+
+  function open() {
+    if (!audio.getAttribute("src")) audio.src = data.src;
+    player.hidden = false;
+    document.body.classList.add("player-open");
+  }
+  function go(t) {
+    open();
+    var set = function () { try { audio.currentTime = t; } catch (e) {} };
+    if (audio.readyState >= 1) set(); else audio.addEventListener("loadedmetadata", set, { once: true });
+    var p = audio.play(); if (p && p.catch) p.catch(function () {});
+  }
+  function current() { return at(audio.currentTime || 0); }
+  function playing() { return !audio.paused && !audio.ended; }
+  function started() { return !!audio.getAttribute("src"); }
+
+  function playChapter(id) {
+    var i = idxOf(id);
+    if (stopAt !== null && started() && current() === i && audio.currentTime < ch[i].end - 0.5) {
+      if (playing()) audio.pause(); else audio.play();
+      return;
+    }
+    stopAt = ch[i].end;
+    go(ch[i].start);
+  }
+  all.addEventListener("click", function () {
+    if (started() && stopAt === null && playing()) { audio.pause(); return; }
+    var resume = started() && stopAt === null && audio.currentTime > 1 && audio.currentTime < data.duration - 2;
+    stopAt = null;
+    go(resume ? audio.currentTime : 0);
+  });
+  toggle.addEventListener("click", function () {
+    if (playing()) { audio.pause(); return; }
+    var t = audio.currentTime || 0;
+    if (stopAt !== null && t >= stopAt - 0.5) stopAt = null;  // finished the chapter: carry on into the next
+    go(t);
+  });
+  $("pl-prev").addEventListener("click", function () {
+    var i = current(), j = audio.currentTime - ch[i].start > 3 ? i : Math.max(0, i - 1);
+    if (stopAt !== null) stopAt = ch[j].end;
+    go(ch[j].start);
+  });
+  $("pl-next").addEventListener("click", function () {
+    var j = Math.min(ch.length - 1, current() + 1);
+    if (stopAt !== null) stopAt = ch[j].end;
+    go(ch[j].start);
+  });
+  $("pl-close").addEventListener("click", function () {
+    audio.pause(); player.hidden = true; document.body.classList.remove("player-open");
+  });
+  seek.addEventListener("input", function () {
+    scrubbing = true;
+    time.textContent = fmt(seek.value / 1000 * data.duration) + " / " + fmt(data.duration);
+  });
+  seek.addEventListener("change", function () {
+    scrubbing = false; stopAt = null;
+    go(seek.value / 1000 * data.duration);
+  });
+
+  var lastTitle = -1;
+  function render() {
+    var t = audio.currentTime || 0, i = at(t), on = playing();
+    title.textContent = ch[i].title;
+    var sub = document.createElement("span");
+    sub.textContent = stopAt !== null ? "this chapter" : "chapter " + (i + 1) + " of " + ch.length;
+    title.appendChild(sub);
+    if (!scrubbing) {
+      seek.value = Math.round(t / data.duration * 1000);
+      time.textContent = fmt(t) + " / " + fmt(data.duration);
+    }
+    toggle.classList.toggle("is-playing", on);
+    toggle.setAttribute("aria-label", on ? "Pause" : "Play");
+    var episode = stopAt === null && started();
+    all.classList.toggle("is-playing", on && episode);
+    all.querySelector(".lbl").textContent = on && episode ? "Pause the episode"
+      : (episode && t > 1 && t < data.duration - 2 ? "Resume the episode" : "Listen to the episode");
+    document.querySelectorAll(".listen[data-ch]").forEach(function (b) {
+      var mine = stopAt !== null && on && ch[i].id === b.dataset.ch;
+      b.classList.toggle("is-playing", mine);
+      b.querySelector(".lbl").textContent = mine ? "Pause" : b.dataset.label;
+    });
+    if (i !== lastTitle && "mediaSession" in navigator && window.MediaMetadata) {
+      lastTitle = i;
+      try {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: ch[i].title, artist: "Forever Codex", album: "The Classes · Forever Codex",
+          artwork: [{ src: "og.png", sizes: "1200x630", type: "image/png" }]
+        });
+      } catch (e) {}
+    }
+  }
+  audio.addEventListener("timeupdate", function () {
+    if (stopAt !== null && audio.currentTime >= stopAt - 0.15) audio.pause();
+    render();
+  });
+  ["play", "pause", "ended", "loadedmetadata", "seeked"].forEach(function (ev) { audio.addEventListener(ev, render); });
+
+  if ("mediaSession" in navigator) {
+    var h = function (a, f) { try { navigator.mediaSession.setActionHandler(a, f); } catch (e) {} };
+    h("play", function () { toggle.click(); });
+    h("pause", function () { audio.pause(); });
+    h("previoustrack", function () { $("pl-prev").click(); });
+    h("nexttrack", function () { $("pl-next").click(); });
+    h("seekto", function (d) { stopAt = null; go(d.seekTime); });
+  }
+})();
+</script>
+<script src="../codex.js"></script>
+</body>
+</html>
