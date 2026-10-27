@@ -79,7 +79,6 @@ h1, h2, h3, h4 { font-family: var(--f-caps) }
 .bar-r .bar-in { gap: .35rem }
 .bar-r .slot { width: 2.45rem; height: 2.45rem }
 .bar-r .sep { flex: none; width: 1px; height: 1.6rem; background: var(--line); margin: 0 .35rem }
-@media (max-width: 40rem) { .bar-r .brand { display: none } }
 
 /* ---------- sections ---------- */
 .sec { padding-block: clamp(3rem, 7vw, 5rem) 0; display: grid; gap: 1.75rem; min-width: 0 }
@@ -250,6 +249,10 @@ h1, h2, h3, h4 { font-family: var(--f-caps) }
       <path d="M7 4.5c0 4.6 4.2 6 4.2 7.5S7 14.9 7 19.5h10c0-4.6-4.2-6-4.2-7.5S17 9.1 17 4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
       <path d="M8.7 7h6.6c-.7 1.8-2.5 2.9-3.3 4.3C11.2 9.9 9.4 8.8 8.7 7zM8.4 19.5c.4-2.3 2.2-3.5 3.6-3.8 1.4.3 3.2 1.5 3.6 3.8z" fill="currentColor"/>
     </symbol>
+    <symbol id="i-banner" viewBox="0 0 24 24">
+      <path d="M6 2.5v19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M6.9 3.5h12l-2.6 4.2 2.6 4.3h-12z" fill="currentColor"/>
+    </symbol>
     <!-- race crests -->
     <symbol id="i-human" viewBox="0 0 24 24"><path d="M12 2.5 L20 5.5 V11.5 C20 16.5 16.6 20 12 21.5 C7.4 20 4 16.5 4 11.5 V5.5 Z" fill="currentColor"/><path d="M12 6.5v10M8 10.5h8" stroke="#07090e" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-dwarf" viewBox="0 0 24 24"><path d="M2.5 7.5h12.5c0 2.6 2.2 4.2 6.5 4.2V13.6h-6l-1.3 3.4h2.8v2.5H7v-2.5h2.8L8.5 13.6H6.2C4 13.6 2.5 11.2 2.5 7.5z" fill="currentColor"/></symbol>
@@ -274,6 +277,7 @@ h1, h2, h3, h4 { font-family: var(--f-caps) }
   <div class="mast-in">
     <a class="mast-brand" href="../"><svg aria-hidden="true"><use href="#i-glass"/></svg>Forever Codex</a>
     <nav class="mast-books" aria-label="Books">
+      <a href="../">Home</a>
       <a href="../lore/"><span class="bk-n">I</span>Lore</a>
       <a href="../classes/"><span class="bk-n">II</span>Classes</a>
       <a href="../races/" aria-current="page"><span class="bk-n">III</span>Races</a>
@@ -323,7 +327,7 @@ h1, h2, h3, h4 { font-family: var(--f-caps) }
 
 <nav class="bar bar-r" aria-label="Jump to race or section">
   <div class="bar-in">
-    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#i-glass"/></svg><span>The Races</span></a>
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#i-banner"/></svg><span>The Races</span></a>
     <a class="slot c-human" href="#human"><svg aria-hidden="true"><use href="#i-human"/></svg><span class="sr">Human</span></a>
     <a class="slot c-dwarf" href="#dwarf"><svg aria-hidden="true"><use href="#i-dwarf"/></svg><span class="sr">Dwarf</span></a>
     <a class="slot c-nightelf" href="#nightelf"><svg aria-hidden="true"><use href="#i-nightelf"/></svg><span class="sr">Night Elf</span></a>
@@ -578,7 +582,7 @@ h1, h2, h3, h4 { font-family: var(--f-caps) }
       <article><h4>pvp</h4><p>No stun break, cleanse or root escape. Skyborne’s edge is speed of execution, glide positioning and sustain, so other races lean ahead for PvP unless Walk on Air or the class’s own control enables a particular strategy.</p></article>
     </div>
     <aside class="note"><p class="note-l">read leyline, before and after</p><p>Most criticism before October 26 was about finding Ley Lines at all, in dungeons, battlegrounds and some zones. October 16 added spawn locations; October 26’s one-hour Attuned state travels with the character, even through death. Older complaints describe a version that isn’t the launch design, and the final version has barely been tested by anyone yet.</p></aside>
-    <aside class="note"><p class="note-l">who can play one</p><p>Blizzard gates the Skyborne race, and the Zephras Isle starting questline, behind the Skyborne Heroic Pack or higher.</p></aside>
+    <aside class="note"><p class="note-l">who can play one</p><p>Blizzard gates the Skyborne race, and the Zephras Isle starting questline, behind the Skyborne Heroic Pack or higher. <a href="../world/#cost">What each pack includes, in the world book.</a></p></aside>
     <aside class="note"><p class="note-l">in the lore book</p><p>Highborne rebels who fled Eldre’Thalas after the War of the Ancients, now losing their wind patrons. <a href="../lore/#skyborne">Who the Skyborne are.</a></p></aside>
   </div>
 </section>

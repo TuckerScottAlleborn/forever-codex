@@ -74,7 +74,6 @@ a.xl { color: var(--bronze-hi); text-underline-offset: 3px }
 
 /* ---------- the bar ---------- */
 .bar-w { --bar-c: var(--world) }
-@media (max-width: 40rem) { .bar-w .brand { display: none } }
 
 /* ---------- sections ---------- */
 .sec { padding-block: clamp(3rem, 7vw, 5rem) 0; display: grid; gap: 1.6rem; min-width: 0 }
@@ -188,6 +187,7 @@ a.xl { color: var(--bronze-hi); text-underline-offset: 3px }
   <div class="mast-in">
     <a class="mast-brand" href="../"><svg aria-hidden="true"><use href="#i-glass"/></svg>Forever Codex</a>
     <nav class="mast-books" aria-label="Books">
+      <a href="../">Home</a>
       <a href="../lore/"><span class="bk-n">I</span>Lore</a>
       <a href="../classes/"><span class="bk-n">II</span>Classes</a>
       <a href="../races/"><span class="bk-n">III</span>Races</a>
@@ -201,7 +201,7 @@ a.xl { color: var(--bronze-hi); text-underline-offset: 3px }
 <div class="wrap">
 <header class="hero" id="top">
   <div class="hero-top">
-    <p class="label">forever codex · book iv · the world outside classes and races, read against vanilla</p>
+    <p class="label">forever codex · book iv · the world, read against vanilla</p>
     <h1 class="title">The World</h1>
     <p class="thesis">Evolution, not replacement: <em>the old world stands</em>, and Forever builds beside it.</p>
   </div>
@@ -453,7 +453,7 @@ a.xl { color: var(--bronze-hi); text-underline-offset: 3px }
       </tbody>
     </table>
   </div>
-  <div class="sub-h"><h3>Merchant’s Favor, and the market</h3></div>
+  <div class="sub-h" id="market"><h3>Merchant’s Favor, and the market</h3></div>
   <div class="prose">
     <p>Forever turns the old supply-crate idea into the Azeroth Commerce Authority: Waylaid Crates turn in for Merchant’s Favor, which buys recipes, profession certifications and other goods. On the beta, Alchemy’s Friendly recipes cost 120 Favor, Honored ones usually 180, higher ones 240, and its 300-skill certification 1,000. Favor also buys the Pack Kodo mount (6,000) and the <a class="xl" href="../companions/#p-minimule">Minimule</a> companion, and Legacy’s Performance Bonus raises the Favor each crate pays.</p>
     <p>The Stranglethorn Fishing Extravaganza returns with a new Extravagant Extravaganza Coin. Wowhead’s fishing guide describes the first 50 Master Anglers each winning the pole and a coin on Sundays, 2–4 PM; Blizzard hasn’t confirmed the final schedule. The Black Market Auction House at Powderfuse Port exists, but its full stock and rotation are unknown.</p>
@@ -544,7 +544,7 @@ a.xl { color: var(--bronze-hi); text-underline-offset: 3px }
       <tbody>
         <tr><th scope="row">Mount Hyjal</th><td class="was" data-l="vanilla">Famously closed</td><td data-l="forever">A full endgame leveling region with its own reputations and quests, Hyjal Summit, and one way into the Barrow Deeps</td></tr>
         <tr><th scope="row">Riverglades</th><td class="was" data-l="vanilla">Didn’t exist</td><td data-l="forever">A frontier zone of humans, orcs, ogres and trade routes, roughly mid-30s to mid-40s, with 150+ quests, Krol’dok Stronghold and Powderfuse Port</td></tr>
-        <tr><th scope="row">Zephras Isle</th><td class="was" data-l="vanilla">Didn’t exist</td><td data-l="forever">The Skyborne starting zone, levels 1–12, with the Nightclaw Druids and new pets; reached later by airship</td></tr>
+        <tr><th scope="row">Zephras Isle</th><td class="was" data-l="vanilla">Didn’t exist</td><td data-l="forever">The Skyborne starting zone, levels 1–12, with the Nightclaw Druids and <a class="xl" href="../companions/#g-systems">new pets</a>; reached later by airship</td></tr>
         <tr><th scope="row">Shen’dralas</th><td class="was" data-l="vanilla">Not a region</td><td data-l="forever">A real new region, not a slip for the Shen’dralar: a story of the Shen’dralar, Eldre’Thalas and the centaurs that reconnects Dire Maul, Maraudon and Razorfen Downs</td></tr>
       </tbody>
     </table>
@@ -563,7 +563,7 @@ a.xl { color: var(--bronze-hi); text-underline-offset: 3px }
   <div class="packs">
     <article class="pk frame base"><h3>Base Forever</h3><p class="price">Included</p><ul><li>With a WoW subscription or game time</li><li>The four original Alliance races and the core game</li></ul></article>
     <article class="pk frame"><h3>Skyborne Heroic Pack</h3><p class="price">$29.99</p><ul><li>The Skyborne race and the Zephras Isle starting experience</li><li>Early name reservation</li><li>The Cerulean Prideclaw mount</li><li>The Shen’dorei Skyseer’s Garb, a Veteran Adventurer’s Rucksack and the Windwell toy</li><li>Housing décor for modern WoW, and one launch friend code</li></ul></article>
-    <article class="pk frame"><h3>Skyborne Epic Pack</h3><p class="price">$59.99</p><ul><li>Everything in the Heroic Pack</li><li>Beta access, and 30 days of game time from launch</li><li>The Veteran Adventurer’s Loyal Companion mount</li><li>More cosmetics, and Lordaeron and Shen’dorei tabards</li><li>The Zergling, Panda Cub, Mini Diablo and Pachimari companions</li><li>Three friend codes in all</li></ul></article>
+    <article class="pk frame"><h3>Skyborne Epic Pack</h3><p class="price">$59.99</p><ul><li>Everything in the Heroic Pack</li><li>Beta access, and 30 days of game time from launch</li><li>The Veteran Adventurer’s Loyal Companion mount</li><li>More cosmetics, and Lordaeron and Shen’dorei tabards</li><li>The <a class="xl" href="../companions/#g-paid">Zergling, Panda Cub, Mini Diablo and Pachimari</a> companions</li><li>Three friend codes in all</li></ul></article>
     <article class="pk frame"><h3>Warcraft Forever Collection</h3><p class="price">$79.99</p><ul><li>Everything in the Epic Pack</li><li><i>Warcraft III: Reforged</i> and <i>Forsaken Kingdom</i></li><li>A figurine for modern WoW housing</li><li>Advertised through January 11, 2027</li></ul></article>
   </div>
   <p class="unk">Pack owners can reserve up to three character names across rulesets from October 27 to November 3. Invite-a-Friend codes let friends play from November 4 to 11 without a subscription.</p>

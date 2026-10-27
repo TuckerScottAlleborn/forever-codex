@@ -12,9 +12,12 @@ A codex to *World of Warcraft: Forever* for returning Warcraft veterans: what's 
 | `world/` | Book IV, **The World**: everything outside classes and races against Vanilla: the nine new dungeons and the old ones' keys and levels, the December raid tier, gear and stats, professions and camping, Legacy, transmog, regions and rulesets, what costs money, and PvP |
 | `companions/` | Book V, **The Companions**: every companion pet within an Alliance character's reach, as a checklist (checks are kept in the browser's `localStorage` only), with the beta's drop counts, a collecting route, difficulty tiers and the unsolved ones |
 | `appendix/` | **The Appendix**: a dated patch log, a filterable glossary of every new and changed name against Vanilla, and common questions |
-| `codex.css`, `codex.js` | What every page shares: tokens (both themes), type, frames, the masthead, the sticky bar's shell and reading progress, action-bar slots, the "vs Vanilla" tags, the "next book" card, the footer |
+| `404.html` | What GitHub Pages serves for an address the codex doesn't have: the masthead and a card for every book. It can open at any depth, so its links are absolute (`/forever-codex/…`) |
+| `codex.css`, `codex.js` | What every page shares: tokens (both themes), each book's color (set by the page's `body` class), type, frames, the masthead, the sticky bar's shell, its reading progress and its habit of keeping the current section's link in view, action-bar slots, the "vs Vanilla" tags, the cross-book link (`a.xref`), the "next book" card, the footer |
 
-Each page links `codex.css` and keeps only its own layout inline. To add a book, add a folder with its own `index.html`, a link in every page's `.mast-books`, an `<article class="book">` and a row in `.diffs` on the landing page, and its date in the appendix's "how current" ledger.
+Each page links `codex.css` and keeps only its own layout inline. The masthead on every page lists Home, the five books and the appendix, and marks the page it's on with `aria-current="page"`, in that book's color. Each book's sticky bar opens with the same icon as its cover on the landing page.
+
+To add a book, add a folder with its own `index.html` and `body` class, a link in the `.mast-books` of every page and of `404.html`, its color in `codex.css`, an `<article class="book">` and a row in `.diffs` on the landing page, a card in `404.html`, and its date in the appendix's "how current" ledger.
 
 Research briefs for ChatGPT deep research, and the reports they return, live in `research/`, which git ignores: working files, not site content.
 

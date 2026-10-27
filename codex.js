@@ -1,5 +1,6 @@
 // Forever Codex: behaviour shared by every page. The sticky bar shows reading progress along
-// its lower edge and fades whichever end of its links is scrolled out of view.
+// its lower edge, fades whichever end of its links is scrolled out of view, and keeps the
+// current section's link in view when it can't show them all.
 (function () {
   var d = document, bar = d.querySelector(".bar"), barIn = bar && bar.querySelector(".bar-in");
   if (!barIn) return;
@@ -20,4 +21,18 @@
   barIn.addEventListener("scroll", edges, { passive: true });
   window.addEventListener("resize", edges);
   edges();
+  // each book marks its current link "active"; centre that link whenever it changes
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var follow = function (a) {
+    if (barIn.scrollWidth <= barIn.clientWidth) return;
+    barIn.scrollTo({ left: Math.max(0, a.offsetLeft - (barIn.clientWidth - a.offsetWidth) / 2), behavior: still ? "auto" : "smooth" });
+  };
+  if ("MutationObserver" in window) {
+    new MutationObserver(function (ms) {
+      for (var i = 0; i < ms.length; i++) {
+        var t = ms[i].target;
+        if (t !== barIn && t.classList.contains("active")) { follow(t); return; }
+      }
+    }).observe(barIn, { subtree: true, attributes: true, attributeFilter: ["class"] });
+  }
 })();

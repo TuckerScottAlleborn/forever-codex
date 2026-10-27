@@ -126,6 +126,12 @@ img,svg{max-width:100%}
 [class*="c-"] { --cc-ink: color-mix(in oklab, var(--cc) var(--ink-mix), var(--ink-base)) }
 .c-shaman { --cc-ink: color-mix(in oklab, #3d95ff var(--ink-mix), var(--ink-base)) }
 .c-priest { --cc-ink: color-mix(in oklab, #fff var(--ink-mix-priest), var(--ink-base)) }
+/* each book's colour, by its page's body class: its landing-page cover, its place in the masthead, its bar */
+body { --book: var(--bronze-hi) }
+body.classes { --book: var(--f-alliance) }
+body.races { --book: var(--races) }
+body.world { --book: var(--world) }
+body.companions { --book: var(--pets) }
 
 * { box-sizing: border-box }
 html { scroll-behavior: smooth; scroll-padding-top: 4.5rem }
@@ -192,18 +198,22 @@ a { color: inherit }
   font-family: var(--f-label); font-weight: 700; font-size: .92rem; letter-spacing: .05em; text-transform: lowercase; text-decoration: none; color: var(--muted);
 }
 .mast-books a:hover { color: var(--ink) }
-.mast-books a[aria-current="page"] { color: var(--bronze-hi); border-color: color-mix(in oklab, var(--bronze-hi) 40%, transparent); background: color-mix(in oklab, var(--bronze-hi) 9%, transparent) }
+.mast-books a[aria-current="page"] { color: var(--book); border-color: color-mix(in oklab, var(--book) 45%, transparent); background: color-mix(in oklab, var(--book) 10%, transparent) }
 .mast-books .bk-n { font-family: var(--f-caps); font-weight: 400; letter-spacing: 0; opacity: .8 }
 .mast-books .sh { display: none }
 /* on a phone the books take their own row, numerals and long names folded away; it scrolls if it still can't fit */
 @media (max-width: 40rem) {
-  .mast-books { width: 100%; margin: 0 -.4rem .1rem; justify-content: space-between; overflow-x: auto; scrollbar-width: none }
+  /* the row reaches past the gutters by its links' padding, so the first and last names line up with the page */
+  .mast-books {
+    --pad: .25rem; width: calc(100% + 2 * var(--pad) + 2px); margin: 0 calc(-1 * var(--pad) - 1px) .1rem; gap: 0;
+    justify-content: space-between; overflow-x: auto; scrollbar-width: none;
+  }
   .mast-books::-webkit-scrollbar { display: none }
-  .mast-books a { flex: none; padding-inline: .3rem; min-height: 2.4rem; font-size: .84rem; letter-spacing: .03em }
+  .mast-books a { flex: none; padding-inline: var(--pad); min-height: 2.4rem; font-size: .82rem; letter-spacing: .01em }
   .mast-books .bk-n, .mast-books .lg { display: none }
   .mast-books .sh { display: inline }
 }
-@media (max-width: 22rem) { .mast-books a { padding-inline: .2rem; letter-spacing: 0; font-size: .8rem } }
+@media (max-width: 22rem) { .mast-books { --pad: .15rem } .mast-books a { letter-spacing: 0; font-size: .78rem } }
 
 /* ---------- the sticky bar's shell; each book fills it with its own navigation ---------- */
 .bar {
@@ -229,8 +239,12 @@ a { color: inherit }
   flex: none; display: inline-flex; align-items: center; gap: .45rem; min-height: 2.6rem; margin-right: auto; padding: .2rem .7rem .2rem 0;
   font-family: var(--f-caps); font-size: 1rem; letter-spacing: .02em; color: var(--bronze-hi); text-decoration: none; white-space: nowrap;
 }
-.bar .brand svg { width: 1.35rem; height: 1.35rem }
-@media (max-width: 40rem) { .bar .brand span { display: none } }
+.bar .brand svg { width: 1.35rem; height: 1.35rem; color: var(--book) }
+/* on a phone the bar keeps only the book's icon; its name stays for screen readers */
+@media (max-width: 40rem) {
+  .bar .brand { padding-right: .45rem }
+  .bar .brand span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap }
+}
 /* text links in the bar, for books navigated by section */
 .bar .sec-link {
   flex: none; display: inline-flex; align-items: center; gap: .45rem; min-height: 2.6rem; text-decoration: none; white-space: nowrap;
@@ -283,6 +297,9 @@ a.rp:hover { background: color-mix(in oklab, var(--cc) 22%, transparent) }
 .slot kbd { position: absolute; top: 1px; right: 3px; font-family: var(--f-ui); font-size: .62rem; color: #e8e8e8; text-shadow: 0 0 2px #000, 0 0 2px #000 }
 a.slot:hover { transform: translateY(-1px); box-shadow: inset 0 0 0 1px var(--bronze-hi), 0 0 10px -2px var(--cc) }
 .slot.active { box-shadow: inset 0 0 0 2px var(--bronze-hi), 0 0 12px -2px var(--bronze-hi) }
+
+/* a link into another book */
+a.xref { color: var(--bronze-hi); text-underline-offset: 3px }
 
 /* ---------- the next book: a codex reads on ---------- */
 .next-book { margin-top: clamp(3.5rem, 8vw, 5.5rem) }

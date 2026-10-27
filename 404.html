@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#cf9a52">
+<title>A Blank Page · Forever Codex</title>
+<link rel="icon" href="/forever-codex/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/forever-codex/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/forever-codex/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya:ital,wght@0,400;0,600;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/forever-codex/codex.css">
+<style>
+/* GitHub Pages serves this page for any address the codex doesn't have, at any depth, so every link
+   is absolute. Tokens, the masthead and the footer are in codex.css. A new book is one more card. */
+.lost-col { max-width: 62rem; margin-inline: auto }
+.hero { padding-block: clamp(3rem, 8vw, 5rem) 0; display: grid; gap: 1.1rem; justify-items: center; text-align: center }
+.hero .title { font-size: clamp(2.6rem, 1.6rem + 4.4vw, 4.4rem); line-height: 1.05 }
+.thesis { font-size: clamp(1.2rem, 1rem + .9vw, 1.55rem); line-height: 1.4; max-width: 34ch }
+.thesis em { color: var(--bronze-hi); font-style: normal }
+.go {
+  display: inline-flex; align-items: center; gap: .5rem; min-height: 2.6rem; padding: .35rem 1.1rem; border-radius: 3px; text-decoration: none;
+  font-family: var(--f-label); font-weight: 700; font-size: .95rem; letter-spacing: .05em; text-transform: lowercase;
+  color: var(--bronze-hi); border: 1px solid color-mix(in oklab, var(--bronze-hi) 45%, transparent); background: color-mix(in oklab, var(--bronze-hi) 8%, transparent);
+}
+.go svg { width: 1.1rem; height: 1.1rem }
+.go:hover { background: color-mix(in oklab, var(--bronze-hi) 16%, transparent) }
+
+.ways { list-style: none; margin: clamp(2.25rem, 5vw, 3.25rem) 0 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)) }
+.way { --bk: var(--bronze-hi); display: grid }
+.way a { display: grid; grid-template-columns: 2.9rem minmax(0, 1fr); gap: .05rem .9rem; align-content: center; padding: 1rem 1.15rem; text-decoration: none; color: inherit }
+.way svg { grid-row: 1 / span 3; align-self: center; width: 2.9rem; height: 2.9rem; padding: .6rem; border-radius: 50%; color: var(--bk); border: 2px solid color-mix(in oklab, var(--bk) 65%, transparent); background: var(--bg) }
+.way .label { color: var(--bk) }
+.way b { font-family: var(--f-caps); font-weight: 400; font-size: 1.3rem; line-height: 1.15; color: var(--ink) }
+.way span:last-child { font-family: var(--f-ui); font-size: .95rem; line-height: 1.4; color: var(--muted) }
+.way a:hover b { text-decoration: underline; text-decoration-color: var(--bk); text-decoration-thickness: 1px; text-underline-offset: 4px }
+.w-cls { --bk: var(--f-alliance) } .w-race { --bk: var(--races) } .w-world { --bk: var(--world) } .w-pets { --bk: var(--pets) }
+.lost-col .foot { margin-inline: auto; justify-items: center; text-align: center }
+</style>
+</head>
+<body class="lost">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-glass" viewBox="0 0 24 24">
+      <path d="M5 2.5h14v2H5zM5 19.5h14v2H5z" fill="currentColor"/>
+      <path d="M7 4.5c0 4.6 4.2 6 4.2 7.5S7 14.9 7 19.5h10c0-4.6-4.2-6-4.2-7.5S17 9.1 17 4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M8.7 7h6.6c-.7 1.8-2.5 2.9-3.3 4.3C11.2 9.9 9.4 8.8 8.7 7zM8.4 19.5c.4-2.3 2.2-3.5 3.6-3.8 1.4.3 3.2 1.5 3.6 3.8z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-scroll" viewBox="0 0 24 24">
+      <path d="M6.5 3.5h11a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2h-11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M6.5 3.5a2 2 0 0 0-2 2v1.5h4V5.5a2 2 0 0 0-2-2zM6.5 20.5a2 2 0 0 1-2-2V17h4v1.5a2 2 0 0 1-2 2z" fill="currentColor"/>
+      <path d="M6.5 7v10M11 8.5h5M11 12h5M11 15.5h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-crest" viewBox="0 0 24 24">
+      <path d="M12 2.2 L21.8 12 L12 21.8 L2.2 12 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+      <path d="M12 7.1 L16.9 12 L12 16.9 L7.1 12 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-banner" viewBox="0 0 24 24">
+      <path d="M6 2.5v19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M6.9 3.5h12l-2.6 4.2 2.6 4.3h-12z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <path d="M3 12h18M12 3c2.8 2.6 4.2 5.6 4.2 9s-1.4 6.4-4.2 9c-2.8-2.6-4.2-5.6-4.2-9S9.2 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="15.9" rx="5" ry="4.2" fill="currentColor"/>
+      <ellipse cx="5.4" cy="10.7" rx="2.05" ry="2.6" transform="rotate(-20 5.4 10.7)" fill="currentColor"/>
+      <ellipse cx="9.5" cy="6.6" rx="2.1" ry="2.7" transform="rotate(-7 9.5 6.6)" fill="currentColor"/>
+      <ellipse cx="14.5" cy="6.6" rx="2.1" ry="2.7" transform="rotate(7 14.5 6.6)" fill="currentColor"/>
+      <ellipse cx="18.6" cy="10.7" rx="2.05" ry="2.6" transform="rotate(20 18.6 10.7)" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-index" viewBox="0 0 24 24">
+      <path d="M6 2.5h12v19l-6-4.2-6 4.2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+      <path d="M9 7.5h6M9 11h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+<a class="skip" href="#ways">Skip to the books</a>
+
+<header class="mast">
+  <div class="mast-in">
+    <a class="mast-brand" href="/forever-codex/"><svg aria-hidden="true"><use href="#i-glass"/></svg>Forever Codex</a>
+    <nav class="mast-books" aria-label="Books">
+      <a href="/forever-codex/">Home</a>
+      <a href="/forever-codex/lore/"><span class="bk-n">I</span>Lore</a>
+      <a href="/forever-codex/classes/"><span class="bk-n">II</span>Classes</a>
+      <a href="/forever-codex/races/"><span class="bk-n">III</span>Races</a>
+      <a href="/forever-codex/world/"><span class="bk-n">IV</span>World</a>
+      <a href="/forever-codex/companions/"><span class="bk-n">V</span><span class="lg">Companions</span><span class="sh">Pets</span></a>
+      <a href="/forever-codex/appendix/">Appendix</a>
+    </nav>
+  </div>
+</header>
+
+<main class="lost-col">
+  <header class="hero">
+    <p class="label">forever codex · page not found</p>
+    <h1 class="title">A Blank Page</h1>
+    <p class="thesis">Nothing in the codex is written at this address. <em>Every book is one step away.</em></p>
+    <a class="go" href="/forever-codex/"><svg aria-hidden="true"><use href="#i-glass"/></svg>Back to the front page</a>
+  </header>
+
+  <ul class="ways" id="ways" aria-label="The books">
+    <li class="way"><a class="frame" href="/forever-codex/lore/"><svg aria-hidden="true"><use href="#i-scroll"/></svg><span class="label">book i</span><b>The Lore</b><span>What’s canon, what’s new and what’s still unwritten</span></a></li>
+    <li class="way w-cls"><a class="frame" href="/forever-codex/classes/"><svg aria-hidden="true"><use href="#i-crest"/></svg><span class="label">book ii</span><b>The Classes</b><span>How Forever changes the nine Alliance classes</span></a></li>
+    <li class="way w-race"><a class="frame" href="/forever-codex/races/"><svg aria-hidden="true"><use href="#i-banner"/></svg><span class="label">book iii</span><b>The Races</b><span>The five Alliance races after the final October 26 pass</span></a></li>
+    <li class="way w-world"><a class="frame" href="/forever-codex/world/"><svg aria-hidden="true"><use href="#i-globe"/></svg><span class="label">book iv</span><b>The World</b><span>Dungeons and raids, gear, professions, Legacy, what costs money, and PvP</span></a></li>
+    <li class="way w-pets"><a class="frame" href="/forever-codex/companions/"><svg aria-hidden="true"><use href="#i-paw"/></svg><span class="label">book v</span><b>The Companions</b><span>Every companion pet within an Alliance character’s reach</span></a></li>
+    <li class="way"><a class="frame" href="/forever-codex/appendix/"><svg aria-hidden="true"><use href="#i-index"/></svg><span class="label">the back of the codex</span><b>The Appendix</b><span>The patch log, the glossary and the questions veterans ask first</span></a></li>
+  </ul>
+
+  <footer class="foot">
+    <p>A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
+  </footer>
+</main>
+</body>
+</html>
