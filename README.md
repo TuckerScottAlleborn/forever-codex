@@ -9,8 +9,8 @@ A codex to *World of Warcraft: Forever* for returning Warcraft veterans: what's 
 | `classes/` | Book II, **The Classes**: how Forever changes the nine Alliance classes compared with Vanilla, with a narrated episode |
 | `classes/<class>/` | Share pages with their own Discord/Open Graph embed; they forward to that class's sheet |
 | `races/` | Book III, **The Races**: the five Alliance races against Vanilla after Blizzard's final October 26 racial pass, with race leans for every class and spec. The class sheets link into its leans |
-| `companions/` | Book IV, **The Companions**: every companion pet within an Alliance character's reach, as a checklist (checks are kept in the browser's `localStorage` only), with the beta's drop counts, a collecting route, difficulty tiers and the unsolved ones |
-| `world/` | Book V, **The World**: everything outside classes and races against Vanilla: the nine new dungeons and the old ones' keys and levels, the December raid tier, gear and stats, professions and camping, Legacy, transmog, regions and rulesets, what costs money, and PvP |
+| `world/` | Book IV, **The World**: everything outside classes and races against Vanilla: the nine new dungeons and the old ones' keys and levels, the December raid tier, gear and stats, professions and camping, Legacy, transmog, regions and rulesets, what costs money, and PvP |
+| `companions/` | Book V, **The Companions**: every companion pet within an Alliance character's reach, as a checklist (checks are kept in the browser's `localStorage` only), with the beta's drop counts, a collecting route, difficulty tiers and the unsolved ones |
 | `appendix/` | **The Appendix**: a dated patch log, a filterable glossary of every new and changed name against Vanilla, and common questions |
 | `codex.css`, `codex.js` | What every page shares: tokens (both themes), type, frames, the masthead, the sticky bar's shell and reading progress, action-bar slots, the "vs Vanilla" tags, the "next book" card, the footer |
 

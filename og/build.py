@@ -7,8 +7,8 @@ Writes, relative to the site root:
   lore/og.png                         book I's preview (from og/lore-card.html)
   classes/og.png                      book II's preview (from og/classes-card.html)
   races/og.png                        book III's preview (from og/races-card.html)
-  companions/og.png                   book IV's preview (from og/companions-card.html)
-  world/og.png                        book V's preview (from og/world-card.html)
+  world/og.png                        book IV's preview (from og/world-card.html)
+  companions/og.png                   book V's preview (from og/companions-card.html)
   appendix/og.png                     the appendix's preview (from og/appendix-card.html)
   classes/<class>/index.html          share page with its own Discord/OG embed, forwards to classes/#<class>
   classes/<class>/og.png              that class's preview (from og/class-card.html)
@@ -161,8 +161,8 @@ def main() -> None:
     render(HERE / "lore-card.html", ROOT / "lore" / "og.png")
     render(HERE / "classes-card.html", ROOT / "classes" / "og.png")
     render(HERE / "races-card.html", ROOT / "races" / "og.png")
-    render(HERE / "companions-card.html", ROOT / "companions" / "og.png")
     render(HERE / "world-card.html", ROOT / "world" / "og.png")
+    render(HERE / "companions-card.html", ROOT / "companions" / "og.png")
     render(HERE / "appendix-card.html", ROOT / "appendix" / "og.png")
     for c in CLASSES:
         render(HERE / "class-card.html", ROOT / "classes" / c["id"] / "og.png", "#" + urllib.parse.quote(json.dumps(c)))
