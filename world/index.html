@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="How WoW: Forever changes everything outside classes and races, compared with Vanilla: the nine new dungeons and the December raid tier, gear and stats, professions and camping, Legacy, transmog and rulesets, what costs money, and PvP.">
+<meta property="og:title" content="The World · Forever Codex">
+<meta property="og:description" content="How WoW: Forever changes everything outside classes and races, compared with Vanilla: the nine new dungeons and the December raid tier, gear and stats, professions and camping, Legacy, transmog and rulesets, what costs money, and PvP.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Forever Codex">
+<meta property="og:url" content="https://tuckerscottalleborn.github.io/forever-codex/world/">
+<meta property="og:image" content="https://tuckerscottalleborn.github.io/forever-codex/world/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The World, book five of the Forever Codex: dungeons, raids, gear, professions, systems and PvP against Vanilla">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The World · Forever Codex">
+<meta name="twitter:image" content="https://tuckerscottalleborn.github.io/forever-codex/world/og.png">
+<meta name="theme-color" content="#cf9a52">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://tuckerscottalleborn.github.io/forever-codex/world/">
+<title>The World · Forever Codex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya:ital,wght@0,400;0,600;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../codex.css">
+<style>
+/* Book V of the Forever Codex (tokens, frames, masthead, the bar's shell and the .vs tags are in
+   codex.css). Everything outside classes and races, each part read against Vanilla: dungeons,
+   raids, gear and stats, professions, the systems around them, what costs money, and PvP.
+   Tables collapse to labelled cards on a phone (each cell carries its label in data-l). */
+body.world {
+  --atmos:
+    radial-gradient(ellipse 80rem 40rem at 50% -10rem, color-mix(in oklab, var(--world) 14%, transparent), transparent 70%),
+    radial-gradient(ellipse 40rem 26rem at 0 22rem, color-mix(in oklab, var(--alliance) 9%, transparent), transparent 70%);
+}
+html { scroll-padding-top: 5.25rem }
+.wrap { max-width: var(--wide); margin-inline: auto }
+h1, h2, h3, h4 { font-family: var(--f-caps) }
+a.xl { color: var(--bronze-hi); text-underline-offset: 3px }
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(2.5rem, 6vw, 5rem) 2rem; display: grid; gap: 2rem }
+.hero-top { display: grid; gap: 1.25rem; justify-items: start }
+.thesis { font-size: var(--step-1); max-width: 42ch; line-height: 1.45 }
+.thesis em { color: var(--bronze-hi); font-style: normal }
+.hero-grid { display: grid; gap: 1.5rem; grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 60rem) { .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) } }
+.hero-copy { padding: 1.5rem; display: grid; gap: 1rem; align-content: start }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: .75rem; margin-top: .5rem }
+.fact { border-top: 1px solid var(--line); padding-top: .5rem }
+.fact b { display: block; font-family: var(--f-caps); font-size: var(--step-1); color: var(--bronze-hi); font-weight: 400; font-variant-numeric: tabular-nums }
+.fact span { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted) }
+
+/* in-game tooltip ledger, as in the races book */
+.tt {
+  background: color-mix(in oklab, var(--tt-bg) 94%, transparent);
+  border: 1px solid var(--tt-line); border-radius: 4px;
+  box-shadow: inset 0 0 0 1px #000, 0 6px 18px -8px #000;
+  padding: 1.1rem 1.2rem; font-family: var(--f-ui); font-size: .9rem; line-height: 1.35; color: var(--tt-white); color-scheme: dark; align-self: start;
+}
+.tt-h { font-size: 1.15rem; font-weight: 700; color: var(--tt-white) }
+.tt-sub { color: var(--tt-gold); font-size: .82rem; margin-bottom: .5rem }
+.tt ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem }
+.tt li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .1rem .75rem }
+.tt li > span:first-child { min-width: 0 }
+.tt li > span:last-child { color: var(--tt-green); text-align: right; margin-left: auto }
+.tt li > span.dim { color: var(--tt-grey) }
+.tt s { color: var(--tt-grey); text-decoration-thickness: 1px; margin-right: .3rem }
+.tt-foot { color: var(--tt-grey); font-size: .78rem; margin-top: .55rem; font-style: italic }
+
+/* ---------- the bar ---------- */
+.bar-w { --bar-c: var(--world) }
+@media (max-width: 40rem) { .bar-w .brand { display: none } }
+
+/* ---------- sections ---------- */
+.sec { padding-block: clamp(3rem, 7vw, 5rem) 0; display: grid; gap: 1.6rem; min-width: 0 }
+.sec-head { display: grid; gap: .5rem; max-width: 64ch }
+.sec-head h2 { font-size: var(--step-3); color: var(--bronze-hi) }
+.sec-head p:not(.label) { color: var(--muted) }
+.sub-h { display: grid; gap: .35rem; max-width: 66ch; margin-top: .6rem }
+.sub-h h3 { font-size: var(--step-2); color: var(--ink) }
+.sub-h p { color: var(--muted) }
+.prose { max-width: 68ch }
+
+/* a correction to earlier assumptions */
+.fix { --st: var(--s-warn); border: 1px solid color-mix(in oklab, var(--st) 40%, transparent); border-left: 3px solid var(--st); background: color-mix(in oklab, var(--st) 7%, var(--panel)); padding: .95rem 1.15rem 1.05rem; display: grid; gap: .45rem; max-width: 70ch }
+.fix-top { display: flex; flex-wrap: wrap; gap: .3rem .65rem; align-items: center }
+.fix-l { font-family: var(--f-label); font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: lowercase; color: var(--muted) }
+.fix-q { font-style: italic; color: var(--muted) }
+.fix-a { font-weight: 600 }
+.note { border-left: 3px solid var(--world); background: color-mix(in oklab, var(--world) 6%, var(--panel)); padding: .85rem 1.05rem .95rem; display: grid; gap: .4rem; font-size: 1rem; max-width: 70ch }
+.note-l { font-family: var(--f-label); font-weight: 700; font-size: .8rem; letter-spacing: .07em; text-transform: lowercase; color: var(--world) }
+.unk { color: var(--muted); font-style: italic }
+
+/* tables: Vanilla beside Forever; on a phone each row becomes a labelled card */
+.tbl { padding: 1.1rem 1.25rem 1.2rem; min-width: 0 }
+.wt { width: 100%; border-collapse: collapse; font-family: var(--f-ui); font-size: .96rem; line-height: 1.45 }
+.wt th, .wt td { text-align: left; vertical-align: top; padding: .6rem .9rem .6rem 0; border-top: 1px solid var(--line-soft) }
+.wt th:last-child, .wt td:last-child { padding-right: 0 }
+.wt thead th { border-top: 0; padding-top: 0; font-family: var(--f-label); font-weight: 700; font-size: .76rem; letter-spacing: .07em; text-transform: lowercase; color: var(--muted) }
+.wt tbody th { font-family: var(--f-display); font-weight: 400; font-size: 1.05rem; color: var(--ink) }
+.wt td.was { color: var(--muted) }
+.wt td.lv { white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--world); font-weight: 700 }
+.wt small { color: var(--muted) }
+@media (max-width: 46rem) {
+  .wt, .wt tbody, .wt tr, .wt td, .wt tbody th { display: block; width: auto }
+  .wt thead { display: none }
+  .wt tr { padding: .7rem 0; border-top: 1px solid var(--line-soft) }
+  .wt tr:first-child { border-top: 0; padding-top: 0 }
+  .wt th, .wt td { border: 0; padding: .12rem 0 }
+  .wt td[data-l]::before { content: attr(data-l); display: block; font-family: var(--f-label); font-weight: 700; font-size: .72rem; letter-spacing: .07em; text-transform: lowercase; color: var(--muted); margin-top: .35rem }
+  .wt td.lv { white-space: normal }
+}
+
+/* ---------- dungeons ---------- */
+.dgs { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr)) }
+.dg { padding: 1.1rem 1.2rem 1.15rem; display: grid; gap: .45rem; align-content: start; min-width: 0 }
+.dg-h { display: flex; justify-content: space-between; align-items: baseline; gap: .6rem }
+.dg-h h3 { font-size: 1.3rem; line-height: 1.15; color: var(--ink) }
+.lvl { flex: none; font-family: var(--f-label); font-weight: 700; font-size: .8rem; letter-spacing: .04em; color: var(--world); border: 1px solid color-mix(in oklab, var(--world) 45%, transparent); background: color-mix(in oklab, var(--world) 9%, transparent); border-radius: 999px; padding: 0 .55rem; white-space: nowrap; font-variant-numeric: tabular-nums }
+.dg-where { font-family: var(--f-ui); font-size: .92rem; color: var(--world) }
+.dg-was { font-size: .95rem; color: var(--muted) }
+.dg-was span, .dg-boss span { font-family: var(--f-label); font-weight: 700; font-size: .72rem; letter-spacing: .07em; text-transform: lowercase; margin-right: .35rem }
+.dg-was span { color: var(--pc1) }
+.dg > p:not([class]) { font-size: 1rem }
+.dg-boss { font-family: var(--f-ui); font-size: .9rem; color: var(--muted); padding-top: .5rem; margin-top: .15rem; border-top: 1px solid var(--line-soft) }
+.dg-boss span { color: var(--bronze) }
+
+/* ---------- raids ---------- */
+.rds { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)) }
+.rd { padding: 1.2rem 1.25rem 1.25rem; display: grid; gap: .55rem; align-content: start; background: radial-gradient(ellipse 22rem 9rem at 50% 0, color-mix(in oklab, var(--world) 12%, transparent), transparent 72%), var(--panel) }
+.rd h3 { font-size: 1.45rem; color: var(--ink) }
+.rd-n { display: flex; gap: 1.2rem }
+.rd-n div { display: grid }
+.rd-n b { font-family: var(--f-caps); font-weight: 400; font-size: 2rem; line-height: 1; color: var(--world); font-variant-numeric: tabular-nums }
+.rd-n span { font-family: var(--f-label); font-weight: 700; font-size: .74rem; letter-spacing: .07em; text-transform: lowercase; color: var(--muted) }
+.rd p { font-size: 1rem }
+.chain { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem .2rem; align-items: center; font-family: var(--f-ui); font-size: .95rem }
+.chain li { display: inline-flex; align-items: center; gap: .2rem }
+.chain li span { padding: .1rem .55rem; border: 1px solid var(--line-soft); border-radius: 3px; background: color-mix(in oklab, var(--panel) 80%, transparent) }
+.chain li + li::before { content: "→"; color: var(--bronze); margin: 0 .2rem }
+.chain li:last-child span { border-color: color-mix(in oklab, var(--world) 55%, transparent); color: var(--world); font-weight: 700 }
+
+/* questions with short answers, as the races book's tooltip checks */
+.qas { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)) }
+.qa { --st: var(--s-unspec); display: grid; gap: .35rem; align-content: start; padding: .85rem 1rem .95rem; border: 1px solid color-mix(in oklab, var(--st) 35%, transparent); border-left: 3px solid var(--st); background: color-mix(in oklab, var(--st) 5%, var(--panel)) }
+.qa.yes { --st: var(--s-found) }
+.qa-q { font-style: italic; color: var(--muted) }
+.qa-a { font-weight: 600 }
+.qa-a span { font-family: var(--f-label); font-weight: 700; font-size: .76rem; letter-spacing: .06em; text-transform: lowercase; color: var(--st); margin-right: .35rem }
+
+/* camping tiers */
+.tiers3 { display: inline-flex; flex-wrap: wrap; gap: .2rem; align-items: center }
+.tiers3 span { padding: 0 .45rem; border-radius: 3px; border: 1px solid var(--line-soft); white-space: nowrap }
+.tiers3 i { font-style: normal; color: var(--bronze) }
+
+/* prices */
+.packs { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)) }
+.pk { padding: 1.15rem 1.2rem 1.2rem; display: grid; gap: .5rem; align-content: start }
+.pk h3 { font-size: 1.2rem; color: var(--ink); line-height: 1.2 }
+.pk .price { font-family: var(--f-caps); font-size: 1.8rem; line-height: 1; color: var(--world) }
+.pk ul { margin: 0; padding-left: 1.05rem; display: grid; gap: .25rem; font-size: .98rem }
+.pk li::marker { color: var(--world) }
+.pk.base { background: var(--panel-2) }
+</style>
+</head>
+<body class="world">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-glass" viewBox="0 0 24 24">
+      <path d="M5 2.5h14v2H5zM5 19.5h14v2H5z" fill="currentColor"/>
+      <path d="M7 4.5c0 4.6 4.2 6 4.2 7.5S7 14.9 7 19.5h10c0-4.6-4.2-6-4.2-7.5S17 9.1 17 4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M8.7 7h6.6c-.7 1.8-2.5 2.9-3.3 4.3C11.2 9.9 9.4 8.8 8.7 7zM8.4 19.5c.4-2.3 2.2-3.5 3.6-3.8 1.4.3 3.2 1.5 3.6 3.8z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <path d="M3 12h18M12 3c2.8 2.6 4.2 5.6 4.2 9s-1.4 6.4-4.2 9c-2.8-2.6-4.2-5.6-4.2-9S9.2 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+  </defs>
+</svg>
+<a class="skip" href="#dungeons">Skip to the dungeons</a>
+
+<header class="mast">
+  <div class="mast-in">
+    <a class="mast-brand" href="../"><svg aria-hidden="true"><use href="#i-glass"/></svg>Forever Codex</a>
+    <nav class="mast-books" aria-label="Books">
+      <a href="../lore/"><span class="bk-n">I</span>Lore</a>
+      <a href="../classes/"><span class="bk-n">II</span>Classes</a>
+      <a href="../races/"><span class="bk-n">III</span>Races</a>
+      <a href="../companions/"><span class="bk-n">IV</span><span class="lg">Companions</span><span class="sh">Pets</span></a>
+      <a href="../world/" aria-current="page"><span class="bk-n">V</span>World</a>
+      <a href="../appendix/">Appendix</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+<header class="hero" id="top">
+  <div class="hero-top">
+    <p class="label">forever codex · book v · the world outside classes and races, read against vanilla</p>
+    <h1 class="title">The World</h1>
+    <p class="thesis">Evolution, not replacement: <em>the old world stands</em>, and Forever builds beside it.</p>
+  </div>
+  <div class="hero-grid">
+    <div class="hero-copy frame">
+      <div class="prose">
+        <p>Forever keeps Classic’s pace. Outdoor mobs still take 10–15 seconds to kill, the world doesn’t scale to the player, and there’s no flying. The old dungeons keep their maps, bosses and keys. What changes is how much there is to do, and the systems around it: nine new dungeons, more than a thousand new quests, over 600 new recipes, an LFG listing tool, account-wide Legacy and optional transmog.</p>
+        <p>This book covers dungeons and raids, gear and stats, professions, the systems around them, what costs money, and PvP, all on the Alliance side. Forever launches November 4, so most of it comes from Blizzard’s previews and the beta. Each unknown is marked as unknown rather than filled in from Classic.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>9</b><span>new dungeons, levels 13–60</span></div>
+        <div class="fact"><b>1,000+</b><span>new quests</span></div>
+        <div class="fact"><b>600+</b><span>new recipes</span></div>
+        <div class="fact"><b>65</b><span>Legacy challenges at launch</span></div>
+      </div>
+    </div>
+    <aside class="tt" aria-labelledby="glance-h">
+      <p class="tt-h" id="glance-h">At a glance</p>
+      <p class="tt-sub">The world · Forever against Vanilla</p>
+      <ul>
+        <li><span>Raid sizes</span><span><s>Mostly 40</s> 10, 20 and 40</span></li>
+        <li><span>Finding a group</span><span><s>Chat</s> LFG listing tool</span></li>
+        <li><span>Level scaling</span><span class="dim">Still none</span></li>
+        <li><span>Flying</span><span class="dim">Still none</span></li>
+        <li><span>Hit and crit</span><span><s>Split</s> One stat each</span></li>
+        <li><span>Weapon skill</span><span>Kept, less on gear</span></li>
+        <li><span>Transmog</span><span>New, optional</span></li>
+        <li><span>PvP ranks</span><span><s>Weekly standings</s> Rank Points</span></li>
+        <li><span>Arenas</span><span class="dim">None announced</span></li>
+      </ul>
+      <p class="tt-foot">Pre-launch: Blizzard’s previews, development notes and the beta. Nothing here has been observed on a live realm yet.</p>
+    </aside>
+  </div>
+</header>
+</div>
+
+<nav class="bar bar-w" aria-label="Sections">
+  <div class="bar-in">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#i-globe"/></svg><span>The World</span></a>
+    <a class="sec-link" href="#dungeons">Dungeons</a>
+    <a class="sec-link" href="#raids">Raids</a>
+    <a class="sec-link" href="#gear">Gear</a>
+    <a class="sec-link" href="#professions"><span class="lg">Professions</span><span class="sh">Crafts</span></a>
+    <a class="sec-link" href="#systems">Systems</a>
+    <a class="sec-link" href="#cost">Cost</a>
+    <a class="sec-link" href="#pvp">PvP</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ======================= DUNGEONS ======================= -->
+<section class="sec" id="dungeons" aria-labelledby="dungeons-h">
+  <div class="sec-head">
+    <p class="label">nine new, the rest kept</p>
+    <h2 id="dungeons-h">Dungeons</h2>
+    <p>All nine new dungeons are for five players, spread from level 13 to 60. The old ones keep their maps, bosses and keys; their level bands, quests and loot were reworked.</p>
+  </div>
+  <div class="dgs">
+    <article class="dg frame"><div class="dg-h"><h3>Hall of Thanes</h3><span class="lvl">13–18</span></div><p class="dg-where">Beneath Ironforge</p><p class="dg-was"><span>in vanilla</span>No instance beneath Ironforge.</p><p>A Dark Iron incursion into the ancestral dwarven tombs. Its quests add Alliance leveling rewards.</p><p class="dg-boss"><span>bosses on the beta</span>Faldrim Anvilmar · Magmatus · Plunder · Durgen Dirgehammer</p></article>
+    <article class="dg frame"><div class="dg-h"><h3>Ruins of Lordaeron</h3><span class="lvl">15–20</span></div><p class="dg-where">Ruined Lordaeron, above the Undercity</p><p class="dg-was"><span>in vanilla</span>The Horde’s doorstep, not a dungeon.</p><p>The Scourge linger in the ruins. The story faces the Horde, but Blizzard says the Alliance can make its way inside.</p><p class="dg-boss"><span>bosses on the beta</span>Witherfang · The Baron · Viktor the Vile · The Abandoned · Bjork · Rath’mael</p></article>
+    <article class="dg frame"><div class="dg-h"><h3>Excavation Site</h3><span class="lvl">24–29</span></div><p class="dg-where">Whelgar’s Excavation, Wetlands</p><p class="dg-was"><span>in vanilla</span>An outdoor quest area.</p><p>A Titan dig full of temporal machinery. Saltspine’s Dust Storm cuts hit chance nearby, and the Relic Guardian mixes consoles with stuns and knockbacks.</p><p class="dg-boss"><span>bosses on the beta</span>Saltspine · Shadetooth · Relic Guardian</p></article>
+    <article class="dg frame"><div class="dg-h"><h3>City of Dalaran</h3><span class="lvl">28–33</span></div><p class="dg-where">Alterac Mountains</p><p class="dg-was"><span>in vanilla</span>Sealed behind its violet barrier.</p><p>The barrier is down but the city is unstable, with several sewer and city routes and many arcane-immune inhabitants. Entry takes an introduction to the Kirin Tor. Its bosses drop profession Blueprints, camping equipment among them.</p><p class="dg-boss"><span>bosses on the beta</span>Atrexis the Grave Knight · Arcane Anomaly · Arcanic Enigma · Unstable Sentinel · Mana Devourer · Fel Ancient · Shade of the Archmage, and a secret one, Lyn the Ignored</p></article>
+    <article class="dg frame"><div class="dg-h"><h3>Drowned City</h3><span class="lvl">35–40</span></div><p class="dg-where">Flooded troll ruins off the Stranglethorn coast</p><p class="dg-was"><span>in vanilla</span>Nothing offshore.</p><p>Naga, trolls and pirates, open-air and underwater spaces, and weather that escalates into storms.</p><p class="dg-boss"><span>bosses</span>Not yet known, nor any entry requirement</p></article>
+    <article class="dg frame"><div class="dg-h"><h3>Krol’dok Stronghold</h3><span class="lvl">40–45</span></div><p class="dg-where">Riverglades</p><p class="dg-was"><span>in vanilla</span>No Riverglades at all.</p><p>A large ogre fortress at the heart of the Riverglades frontier story, with its raids and disappearances.</p><p class="dg-boss"><span>bosses</span>Not yet known</p></article>
+    <article class="dg frame"><div class="dg-h"><h3>Alcaz Prison</h3><span class="lvl">48–53</span></div><p class="dg-where">Alcaz Island, northeast Dustwallow Marsh</p><p class="dg-was"><span>in vanilla</span>An island with a shut prison.</p><p>The Defias and the naga struggle inside, and the mysteries around King Varian continue.</p><p class="dg-boss"><span>bosses</span>Not yet known</p></article>
+    <article class="dg frame"><div class="dg-h"><h3>Blackmaw Hold</h3><span class="lvl">55–60</span></div><p class="dg-where">Behind the furbolg gates, northern Azshara</p><p class="dg-was"><span>in vanilla</span>No furbolg city.</p><p>A large underground furbolg city with spreading corruption and several routes. Its deepest passages lead toward the Barrow Deeps.</p><p class="dg-boss"><span>bosses</span>Not yet known</p></article>
+    <article class="dg frame"><div class="dg-h"><h3>Shaper’s Terrace</h3><span class="lvl">58–60</span></div><p class="dg-where">Northern Un’Goro Crater</p><p class="dg-was"><span>in vanilla</span>Titan machinery as outdoor lore.</p><p>A Titan Shaper facility. Crystals gathered in Un’Goro interact with its consoles; whether that’s a hard attunement isn’t known.</p><p class="dg-boss"><span>bosses</span>Not yet known</p></article>
+  </div>
+  <p class="unk">The upper five weren’t testable when the beta guides were written, so their bosses are left blank rather than guessed from datamining. <a class="xl" href="../lore/#unwritten">Their story hooks are in the lore book.</a></p>
+
+  <div class="sub-h"><h3>The old dungeons</h3><p>Evolution rather than replacement: Classic’s spaces and bosses stay recognizable, and the keys still matter. Blizzard re-examined every dungeon drop, improved unique boss items and added hundreds more, so Classic loot lists don’t carry over.</p></div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Dungeon</th><th scope="col">Forever levels</th><th scope="col">What carries over, and what changed</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Deadmines</th><td class="lv" data-l="levels">18–23</td><td data-l="notes">The Classic route and bosses; Alliance quests remain.</td></tr>
+        <tr><th scope="row">Wailing Caverns</th><td class="lv" data-l="levels">15–25</td><td data-l="notes">Still open to the Alliance; no layout or boss changes confirmed.</td></tr>
+        <tr><th scope="row">Shadowfang Keep</th><td class="lv" data-l="levels">22–30</td><td data-l="notes">Classic quests and bosses, now tied into Forever’s Dalaran secrets.</td></tr>
+        <tr><th scope="row">Gnomeregan</th><td class="lv" data-l="levels">29–38</td><td data-l="notes">The Workshop Key, or 150 Lockpicking, still opens the back door.</td></tr>
+        <tr><th scope="row">Scarlet Monastery</th><td class="lv" data-l="levels">28–45</td><td data-l="notes">Graveyard 28–38, Library 29–39, Armory 32–42, Cathedral 35–45. The Scarlet Key, or 175 Lockpicking, still opens the Armory and Cathedral.</td></tr>
+        <tr><th scope="row">Razorfen Kraul</th><td class="lv" data-l="levels">30–40</td><td data-l="notes">Classic quests, neutral ones included.</td></tr>
+        <tr><th scope="row">Razorfen Downs</th><td class="lv" data-l="levels">40–50</td><td data-l="notes"><i>Bring the Light</i> and Belnistrasz remain; the new Shen’dralas story gives reasons to come back.</td></tr>
+        <tr><th scope="row">Uldaman</th><td class="lv" data-l="levels">42–52</td><td data-l="notes">The archaeology quests and the Platinum Discs remain.</td></tr>
+        <tr><th scope="row">Zul’Farrak</th><td class="lv" data-l="levels">44–54</td><td data-l="notes">The Mallet of Zul’Farrak still summons Gahz’rilla.</td></tr>
+        <tr><th scope="row">Maraudon</th><td class="lv" data-l="levels">45–57</td><td data-l="notes">Wicked Grotto and Foulspore 45–53, Earth Song Falls 48–57. The Scepter of Celebras still opens the inner portal, and Shen’dralas reconnects to it.</td></tr>
+        <tr><th scope="row">Sunken Temple</th><td class="lv" data-l="levels">50–60</td><td data-l="notes">Yeh’kinya’s Scroll still summons the Avatar of Hakkar.</td></tr>
+        <tr><th scope="row">Blackrock Depths</th><td class="lv" data-l="levels">52–60</td><td data-l="notes">The Shadowforge Key, or 280 Lockpicking; Marshal Windsor still starts the Alliance Onyxia chain here.</td></tr>
+        <tr><th scope="row">Lower Blackrock Spire</th><td class="lv" data-l="levels">55–60</td><td data-l="notes">The Classic map, with revised boss loot.</td></tr>
+        <tr><th scope="row">Upper Blackrock Spire</th><td class="lv" data-l="levels">58–60</td><td data-l="notes">Still on the Onyxia chain, for the Blood of the Black Dragon Champion.</td></tr>
+        <tr><th scope="row">Dire Maul</th><td class="lv" data-l="levels">58–60</td><td data-l="notes">The Crescent Key, or 300 Lockpicking; tribute runs remain. Shen’dralas builds around it rather than replacing it.</td></tr>
+        <tr><th scope="row">Stratholme</th><td class="lv" data-l="levels">58–60</td><td data-l="notes">The Scarlet Key and the Key to the City, or 275 Lockpicking. Baron Rivendare and his Deathcharger remain.</td></tr>
+        <tr><th scope="row">Scholomance</th><td class="lv" data-l="levels">58–60</td><td data-l="notes">The Skeleton Key remains.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <aside class="note"><p class="note-l">finding a group</p><p>Vanilla had chat channels and meeting stones. Forever adds an LFG listing tool with a required Playstyle choice, but no teleport, and meeting stones don’t summon, so Warlocks keep their role. Groups form within one ruleset, and there are still no cross-faction parties. <a class="xl" href="#rulesets">How rulesets work.</a></p></aside>
+</section>
+
+<!-- ======================= RAIDS ======================= -->
+<section class="sec" id="raids" aria-labelledby="raids-h">
+  <div class="sec-head">
+    <p class="label">december 9</p>
+    <h2 id="raids-h">Raids</h2>
+    <p>The first tier unlocks December 9 and mixes three raid sizes, where Vanilla’s endgame was mostly 40 players. Every raid planned so far resets weekly.</p>
+  </div>
+  <div class="rds">
+    <article class="rd frame"><h3>Barrow Deeps</h3><div class="rd-n"><div><b>10</b><span>players</span></div><div><b>8</b><span>bosses</span></div></div><p>Illidan’s former prison beneath Hyjal, with entrances from Hyjal, Winterspring and Blackmaw Hold. No attunement announced; boss names not yet revealed.</p></article>
+    <article class="rd frame"><h3>Hyjal Summit</h3><div class="rd-n"><div><b>20</b><span>players</span></div><div><b>13</b><span>bosses</span></div></div><p>Around Nordrassil. It opens with an ancient guardian and branches into routes above and below ground. No attunement announced; boss names not yet revealed.</p></article>
+    <article class="rd frame"><h3>Onyxia’s Lair</h3><div class="rd-n"><div><b>40</b><span>players</span></div><div><b>1</b><span>boss, three phases</span></div></div><p>Dustwallow Marsh, as in Vanilla. Every player still needs the Drakefire Amulet, and Blizzard’s preview tells raids to bring Fire Resistance.</p></article>
+  </div>
+  <div class="sub-h"><h3>The Drakefire Amulet, for the Alliance</h3><p>The Vanilla chain, kept: Onyxia was deliberately retained, not remade.</p></div>
+  <ol class="chain" aria-label="The Alliance Onyxia attunement">
+    <li><span><i>Dragonkin Menace</i></span></li>
+    <li><span><i>The True Masters</i></span></li>
+    <li><span>Marshal Windsor, Blackrock Depths</span></li>
+    <li><span>Windsor’s evidence</span></li>
+    <li><span>Stormwind</span></li>
+    <li><span>The dragon investigations</span></li>
+    <li><span>General Drakkisath, Upper Blackrock Spire</span></li>
+    <li><span>The Drakefire Amulet</span></li>
+  </ol>
+  <p class="unk">Not announced: difficulty modes beyond one, loot rules, drops per boss, and boss names for the two new raids. New Season One tier sets are in the data but still subject to change.</p>
+
+  <div class="sub-h"><h3>The Vanilla raids, and after December 9</h3><p>Blizzard’s roadmap promises more raids, dungeons, world content, PvP season refreshes, more 1–60 quests, Hardcore and a revamped iconic raid, but no dates past December 9.</p></div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Vanilla content</th><th scope="col">In Forever</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Molten Core</th><td data-l="in forever">Not in the first tier. Original-era raids are meant to return beside Forever’s new ones, and Molten Core is expected to be revamped rather than copied. No date, size or details yet.</td></tr>
+        <tr><th scope="row">Blackwing Lair</th><td data-l="in forever">Later, if its stage arrives; no date.</td></tr>
+        <tr><th scope="row">Zul’Gurub</th><td data-l="in forever">No date or size announced.</td></tr>
+        <tr><th scope="row">Ruins and Temple of Ahn’Qiraj</th><td data-l="in forever">No date, and no word on the War Effort.</td></tr>
+        <tr><th scope="row">Naxxramas</th><td data-l="in forever">No date announced.</td></tr>
+        <tr><th scope="row">Azuregos, Lord Kazzak, the Dragons of Nightmare</th><td data-l="in forever">No timing found for any of them.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ======================= GEAR ======================= -->
+<section class="sec" id="gear" aria-labelledby="gear-h">
+  <div class="sec-head">
+    <p class="label">the numbers</p>
+    <h2 id="gear-h">Gear and stats</h2>
+    <p>Blizzard’s aim is to unsolve gearing without abandoning Classic’s item system.</p>
+  </div>
+  <article class="fix">
+    <p class="fix-top"><span class="fix-l">correction</span><span class="vs vs-changed">Changed</span></p>
+    <p class="fix-q">“Weapon skill is gone in Forever.”</p>
+    <p class="fix-a">It isn’t. Blizzard says weapon skill still works; gear just gives less of it. What the October 26 pass removed were the racial weapon specializations. A new Expertise stat now cuts enemy dodge and parry, alongside weapon skill, not instead of it.</p>
+  </article>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Stat</th><th scope="col">Vanilla</th><th scope="col">Forever</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Hit</th><td class="was" data-l="vanilla">Separate melee, ranged and spell hit, with different caps</td><td data-l="forever">One Hit stat for melee, ranged and spells</td></tr>
+        <tr><th scope="row">Critical strike</th><td class="was" data-l="vanilla">Physical and spell crit, itemized separately</td><td data-l="forever">One Critical Strike stat, wherever an ability can crit</td></tr>
+        <tr><th scope="row">Weapon skill</th><td class="was" data-l="vanilla">The melee stat that mattered most against bosses</td><td data-l="forever">Still works; gear gives less of it, and the racial versions are gone</td></tr>
+        <tr><th scope="row">Expertise</th><td class="was" data-l="vanilla">Didn’t exist</td><td data-l="forever">New: reduces enemy dodge and parry</td></tr>
+        <tr><th scope="row">Healing power</th><td class="was" data-l="vanilla">Healing only</td><td data-l="forever">Also adds one-third as much damage</td></tr>
+        <tr><th scope="row">Spell power</th><td class="was" data-l="vanilla">Spell damage, healing and school damage</td><td data-l="forever">Kept, and caster weapons carry real offensive and healing power</td></tr>
+        <tr><th scope="row">Haste</th><td class="was" data-l="vanilla">Not a gear stat</td><td data-l="forever">Exists as an effect, as on Skyborne; as a gear stat, unknown</td></tr>
+        <tr><th scope="row">Armor penetration</th><td class="was" data-l="vanilla">Scattered armor-ignoring effects</td><td data-l="forever">Effects exist, such as maces under Arms’ Weaponmaster; a general gear stat is unknown</td></tr>
+        <tr><th scope="row">Attack power</th><td class="was" data-l="vanilla">Melee and ranged, separately</td><td data-l="forever">Kept separate; merging hit and crit doesn’t merge it</td></tr>
+        <tr><th scope="row">Spirit, MP5, defense, armor, resistances</th><td class="was" data-l="vanilla">The Classic set</td><td data-l="forever">Kept. Camps can buff Spirit, and Onyxia’s preview asks for Fire Resistance</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="qas">
+    <article class="qa yes"><p class="qa-q">Do glancing blows still exist?</p><p class="qa-a"><span>yes</span>The beta’s known-issues notes discuss their chance and damage penalty.</p></article>
+    <article class="qa"><p class="qa-q">Is 9% still the melee hit cap against raid bosses?</p><p class="qa-a"><span>unknown</span>Forever’s skill and itemization changes mean Classic’s number shouldn’t be assumed.</p></article>
+    <article class="qa"><p class="qa-q">And 16% for spells?</p><p class="qa-a"><span>unknown</span>One Hit stat now covers spells, and Blizzard hasn’t published the level-63 formula.</p></article>
+    <article class="qa"><p class="qa-q">Does dual wield still miss more?</p><p class="qa-a"><span>yes</span>Talents such as Warrior’s Furious Precision add off-hand hit. The exact threshold is unknown.</p></article>
+    <article class="qa"><p class="qa-q">Is there crit suppression?</p><p class="qa-a"><span>unknown</span>No raid-boss table yet. The new character panel does explain hit, crit and crit immunity in its tooltips.</p></article>
+  </div>
+  <div class="prose">
+    <p><b>Itemization.</b> Every dungeon drop was reviewed and unique boss items improved; world-drop epics are being made more worthwhile, and new items use conditional effects, creature-type bonuses and active effects. Random-suffix gear such as “of the Bear” stays. Because one Hit or Crit piece now serves both melee and casters, and healing gear adds damage, gear valuation changes most for Retribution, Feral, Balance, Enhancement and Shadow. New Season One tier sets, built around Forever’s specs, are in the data but still subject to change.</p>
+    <p><b>Loot.</b> There’s no switch to personal loot. Transmog changes one thing: when an uncommon or rare dungeon item drops, eligible group members get its appearance without taking the item, while an epic raid appearance goes to whoever wins the item. Master loot, trade windows and drops per raid boss are unknown.</p>
+  </div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Consumables and buffs</th><th scope="col">Vanilla</th><th scope="col">Forever</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Weapon enhancements</th><td class="was" data-l="vanilla">Oils and stones clashed with poisons, imbues and Warlock stones</td><td data-l="forever">They coexist in more cases, per the class notes</td></tr>
+        <tr><th scope="row">Alchemy</th><td class="was" data-l="vanilla">The Classic potions, elixirs and flasks</td><td data-l="forever">50+ new recipes on the beta, from leveling consumables to endgame flasks</td></tr>
+        <tr><th scope="row">Elixir and flask stacking</th><td class="was" data-l="vanilla">Many buffs at once</td><td data-l="forever">Unknown; no stacking rules published</td></tr>
+        <tr><th scope="row">World buffs</th><td class="was" data-l="vanilla">Rallying Cry, Songflower, Spirit of Zandalar, the Dire Maul tributes</td><td data-l="forever">Unknown; Vanilla behavior shouldn’t be assumed</td></tr>
+        <tr><th scope="row">Downranking</th><td class="was" data-l="vanilla">Low ranks for mana efficiency</td><td data-l="forever">Curtailed. <a class="xl" href="../classes/#systems">System changes</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ======================= PROFESSIONS ======================= -->
+<section class="sec" id="professions" aria-labelledby="professions-h">
+  <div class="sec-head">
+    <p class="label">every profession, rebuilt for 1–60</p>
+    <h2 id="professions-h">Professions</h2>
+    <p>Blizzard’s goal is for professions to matter while leveling, not only at 60. The cap is still 300, with two primary professions and the same three secondary ones.</p>
+  </div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Area</th><th scope="col">Vanilla</th><th scope="col">Forever</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Recipes</th><td class="was" data-l="vanilla">The Classic catalogue, with many weak leveling crafts</td><td data-l="forever">600+ new recipes across every level, and revised old ones</td></tr>
+        <tr><th scope="row">Training</th><td class="was" data-l="vanilla">Apprentice, Journeyman, Expert, Artisan</td><td data-l="forever">The same ranks: Journeyman around level 10, Expert around 20, Artisan around 35. Fees are unknown</td></tr>
+        <tr><th scope="row">Progress</th><td class="was" data-l="vanilla">One character’s business</td><td data-l="forever">Legacy Points at 150, 225 and 300 in each crafting profession</td></tr>
+        <tr><th scope="row">Camping</th><td class="was" data-l="vanilla">A basic campfire</td><td data-l="forever">Every profession builds into campsites, with advanced Blueprints from dungeon bosses</td></tr>
+        <tr><th scope="row">Recipe sources</th><td class="was" data-l="vanilla">Trainers, drops, reputation, quests</td><td data-l="forever">Also Merchant’s Favor, from the Azeroth Commerce Authority</td></tr>
+        <tr><th scope="row">Gathering</th><td class="was" data-l="vanilla">Trained at a trainer</td><td data-l="forever">An early quest can hand out a Herbalism, Mining or Skinning manual</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Profession</th><th scope="col">What changed</th><th scope="col">Camp features, tier by tier</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Alchemy</th><td data-l="what changed">50+ new recipes: Mender, Spellblasting and Frenzy potion lines, new elixirs, dyes and endgame flasks. Ordinary healing potions move to First Aid. Alliance Artisan training is with Kylanna Windwhisper at Feathermoon; Dalaran and Zephras add trainers.</td><td data-l="camp"><span class="tiers3"><span>Mana Well</span><i>→</i><span>Fermenter</span><i>→</i><span>Alchemy Laboratory</span></span><br><small>The Fermenter dropped from Rath’mael in the Ruins of Lordaeron on the beta.</small></td></tr>
+        <tr><th scope="row">Blacksmithing</th><td data-l="what changed">A large expansion of leveling gear, new endgame crafts and Commerce Authority plans. Armorsmith and Weaponsmith remain.</td><td data-l="camp"><span class="tiers3"><span>Sharpening Wheel</span><i>→</i><span>Anvil</span><i>→</i><span>Master Forge</span></span><br><small>A Strength camp buff.</small></td></tr>
+        <tr><th scope="row">Enchanting</th><td data-l="what changed">Changed reagents and new crafts, staves among them. Crafted wands regained vendor value on October 8.</td><td data-l="camp"><span class="tiers3"><span>Enchanted Lute</span><i>→</i><span>Arcane Salvager</span><i>→</i><span>Arcane Forge</span></span><br><small>The Salvager improves disenchanting; the Forge gates high crafts.</small></td></tr>
+        <tr><th scope="row">Engineering</th><td data-l="what changed">More products non-engineers can use, and new materials and recipes. Gnomish and Goblin remain; Buzzek Bracketswing in Gadgetzan still trains Artisan, and the Gnome racial cuts failures by 20%.</td><td data-l="camp"><span class="tiers3"><span>Reagent Bot</span><i>→</i><span>Repair Bot</span><i>→</i><span>Anarchist’s Workbench</span></span></td></tr>
+        <tr><th scope="row">Herbalism</th><td data-l="what changed">New reagents and seeds for camping. Node sharing isn’t described, so Classic-style competition is the safe assumption.</td><td data-l="camp"><span class="tiers3"><span>Incense Candle</span><i>→</i><span>Greenhouse</span><i>→</i><span>Seed Hybridizer</span></span><br><small>The Greenhouse grows herbs from planted seeds.</small></td></tr>
+        <tr><th scope="row">Leatherworking</th><td data-l="what changed">Many new leveling and endgame patterns. Tribal, Elemental and Dragonscale remain.</td><td data-l="camp"><span class="tiers3"><span>Camp Tent</span><i>→</i><span>Tanning Rack</span><i>→</i><span>Sewing Machine</span></span></td></tr>
+        <tr><th scope="row">Mining</th><td data-l="what changed">New ores and bars.</td><td data-l="camp" class="was">Camp features exist; names unconfirmed</td></tr>
+        <tr><th scope="row">Skinning</th><td data-l="what changed">Adjusted in the beta notes; final yields not published.</td><td data-l="camp" class="was">Camp features exist; names unconfirmed</td></tr>
+        <tr><th scope="row">Tailoring</th><td data-l="what changed">Many new bind-on-pickup leveling sets (Stormsewn, Earthenweave, Ghostweave, Slimeslayer, Slimetender) and endgame patterns such as Manaflare. Bloodvine-era patterns remain, and cosmetic clothing now feeds transmog.</td><td data-l="camp"><span class="tiers3"><span>Faction Banner</span><i>→</i><span>Spinning Wheel</span><i>→</i><span>Loom</span></span><br><small>A Spirit camp buff.</small></td></tr>
+        <tr><th scope="row">Cooking</th><td data-l="what changed">More stat foods, and food buffs give a small kill-XP bonus while leveling.</td><td data-l="camp">Raises how many features a camp can hold</td></tr>
+        <tr><th scope="row">First Aid</th><td data-l="what changed">Still its own profession, and now makes ordinary healing potions too. Legacy’s Field Medicine shortens Recently Bandaged outside instanced PvP.</td><td data-l="camp" class="was">—</td></tr>
+        <tr><th scope="row">Fishing</th><td data-l="what changed">New fish and cooking links; Legacy’s Luremaster adds extra fish.</td><td data-l="camp" class="was">Camp features exist; names unconfirmed</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="sub-h" id="camping"><h3>Camping, and the Greenhouse</h3></div>
+  <div class="prose">
+    <p>Camping is a profession-like system, not a new profession slot. A Basic Campfire makes a campsite; characters resting there can use each other’s facilities and get temporary buffs, each character can add a feature, and advanced features come from skill and from dungeon Blueprints. Some camp buffs, such as a Blacksmith’s Strength, a Tailor’s Spirit and an Herbalist’s Intellect, don’t stack with the matching class buff, so classes keep their value.</p>
+    <p>The Greenhouse is real: it’s Herbalism’s second-tier feature and grows herbs from planted seeds. It isn’t a separate gardening profession.</p>
+  </div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Specialization</th><th scope="col">Vanilla</th><th scope="col">Forever</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Armorsmith and Weaponsmith</th><td class="was" data-l="vanilla">Quest-based</td><td data-l="forever">Kept; no replacement announced</td></tr>
+        <tr><th scope="row">Sword, axe and hammer smithing</th><td class="was" data-l="vanilla">Weaponsmith branches</td><td data-l="forever">Not clarified for the revised items</td></tr>
+        <tr><th scope="row">Gnomish and Goblin Engineering</th><td class="was" data-l="vanilla">With a membership renewal about every two weeks</td><td data-l="forever">Kept, renewal included; schematic odds unknown</td></tr>
+        <tr><th scope="row">Tribal, Elemental and Dragonscale</th><td class="was" data-l="vanilla">Leatherworking’s three</td><td data-l="forever">Kept</td></tr>
+        <tr><th scope="row">Alchemy masteries</th><td class="was" data-l="vanilla">Didn’t exist: Potion, Elixir and Transmutation Mastery came later</td><td data-l="forever">None confirmed</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="sub-h"><h3>Merchant’s Favor, and the market</h3></div>
+  <div class="prose">
+    <p>Forever turns the old supply-crate idea into the Azeroth Commerce Authority: Waylaid Crates turn in for Merchant’s Favor, which buys recipes, profession certifications and other goods. On the beta, Alchemy’s Friendly recipes cost 120 Favor, Honored ones usually 180, higher ones 240, and its 300-skill certification 1,000. Favor also buys the Pack Kodo mount (6,000) and the <a class="xl" href="../companions/#p-minimule">Minimule</a> companion, and Legacy’s Performance Bonus raises the Favor each crate pays.</p>
+    <p>The Stranglethorn Fishing Extravaganza returns with a new Extravagant Extravaganza Coin. Wowhead’s fishing guide describes the first 50 Master Anglers each winning the pole and a coin on Sundays, 2–4 PM; Blizzard hasn’t confirmed the final schedule. The Black Market Auction House at Powderfuse Port exists, but its full stock and rotation are unknown.</p>
+    <p>Crafted mounts aren’t a known launch feature: the mount data has no new Engineering mount. The Engineering companion pets remain; <a class="xl" href="../companions/#g-engineering">they’re in the companions book</a>.</p>
+  </div>
+</section>
+
+<!-- ======================= SYSTEMS ======================= -->
+<section class="sec" id="systems" aria-labelledby="systems-h">
+  <div class="sec-head">
+    <p class="label">around the game</p>
+    <h2 id="systems-h">Systems and the world</h2>
+    <p>Leveling, travel, mounts, the interface, Legacy, transmog, the new regions and rulesets.</p>
+  </div>
+
+  <div class="sub-h"><h3>Leveling</h3><p>Classic’s slower, journey-first leveling stays, with no level scaling. There are more than a thousand new quests, in whole new zones and across the old ones; Riverglades alone has over 150. The beta cut dungeon-quest XP on October 1–2, and the final XP curve hasn’t been published.</p></div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Cost or rule</th><th scope="col">Vanilla</th><th scope="col">Forever</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Rested XP</th><td class="was" data-l="vanilla">From inns and cities</td><td data-l="forever">Kept; Legacy’s Well Rested raises the cap and the rate</td></tr>
+        <tr><th scope="row">Class training</th><td class="was" data-l="vanilla">A big leveling gold sink</td><td data-l="forever">Still meaningful; prices unknown</td></tr>
+        <tr><th scope="row">Talent respec</th><td class="was" data-l="vanilla">A climbing trainer fee</td><td data-l="forever">Kept; the fee’s climb unknown</td></tr>
+        <tr><th scope="row">Dual spec</th><td class="was" data-l="vanilla">Didn’t exist</td><td data-l="forever">From level 40; cost unknown</td></tr>
+        <tr><th scope="row">Talent points</th><td class="was" data-l="vanilla">From level 10</td><td data-l="forever">Legacy’s Talented brings them five levels early</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-h"><h3>Riding, travel and mounts</h3><p>Ground travel stays central: there are no flying mounts. Riding still comes at 40 and 60; a collector guide puts the totals around 100 and 1,000 gold, with one racial mount free, but the split between mount and training isn’t confirmed. Store mounts still need riding skill. Zephras Isle is reached by airship from Dalaran, and nothing suggests a shorter hearthstone.</p></div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Mount</th><th scope="col">Vanilla</th><th scope="col">Forever</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Horses, rams, nightsabers, mechanostriders</th><td class="was" data-l="vanilla">The racial mounts at 40 and 60</td><td data-l="forever">Kept; a Striped Dawnsaber is also in the data, source unknown</td></tr>
+        <tr><th scope="row">Galestriders</th><td class="was" data-l="vanilla">Didn’t exist</td><td data-l="forever">Skyborne mounts: Empyrean, Stormy and Umber, with swift versions</td></tr>
+        <tr><th scope="row">Winterspring Frostsaber</th><td class="was" data-l="vanilla">The long Wintersaber Trainers grind</td><td data-l="forever">Kept; Legacy’s Diplomat speeds reputation</td></tr>
+        <tr><th scope="row">PvP mounts</th><td class="was" data-l="vanilla">Rank 11</td><td data-l="forever">Still Rank 11</td></tr>
+        <tr><th scope="row">Deathcharger’s Reins</th><td class="was" data-l="vanilla">Baron Rivendare, very rare</td><td data-l="forever">Still Baron Rivendare; rate unknown</td></tr>
+        <tr><th scope="row">Reins of the Spectral Bear</th><td class="was" data-l="vanilla">Didn’t exist</td><td data-l="forever">55 Legacy Points</td></tr>
+        <tr><th scope="row">Pack Kodo</th><td class="was" data-l="vanilla">Didn’t exist</td><td data-l="forever">6,000 Merchant’s Favor</td></tr>
+        <tr><th scope="row">Cerulean Prideclaw</th><td class="was" data-l="vanilla">Didn’t exist</td><td data-l="forever">With the Skyborne Heroic Pack and up; still needs riding</td></tr>
+        <tr><th scope="row">Veteran Adventurer’s Loyal Companion</th><td class="was" data-l="vanilla">Didn’t exist</td><td data-l="forever">With the Skyborne Epic Pack and up</td></tr>
+        <tr><th scope="row">Raid mounts</th><td class="was" data-l="vanilla">Not a launch-era feature</td><td data-l="forever">None announced for the first tier</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-h"><h3>The interface</h3><p>Modernized without becoming Retail: gamepad support, a choice of HD or SD character models, optional transmog, and a character panel whose tooltips explain combat stats. Blizzard is restricting computational addons, the kind that solve encounters, while keeping addon support; the exact API was still moving in the beta. There’s no confirmed built-in damage meter, and no announced change to bag, bank or quest-log sizes.</p></div>
+
+  <div class="sub-h" id="legacy"><h3>Legacy</h3><p>One of Forever’s biggest departures. Challenges earn Legacy Points for the whole Battle.net account, and each character spends the pool on perks. Launch has 65 challenges worth 65 points, but a character can spend only 16 at first.</p></div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Category</th><th scope="col">Challenges at launch</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Classes</th><td data-l="challenges">Reach 25, 45 and 60 on each class</td></tr>
+        <tr><th scope="row">Tradeskills</th><td data-l="challenges">150, 225 and 300 in each crafting profession</td></tr>
+        <tr><th scope="row">PvP</th><td data-l="challenges">Rank thresholds, Exalted battleground reputations, Field of Honor Journey weeks</td></tr>
+        <tr><th scope="row">Adventure</th><td data-l="challenges">Exploring Azeroth on one character; a major dungeon questline</td></tr>
+        <tr><th scope="row">Dungeons</th><td data-l="challenges">Completion milestones</td></tr>
+        <tr><th scope="row">Raids</th><td data-l="challenges">Onyxia, all eight Barrow Deeps bosses, all thirteen in Hyjal Summit</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p><b>Perks</b> include vendor discounts, more Merchant’s Favor, help with profession skill-ups, extra gathering yields, longer food and buff durations, faster and cheaper flights, better rested XP, reputation gains, less durability loss, more Honor and reagent conveniences. <b>Cosmetic milestones</b>: the Replica Ironforge Air Rifle toy, the <a class="xl" href="../companions/#p-spectral-bear-cub">Spectral Bear Cub</a> at 25 points, the Spectral Bear Tabard, and the Reins of the Spectral Bear at 55. Legacy and Collections are account-wide across every ruleset; Hardcore, when it comes, is one-way, its progress flowing out to the account but nothing flowing in.</p>
+  </div>
+
+  <div class="sub-h"><h3>Transmog and collections</h3><p>Vanilla had no transmog. Forever does, with controls that keep Classic intact.</p></div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Rule</th><th scope="col">How it works</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Optional</th><td data-l="how">Transmog can be switched off in settings, and Classic Mode switches the visible system off</td></tr>
+        <tr><th scope="row">Collecting</th><td data-l="how">Appearances still collect while it’s off, into account-wide Collections</td></tr>
+        <tr><th scope="row">Restrictions</th><td data-l="how">The same armor-type rules apply; high-level appearances wait on level, loosening at 60</td></tr>
+        <tr><th scope="row">Dungeon drops</th><td data-l="how">An uncommon or rare drop’s appearance goes to eligible group members without taking the item</td></tr>
+        <tr><th scope="row">Raid epics</th><td data-l="how">The appearance goes with the item, to whoever wins it</td></tr>
+        <tr><th scope="row">Poor and common items</th><td data-l="how">Give their appearance without binding the item</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-h"><h3>The new regions</h3></div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Region</th><th scope="col">Vanilla</th><th scope="col">Forever</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Mount Hyjal</th><td class="was" data-l="vanilla">Famously closed</td><td data-l="forever">A full endgame leveling region with its own reputations and quests, Hyjal Summit, and one way into the Barrow Deeps</td></tr>
+        <tr><th scope="row">Riverglades</th><td class="was" data-l="vanilla">Didn’t exist</td><td data-l="forever">A frontier zone of humans, orcs, ogres and trade routes, roughly mid-30s to mid-40s, with 150+ quests, Krol’dok Stronghold and Powderfuse Port</td></tr>
+        <tr><th scope="row">Zephras Isle</th><td class="was" data-l="vanilla">Didn’t exist</td><td data-l="forever">The Skyborne starting zone, levels 1–12, with the Nightclaw Druids and new pets; reached later by airship</td></tr>
+        <tr><th scope="row">Shen’dralas</th><td class="was" data-l="vanilla">Not a region</td><td data-l="forever">A real new region, not a slip for the Shen’dralar: a story of the Shen’dralar, Eldre’Thalas and the centaurs that reconnects Dire Maul, Maraudon and Razorfen Downs</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-h" id="rulesets"><h3>Rulesets, not realms</h3><p>Forever’s characters live in realmless ruleset ecosystems: Normal, PvP, Roleplaying and Roleplay-PvP at launch, with Hardcore later. Dungeon and raid groups form within one ruleset, while battleground matchmaking can cross rulesets except Hardcore. The PvP ecosystem is faction-locked; Normal and Roleplaying allow both factions on one account. Cross-faction parties still don’t exist.</p></div>
+</section>
+
+<!-- ======================= COST ======================= -->
+<section class="sec" id="cost" aria-labelledby="cost-h">
+  <div class="sec-head">
+    <p class="label">what costs money</p>
+    <h2 id="cost-h">The base game, and the packs</h2>
+    <p>Forever comes with any World of Warcraft subscription or game time; it isn’t sold as an expansion. The Skyborne are the exception: the race and the Zephras Isle starting experience need a pack. Prices are US.</p>
+  </div>
+  <div class="packs">
+    <article class="pk frame base"><h3>Base Forever</h3><p class="price">Included</p><ul><li>With a WoW subscription or game time</li><li>The four original Alliance races and the core game</li></ul></article>
+    <article class="pk frame"><h3>Skyborne Heroic Pack</h3><p class="price">$29.99</p><ul><li>The Skyborne race and the Zephras Isle starting experience</li><li>Early name reservation</li><li>The Cerulean Prideclaw mount</li><li>The Shen’dorei Skyseer’s Garb, a Veteran Adventurer’s Rucksack and the Windwell toy</li><li>Housing décor for modern WoW, and one launch friend code</li></ul></article>
+    <article class="pk frame"><h3>Skyborne Epic Pack</h3><p class="price">$59.99</p><ul><li>Everything in the Heroic Pack</li><li>Beta access, and 30 days of game time from launch</li><li>The Veteran Adventurer’s Loyal Companion mount</li><li>More cosmetics, and Lordaeron and Shen’dorei tabards</li><li>The Zergling, Panda Cub, Mini Diablo and Pachimari companions</li><li>Three friend codes in all</li></ul></article>
+    <article class="pk frame"><h3>Warcraft Forever Collection</h3><p class="price">$79.99</p><ul><li>Everything in the Epic Pack</li><li><i>Warcraft III: Reforged</i> and <i>Forsaken Kingdom</i></li><li>A figurine for modern WoW housing</li><li>Advertised through January 11, 2027</li></ul></article>
+  </div>
+  <p class="unk">Pack owners can reserve up to three character names across rulesets from October 27 to November 3. Invite-a-Friend codes let friends play from November 4 to 11 without a subscription.</p>
+</section>
+
+<!-- ======================= PVP ======================= -->
+<section class="sec" id="pvp" aria-labelledby="pvp-h">
+  <div class="sec-head">
+    <p class="label">the honor system, rebuilt</p>
+    <h2 id="pvp-h">PvP</h2>
+    <p>The ranks survive, Private to Grand Marshal, but not the weekly race against the rest of the server.</p>
+  </div>
+  <div class="prose">
+    <p>Vanilla’s ranks came from weekly standings, with decay pushing everyone to keep grinding. Forever splits them into two tracks: <b>Honor</b>, a currency spent at vendors, and <b>Rank Points</b>, which advance rank. A seasonal <b>Field of Honor Journey</b> adds persistent tasks; some of its milestones award Legacy Points, and missed seasons stay completable. Battleground Honor is normalized so no single battleground is mandatory.</p>
+  </div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Rank</th><th scope="col">Rewards</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">1–3</th><td data-l="rewards">A tabard, a trinket and a cloak</td></tr>
+        <tr><th scope="row">4–7</th><td data-l="rewards">A neck, PvP consumables, another tabard and a battle standard</td></tr>
+        <tr><th scope="row">8–10</th><td data-l="rewards">Epic upgrades for bracers, belt, boots and gloves</td></tr>
+        <tr><th scope="row">11</th><td data-l="rewards">The PvP faction mounts</td></tr>
+        <tr><th scope="row">12–13</th><td data-l="rewards">Epic legs, shoulders, chest and helm</td></tr>
+        <tr><th scope="row">14, Grand Marshal</th><td data-l="rewards">The epic weapons</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tbl frame">
+    <table class="wt">
+      <thead><tr><th scope="col">Battleground</th><th scope="col">Size</th><th scope="col">In Forever</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Warsong Gulch</th><td class="lv" data-l="size">10v10</td><td data-l="in forever">Returns: capture the flag</td></tr>
+        <tr><th scope="row">Arathi Basin</th><td class="lv" data-l="size">15v15</td><td data-l="in forever">Returns: five bases</td></tr>
+        <tr><th scope="row">Alterac Valley</th><td class="lv" data-l="size">40v40</td><td data-l="in forever">Returns; which version of it is unknown</td></tr>
+        <tr><th scope="row">Darkspear Islands</th><td class="lv" data-l="size">15v15</td><td data-l="in forever">New: capture points plus a flag. The Alliance side is the Theramore Expeditionary Force</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="qas">
+    <article class="qa"><p class="qa-q">Arenas?</p><p class="qa-a"><span>none announced</span>Battlegrounds, the rank system, the Field of Honor and world PvP make up launch PvP.</p></article>
+    <article class="qa"><p class="qa-q">Resilience?</p><p class="qa-a"><span>none announced</span>Forever’s stat changes are merged Hit and Crit, Expertise and the itemization pass.</p></article>
+    <article class="qa"><p class="qa-q">World PvP?</p><p class="qa-a"><span>ruleset-based</span>No zone towers or War Mode announced. PvP-ruleset characters can’t group cross-faction.</p></article>
+    <article class="qa"><p class="qa-q">Brackets, and what’s allowed in battlegrounds?</p><p class="qa-a"><span>unknown</span>No bracket list or consumable and Engineering rules yet. The beta raised battleground marks to stacks of 30.</p></article>
+  </div>
+</section>
+
+<nav class="next-book" aria-label="The appendix">
+  <a class="nb frame" href="../appendix/">
+    <span class="label">the back of the codex</span>
+    <span class="nb-t">The Appendix</span>
+    <span class="nb-s">The patch log, a glossary of Forever’s new names, and the questions veterans ask first.</span>
+    <span class="nb-arrow" aria-hidden="true">→</span>
+  </a>
+</nav>
+
+<footer class="foot">
+  <p>Compiled October 26, 2026 from Blizzard’s Forever reveal, Deep Dive, Legacy, PvP progression, ruleset, camping and name-reservation articles and class deep dives, the development notes through the October 26 racial pass, and Wowhead’s Forever dungeon, raid, profession, camping, Commerce Authority, mount, tier-set and beta coverage, with its Patch 1.60.1 database.</p>
+  <p>Forever hasn’t launched: nothing here has been observed on a live realm. Where Forever has no published value, it’s marked unknown rather than filled in from Classic. User-submitted guides were used only to cross-check.</p>
+  <p>Sources: <a href="https://worldofwarcraft.blizzard.com/news/24303862/world-of-warcraft-forever-whats-next-panel-recap">What’s Next</a> · <a href="https://worldofwarcraft.blizzard.com/news/24303313/world-of-warcraft-forever-deep-dive-panel-recap">the Deep Dive</a> · <a href="https://worldofwarcraft.blizzard.com/news/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system">Legacy</a> · <a href="https://worldofwarcraft.blizzard.com/news/24303316/how-pvp-progression-in-world-of-warcraft-forever-works">PvP progression</a> · <a href="https://worldofwarcraft.blizzard.com/news/24302070/updated-1022-choose-your-ruleset-in-world-of-warcraft-forever">rulesets</a> · <a href="https://worldofwarcraft.blizzard.com/news/24301516/gather-around-the-campfire-in-world-of-warcraft-forever">camping</a> · <a href="https://worldofwarcraft.blizzard.com/news/24303866/claim-your-world-of-warcraft-forever-character-names">name reservation</a> · <a href="https://www.wowhead.com/forever/guide/dungeons-overview-locations-details">Wowhead’s dungeons</a> · <a href="https://www.wowhead.com/forever/news/learn-more-about-the-wow-forever-raids-and-attunements-383508">raids</a> · <a href="https://www.wowhead.com/forever/guide/dungeons/every-dungeon-quest-location">dungeon quests</a> · <a href="https://www.wowhead.com/forever/guide/camping-overview-unlock-rewards">camping</a> · <a href="https://www.wowhead.com/forever/guide/professions/alchemy-overview-trainer-locations-recipes">Alchemy</a> · <a href="https://www.wowhead.com/forever/guide/professions/tailoring-overview-trainer-locations-recipes">Tailoring</a> · <a href="https://www.wowhead.com/forever/guide/azeroth-commerce-authority-reputation-professions">the Commerce Authority</a> · <a href="https://www.wowhead.com/forever/guide/collections/mounts-locations-appearances">mounts</a> · <a href="https://www.wowhead.com/forever/guide/season-1-tier-set-bonus-appearance-overview">tier sets</a> · <a href="https://www.wowhead.com/forever/guide/pre-order-packs-rewards">the packs</a></p>
+  <p>Part of the <a href="../">Forever Codex</a>. A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
+</footer>
+</main>
+
+<script>
+(function () {
+  var d = document;
+  // highlight the section in view
+  var links = [].slice.call(d.querySelectorAll(".bar .sec-link"));
+  if ("IntersectionObserver" in window) {
+    var byId = {};
+    links.forEach(function (a) { byId[a.hash.slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var a = byId[en.target.id] || null;
+        links.forEach(function (l) {
+          l.classList.toggle("active", l === a);
+          if (l === a) l.setAttribute("aria-current", "location"); else l.removeAttribute("aria-current");
+        });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    d.querySelectorAll("#top, main > section[id]").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+<script src="../codex.js"></script>
+</body>
+</html>

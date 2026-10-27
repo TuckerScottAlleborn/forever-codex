@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
-<meta name="description" content="A codex for returning Warcraft veterans: what World of Warcraft: Forever changes against the Vanilla they remember. The story, the classes, the races and companion pets, area by area, with a briefing for every Alliance class and race, a patch log, a glossary and common questions.">
+<meta name="description" content="A codex for returning Warcraft veterans: what World of Warcraft: Forever changes against the Vanilla they remember. The story, the classes, the races, companion pets and the world around them, from dungeons and raids to professions and PvP, area by area, with a briefing for every Alliance class and race, a patch log, a glossary and common questions.">
 <meta property="og:title" content="Forever Codex">
-<meta property="og:description" content="A codex for returning Warcraft veterans: what World of Warcraft: Forever changes against the Vanilla they remember. The story, the classes, the races and companion pets, area by area, with a briefing for every Alliance class and race.">
+<meta property="og:description" content="A codex for returning Warcraft veterans: what World of Warcraft: Forever changes against the Vanilla they remember, from the story, classes and races to dungeons, raids, professions and PvP, with a briefing for every Alliance class and race.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Forever Codex">
 <meta property="og:url" content="https://tuckerscottalleborn.github.io/forever-codex/">
 <meta property="og:image" content="https://tuckerscottalleborn.github.io/forever-codex/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Forever Codex, a codex for returning veterans: an hourglass above its four books, The Lore, The Classes, The Races and The Companions">
+<meta property="og:image:alt" content="Forever Codex, a codex for returning veterans: an hourglass above its five books, The Lore, The Classes, The Races, The Companions and The World">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Forever Codex">
 <meta name="twitter:image" content="https://tuckerscottalleborn.github.io/forever-codex/og.png">
@@ -165,6 +165,7 @@ html { scroll-padding-top: 1rem }
 .bk-cls { --bk: var(--f-alliance) }
 .bk-race { --bk: var(--races) }
 .bk-pets { --bk: var(--pets) }
+.bk-world { --bk: var(--world) }
 .cover { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .25rem 1.1rem; align-items: center; text-decoration: none; color: inherit }
 .cover-motif {
   grid-row: 1 / span 2; width: 4rem; height: 4rem; padding: .85rem; border-radius: 50%; color: var(--bk);
@@ -235,6 +236,27 @@ html { scroll-padding-top: 1rem }
       <path d="M12 6.5v4.5M12 11l-6.5 5.2M12 11l6.5 5.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
       <circle cx="12" cy="4.6" r="2.6" fill="currentColor"/><circle cx="5.3" cy="18.2" r="2.6" fill="currentColor"/><circle cx="18.7" cy="18.2" r="2.6" fill="currentColor"/>
     </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <path d="M3 12h18M12 3c2.8 2.6 4.2 5.6 4.2 9s-1.4 6.4-4.2 9c-2.8-2.6-4.2-5.6-4.2-9S9.2 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="i-keep" viewBox="0 0 24 24">
+      <path d="M4 21V10a8 8 0 0 1 16 0v11z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M8 21V7.6M12 21V5.4M16 21V7.6M4.5 12.5h15M4.5 16.8h15" stroke="currentColor" stroke-width="1.3"/>
+    </symbol>
+    <symbol id="i-gem" viewBox="0 0 24 24">
+      <path d="M6 3.5h12l4 5.5-10 12-10-12z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M2.4 9h19.2M9 3.5 7.6 9 12 20.5 16.4 9 15 3.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24">
+      <path d="M9 3h6M10 3.2v6L4.6 19a1.5 1.5 0 0 0 1.3 2.2h12.2a1.5 1.5 0 0 0 1.3-2.2L14 9.2v-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M6.8 15h10.4l2 4.2H4.8z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-swords" viewBox="0 0 24 24">
+      <path d="M4.5 4.5 16 16M19.5 4.5 8 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M13.6 18.4l4.8-4.8M5.6 13.6l4.8 4.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="18.6" cy="18.6" r="1.6" fill="currentColor"/><circle cx="5.4" cy="18.6" r="1.6" fill="currentColor"/>
+    </symbol>
     <symbol id="i-crest" viewBox="0 0 24 24">
       <path d="M12 2.2 L21.8 12 L12 21.8 L2.2 12 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
       <path d="M12 7.1 L16.9 12 L12 16.9 L7.1 12 Z" fill="currentColor"/>
@@ -277,6 +299,7 @@ html { scroll-padding-top: 1rem }
       <a href="classes/"><span class="bk-n">II</span>Classes</a>
       <a href="races/"><span class="bk-n">III</span>Races</a>
       <a href="companions/"><span class="bk-n">IV</span><span class="lg">Companions</span><span class="sh">Pets</span></a>
+      <a href="world/"><span class="bk-n">V</span>World</a>
       <a href="appendix/">Appendix</a>
     </nav>
   </div>
@@ -288,7 +311,7 @@ html { scroll-padding-top: 1rem }
     <p class="label">world of warcraft: forever · for returning veterans</p>
     <h1 class="title">Forever Codex</h1>
     <p class="thesis">A codex for veterans coming back to Azeroth: <em>what’s different</em>, set beside the Vanilla they remember.</p>
-    <p class="lede">Forever isn’t Vanilla again, and it isn’t Retail rewound. It keeps the old world, its rules and its history, then changes them on purpose. Each book here takes one part of the game and reads it against Vanilla: the story, the classes, the races and the companion pets. A patch log, a glossary and the common questions sit at the back.</p>
+    <p class="lede">Forever isn’t Vanilla again, and it isn’t Retail rewound. It keeps the old world, its rules and its history, then changes them on purpose. Each book reads one part of the game against Vanilla: the story, the classes, the races, the companion pets, and the world around them, from dungeons and raids to professions and PvP. A patch log, a glossary and the common questions sit at the back.</p>
     <p class="hero-go"><a href="#different">What’s different</a><a href="#returning">Coming back as…</a><a href="#books">The books</a></p>
   </header>
 
@@ -307,7 +330,7 @@ html { scroll-padding-top: 1rem }
     <div class="part-h">
       <p class="label">vanilla, then forever</p>
       <h2 id="diff-h">What’s different, area by area</h2>
-      <p>Six places where a veteran’s memory will mislead, each with the book that sets it straight.</p>
+      <p>Nine places where a veteran’s memory will mislead, each with the book that sets it straight.</p>
     </div>
     <ol class="diffs">
       <li class="dr">
@@ -316,29 +339,47 @@ html { scroll-padding-top: 1rem }
         <span class="dr-arrow" aria-hidden="true">→</span>
         <div class="dr-now"><span class="dr-l">in forever</span><p>Its own time bubble from early Year 1. The old history stands, and what came after it in Retail is precedent, not destiny.</p></div>
       </li>
-      <li class="dr">
-        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-door"/></svg><h3>The world</h3><a class="dr-go" href="lore/#waiting">book i · what’s waiting →</a></div>
-        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Closed gates and unfinished roads: Hyjal off-limits, Dalaran behind its barrier, Alcaz Prison shut.</p></div>
+      <li class="dr" style="--dc: var(--world)">
+        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-globe"/></svg><h3>The world</h3><a class="dr-go" href="world/#systems">book v · systems →</a></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Closed gates and unfinished roads: Hyjal off-limits, Dalaran behind its barrier, Alcaz Prison shut, and everything kept per character.</p></div>
         <span class="dr-arrow" aria-hidden="true">→</span>
-        <div class="dr-now"><span class="dr-l">in forever</span><p>New ground in Hyjal, Riverglades and Zephras Isle, nine new dungeons, and a first raid tier on December 9: Barrow Deeps, Hyjal Summit and Onyxia’s Lair.</p></div>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>Four new regions (Hyjal, Riverglades, Shen’dralas and Zephras Isle), over a thousand new quests, account-wide Legacy and optional transmog. Still no flying, and no level scaling.</p></div>
       </li>
-      <li class="dr" style="--dc: var(--f-alliance)">
-        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-tree"/></svg><h3>The rules</h3><a class="dr-go" href="classes/#systems">book ii · system changes →</a></div>
-        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Separate physical and spell hit and crit, downranking, party-only auras and totems, and a respec bill for every hybrid.</p></div>
+      <li class="dr" style="--dc: var(--world)">
+        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-keep"/></svg><h3>Dungeons and raids</h3><a class="dr-go" href="world/#dungeons">book v · dungeons and raids →</a></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>The Classic dungeon set, then 40-player Molten Core and Onyxia, found through chat and meeting stones.</p></div>
         <span class="dr-arrow" aria-hidden="true">→</span>
-        <div class="dr-now"><span class="dr-l">in forever</span><p>Merged hit and crit, downranking curtailed, raid-wide buffs, dual spec at level 40 and a new 16-point talent milestone.</p></div>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>Nine new dungeons from level 13 to 60, a raid tier for 10, 20 and 40 players on December 9, and an LFG listing tool.</p></div>
+      </li>
+      <li class="dr" style="--dc: var(--world)">
+        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-gem"/></svg><h3>Gear and stats</h3><a class="dr-go" href="world/#gear">book v · gear and stats →</a></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Separate physical and spell hit and crit, weapon skill as the melee stat, and dungeon blues of very uneven worth.</p></div>
+        <span class="dr-arrow" aria-hidden="true">→</span>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>One Hit and one Crit stat, weapon skill kept but smaller on gear, a new Expertise stat, and every dungeon drop re-examined.</p></div>
       </li>
       <li class="dr" style="--dc: var(--f-alliance)">
         <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-crest"/></svg><h3>The classes</h3><a class="dr-go" href="classes/">book ii · the classes →</a></div>
-        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Specs that barely did their advertised job: Protection Paladins without a taunt, Feral weapons as stat sticks, Arcane and Survival as support trees.</p></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Specs that barely did their advertised job, party-only buffs, and a respec bill for every hybrid.</p></div>
         <span class="dr-arrow" aria-hidden="true">→</span>
-        <div class="dr-now"><span class="dr-l">in forever</span><p>A Classic skeleton with complete specs: Seal of Fury taunts, Feral damage scales with the weapon, Arcane Blast builds an engine and Survival fights in melee.</p></div>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>Complete specs (Seal of Fury taunts, Arcane Blast builds an engine, Survival fights in melee), raid-wide buffs, dual spec at 40 and a 16-point milestone.</p></div>
       </li>
       <li class="dr" style="--dc: var(--races)">
         <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-banner"/></svg><h3>The races</h3><a class="dr-go" href="races/">book iii · the races →</a></div>
-        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Weapon skill and resistances decided it: Humans for swords, Dwarves for Fear Ward, Gnomes for Intellect.</p></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Racial weapon skill and resistances decided it: Humans for swords, Dwarves for Fear Ward, Gnomes for Intellect.</p></div>
         <span class="dr-arrow" aria-hidden="true">→</span>
-        <div class="dr-now"><span class="dr-l">in forever</span><p>Weapon skill is gone and every Priest learns Fear Ward. Each race carries a kind of power, with Dwarf Shaman, Human Hunter, Gnome Priest and the new Skyborne.</p></div>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>Racial weapon skill is gone and every Priest learns Fear Ward. Each race carries a kind of power, with Dwarf Shaman, Human Hunter, Gnome Priest and the new Skyborne.</p></div>
+      </li>
+      <li class="dr" style="--dc: var(--world)">
+        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-flask"/></svg><h3>Professions</h3><a class="dr-go" href="world/#professions">book v · professions →</a></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>A Classic catalogue heavy on weak leveling crafts.</p></div>
+        <span class="dr-arrow" aria-hidden="true">→</span>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>Over 600 new recipes, crafted leveling sets, campsites every profession builds into, and recipes bought with Merchant’s Favor.</p></div>
+      </li>
+      <li class="dr" style="--dc: var(--world)">
+        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-swords"/></svg><h3>PvP</h3><a class="dr-go" href="world/#pvp">book v · pvp →</a></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>A weekly standings race to Grand Marshal, in three battlegrounds.</p></div>
+        <span class="dr-arrow" aria-hidden="true">→</span>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>Ranks 1–14 earned with Rank Points, Honor to spend, a seasonal Field of Honor Journey, and Darkspear Islands, a new 15v15 battleground.</p></div>
       </li>
       <li class="dr" style="--dc: var(--pets)">
         <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-paw"/></svg><h3>The companions</h3><a class="dr-go" href="companions/">book iv · the companions →</a></div>
@@ -347,7 +388,7 @@ html { scroll-padding-top: 1rem }
         <div class="dr-now"><span class="dr-l">in forever</span><p>Learned, account-wide companions, new ones from rares, quests, emotes, Legacy and reputation, a Black Market Auction House, and the Zergling, Panda Cub and Mini Diablo sold again.</p></div>
       </li>
     </ol>
-    <p class="diffs-f">Not yet covered: dungeon and raid details, gear and stats, professions and PvP. The codex covers the Alliance side. <a href="appendix/#patches">The patch log</a> dates every change it draws on.</p>
+    <p class="diffs-f">The codex covers the Alliance side. <a href="appendix/#patches">The patch log</a> dates every change it draws on, and <a href="appendix/#q-unknown">the appendix</a> lists what’s still unknown before launch.</p>
   </section>
 
   <!-- ======================= COMING BACK AS ======================= -->
@@ -513,7 +554,7 @@ html { scroll-padding-top: 1rem }
   <section id="books" aria-labelledby="books-h">
     <div class="part-h">
       <p class="label">the books</p>
-      <h2 id="books-h">Four books</h2>
+      <h2 id="books-h">Five books</h2>
       <p>Each one stands alone, and each links into the others where they meet.</p>
     </div>
     <div class="books">
@@ -570,7 +611,7 @@ html { scroll-padding-top: 1rem }
         <span class="label">book iii · alliance races</span>
         <h3 id="bk3-h"><span>The Races</span><i aria-hidden="true">→</i></h3>
       </a>
-      <p class="book-thesis">Weapon skill is gone for good. A race now picks <em>a kind of power</em>, not a weapon.</p>
+      <p class="book-thesis">Racial weapon skill is gone for good. A race now picks <em>a kind of power</em>, not a weapon.</p>
       <ol class="toc" aria-label="The Races: contents">
         <li style="--pc: var(--races)">
           <div class="sheets">
@@ -606,6 +647,22 @@ html { scroll-padding-top: 1rem }
       </ol>
     </article>
 
+    <article class="book bk-world frame" aria-labelledby="bk5-h">
+      <a class="cover" href="world/">
+        <svg class="cover-motif" aria-hidden="true"><use href="#i-globe"/></svg>
+        <span class="label">book v · the world</span>
+        <h3 id="bk5-h"><span>The World</span><i aria-hidden="true">→</i></h3>
+      </a>
+      <p class="book-thesis">Evolution, not replacement: <em>the old world stands</em>, and Forever builds beside it.</p>
+      <ol class="toc" aria-label="The World: contents">
+        <li style="--pc: var(--world)"><a href="world/#dungeons"><span class="rn">I</span><b>Dungeons and raids</b><span>Nine new dungeons, the old ones’ keys and levels, and the December tier of 10, 20 and 40</span></a></li>
+        <li style="--pc: var(--world)"><a href="world/#gear"><span class="rn">II</span><b>Gear and stats</b><span>One Hit and one Crit, weapon skill kept, Expertise, and the caps still unknown</span></a></li>
+        <li style="--pc: var(--world)"><a href="world/#professions"><span class="rn">III</span><b>Professions</b><span>600+ new recipes, camping and the Greenhouse, Merchant’s Favor</span></a></li>
+        <li style="--pc: var(--world)"><a href="world/#systems"><span class="rn">IV</span><b>Systems and the world</b><span>Leveling, mounts, Legacy, transmog, the new regions and rulesets</span></a></li>
+        <li style="--pc: var(--world)"><a href="world/#cost"><span class="rn">V</span><b>The packs, and PvP</b><span>What costs money; then ranks, Honor and Darkspear Islands</span></a></li>
+      </ol>
+    </article>
+
     </div>
 
     <nav class="bm frame" aria-label="The appendix">
@@ -616,7 +673,7 @@ html { scroll-padding-top: 1rem }
   </section>
 
   <footer class="foot">
-    <p>Compiled in October 2026 from Blizzard’s Forever recaps, class deep dives and dungeon and raid previews, beta development notes through the October 16 build, the October 26 racial tuning pass, Wowhead’s Forever companion coverage, and <i>Warcraft III Reforged: Forsaken Kingdom</i>. Each book lists its own sources.</p>
+    <p>Compiled in October 2026 from Blizzard’s Forever recaps, deep dives, previews and development notes through the October 26 racial tuning pass, Wowhead’s Forever coverage and its Patch 1.60.1 database, and <i>Warcraft III Reforged: Forsaken Kingdom</i>. Each book lists its own sources.</p>
     <p>A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
   </footer>
 </main>

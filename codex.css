@@ -20,6 +20,7 @@ img,svg{max-width:100%}
   --alliance: #3a6cd0;
   --races: #c39af2;
   --pets: #84d39c;
+  --world: #ee9672;
   /* the lore book's three parts: sepia past, bright present, misty future */
   --pc1: #c9b085;
   --pc2: #ffc85e;
@@ -72,7 +73,7 @@ img,svg{max-width:100%}
   :root:not([data-theme="dark"]) {
     --bg: #ebdfc3; --panel: #f5ecd6; --panel-2: #e9dab6; --ink: #2a1c0e; --muted: #6b583c;
     --bronze: #8a5414; --bronze-hi: #7a4300; --line: color-mix(in oklab, #8a5414 40%, transparent);
-    --line-soft: color-mix(in oklab, #8a5414 18%, transparent); --glow: #b8792a; --alliance: #1f478f; --races: #6b3fa5; --pets: #2c6b40;
+    --line-soft: color-mix(in oklab, #8a5414 18%, transparent); --glow: #b8792a; --alliance: #1f478f; --races: #6b3fa5; --pets: #2c6b40; --world: #9a4420;
     --pc1: #6e5a3a; --pc2: #8c4a00; --pc3: #0b6b78;
     --s-found: #8a5a12; --s-bridge: #6b3fa5; --s-forever: #0b6b78; --s-unspec: #4a5880; --s-other: #6c645a;
     --s-warn: #8a4c00; --s-bad: #a82a1d; --s-theory: #6b5530;
@@ -85,7 +86,7 @@ img,svg{max-width:100%}
 :root[data-theme="light"] {
   --bg: #ebdfc3; --panel: #f5ecd6; --panel-2: #e9dab6; --ink: #2a1c0e; --muted: #6b583c;
   --bronze: #8a5414; --bronze-hi: #7a4300; --line: color-mix(in oklab, #8a5414 40%, transparent);
-  --line-soft: color-mix(in oklab, #8a5414 18%, transparent); --glow: #b8792a; --alliance: #1f478f; --races: #6b3fa5; --pets: #2c6b40;
+  --line-soft: color-mix(in oklab, #8a5414 18%, transparent); --glow: #b8792a; --alliance: #1f478f; --races: #6b3fa5; --pets: #2c6b40; --world: #9a4420;
   --pc1: #6e5a3a; --pc2: #8c4a00; --pc3: #0b6b78;
   --s-found: #8a5a12; --s-bridge: #6b3fa5; --s-forever: #0b6b78; --s-unspec: #4a5880; --s-other: #6c645a;
   --s-warn: #8a4c00; --s-bad: #a82a1d; --s-theory: #6b5530;
@@ -198,11 +199,11 @@ a { color: inherit }
 @media (max-width: 40rem) {
   .mast-books { width: 100%; margin: 0 -.4rem .1rem; justify-content: space-between; overflow-x: auto; scrollbar-width: none }
   .mast-books::-webkit-scrollbar { display: none }
-  .mast-books a { flex: none; padding-inline: .4rem; min-height: 2.4rem }
+  .mast-books a { flex: none; padding-inline: .3rem; min-height: 2.4rem; font-size: .84rem; letter-spacing: .03em }
   .mast-books .bk-n, .mast-books .lg { display: none }
   .mast-books .sh { display: inline }
 }
-@media (max-width: 22rem) { .mast-books a { padding-inline: .25rem; letter-spacing: .03em } }
+@media (max-width: 22rem) { .mast-books a { padding-inline: .2rem; letter-spacing: 0; font-size: .8rem } }
 
 /* ---------- the sticky bar's shell; each book fills it with its own navigation ---------- */
 .bar {

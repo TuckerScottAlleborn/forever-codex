@@ -1,0 +1,63 @@
+<!doctype html>
+<!-- Source for ../world/og.png (1200x630 link-preview image). Regenerate with python og/build.py -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya+Sans+SC:wght@700&family=Alegreya:ital@0;1&display=swap">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden }
+  body {
+    background:
+      radial-gradient(ellipse 900px 420px at 50% -60px, rgba(238,150,114,.24), transparent 70%),
+      radial-gradient(ellipse 600px 300px at 1100px 600px, rgba(58,108,208,.16), transparent 70%),
+      #0d0c14;
+    color: #ece3cc; font-family: "Alegreya", Georgia, serif;
+    display: grid; place-items: center;
+  }
+  .frame {
+    position: absolute; inset: 28px; border: 2px solid rgba(207,154,82,.55);
+    box-shadow: inset 0 0 0 6px #0d0c14, inset 0 0 0 8px rgba(207,154,82,.22);
+  }
+  .frame::before, .frame::after, .d1, .d2 { content: ""; position: absolute; width: 16px; height: 16px; background: #cf9a52; transform: rotate(45deg) }
+  .frame::before { top: -9px; left: -9px } .frame::after { top: -9px; right: -9px }
+  .d1 { bottom: -9px; left: -9px } .d2 { bottom: -9px; right: -9px }
+  .inner { position: relative; display: grid; justify-items: center; gap: 18px; text-align: center }
+  .globe { width: 68px; height: 68px; color: #ee9672; filter: drop-shadow(0 0 18px rgba(238,150,114,.5)) }
+  .eyebrow { font-family: "Alegreya Sans SC", sans-serif; font-weight: 700; letter-spacing: .14em; font-size: 26px; color: #cf9a52; text-transform: lowercase }
+  h1 {
+    margin: 0; font-family: "Marcellus SC", Georgia, serif; font-weight: 400; font-size: 112px; line-height: 1; letter-spacing: .02em;
+    background: linear-gradient(180deg, #f4c76b, #cf9a52 75%); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 3px 0 rgba(0,0,0,.6));
+  }
+  .thesis { font-size: 34px; font-style: italic; margin: 0 }
+  .thesis b { font-style: normal; color: #ee9672; font-weight: 400 }
+  .stats { display: flex; gap: 18px; margin-top: 12px }
+  .st { min-width: 150px; display: grid; gap: 4px; padding: 12px 14px 14px; border: 1px solid rgba(207,154,82,.4); background: rgba(21,20,31,.85) }
+  .st b { font-family: "Marcellus SC", Georgia, serif; font-weight: 400; font-size: 42px; line-height: 1; color: #ee9672 }
+  .st span { font-family: "Alegreya Sans SC", sans-serif; font-weight: 700; font-size: 18px; letter-spacing: .06em; text-transform: lowercase; color: #b9ae96 }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <path d="M3 12h18M12 3c2.8 2.6 4.2 5.6 4.2 9s-1.4 6.4-4.2 9c-2.8-2.6-4.2-5.6-4.2-9S9.2 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+  </defs>
+</svg>
+<div class="frame"><i class="d1"></i><i class="d2"></i></div>
+<div class="inner">
+  <svg class="globe"><use href="#i-globe"/></svg>
+  <div class="eyebrow">forever codex · book v · the world vs. vanilla</div>
+  <h1>The World</h1>
+  <p class="thesis">Evolution, not replacement: <b>the old world stands</b>.</p>
+  <div class="stats">
+    <div class="st"><b>9</b><span>new dungeons</span></div>
+    <div class="st"><b>10·20·40</b><span>raid sizes</span></div>
+    <div class="st"><b>600+</b><span>new recipes</span></div>
+    <div class="st"><b>1,000+</b><span>new quests</span></div>
+  </div>
+</div>
+</body>
+</html>
