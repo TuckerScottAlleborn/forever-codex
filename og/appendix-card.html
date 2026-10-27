@@ -1,0 +1,51 @@
+<!doctype html>
+<!-- Source for ../appendix/og.png (1200x630 link-preview image). Regenerate with python og/build.py -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya+Sans+SC:wght@700&family=Alegreya:ital@0;1&display=swap">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden }
+  body {
+    background:
+      radial-gradient(ellipse 900px 420px at 50% -60px, rgba(207,154,82,.3), transparent 70%),
+      radial-gradient(ellipse 600px 300px at 120px 600px, rgba(95,202,215,.1), transparent 70%),
+      #0d0c14;
+    color: #ece3cc; font-family: "Alegreya", Georgia, serif;
+    display: grid; place-items: center;
+  }
+  .frame {
+    position: absolute; inset: 28px; border: 2px solid rgba(207,154,82,.55);
+    box-shadow: inset 0 0 0 6px #0d0c14, inset 0 0 0 8px rgba(207,154,82,.22);
+  }
+  .frame::before, .frame::after, .d1, .d2 { content: ""; position: absolute; width: 16px; height: 16px; background: #cf9a52; transform: rotate(45deg) }
+  .frame::before { top: -9px; left: -9px } .frame::after { top: -9px; right: -9px }
+  .d1 { bottom: -9px; left: -9px } .d2 { bottom: -9px; right: -9px }
+  .inner { position: relative; display: grid; justify-items: center; gap: 20px; text-align: center }
+  .eyebrow { font-family: "Alegreya Sans SC", sans-serif; font-weight: 700; letter-spacing: .14em; font-size: 26px; color: #cf9a52; text-transform: lowercase }
+  h1 {
+    margin: 0; font-family: "Marcellus SC", Georgia, serif; font-weight: 400; font-size: 112px; line-height: 1; letter-spacing: .02em;
+    background: linear-gradient(180deg, #f4c76b, #cf9a52 75%); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 3px 0 rgba(0,0,0,.6));
+  }
+  .thesis { font-size: 34px; font-style: italic; margin: 0 }
+  .row { display: flex; gap: 46px; margin-top: 20px }
+  .ap { display: grid; justify-items: center; gap: 12px }
+  .rn { width: 78px; height: 78px; display: grid; place-items: center; border-radius: 50%; border: 3px solid #cf9a52; color: #f4c76b; font-family: "Marcellus SC", Georgia, serif; font-size: 40px; background: #0d0c14; box-shadow: 0 0 0 6px #0d0c14, 0 0 26px -6px #cf9a52 }
+  .ap span { font-family: "Marcellus", Georgia, serif; font-size: 30px; color: #ece3cc }
+</style>
+</head>
+<body>
+<div class="frame"><i class="d1"></i><i class="d2"></i></div>
+<div class="inner">
+  <div class="eyebrow">forever codex · the back of the book</div>
+  <h1>The Appendix</h1>
+  <p class="thesis">When things changed, and what the new names mean.</p>
+  <div class="row">
+    <div class="ap"><div class="rn">A</div><span>Patch log</span></div>
+    <div class="ap"><div class="rn">B</div><span>Glossary</span></div>
+    <div class="ap"><div class="rn">C</div><span>Questions</span></div>
+  </div>
+</div>
+</body>
+</html>

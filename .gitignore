@@ -1,2 +1,4 @@
 podcast/samples/
 __pycache__/
+# research briefs and reports for ChatGPT deep research; working files, not site content
+research/

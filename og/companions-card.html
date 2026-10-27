@@ -1,0 +1,65 @@
+<!doctype html>
+<!-- Source for ../companions/og.png (1200x630 link-preview image). Regenerate with python og/build.py -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya+Sans+SC:wght@700&family=Alegreya:ital@0;1&display=swap">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden }
+  body {
+    background:
+      radial-gradient(ellipse 900px 420px at 50% -60px, rgba(132,211,156,.24), transparent 70%),
+      radial-gradient(ellipse 700px 300px at 50% 700px, rgba(207,154,82,.12), transparent 70%),
+      #0d0c14;
+    color: #ece3cc; font-family: "Alegreya", Georgia, serif;
+    display: grid; place-items: center;
+  }
+  .frame {
+    position: absolute; inset: 28px; border: 2px solid rgba(207,154,82,.55);
+    box-shadow: inset 0 0 0 6px #0d0c14, inset 0 0 0 8px rgba(207,154,82,.22);
+  }
+  .frame::before, .frame::after, .d1, .d2 { content: ""; position: absolute; width: 16px; height: 16px; background: #cf9a52; transform: rotate(45deg) }
+  .frame::before { top: -9px; left: -9px } .frame::after { top: -9px; right: -9px }
+  .d1 { bottom: -9px; left: -9px } .d2 { bottom: -9px; right: -9px }
+  .inner { position: relative; display: grid; justify-items: center; gap: 18px; text-align: center }
+  .paw { width: 70px; height: 70px; color: #84d39c; filter: drop-shadow(0 0 18px rgba(132,211,156,.5)) }
+  .eyebrow { font-family: "Alegreya Sans SC", sans-serif; font-weight: 700; letter-spacing: .14em; font-size: 26px; color: #cf9a52; text-transform: lowercase }
+  h1 {
+    margin: 0; font-family: "Marcellus SC", Georgia, serif; font-weight: 400; font-size: 104px; line-height: 1; letter-spacing: .02em;
+    background: linear-gradient(180deg, #f4c76b, #cf9a52 75%); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 3px 0 rgba(0,0,0,.6));
+  }
+  .thesis { font-size: 34px; font-style: italic; margin: 0 }
+  .thesis b { font-style: normal; color: #84d39c; font-weight: 400 }
+  .stats { display: flex; gap: 22px; margin-top: 14px }
+  .st { min-width: 170px; display: grid; gap: 4px; padding: 12px 16px 14px; border: 1px solid rgba(207,154,82,.4); background: rgba(21,20,31,.85) }
+  .st b { font-family: "Marcellus SC", Georgia, serif; font-weight: 400; font-size: 46px; line-height: 1; color: #84d39c }
+  .st span { font-family: "Alegreya Sans SC", sans-serif; font-weight: 700; font-size: 19px; letter-spacing: .06em; text-transform: lowercase; color: #b9ae96 }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-paw" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="15.9" rx="5" ry="4.2" fill="currentColor"/>
+      <ellipse cx="5.4" cy="10.7" rx="2.05" ry="2.6" transform="rotate(-20 5.4 10.7)" fill="currentColor"/>
+      <ellipse cx="9.5" cy="6.6" rx="2.1" ry="2.7" transform="rotate(-7 9.5 6.6)" fill="currentColor"/>
+      <ellipse cx="14.5" cy="6.6" rx="2.1" ry="2.7" transform="rotate(7 14.5 6.6)" fill="currentColor"/>
+      <ellipse cx="18.6" cy="10.7" rx="2.05" ry="2.6" transform="rotate(20 18.6 10.7)" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+<div class="frame"><i class="d1"></i><i class="d2"></i></div>
+<div class="inner">
+  <svg class="paw"><use href="#i-paw"/></svg>
+  <div class="eyebrow">forever codex · book iv · companion pets vs. vanilla</div>
+  <h1>The Companions</h1>
+  <p class="thesis">The Vanilla menagerie, and <b>a new collection</b> around it.</p>
+  <div class="stats">
+    <div class="st"><b>64</b><span>in alliance reach</span></div>
+    <div class="st"><b>17</b><span>new in forever</span></div>
+    <div class="st"><b>23</b><span>still unsolved</span></div>
+  </div>
+</div>
+</body>
+</html>

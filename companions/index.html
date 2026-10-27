@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="How WoW: Forever changes companion pets compared with Vanilla: every companion within an Alliance character’s reach, how to get it, where, and what’s new, kept or changed, with an Alliance collecting route and a checklist.">
+<meta property="og:title" content="The Companions · Forever Codex">
+<meta property="og:description" content="How WoW: Forever changes companion pets compared with Vanilla: every companion within an Alliance character’s reach, how to get it, where, and what’s new, kept or changed, with an Alliance collecting route and a checklist.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Forever Codex">
+<meta property="og:url" content="https://tuckerscottalleborn.github.io/forever-codex/companions/">
+<meta property="og:image" content="https://tuckerscottalleborn.github.io/forever-codex/companions/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Companions, book four of the Forever Codex: a paw print over a checklist of companion pets">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Companions · Forever Codex">
+<meta name="twitter:image" content="https://tuckerscottalleborn.github.io/forever-codex/companions/og.png">
+<meta name="theme-color" content="#cf9a52">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://tuckerscottalleborn.github.io/forever-codex/companions/">
+<title>The Companions · Forever Codex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya:ital,wght@0,400;0,600;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../codex.css">
+<style>
+/* Book IV of the Forever Codex (tokens, frames, masthead, the bar's shell and the .vs tags are in
+   codex.css). Layout: a hero with a "since Vanilla" ledger, what changed, the catalog as a
+   checklist (checks are kept in this browser only), an Alliance route, difficulty tiers, and the
+   companions still unsolved. Alliance-side only: the Horde-city pets are one short list. */
+body.companions {
+  --atmos:
+    radial-gradient(ellipse 80rem 40rem at 50% -10rem, color-mix(in oklab, var(--pets) 14%, transparent), transparent 70%),
+    radial-gradient(ellipse 40rem 26rem at 100% 22rem, color-mix(in oklab, var(--glow) 9%, transparent), transparent 70%);
+}
+html { scroll-padding-top: 5.25rem }
+.wrap { max-width: var(--wide); margin-inline: auto }
+h1, h2, h3, h4 { font-family: var(--f-caps) }
+code { font-family: var(--f-ui); font-weight: 700; font-size: .95em; color: var(--bronze-hi); white-space: nowrap; padding: 0 .3em; border-radius: 3px; background: color-mix(in oklab, var(--bronze) 12%, transparent) }
+a.pl { color: var(--pets); text-decoration-thickness: 1px; text-underline-offset: 3px }
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(2.5rem, 6vw, 5rem) 2rem; display: grid; gap: 2rem }
+.hero-top { display: grid; gap: 1.25rem; justify-items: start }
+.thesis { font-size: var(--step-1); max-width: 40ch; line-height: 1.45 }
+.thesis em { color: var(--bronze-hi); font-style: normal }
+.hero-grid { display: grid; gap: 1.5rem; grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 60rem) { .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) } }
+.hero-copy { padding: 1.5rem; display: grid; gap: 1rem; align-content: start }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: .75rem; margin-top: .5rem }
+.fact { border-top: 1px solid var(--line); padding-top: .5rem }
+.fact b { display: block; font-family: var(--f-caps); font-size: var(--step-1); color: var(--bronze-hi); font-weight: 400; font-variant-numeric: tabular-nums }
+.fact span { font-family: var(--f-ui); font-size: var(--step--1); color: var(--muted) }
+
+/* in-game tooltip ledger, as in the races book */
+.tt {
+  background: color-mix(in oklab, var(--tt-bg) 94%, transparent);
+  border: 1px solid var(--tt-line); border-radius: 4px;
+  box-shadow: inset 0 0 0 1px #000, 0 6px 18px -8px #000;
+  padding: 1.1rem 1.2rem; font-family: var(--f-ui); font-size: .9rem; line-height: 1.35; color: var(--tt-white); color-scheme: dark; align-self: start;
+}
+.tt-h { font-size: 1.15rem; font-weight: 700; color: var(--tt-white) }
+.tt-sub { color: var(--tt-gold); font-size: .82rem; margin-bottom: .5rem }
+.tt ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem }
+.tt li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .1rem .75rem }
+.tt li > span:first-child { min-width: 0 }
+.tt li > span:last-child { color: var(--tt-green); font-variant-numeric: tabular-nums; text-align: right; margin-left: auto }
+.tt li > span.dim { color: var(--tt-grey) }
+.tt s { color: var(--tt-grey); text-decoration-thickness: 1px; margin-right: .3rem }
+.tt-foot { color: var(--tt-grey); font-size: .78rem; margin-top: .55rem; font-style: italic }
+
+/* ---------- the bar ---------- */
+.bar-p { --bar-c: var(--pets) }
+@media (max-width: 40rem) { .bar-p .brand { display: none } }
+
+/* ---------- sections ---------- */
+.sec { padding-block: clamp(3rem, 7vw, 5rem) 0; display: grid; gap: 1.75rem; min-width: 0 }
+.sec-head { display: grid; gap: .5rem; max-width: 62ch }
+.sec-head h2 { font-size: var(--step-3); color: var(--bronze-hi) }
+.sec-head p:not(.label) { color: var(--muted) }
+
+/* what changed */
+.chg-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)) }
+.chg { padding: 1.25rem 1.35rem; display: grid; gap: .55rem; align-content: start; min-width: 0 }
+.chg h3 { font-size: var(--step-1); color: var(--bronze-hi) }
+.chg p { font-size: 1rem }
+
+/* ---------- the catalog ---------- */
+.tools { display: flex; flex-wrap: wrap; gap: .8rem 1.25rem; align-items: center; padding: .9rem 1.1rem; border: 1px solid var(--line-soft); background: color-mix(in oklab, var(--panel) 80%, transparent) }
+.prog { flex: 1 1 13rem; display: grid; gap: .35rem; font-family: var(--f-ui); font-size: .95rem; color: var(--muted) }
+.prog b { font-family: var(--f-caps); font-weight: 400; font-size: 1.25rem; color: var(--pets); font-variant-numeric: tabular-nums }
+.pbar { display: block; height: .75rem; padding: 2px; background: #000; border: 1px solid var(--line); border-radius: 2px }
+.pbar i { display: block; height: 100%; width: calc(var(--p, 0) * 100%); background: linear-gradient(180deg, color-mix(in oklab, #84d39c 70%, #fff), #84d39c 55%, color-mix(in oklab, #84d39c 55%, #000)); transition: width .3s }
+.filters { display: flex; flex-wrap: wrap; gap: .3rem }
+.filters button, .tools .clear {
+  font-family: var(--f-label); font-weight: 700; font-size: .88rem; letter-spacing: .05em; text-transform: lowercase; cursor: pointer;
+  color: var(--muted); padding: .3rem .7rem; min-height: 2.2rem; border: 1px solid var(--line-soft); border-radius: 3px; background: none;
+}
+.filters button:hover, .tools .clear:hover { color: var(--ink) }
+.filters button[aria-pressed="true"] { color: var(--pets); border-color: color-mix(in oklab, var(--pets) 50%, transparent); background: color-mix(in oklab, var(--pets) 11%, transparent) }
+.find { flex: 1 1 12rem; display: flex }
+.find input {
+  width: 100%; min-height: 2.3rem; padding: .3rem .7rem; border-radius: 3px; border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  font-family: var(--f-ui); font-size: 1rem;
+}
+.find input::placeholder { color: var(--muted) }
+.shown { font-family: var(--f-ui); font-size: .9rem; color: var(--muted) }
+.none { font-style: italic; color: var(--muted) }
+
+.grp { display: grid; gap: .5rem; padding-top: 1.5rem }
+.grp-h { display: flex; align-items: baseline; gap: .7rem; padding-bottom: .35rem; border-bottom: 1px solid var(--line) }
+.grp-h h3 { font-size: var(--step-2); color: var(--bronze-hi) }
+.grp-n { font-family: var(--f-ui); font-size: .95rem; color: var(--muted); font-variant-numeric: tabular-nums }
+.grp-i { color: var(--muted); max-width: 72ch; font-size: .98rem }
+.pets { list-style: none; margin: 0; padding: 0; display: grid }
+.pet { display: grid; grid-template-columns: minmax(0, 15.5rem) minmax(0, 1fr) minmax(0, 14rem); gap: .3rem 1.25rem; padding: .75rem 0; border-top: 1px solid var(--line-soft); align-items: start }
+.pet:first-child { border-top: 0 }
+.pet-n { grid-column: 1; grid-row: 1; display: flex; gap: .6rem; align-items: flex-start; cursor: pointer }
+.pet-n b { font-family: var(--f-display); font-weight: 400; font-size: 1.1rem; line-height: 1.3 }
+.pet-t { grid-column: 1; grid-row: 2; display: flex; flex-wrap: wrap; gap: .3rem; padding-left: 1.9rem }
+.pet-how { grid-column: 2; grid-row: 1 / span 2; font-family: var(--f-ui); font-size: .96rem; line-height: 1.45 }
+.pet-where { grid-column: 3; grid-row: 1 / span 2; font-family: var(--f-ui); font-size: .92rem; line-height: 1.45; color: var(--muted) }
+.pet-c {
+  appearance: none; -webkit-appearance: none; flex: none; width: 1.3rem; height: 1.3rem; margin: .12rem 0 0; cursor: pointer;
+  display: grid; place-items: center; border-radius: 3px; background: var(--bg);
+  border: 2px solid color-mix(in oklab, var(--pets) 55%, var(--line));
+}
+.pet-c::after { content: ""; width: .36rem; height: .68rem; border: solid var(--bg); border-width: 0 2.5px 2.5px 0; transform: translateY(-.08rem) rotate(45deg); opacity: 0 }
+.pet-c:checked { background: var(--pets); border-color: var(--pets) }
+.pet-c:checked::after { opacity: 1 }
+.pet.got .pet-n b { color: var(--pets) }
+.pet.got .pet-how, .pet.got .pet-where { opacity: .7 }
+@media (max-width: 46rem) {
+  .pet { grid-template-columns: minmax(0, 1fr); gap: .25rem }
+  .pet-n, .pet-t, .pet-how, .pet-where { grid-column: 1; grid-row: auto }
+  .pet-t, .pet-how, .pet-where { padding-left: 1.9rem }
+}
+/* evidence marks: how sure the source is */
+.ev {
+  display: inline-flex; align-items: center; gap: .3em; white-space: nowrap; border-radius: 999px; padding: 0 .55em .05em;
+  font-family: var(--f-label); font-weight: 700; font-size: .72rem; letter-spacing: .06em; text-transform: lowercase; line-height: 1.5;
+  color: var(--ev); border: 1px dashed color-mix(in oklab, var(--ev) 60%, transparent);
+}
+.ev::before { font-family: var(--f-display); font-size: 1.05em; line-height: 1 }
+.ev-beta { --ev: var(--s-theory) } .ev-beta::before { content: "β" }
+.ev-data { --ev: var(--s-other) } .ev-data::before { content: "#" }
+.ev-prov { --ev: var(--s-unspec) } .ev-prov::before { content: "?" }
+.key { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; align-items: center; font-family: var(--f-ui); font-size: .9rem; color: var(--muted) }
+.key span { display: inline-flex; gap: .45rem; align-items: center }
+
+.away { padding: 1.3rem 1.4rem; display: grid; gap: .8rem; margin-top: 1.75rem }
+.away h3 { font-size: var(--step-1); color: var(--ink) }
+.away p { max-width: 70ch; color: var(--muted) }
+.away ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem }
+.away li { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: .2rem 1rem; font-family: var(--f-ui); font-size: .96rem }
+.away li b { font-family: var(--f-display); font-weight: 400; font-size: 1.05rem; color: var(--ink) }
+@media (max-width: 34rem) { .away li { grid-template-columns: minmax(0, 1fr) } }
+
+/* ---------- the odds ---------- */
+.odds { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)) }
+.odd { margin: 0; padding: 1.1rem 1.2rem 1.2rem; display: grid; gap: .7rem; align-content: start; min-width: 0 }
+.odd figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .6rem }
+.odd figcaption b { font-family: var(--f-caps); font-weight: 400; font-size: 1.25rem; color: var(--bronze-hi) }
+.odd figcaption span { font-family: var(--f-ui); font-size: .9rem; color: var(--muted) }
+.rates { width: 100%; border-collapse: collapse; font-family: var(--f-ui); font-size: .95rem; font-variant-numeric: tabular-nums }
+.rates th, .rates td { text-align: left; padding: .42rem .6rem .42rem 0; border-top: 1px solid var(--line-soft); vertical-align: top }
+.rates thead th { border-top: 0; padding-top: 0; font-family: var(--f-label); font-weight: 700; font-size: .74rem; letter-spacing: .07em; text-transform: lowercase; color: var(--muted) }
+.rates tbody th { font-weight: 500; color: var(--ink) }
+.rates td { color: var(--muted) }
+.rates td:last-child, .rates thead th:last-child { text-align: right; padding-right: 0 }
+.rates td:last-child { color: var(--pets); font-weight: 700; white-space: nowrap }
+.rates small { display: block; font-weight: 400; font-size: .8rem; color: var(--muted) }
+.rates tr.thin td:last-child { color: var(--muted) }
+.odd-n { font-size: .95rem; color: var(--muted) }
+.unknowns { border-left: 3px solid var(--s-unspec); background: color-mix(in oklab, var(--s-unspec) 7%, var(--panel)); padding: .9rem 1.1rem 1rem; display: grid; gap: .4rem; max-width: 66ch }
+.unknowns .label { color: var(--s-unspec) }
+
+/* ---------- the route ---------- */
+.route { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; max-width: 60rem }
+.route li { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: .25rem 1rem; padding: 1rem 1.2rem; border: 1px solid var(--line-soft); background: color-mix(in oklab, var(--panel) 78%, transparent) }
+.route .n { grid-row: 1 / span 2; width: 2.3rem; height: 2.3rem; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--pets); color: var(--pets); font-family: var(--f-caps); font-size: 1rem; box-shadow: 0 0 12px -5px var(--pets) }
+.route b { font-family: var(--f-display); font-weight: 400; font-size: 1.15rem; line-height: 1.3; color: var(--ink) }
+.route p { font-size: 1rem }
+.miss { border-left: 3px solid var(--s-warn); background: color-mix(in oklab, var(--s-warn) 7%, var(--panel)); padding: .9rem 1.1rem 1rem; display: grid; gap: .4rem; max-width: 60rem }
+.miss .label { color: var(--s-warn) }
+
+/* ---------- difficulty ---------- */
+.tiers { list-style: none; margin: 0; padding: 0; display: grid; border: 1px solid var(--line); background: var(--panel) }
+.tier { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: .5rem 1.25rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--line-soft) }
+.tier:last-child { border-bottom: 0 }
+.tier h3 { font-size: 1.15rem; color: var(--bronze-hi); line-height: 1.3 }
+.tier h3 small { display: block; font-family: var(--f-ui); font-size: .85rem; color: var(--muted); margin-top: .15rem }
+.tier .chips { display: flex; flex-wrap: wrap; gap: .35rem; align-content: start }
+.chip {
+  font-family: var(--f-label); font-weight: 700; font-size: .86rem; letter-spacing: .03em; line-height: 1.65; text-decoration: none; white-space: nowrap;
+  color: var(--ink); padding: 0 .55rem; border-radius: 3px;
+  border: 1px solid color-mix(in oklab, var(--pets) 45%, transparent); background: color-mix(in oklab, var(--pets) 9%, transparent);
+}
+a.chip:hover { background: color-mix(in oklab, var(--pets) 20%, transparent) }
+@media (max-width: 40rem) { .tier { grid-template-columns: minmax(0, 1fr) } }
+
+/* ---------- unsolved ---------- */
+.unk { list-style: none; margin: 0; padding: 0; display: grid; gap: .7rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)) }
+.unk li { display: grid; gap: .2rem; align-content: start; padding: .7rem .9rem; border: 1px dashed color-mix(in oklab, var(--s-unspec) 55%, transparent); border-radius: 3px; background: color-mix(in oklab, var(--s-unspec) 5%, transparent) }
+.unk b { font-family: var(--f-display); font-weight: 400; font-size: 1.05rem; color: var(--ink) }
+.unk span { font-family: var(--f-ui); font-size: .9rem; color: var(--muted); line-height: 1.4 }
+.note { border-left: 3px solid var(--s-unspec); background: color-mix(in oklab, var(--s-unspec) 7%, var(--panel)); padding: .8rem 1rem .9rem; display: grid; gap: .4rem; font-size: 1rem; max-width: 66ch }
+.note-l { font-family: var(--f-label); font-weight: 700; font-size: .8rem; letter-spacing: .07em; text-transform: lowercase; color: var(--s-unspec) }
+.finds { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; max-width: 60rem }
+.finds li { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: .1rem 1rem; font-size: 1rem }
+.finds time { font-family: var(--f-caps); color: var(--muted); font-size: 1rem }
+@media (max-width: 34rem) { .finds li { grid-template-columns: minmax(0, 1fr) } }
+</style>
+</head>
+<body class="companions">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-glass" viewBox="0 0 24 24">
+      <path d="M5 2.5h14v2H5zM5 19.5h14v2H5z" fill="currentColor"/>
+      <path d="M7 4.5c0 4.6 4.2 6 4.2 7.5S7 14.9 7 19.5h10c0-4.6-4.2-6-4.2-7.5S17 9.1 17 4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M8.7 7h6.6c-.7 1.8-2.5 2.9-3.3 4.3C11.2 9.9 9.4 8.8 8.7 7zM8.4 19.5c.4-2.3 2.2-3.5 3.6-3.8 1.4.3 3.2 1.5 3.6 3.8z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="15.9" rx="5" ry="4.2" fill="currentColor"/>
+      <ellipse cx="5.4" cy="10.7" rx="2.05" ry="2.6" transform="rotate(-20 5.4 10.7)" fill="currentColor"/>
+      <ellipse cx="9.5" cy="6.6" rx="2.1" ry="2.7" transform="rotate(-7 9.5 6.6)" fill="currentColor"/>
+      <ellipse cx="14.5" cy="6.6" rx="2.1" ry="2.7" transform="rotate(7 14.5 6.6)" fill="currentColor"/>
+      <ellipse cx="18.6" cy="10.7" rx="2.05" ry="2.6" transform="rotate(20 18.6 10.7)" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+<a class="skip" href="#catalog">Skip to the catalog</a>
+
+<header class="mast">
+  <div class="mast-in">
+    <a class="mast-brand" href="../"><svg aria-hidden="true"><use href="#i-glass"/></svg>Forever Codex</a>
+    <nav class="mast-books" aria-label="Books">
+      <a href="../lore/"><span class="bk-n">I</span>Lore</a>
+      <a href="../classes/"><span class="bk-n">II</span>Classes</a>
+      <a href="../races/"><span class="bk-n">III</span>Races</a>
+      <a href="../companions/" aria-current="page"><span class="bk-n">IV</span><span class="lg">Companions</span><span class="sh">Pets</span></a>
+      <a href="../appendix/">Appendix</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+<header class="hero" id="top">
+  <div class="hero-top">
+    <p class="label">forever codex · book iv · companion pets, read against vanilla</p>
+    <h1 class="title">The Companions</h1>
+    <p class="thesis">The Vanilla menagerie is still here. <em>The collection built around it is new.</em></p>
+  </div>
+  <div class="hero-grid">
+    <div class="hero-copy frame">
+      <div class="prose">
+        <p>Vanilla’s companions were a short list of bag-space vanity items and a handful of brutal world drops. Forever keeps the old menagerie, from Donni Anthania’s cats to the Hyacinth Macaw, and builds a real collection around it: companions are learned and account-wide rather than carried, and new ones come from rares, quests, emotes, reputation, Legacy and a Black Market Auction House.</p>
+        <p>This book follows the Alliance side: the 64 companions within an Alliance character’s reach, with the twelve in Horde cities listed separately. Launch is November 4, so the drop counts here come from the beta, and rare respawns and the first Forever holidays can’t be confirmed yet; each uncertain detail is marked.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>76</b><span>companions with a known way to get them</span></div>
+        <div class="fact"><b>64</b><span>within an Alliance character’s reach</span></div>
+        <div class="fact"><b>17</b><span>of those new in Forever</span></div>
+        <div class="fact"><b>23</b><span>in the data, still unsolved</span></div>
+      </div>
+    </div>
+    <aside class="tt" aria-labelledby="since-h">
+      <p class="tt-h" id="since-h">Since Vanilla</p>
+      <p class="tt-sub">Companion pets · Forever against Vanilla</p>
+      <ul>
+        <li><span>Companions</span><span><s>Bag items</s> Learned</span></li>
+        <li><span>Across the account</span><span><s>Per character</s> Account-wide</span></li>
+        <li><span>Across factions</span><span class="dim">Unconfirmed</span></li>
+        <li><span>Zergling, Panda Cub, Mini Diablo</span><span><s>2004 CE only</s> Sold again</span></li>
+        <li><span>New rare-spawn pets</span><span>3</span></li>
+        <li><span>Black Market Auction House</span><span>New</span></li>
+        <li><span>Siamese, from Cookie</span><span><s>~20%</s> ~9–10%</span></li>
+        <li><span>Pet battles</span><span class="dim">Still none</span></li>
+      </ul>
+      <p class="tt-foot">Account-wide comes from Wowhead’s Forever database flags, not a Blizzard rulebook. Drop counts are beta data.</p>
+    </aside>
+  </div>
+</header>
+</div>
+
+<nav class="bar bar-p" aria-label="Sections">
+  <div class="bar-in">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#i-paw"/></svg><span>The Companions</span></a>
+    <a class="sec-link" href="#changes">Changes</a>
+    <a class="sec-link" href="#catalog">Catalog</a>
+    <a class="sec-link" href="#odds">Odds</a>
+    <a class="sec-link" href="#route">Route</a>
+    <a class="sec-link" href="#tiers"><span class="lg">Difficulty</span><span class="sh">Tiers</span></a>
+    <a class="sec-link" href="#unsolved">Unsolved</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ======================= CHANGES ======================= -->
+<section class="sec" id="changes" aria-labelledby="changes-h">
+  <div class="sec-head">
+    <p class="label">since vanilla</p>
+    <h2 id="changes-h">What changed</h2>
+    <p>The pets a veteran remembers are mostly where they were. What surrounds them isn’t.</p>
+  </div>
+  <div class="chg-grid">
+    <article class="chg frame">
+      <h3>Learned, and account-wide</h3>
+      <p>Classic companions were bag items, one per character. Forever’s teach a summon, and Wowhead’s Forever database flags many of them account-wide, so one copy should serve every character. Whether they cross factions isn’t confirmed. They stay cosmetic and non-combat: there are no pet battles.</p>
+    </article>
+    <article class="chg frame">
+      <h3>Trading, and duplicates</h3>
+      <p>Most returning pets are still bind on use, so they trade before they’re learned, and with account-wide unlocks a duplicate becomes a trade good rather than a copy for an alt. The new progression pets, such as the <a class="pl" href="#p-spectral-bear-cub">Spectral Bear Cub</a>, <a class="pl" href="#p-bitter-baitling">Bitter Baitling</a> and <a class="pl" href="#p-minimule">Minimule</a>, bind on pickup.</p>
+    </article>
+    <article class="chg frame">
+      <h3>The Collector’s Edition trio returns</h3>
+      <p>The <a class="pl" href="#p-zergling">Zergling</a>, <a class="pl" href="#p-panda-cub">Panda Cub</a> and <a class="pl" href="#p-mini-diablo">Mini Diablo</a> were locked to the original 2004 Collector’s Edition. Forever’s Skyborne Epic Pack and Warcraft Forever Collection include all three, with the new <a class="pl" href="#p-pachimari">Pachimari</a>. The Collection is advertised through January 11, 2027; the Epic Pack has no stated end.</p>
+    </article>
+    <article class="chg frame">
+      <h3>New pets in the old world</h3>
+      <p>Rares now carry pets in Loch Modan, Darkshore and Stormwind’s canals. A new quest gives <a class="pl" href="#p-weevil-k-neevil">Weevil K. Neevil</a>, and the old vendors stock new colors, such as <a class="pl" href="#p-brown-rabbit">Brown</a> and <a class="pl" href="#p-arctic-rabbit">Arctic Rabbits</a> and an <a class="pl" href="#p-eagle-owl">Eagle Owl</a>.</p>
+    </article>
+    <article class="chg frame">
+      <h3>New systems that pay in pets</h3>
+      <p>Legacy (the <a class="pl" href="#p-spectral-bear-cub">Spectral Bear Cub</a> at 25 points), the Nightclaw Druids (<a class="pl" href="#p-shadowgale-squirrel">Shadowgale Squirrel</a>), Waylaid Crates and Merchant’s Favor (<a class="pl" href="#p-minimule">Minimule</a>), the Fishing Extravaganza’s coin (<a class="pl" href="#p-bitter-baitling">Bitter Baitling</a>), and a Black Market Auction House Vanilla never had, which sells two new whelplings.</p>
+    </article>
+    <article class="chg frame">
+      <h3>Emotes as keys</h3>
+      <p><code>/sing</code> to frogs for the <a class="pl" href="#p-musical-gustjumper">Musical Gustjumper</a> and <code>/dance</code> at a sewer slime for Excitable Slime, beside the old <code>/chicken</code> and <code>/beckon</code> rituals for the <a class="pl" href="#p-prairie-chicken">Prairie</a> and <a class="pl" href="#p-ancona-chicken">Ancona Chickens</a>.</p>
+    </article>
+    <article class="chg frame">
+      <h3>Some odds moved</h3>
+      <p>Cookie’s <a class="pl" href="#p-siamese">Siamese</a> dropped about 9–10% of the time on the beta, against Classic’s 20%, and <a class="pl" href="#p-peddlefeet">Peddlefeet</a> is now a rare gift drop, not a 40-token purchase. The <a class="pl" href="#p-hyacinth-macaw">Hyacinth Macaw</a> is as long a farm as ever. <a class="pl" href="#odds">The beta’s drop counts.</a></p>
+    </article>
+  </div>
+</section>
+
+<!-- ======================= CATALOG ======================= -->
+<section class="sec" id="catalog" aria-labelledby="catalog-h">
+  <div class="sec-head">
+    <p class="label">the checklist</p>
+    <h2 id="catalog-h">The catalog</h2>
+    <p>Every companion within an Alliance character’s reach, grouped by source. Checking one off marks it collected; the checks are kept in this browser only.</p>
+  </div>
+  <div class="tools">
+    <div class="prog"><span><b id="got">0</b> of 64 collected <span class="shown" id="shown"></span></span><span class="pbar" aria-hidden="true"><i id="pbar"></i></span></div>
+    <div class="filters" role="group" aria-label="Show">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="new" aria-pressed="false">New in Forever</button>
+      <button type="button" data-f="todo" aria-pressed="false">Still to collect</button>
+    </div>
+    <label class="find"><span class="sr">Find a companion</span><input type="search" id="find" placeholder="Find a companion, place or source" autocomplete="off"></label>
+    <button type="button" class="clear" id="clear">Clear checks</button>
+  </div>
+  <p class="key"><span><span class="vs vs-new">New</span>new in Forever</span><span><span class="vs vs-kept">Kept</span>the Classic method</span><span><span class="vs vs-changed">Changed</span>the source or odds moved</span><span><span class="ev ev-beta">Beta data</span>counted on the beta</span><span><span class="ev ev-data">Database</span>known only from the database</span><span><span class="ev ev-prov">Provisional</span>the holiday hasn’t run on Forever</span></p>
+  <p class="none" id="none" hidden>No companion matches.</p>
+  <div class="cat">
+  <section class="grp" id="g-vendors" aria-labelledby="g-vendors-h">
+    <div class="grp-h"><h3 id="g-vendors-h">Alliance vendors</h3><span class="grp-n">10</span></div>
+    <p class="grp-i">The racial pet merchants, with deeper stock than in Vanilla. Where no Forever price has been reported, none is given: Classic prices aren’t carried over as guesses.</p>
+    <ul class="pets">
+      <li class="pet" id="p-bombay" data-id="bombay" data-new="0" data-q="bombay cat carrier (bombay) from donni anthania elwynn forest"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Bombay</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Cat Carrier (Bombay) from Donni Anthania</p><p class="pet-where">Elwynn Forest</p></li>
+      <li class="pet" id="p-cornish-rex" data-id="cornish-rex" data-new="0" data-q="cornish rex cat carrier (cornish rex) from donni anthania elwynn forest"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Cornish Rex</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Cat Carrier (Cornish Rex) from Donni Anthania</p><p class="pet-where">Elwynn Forest</p></li>
+      <li class="pet" id="p-orange-tabby" data-id="orange-tabby" data-new="0" data-q="orange tabby cat carrier (orange tabby) from donni anthania elwynn forest"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Orange Tabby</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Cat Carrier (Orange Tabby) from Donni Anthania</p><p class="pet-where">Elwynn Forest</p></li>
+      <li class="pet" id="p-silver-tabby" data-id="silver-tabby" data-new="0" data-q="silver tabby cat carrier (silver tabby) from donni anthania elwynn forest"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Silver Tabby</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Cat Carrier (Silver Tabby) from Donni Anthania</p><p class="pet-where">Elwynn Forest</p></li>
+      <li class="pet" id="p-snowshoe-rabbit" data-id="snowshoe-rabbit" data-new="0" data-q="snowshoe rabbit rabbit crate (snowshoe) from yarlyn amberstill amberstill ranch, dun morogh"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Snowshoe Rabbit</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Rabbit Crate (Snowshoe) from Yarlyn Amberstill</p><p class="pet-where">Amberstill Ranch, Dun Morogh</p></li>
+      <li class="pet" id="p-brown-rabbit" data-id="brown-rabbit" data-new="1" data-q="brown rabbit rabbit crate (brown) from yarlyn amberstill · 21s 5c amberstill ranch, dun morogh"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Brown Rabbit</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how">Rabbit Crate (Brown) from Yarlyn Amberstill · 21s 5c</p><p class="pet-where">Amberstill Ranch, Dun Morogh</p></li>
+      <li class="pet" id="p-arctic-rabbit" data-id="arctic-rabbit" data-new="1" data-q="arctic rabbit rabbit crate (arctic) from yarlyn amberstill · 21s 5c amberstill ranch, dun morogh"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Arctic Rabbit</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how">Rabbit Crate (Arctic) from Yarlyn Amberstill · 21s 5c</p><p class="pet-where">Amberstill Ranch, Dun Morogh</p></li>
+      <li class="pet" id="p-hawk-owl" data-id="hawk-owl" data-new="0" data-q="hawk owl from shylenai darnassus"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Hawk Owl</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">From Shylenai</p><p class="pet-where">Darnassus</p></li>
+      <li class="pet" id="p-great-horned-owl" data-id="great-horned-owl" data-new="0" data-q="great horned owl from shylenai darnassus"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Great Horned Owl</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">From Shylenai</p><p class="pet-where">Darnassus</p></li>
+      <li class="pet" id="p-eagle-owl" data-id="eagle-owl" data-new="1" data-q="eagle owl from shylenai, the third darnassus owl · 52s 63c darnassus"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Eagle Owl</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how">From Shylenai, the third Darnassus owl · 52s 63c</p><p class="pet-where">Darnassus</p></li>
+    </ul>
+  </section>
+  <section class="grp" id="g-neutral" aria-labelledby="g-neutral-h">
+    <div class="grp-h"><h3 id="g-neutral-h">Neutral and special vendors</h3><span class="grp-n">5</span></div>
+    <p class="grp-i">Booty Bay’s parrots, two old rituals, and Forever’s first currency pet.</p>
+    <ul class="pets">
+      <li class="pet" id="p-senegal" data-id="senegal" data-new="0" data-q="senegal parrot cage (senegal) from narkk · about 40s booty bay"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Senegal</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Parrot Cage (Senegal) from Narkk · about 40s</p><p class="pet-where">Booty Bay</p></li>
+      <li class="pet" id="p-cockatiel" data-id="cockatiel" data-new="0" data-q="cockatiel parrot cage (cockatiel) from narkk · about 40s booty bay"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Cockatiel</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Parrot Cage (Cockatiel) from Narkk · about 40s</p><p class="pet-where">Booty Bay</p></li>
+      <li class="pet" id="p-ancona-chicken" data-id="ancona-chicken" data-new="0" data-q="ancona chicken find magus tirth, /chicken, then /beckon once transformed, then buy · 1g shimmering flats, thousand needles (around 78, 76 in classic)"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Ancona Chicken</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Find Magus Tirth, <code>/chicken</code>, then <code>/beckon</code> once transformed, then buy · 1g</p><p class="pet-where">Shimmering Flats, Thousand Needles (around 78, 76 in Classic)</p></li>
+      <li class="pet" id="p-white-kitten" data-id="white-kitten" data-new="0" data-q="white kitten lil timmy&#x27;s single cat carrier, about 60s, one per appearance. his forever respawn is unconfirmed; it was about two hours in classic stormwind, wandering"><label class="pet-n"><input type="checkbox" class="pet-c"><b>White Kitten</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Lil Timmy’s single Cat Carrier, about 60s, one per appearance. His Forever respawn is unconfirmed; it was about two hours in Classic</p><p class="pet-where">Stormwind, wandering</p></li>
+      <li class="pet" id="p-minimule" data-id="minimule" data-new="1" data-q="minimule packmule treat from tamelyn aldridge (~10.6, 71.3) for 1,500 merchant&#x27;s favor, earned by turning waylaid crates in to marcy baker (~9.6, 70.9). the item page also asks for revered with the azeroth commerce authority. bind on pickup three corners, redridge mountains"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Minimule</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how">Packmule Treat from Tamelyn Aldridge (~10.6, 71.3) for 1,500 Merchant’s Favor, earned by turning Waylaid Crates in to Marcy Baker (~9.6, 70.9). The item page also asks for Revered with the Azeroth Commerce Authority. Bind on pickup</p><p class="pet-where">Three Corners, Redridge Mountains</p></li>
+    </ul>
+  </section>
+  <section class="grp" id="g-quests" aria-labelledby="g-quests-h">
+    <div class="grp-h"><h3 id="g-quests-h">Quests</h3><span class="grp-n">6</span></div>
+    <p class="grp-i">One new scavenger hunt; the rest are the Classic chains, unchanged.</p>
+    <ul class="pets">
+      <li class="pet" id="p-prairie-chicken" data-id="prairie-chicken" data-new="0" data-q="prairie chicken /chicken at a chicken until it clucks, buy special chicken feed from farmer saldean, turn it in, loot the egg saldean&#x27;s farm, westfall (~56, 31)"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Prairie Chicken</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how"><code>/chicken</code> at a Chicken until it clucks, buy Special Chicken Feed from Farmer Saldean, turn it in, loot the egg</p><p class="pet-where">Saldean’s Farm, Westfall (~56, 31)</p></li>
+      <li class="pet" id="p-weevil-k-neevil" data-id="weevil-k-neevil" data-new="1" data-q="weevil k. neevil my little friends, from around level 25: fill the entomology starter kit with an arbor tarantula, a hay weevil and a flesh picker quest in the swamp of sorrows; specimens in stranglethorn vale (45.5, 19.6), arathi highlands (32.4, 28.5) and desolace (53.3, 58.3)"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Weevil K. Neevil</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how"><i>My Little Friends</i>, from around level 25: fill the Entomology Starter Kit with an Arbor Tarantula, a Hay Weevil and a Flesh Picker</p><p class="pet-where">Quest in the Swamp of Sorrows; specimens in Stranglethorn Vale (45.5, 19.6), Arathi Highlands (32.4, 28.5) and Desolace (53.3, 58.3)</p></li>
+      <li class="pet" id="p-sprite-darter" data-id="sprite-darter" data-new="0" data-q="sprite darter hatchling freedom for all creatures through becoming a parent; needs 2 elixirs of lesser fortitude feralas (starts ~65, 45)"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Sprite Darter Hatchling</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how"><i>Freedom for All Creatures</i> through <i>Becoming a Parent</i>; needs 2 Elixirs of Lesser Fortitude</p><p class="pet-where">Feralas (starts ~65, 45)</p></li>
+      <li class="pet" id="p-mechanical-chicken" data-id="mechanical-chicken" data-new="0" data-q="mechanical chicken all three oox distress beacons and their escorts, then an oox of your own from oglethorpe obnoticus feralas, tanaris, the hinterlands; booty bay"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Mechanical Chicken</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">All three OOX distress beacons and their escorts, then <i>An OOX of Your Own</i> from Oglethorpe Obnoticus</p><p class="pet-where">Feralas, Tanaris, the Hinterlands; Booty Bay</p></li>
+      <li class="pet" id="p-worg-pup" data-id="worg-pup" data-new="0" data-q="worg pup kibler&#x27;s exotic pets: trap a bloodaxe worg pup near halycon lower blackrock spire"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Worg Pup</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how"><i>Kibler’s Exotic Pets</i>: trap a Bloodaxe Worg Pup near Halycon</p><p class="pet-where">Lower Blackrock Spire</p></li>
+      <li class="pet" id="p-smolderweb" data-id="smolderweb" data-new="0" data-q="smolderweb hatchling en-ay-es-tee-why: 15 spire spider eggs near mother smolderweb lower blackrock spire"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Smolderweb Hatchling</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how"><i>En-Ay-Es-Tee-Why</i>: 15 Spire Spider Eggs near Mother Smolderweb</p><p class="pet-where">Lower Blackrock Spire</p></li>
+    </ul>
+  </section>
+  <section class="grp" id="g-rares" aria-labelledby="g-rares-h">
+    <div class="grp-h"><h3 id="g-rares-h">Rare spawns</h3><span class="grp-n">3</span></div>
+    <p class="grp-i">All three are new. Each is spawn luck and loot luck at once, and none has a known respawn timer yet.</p>
+    <ul class="pets">
+      <li class="pet" id="p-condor-hatchling" data-id="condor-hatchling" data-new="1" data-q="condor hatchling lord condar, a level-15 rare flying around the area, drops the shaking egg. drop rate unknown southeastern loch modan"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Condor Hatchling</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how">Lord Condar, a level-15 rare flying around the area, drops the Shaking Egg. Drop rate unknown</p><p class="pet-where">Southeastern Loch Modan</p></li>
+      <li class="pet" id="p-tallstrider-hatchling" data-id="tallstrider-hatchling" data-new="1" data-q="tallstrider hatchling strider clutchmother, a level-20 rare. drop rate unknown darkshore, near the ashenvale border"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Tallstrider Hatchling</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how">Strider Clutchmother, a level-20 rare. Drop rate unknown</p><p class="pet-where">Darkshore, near the Ashenvale border</p></li>
+      <li class="pet" id="p-baby-crocolisk" data-id="baby-crocolisk" data-new="1" data-q="baby crocolisk sewer beast, a level-50 elite rare patrolling the canals: 2 drops in 132 kills on the beta, far too few to pin a rate. likely contested at launch stormwind canals"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Baby Crocolisk</b></label><span class="pet-t"><span class="vs vs-new">New</span><span class="ev ev-beta">Beta data</span></span><p class="pet-how">Sewer Beast, a level-50 elite rare patrolling the canals: 2 drops in 132 kills on the beta, far too few to pin a rate. Likely contested at launch</p><p class="pet-where">Stormwind canals</p></li>
+    </ul>
+  </section>
+  <section class="grp" id="g-drops" aria-labelledby="g-drops-h">
+    <div class="grp-h"><h3 id="g-drops-h">World and dungeon drops</h3><span class="grp-n">8</span></div>
+    <p class="grp-i">The old jackpot farms, now with beta drop counts for some of them. Where Forever has no measurement yet, none is given: Classic rates don’t stand in.</p>
+    <ul class="pets">
+      <li class="pet" id="p-black-tabby" data-id="black-tabby" data-new="0" data-q="black tabby dalaran shield guards, summoners and theurgists dropped it once or twice per thousand kills on the beta; the rare dalaran spellscribe managed 75 in 382. also on the black market alterac mountains; the spellscribe in silverpine forest"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Black Tabby</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-beta">Beta data</span></span><p class="pet-how">Dalaran Shield Guards, Summoners and Theurgists dropped it once or twice per thousand kills on the beta; the rare Dalaran Spellscribe managed 75 in 382. Also on the Black Market</p><p class="pet-where">Alterac Mountains; the Spellscribe in Silverpine Forest</p></li>
+      <li class="pet" id="p-tiny-crimson" data-id="tiny-crimson" data-new="0" data-q="tiny crimson whelpling red, crimson and flamesnorting whelps. no forever rate yet wetlands (~59, 47)"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Tiny Crimson Whelpling</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Red, Crimson and Flamesnorting Whelps. No Forever rate yet</p><p class="pet-where">Wetlands (~59, 47)</p></li>
+      <li class="pet" id="p-tiny-emerald" data-id="tiny-emerald" data-new="0" data-q="tiny emerald whelpling dreaming whelps: about 0.25% on the beta, sample size unpublished southwestern swamp of sorrows (~14, 62)"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Tiny Emerald Whelpling</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-beta">Beta data</span></span><p class="pet-how">Dreaming Whelps: about 0.25% on the beta, sample size unpublished</p><p class="pet-where">Southwestern Swamp of Sorrows (~14, 62)</p></li>
+      <li class="pet" id="p-dark-whelpling" data-id="dark-whelpling" data-new="0" data-q="dark whelpling scalding and searing whelps. no forever rate yet badlands (~79, 35) and dustwallow marsh (~47, 70)"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Dark Whelpling</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Scalding and Searing Whelps. No Forever rate yet</p><p class="pet-where">Badlands (~79, 35) and Dustwallow Marsh (~47, 70)</p></li>
+      <li class="pet" id="p-hyacinth-macaw" data-id="hyacinth-macaw" data-new="0" data-q="hyacinth macaw bloodsail pirates: around 0.01–0.03% across the beta&#x27;s large samples, a true long-tail farm. also on the black market stranglethorn vale coast"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Hyacinth Macaw</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-beta">Beta data</span></span><p class="pet-how">Bloodsail pirates: around 0.01–0.03% across the beta’s large samples, a true long-tail farm. Also on the Black Market</p><p class="pet-where">Stranglethorn Vale coast</p></li>
+      <li class="pet" id="p-oozeling" data-id="oozeling" data-new="0" data-q="disgusting oozeling slimes drop the oozing bag, which may hold the pet: two chances, neither measured on forever yet felwood, un&#x27;goro, the plaguelands"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Disgusting Oozeling</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Slimes drop the Oozing Bag, which may hold the pet: two chances, neither measured on Forever yet</p><p class="pet-where">Felwood, Un’Goro, the Plaguelands</p></li>
+      <li class="pet" id="p-green-wing-macaw" data-id="green-wing-macaw" data-new="0" data-q="green wing macaw defias pirates near the end: 2.72% on the beta. also on the black market the deadmines"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Green Wing Macaw</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-beta">Beta data</span></span><p class="pet-how">Defias Pirates near the end: 2.72% on the beta. Also on the Black Market</p><p class="pet-where">The Deadmines</p></li>
+      <li class="pet" id="p-siamese" data-id="siamese" data-new="0" data-q="siamese cookie, aboard the ship: about 9–10% on the beta (1,826 in 20,680 kills), against about 20% in classic. also on the black market the deadmines"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Siamese</b></label><span class="pet-t"><span class="vs vs-changed">Changed</span><span class="ev ev-beta">Beta data</span></span><p class="pet-how">Cookie, aboard the ship: about 9–10% on the beta (1,826 in 20,680 kills), against about 20% in Classic. Also on the Black Market</p><p class="pet-where">The Deadmines</p></li>
+    </ul>
+  </section>
+  <section class="grp" id="g-engineering" aria-labelledby="g-engineering-h">
+    <div class="grp-h"><h3 id="g-engineering-h">Engineering</h3><span class="grp-n">5</span></div>
+    <p class="grp-i">The whole Classic Engineering set survives. Forever changes how a finished pet is kept, not how it’s made, and the specialty pets are still the slow ones.</p>
+    <ul class="pets">
+      <li class="pet" id="p-mechanical-squirrel" data-id="mechanical-squirrel" data-new="0" data-q="mechanical squirrel world-drop schematic from roughly level 15–25 content; engineering 75. a beta report says learning it needed level 15 crafted"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Mechanical Squirrel</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">World-drop schematic from roughly level 15–25 content; Engineering 75. A beta report says learning it needed level 15</p><p class="pet-where">Crafted</p></li>
+      <li class="pet" id="p-mechanical-yeti" data-id="mechanical-yeti" data-new="0" data-q="tranquil mechanical yeti umi rumplesnicker&#x27;s are we there, yeti? chain; engineering 250 winterspring"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Tranquil Mechanical Yeti</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Umi Rumplesnicker’s <i>Are We There, Yeti?</i> chain; Engineering 250</p><p class="pet-where">Winterspring</p></li>
+      <li class="pet" id="p-mechanical-toad" data-id="mechanical-toad" data-new="0" data-q="lifelike mechanical toad a rare schematic from level-55+ world content; engineering 265 crafted"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Lifelike Mechanical Toad</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">A rare schematic from level-55+ world content; Engineering 265</p><p class="pet-where">Crafted</p></li>
+      <li class="pet" id="p-lil-smoky" data-id="lil-smoky" data-new="0" data-q="lil&#x27; smoky gnomish engineering in classic: each membership renewal, about every two weeks, brings a mailed chance at the schematic crafted"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Lil’ Smoky</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Gnomish Engineering in Classic: each membership renewal, about every two weeks, brings a mailed chance at the schematic</p><p class="pet-where">Crafted</p></li>
+      <li class="pet" id="p-pet-bombling" data-id="pet-bombling" data-new="0" data-q="pet bombling goblin engineering in classic: the same renewal mail and the same odds. current guides blur which specialty sends which, so that needs checking at launch crafted"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Pet Bombling</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Goblin Engineering in Classic: the same renewal mail and the same odds. Current guides blur which specialty sends which, so that needs checking at launch</p><p class="pet-where">Crafted</p></li>
+    </ul>
+  </section>
+  <section class="grp" id="g-systems" aria-labelledby="g-systems-h">
+    <div class="grp-h"><h3 id="g-systems-h">Forever’s own systems</h3><span class="grp-n">6</span></div>
+    <p class="grp-i">Pets from systems Vanilla never had. Two are on Zephras Isle: Blizzard gates the Skyborne race and the island’s starting questline behind the Skyborne Heroic Pack or higher, and whether the rest of the island is open to every account isn’t settled.</p>
+    <ul class="pets">
+      <li class="pet" id="p-spectral-bear-cub" data-id="spectral-bear-cub" data-new="1" data-q="spectral bear cub 25 legacy points, claimed from innkeeper wiley. legacy progress is account-wide, and there&#x27;s no drop chance at the end. bind on pickup ratchet (~62.0, 39.4)"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Spectral Bear Cub</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how">25 Legacy Points, claimed from Innkeeper Wiley. Legacy progress is account-wide, and there’s no drop chance at the end. Bind on pickup</p><p class="pet-where">Ratchet (~62.0, 39.4)</p></li>
+      <li class="pet" id="p-shadowgale-squirrel" data-id="shadowgale-squirrel" data-new="1" data-q="shadowgale squirrel revered with the nightclaw druids, then 52s 63c from vayn moongaze. five al&#x27;aketh cultist&#x27;s ears turn in for 1,000 reputation zephras isle"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Shadowgale Squirrel</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how">Revered with the Nightclaw Druids, then 52s 63c from Vayn Moongaze. Five Al’Aketh Cultist’s Ears turn in for 1,000 reputation</p><p class="pet-where">Zephras Isle</p></li>
+      <li class="pet" id="p-musical-gustjumper" data-id="musical-gustjumper" data-new="1" data-q="musical gustjumper target the frogs on the rock and /sing; when they sing back and vanish, click the frog that appears. any level can do it, and the pet itself answers /sing zephras isle (~51.5, 72.3), by the waterfall south of thendal village"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Musical Gustjumper</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how">Target the frogs on the rock and <code>/sing</code>; when they sing back and vanish, click the frog that appears. Any level can do it, and the pet itself answers <code>/sing</code></p><p class="pet-where">Zephras Isle (~51.5, 72.3), by the waterfall south of Thendal Village</p></li>
+      <li class="pet" id="p-tiny-azure" data-id="tiny-azure" data-new="1" data-q="tiny azure whelpling sold on the black market, per wowhead&#x27;s current forever database; no fixed rotation or price black market auction house, powderfuse port"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Tiny Azure Whelpling</b></label><span class="pet-t"><span class="vs vs-new">New</span><span class="ev ev-data">Database</span></span><p class="pet-how">Sold on the Black Market, per Wowhead’s current Forever database; no fixed rotation or price</p><p class="pet-where">Black Market Auction House, Powderfuse Port</p></li>
+      <li class="pet" id="p-tiny-bronze" data-id="tiny-bronze" data-new="1" data-q="tiny bronze whelpling sold on the black market, per wowhead&#x27;s current forever database; no fixed rotation or price black market auction house, powderfuse port"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Tiny Bronze Whelpling</b></label><span class="pet-t"><span class="vs vs-new">New</span><span class="ev ev-data">Database</span></span><p class="pet-how">Sold on the Black Market, per Wowhead’s current Forever database; no fixed rotation or price</p><p class="pet-where">Black Market Auction House, Powderfuse Port</p></li>
+      <li class="pet" id="p-pet-fish" data-id="pet-fish" data-new="1" data-q="pet fish the database lists it as a drop and a black market item, and it was seen at the black market on the beta; the drop itself isn&#x27;t documented powderfuse port, riverglades (~78.1, 51.9)"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Pet Fish</b></label><span class="pet-t"><span class="vs vs-new">New source</span><span class="ev ev-data">Database</span></span><p class="pet-how">The database lists it as a drop and a Black Market item, and it was seen at the Black Market on the beta; the drop itself isn’t documented</p><p class="pet-where">Powderfuse Port, Riverglades (~78.1, 51.9)</p></li>
+    </ul>
+  </section>
+  <section class="grp" id="g-paid" aria-labelledby="g-paid-h">
+    <div class="grp-h"><h3 id="g-paid-h">Paid and subscription</h3><span class="grp-n">5</span></div>
+    <p class="grp-i">The Collector’s Edition trio is buyable for the first time, in Forever’s Skyborne Epic Pack or the Warcraft Forever Collection. The Collection is advertised through January 11, 2027; the Epic Pack’s sale period isn’t stated, so the Collection’s end needn’t end the pets.</p>
+    <ul class="pets">
+      <li class="pet" id="p-zergling" data-id="zergling" data-new="0" data-q="zergling skyborne epic pack or warcraft forever collection. in vanilla, the 2004 collector&#x27;s edition only battle.net"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Zergling</b></label><span class="pet-t"><span class="vs vs-changed">Changed</span></span><p class="pet-how">Skyborne Epic Pack or Warcraft Forever Collection. In Vanilla, the 2004 Collector’s Edition only</p><p class="pet-where">Battle.net</p></li>
+      <li class="pet" id="p-panda-cub" data-id="panda-cub" data-new="0" data-q="panda cub skyborne epic pack or warcraft forever collection. in vanilla, the 2004 collector&#x27;s edition only battle.net"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Panda Cub</b></label><span class="pet-t"><span class="vs vs-changed">Changed</span></span><p class="pet-how">Skyborne Epic Pack or Warcraft Forever Collection. In Vanilla, the 2004 Collector’s Edition only</p><p class="pet-where">Battle.net</p></li>
+      <li class="pet" id="p-mini-diablo" data-id="mini-diablo" data-new="0" data-q="mini diablo skyborne epic pack or warcraft forever collection. in vanilla, the 2004 collector&#x27;s edition only battle.net"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Mini Diablo</b></label><span class="pet-t"><span class="vs vs-changed">Changed</span></span><p class="pet-how">Skyborne Epic Pack or Warcraft Forever Collection. In Vanilla, the 2004 Collector’s Edition only</p><p class="pet-where">Battle.net</p></li>
+      <li class="pet" id="p-pachimari" data-id="pachimari" data-new="1" data-q="pachimari skyborne epic pack or warcraft forever collection battle.net"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Pachimari</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how">Skyborne Epic Pack or Warcraft Forever Collection</p><p class="pet-where">Battle.net</p></li>
+      <li class="pet" id="p-azurky" data-id="azurky" data-new="1" data-q="azurky blizzard&#x27;s 2026 twelve-month subscription offer. its bonuses arrive by october 31, 2026 and must be redeemed by april 30, 2027 account reward"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Azurky</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how">Blizzard’s 2026 twelve-month subscription offer. Its bonuses arrive by October 31, 2026 and must be redeemed by April 30, 2027</p><p class="pet-where">Account reward</p></li>
+    </ul>
+  </section>
+  <section class="grp" id="g-events" aria-labelledby="g-events-h">
+    <div class="grp-h"><h3 id="g-events-h">World events</h3><span class="grp-n">16</span></div>
+    <p class="grp-i">The area with the most pre-launch uncertainty. The Darkmoon Faire and the Fishing Extravaganza are documented; the holidays haven’t run on Forever yet, so their pets are provisional until they do.</p>
+    <ul class="pets">
+      <li class="pet" id="p-tree-frog" data-id="tree-frog" data-new="0" data-q="tree frog tree frog box from flik while the darkmoon faire is in town · 1g darkmoon faire, elwynn forest or mulgore"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Tree Frog</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Tree Frog Box from Flik while the Darkmoon Faire is in town · 1g</p><p class="pet-where">Darkmoon Faire, Elwynn Forest or Mulgore</p></li>
+      <li class="pet" id="p-wood-frog" data-id="wood-frog" data-new="0" data-q="wood frog wood frog box from flik · 1g. limited stock in classic; forever&#x27;s restock is untested darkmoon faire, elwynn forest or mulgore"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Wood Frog</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Wood Frog Box from Flik · 1g. Limited stock in Classic; Forever’s restock is untested</p><p class="pet-where">Darkmoon Faire, Elwynn Forest or Mulgore</p></li>
+      <li class="pet" id="p-jubling" data-id="jubling" data-new="0" data-q="jubling two dark iron ale mugs from plugger spazzring: one set down near morja draws out jubjub, the second buys spawn of jubjub. the egg hatches after seven days blackrock depths, then the faire"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Jubling</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span></span><p class="pet-how">Two Dark Iron Ale Mugs from Plugger Spazzring: one set down near Morja draws out Jubjub, the second buys <i>Spawn of Jubjub</i>. The egg hatches after seven days</p><p class="pet-where">Blackrock Depths, then the Faire</p></li>
+      <li class="pet" id="p-bitter-baitling" data-id="bitter-baitling" data-new="1" data-q="bitter baitling the first 50 master angler turn-ins each get the arcanite fishing pole and an extravagant extravaganza coin; one coin buys the baitling from jang. bind on pickup stranglethorn fishing extravaganza, sundays 2–4 pm"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Bitter Baitling</b></label><span class="pet-t"><span class="vs vs-new">New</span></span><p class="pet-how">The first 50 Master Angler turn-ins each get the Arcanite Fishing Pole and an Extravagant Extravaganza Coin; one coin buys the Baitling from Jang. Bind on pickup</p><p class="pet-where">Stranglethorn Fishing Extravaganza, Sundays 2–4 PM</p></li>
+      <li class="pet" id="p-winters-little-helper" data-id="winters-little-helper" data-new="0" data-q="winter&#x27;s little helper red helper box, one of four pets a gaily wrapped present can hold, opened on or after december 25 at level 20 or above winter veil"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Winter’s Little Helper</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-prov">Provisional</span></span><p class="pet-how">Red Helper Box, one of four pets a Gaily Wrapped Present can hold, opened on or after December 25 at level 20 or above</p><p class="pet-where">Winter Veil</p></li>
+      <li class="pet" id="p-father-winters-helper" data-id="father-winters-helper" data-new="0" data-q="father winter&#x27;s helper green helper box, from the same present winter veil"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Father Winter’s Helper</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-prov">Provisional</span></span><p class="pet-how">Green Helper Box, from the same present</p><p class="pet-where">Winter Veil</p></li>
+      <li class="pet" id="p-winter-reindeer" data-id="winter-reindeer" data-new="0" data-q="winter reindeer jingling bell, from the same present winter veil"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Winter Reindeer</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-prov">Provisional</span></span><p class="pet-how">Jingling Bell, from the same present</p><p class="pet-where">Winter Veil</p></li>
+      <li class="pet" id="p-tiny-snowman" data-id="tiny-snowman" data-new="0" data-q="tiny snowman snowman kit, from the same present; not the player winter veil disguise kit winter veil"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Tiny Snowman</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-prov">Provisional</span></span><p class="pet-how">Snowman Kit, from the same present; not the player Winter Veil Disguise Kit</p><p class="pet-where">Winter Veil</p></li>
+      <li class="pet" id="p-peddlefeet" data-id="peddlefeet" data-new="0" data-q="peddlefeet a very low chance from a gift or pledge of adoration, at most one eligible box an hour, after wearing the right perfume or cologne and handing over a love token. classic guides describe a 40-token purchase love is in the air, capital cities"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Peddlefeet</b></label><span class="pet-t"><span class="vs vs-changed">Changed</span><span class="ev ev-prov">Provisional</span></span><p class="pet-how">A very low chance from a Gift or Pledge of Adoration, at most one eligible box an hour, after wearing the right perfume or cologne and handing over a Love Token. Classic guides describe a 40-token purchase</p><p class="pet-where">Love is in the Air, capital cities</p></li>
+      <li class="pet" id="p-spirit-of-summer" data-id="spirit-of-summer" data-new="0" data-q="spirit of summer a light in dark places: the bonfires in dire maul, lower blackrock spire, stratholme and scholomance, for the captured flame midsummer"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Spirit of Summer</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-prov">Provisional</span></span><p class="pet-how"><i>A Light in Dark Places</i>: the bonfires in Dire Maul, Lower Blackrock Spire, Stratholme and Scholomance, for the Captured Flame</p><p class="pet-where">Midsummer</p></li>
+      <li class="pet" id="p-mr-wiggles" data-id="mr-wiggles" data-new="0" data-q="mr. wiggles the orphan chain, choosing piglet&#x27;s collar. classic allowed one choice per character each year children&#x27;s week, stormwind"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Mr. Wiggles</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-prov">Provisional</span></span><p class="pet-how">The orphan chain, choosing Piglet’s Collar. Classic allowed one choice per character each year</p><p class="pet-where">Children’s Week, Stormwind</p></li>
+      <li class="pet" id="p-speedy" data-id="speedy" data-new="0" data-q="speedy the orphan chain, choosing the turtle box children&#x27;s week, stormwind"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Speedy</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-prov">Provisional</span></span><p class="pet-how">The orphan chain, choosing the Turtle Box</p><p class="pet-where">Children’s Week, Stormwind</p></li>
+      <li class="pet" id="p-whiskers" data-id="whiskers" data-new="0" data-q="whiskers the rat the orphan chain, choosing the rat cage children&#x27;s week, stormwind"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Whiskers the Rat</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-prov">Provisional</span></span><p class="pet-how">The orphan chain, choosing the Rat Cage</p><p class="pet-where">Children’s Week, Stormwind</p></li>
+      <li class="pet" id="p-lunar-lantern" data-id="lunar-lantern" data-new="0" data-q="lunar lantern expected from a festival vendor for 50 coins of ancestry; unconfirmed lunar festival"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Lunar Lantern</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-prov">Provisional</span></span><p class="pet-how">Expected from a festival vendor for 50 Coins of Ancestry; unconfirmed</p><p class="pet-where">Lunar Festival</p></li>
+      <li class="pet" id="p-festival-lantern" data-id="festival-lantern" data-new="0" data-q="festival lantern expected from a festival vendor for 50 coins of ancestry; unconfirmed lunar festival"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Festival Lantern</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-prov">Provisional</span></span><p class="pet-how">Expected from a festival vendor for 50 Coins of Ancestry; unconfirmed</p><p class="pet-where">Lunar Festival</p></li>
+      <li class="pet" id="p-sinister-squashling" data-id="sinister-squashling" data-new="0" data-q="sinister squashling expected for 150 tricky treats or from the headless horseman; unconfirmed hallow&#x27;s end"><label class="pet-n"><input type="checkbox" class="pet-c"><b>Sinister Squashling</b></label><span class="pet-t"><span class="vs vs-kept">Kept</span><span class="ev ev-prov">Provisional</span></span><p class="pet-how">Expected for 150 Tricky Treats or from the Headless Horseman; unconfirmed</p><p class="pet-where">Hallow’s End</p></li>
+    </ul>
+  </section>
+  </div>
+
+  <aside class="away frame" aria-labelledby="away-h">
+    <h3 id="away-h">In Horde cities</h3>
+    <p>Twelve more companions sit with Horde vendors and quests. Most are bind-on-use items that trade before they’re learned, so they may reach Alliance collectors, but Forever’s cross-faction trading and sharing rules aren’t documented yet, so they aren’t counted here.</p>
+    <ul>
+      <li><b>Orgrimmar</b><span>Xan’tish sells Black Kingsnake, Brown Snake, Crimson Snake and the new Jungle Boa (52s 63c); the roaming Mayhoa Skyhoof sells the new Prairie Wolf Pup (63s 15c).</span></li>
+      <li><b>Undercity</b><span>Jeremiah Payson sells Cockroach and the new Plagued and Undercity Cockroaches (52s 63c each). The new Excitable Slime is a sewer quest: Boyle’s Nutritious Slime Sludge, then <code>/dance</code> at a slime.</span></li>
+      <li><b>Thunder Bluff</b><span>Halpa sells Brown Prairie Dog and the new Brown and Red Ground Squirrels (52s 63c each).</span></li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================= ODDS ======================= -->
+<section class="sec" id="odds" aria-labelledby="odds-h">
+  <div class="sec-head">
+    <p class="label">counted on the beta</p>
+    <h2 id="odds-h">The odds, measured</h2>
+    <p>Drop counts from Wowhead’s Forever database, all from the beta. They show which farms are worth the time. They aren’t Blizzard’s designed rates, and a small sample says little.</p>
+  </div>
+  <div class="odds">
+    <figure class="odd frame">
+      <figcaption><b>Black Tabby</b><span>by source</span></figcaption>
+      <table class="rates">
+        <thead><tr><th scope="col">Source</th><th scope="col">Drops / kills</th><th scope="col">Rate</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Dalaran Spellscribe <small>rare, Silverpine Forest</small></th><td>75 / 382</td><td>19.6%</td></tr>
+          <tr><th scope="row">Dalaran Shield Guard</th><td>58 / 35,763</td><td>0.16%</td></tr>
+          <tr><th scope="row">Dalaran Summoner</th><td>43 / 32,375</td><td>0.13%</td></tr>
+          <tr><th scope="row">Dalaran Theurgist</th><td>16 / 14,844</td><td>0.11%</td></tr>
+        </tbody>
+      </table>
+      <p class="odd-n">The rare Spellscribe is the farm. The ordinary Dalaran mobs give one or two per thousand kills.</p>
+    </figure>
+    <figure class="odd frame">
+      <figcaption><b>Hyacinth Macaw</b><span>by Bloodsail pirate</span></figcaption>
+      <table class="rates">
+        <thead><tr><th scope="col">Source</th><th scope="col">Drops / kills</th><th scope="col">Rate</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Bloodsail Swabby</th><td>5 / 19,090</td><td>0.026%</td></tr>
+          <tr><th scope="row">Bloodsail Warlock</th><td>11 / 64,711</td><td>0.017%</td></tr>
+          <tr><th scope="row">Bloodsail Deckhand</th><td>3 / 19,200</td><td>0.016%</td></tr>
+          <tr><th scope="row">Bloodsail Elder Magus</th><td>3 / 20,556</td><td>0.015%</td></tr>
+          <tr><th scope="row">Bloodsail Swashbuckler</th><td>6 / 60,528</td><td>0.010%</td></tr>
+          <tr class="thin"><th scope="row">Bloodsail Sea Dog</th><td>1 / 138</td><td>0.72% <small>too few kills</small></td></tr>
+        </tbody>
+      </table>
+      <p class="odd-n">The large samples bear out Vanilla’s reputation: roughly one in several thousand kills.</p>
+    </figure>
+    <figure class="odd frame">
+      <figcaption><b>One figure each</b><span>the other measured drops</span></figcaption>
+      <table class="rates">
+        <thead><tr><th scope="col">Pet</th><th scope="col">Source</th><th scope="col">Rate</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><a class="pl" href="#p-siamese">Siamese</a></th><td>Cookie, Deadmines</td><td>8.8% <small>1,826 / 20,680</small></td></tr>
+          <tr><th scope="row"><a class="pl" href="#p-green-wing-macaw">Green Wing Macaw</a></th><td>Defias Pirate, Deadmines</td><td>2.72%</td></tr>
+          <tr class="thin"><th scope="row"><a class="pl" href="#p-baby-crocolisk">Baby Crocolisk</a></th><td>Sewer Beast</td><td>1.5% <small>2 / 132</small></td></tr>
+          <tr><th scope="row"><a class="pl" href="#p-tiny-emerald">Tiny Emerald Whelpling</a></th><td>Dreaming Whelp</td><td>~0.25%</td></tr>
+        </tbody>
+      </table>
+      <p class="odd-n">Wowhead’s own header shows the Siamese nearer 10.4%, so 9–10% is the fair reading. Both are well below Classic’s familiar 20%.</p>
+    </figure>
+  </div>
+  <div class="unknowns">
+    <p class="label">not measured yet</p>
+    <p>The Tiny Crimson and Dark Whelplings, both stages of the Disgusting Oozeling, Lord Condar’s and Strider Clutchmother’s drops, and every respawn timer: Lord Condar, Strider Clutchmother, Sewer Beast and Lil Timmy. Classic figures for these aren’t repeated here as Forever ones.</p>
+  </div>
+</section>
+
+<!-- ======================= ROUTE ======================= -->
+<section class="sec" id="route" aria-labelledby="route-h">
+  <div class="sec-head">
+    <p class="label">an alliance route</p>
+    <h2 id="route-h">Collecting in order</h2>
+    <p>An efficient order for an Alliance collector who would rather not backtrack. It favors what can be planned over the rarest trophy.</p>
+  </div>
+  <ol class="route">
+    <li><span class="n">1</span><b>While leveling</b><p>The ten Alliance vendor pets, among them two new rabbits and a new owl, and the <a class="pl" href="#p-prairie-chicken">Prairie Chicken</a> in Westfall. <a class="pl" href="#p-condor-hatchling">Lord Condar</a> in Loch Modan and <a class="pl" href="#p-tallstrider-hatchling">Strider Clutchmother</a> in Darkshore are worth a look while passing through: with no reliable respawn timer or drop rate yet, a passing check beats a dedicated trip back.</p></li>
+    <li><span class="n">2</span><b>An early collection pass</b><p>Narkk’s two parrots in Booty Bay, the <a class="pl" href="#p-ancona-chicken">Ancona Chicken</a>, <a class="pl" href="#p-weevil-k-neevil">Weevil K. Neevil</a>, the <a class="pl" href="#p-white-kitten">White Kitten</a>, and the OOX beacons for the <a class="pl" href="#p-mechanical-chicken">Mechanical Chicken</a>.</p></li>
+    <li><span class="n">3</span><b>Forever’s systems, from day one</b><p>Waylaid Crates toward 1,500 Merchant’s Favor and Revered with the Azeroth Commerce Authority for the <a class="pl" href="#p-minimule">Minimule</a>, and Legacy toward 25 points for the <a class="pl" href="#p-spectral-bear-cub">Spectral Bear Cub</a>. Neither ends in a drop chance, and starting late only means backtracking.</p></li>
+    <li><span class="n">4</span><b>Zephras Isle, where the account has access</b><p>The <a class="pl" href="#p-musical-gustjumper">Musical Gustjumper</a> is nearly free once there. The Nightclaw Druids grind to Revered for the <a class="pl" href="#p-shadowgale-squirrel">Shadowgale Squirrel</a> is the long project.</p></li>
+    <li><span class="n">5</span><b>The weekly calendar</b><p>Sunday’s Fishing Extravaganza, where only the first 50 Master Angler turn-ins earn the coin for <a class="pl" href="#p-bitter-baitling">Bitter Baitling</a>, and the Darkmoon Faire for its two frogs and <a class="pl" href="#p-jubling">Jubling</a>.</p></li>
+    <li><span class="n">6</span><b>Stormwind’s canals</b><p>Sewer Beast for the <a class="pl" href="#p-baby-crocolisk">Baby Crocolisk</a>: a level-50 elite inside the Alliance capital, likely to be contested around launch.</p></li>
+    <li><span class="n">7</span><b>The market</b><p>The Black Market Auction House at Powderfuse Port, for the new <a class="pl" href="#p-tiny-azure">Tiny Azure</a> and <a class="pl" href="#p-tiny-bronze">Tiny Bronze Whelplings</a> and <a class="pl" href="#p-pet-fish">Pet Fish</a>, and as a fallback for the Siamese, both macaws and the Black Tabby.</p></li>
+    <li><span class="n">8</span><b>The long tail</b><p>The three whelplings, the <a class="pl" href="#p-oozeling">Disgusting Oozeling</a>, the <a class="pl" href="#p-hyacinth-macaw">Hyacinth Macaw</a> and the Engineering specialty schematics.</p></li>
+    <li><span class="n">9</span><b>The holidays, as they arrive</b><p>Winter Veil, Love is in the Air, the Lunar Festival, Children’s Week, Midsummer and Hallow’s End.</p></li>
+  </ol>
+  <div class="miss">
+    <p class="label">easiest to miss</p>
+    <p>The brutal world drops never go away. The weekly and account-gated pets are the ones a collector can miss: Bitter Baitling’s weekly race, Zephras access, Legacy progress, the Engineering specialty pets, the Warcraft Forever Collection’s window, advertised through January 11, 2027 (the same pets also come with the Skyborne Epic Pack), and Azurky’s offer, which must be redeemed by April 30, 2027.</p>
+  </div>
+</section>
+
+<!-- ======================= DIFFICULTY ======================= -->
+<section class="sec" id="tiers" aria-labelledby="tiers-h">
+  <div class="sec-head">
+    <p class="label">effort, not rarity</p>
+    <h2 id="tiers-h">Difficulty</h2>
+    <p>How hard each companion is to get, from a walk to a vendor to an auction that may never list it.</p>
+  </div>
+  <ol class="tiers">
+    <li class="tier"><h3>Very easy<small>a purchase or a known ritual</small></h3><div class="chips"><a class="chip" href="#g-vendors">The ten Alliance vendor pets</a><a class="chip" href="#p-senegal">Senegal</a><a class="chip" href="#p-cockatiel">Cockatiel</a><a class="chip" href="#p-ancona-chicken">Ancona Chicken</a><a class="chip" href="#p-prairie-chicken">Prairie Chicken</a><a class="chip" href="#p-musical-gustjumper">Musical Gustjumper, with Zephras access</a></div></li>
+    <li class="tier"><h3>Easy to moderate<small>certain, but needs travel or progress</small></h3><div class="chips"><a class="chip" href="#p-weevil-k-neevil">Weevil K. Neevil</a><a class="chip" href="#p-worg-pup">Worg Pup</a><a class="chip" href="#p-smolderweb">Smolderweb Hatchling</a><a class="chip" href="#p-sprite-darter">Sprite Darter Hatchling</a><a class="chip" href="#p-mechanical-chicken">Mechanical Chicken</a><a class="chip" href="#p-spectral-bear-cub">Spectral Bear Cub</a><a class="chip" href="#p-minimule">Minimule</a></div></li>
+    <li class="tier"><h3>Moderate<small>spawn competition or a grind</small></h3><div class="chips"><a class="chip" href="#p-condor-hatchling">Condor Hatchling</a><a class="chip" href="#p-tallstrider-hatchling">Tallstrider Hatchling</a><a class="chip" href="#p-baby-crocolisk">Baby Crocolisk</a><a class="chip" href="#p-shadowgale-squirrel">Shadowgale Squirrel</a><a class="chip" href="#p-white-kitten">White Kitten</a></div></li>
+    <li class="tier"><h3>Hard or time-gated<small>a race, a calendar or a renewal cycle</small></h3><div class="chips"><a class="chip" href="#p-bitter-baitling">Bitter Baitling</a><a class="chip" href="#p-jubling">Jubling</a><a class="chip" href="#p-peddlefeet">Peddlefeet</a><a class="chip" href="#p-lil-smoky">Lil’ Smoky</a><a class="chip" href="#p-pet-bombling">Pet Bombling</a></div></li>
+    <li class="tier"><h3>Very rare drops<small>long farms, on the beta’s counts</small></h3><div class="chips"><a class="chip" href="#p-tiny-crimson">Tiny Crimson Whelpling</a><a class="chip" href="#p-tiny-emerald">Tiny Emerald Whelpling</a><a class="chip" href="#p-dark-whelpling">Dark Whelpling</a><a class="chip" href="#p-hyacinth-macaw">Hyacinth Macaw</a><a class="chip" href="#p-oozeling">Disgusting Oozeling</a></div></li>
+    <li class="tier"><h3>Least controllable<small>no farm at all, only an auction</small></h3><div class="chips"><a class="chip" href="#p-tiny-azure">Tiny Azure Whelpling</a><a class="chip" href="#p-tiny-bronze">Tiny Bronze Whelpling</a><a class="chip" href="#p-pet-fish">Pet Fish</a></div></li>
+  </ol>
+</section>
+
+<!-- ======================= UNSOLVED ======================= -->
+<section class="sec" id="unsolved" aria-labelledby="unsolved-h">
+  <div class="sec-head">
+    <p class="label">in the data, not yet in the world</p>
+    <h2 id="unsolved-h">Still unsolved</h2>
+    <p>Twenty-three companion records exist with no known way to get them. Every guess below is a hypothesis, not an instruction, so none is worth farming for yet. Two left this list in late October, when Wowhead’s database began listing the Tiny Azure and Tiny Bronze Whelplings as sold on the Black Market.</p>
+  </div>
+  <ul class="unk" aria-label="Unsolved companions">
+      <li><b>Galestrider Chick</b><span>Apparently Skyborne-themed</span></li>
+      <li><b>Spawn of Grubthor</b><span>Grubthor, a level-58 rare elite in Silithus, is the obvious guess, and only a guess</span></li>
+      <li><b>Child of By’zaali</b><span>Encrypted; a link to By’zaali, Loa of Tides, is a guess</span></li>
+      <li><b>Minfernal</b><span>A Felwood infernal source is speculation</span></li>
+      <li><b>Snowy Wolf Pup</b></li>
+      <li><b>Uber Diablo</b></li>
+      <li><b>Wild Chicken</b></li>
+      <li><b>Pinky</b><span>Bind to account</span></li>
+      <li><b>Wilted Lashling</b><span>The four Lashling Buds may tie to high-level Herbalism or a Greenhouse system</span></li>
+      <li><b>Flowery Lashling</b></li>
+      <li><b>Frosty Lashling</b></li>
+      <li><b>Viridian Lashling</b></li>
+      <li><b>Five Furbolg Pets</b><span>Black, Brown, Gray, Tan and White; encrypted</span></li>
+      <li><b>Six Ent Pets</b><span>Purple, Red, Blue, Gray, Orange and Yellow; encrypted</span></li>
+  </ul>
+  <aside class="note"><p class="note-l">not a companion</p><p>Scrolls of Cat, Frog and Rat Familiar sit among the unsolved entries in some databases, but they’re temporary Mage familiar summons, not collectible companions, and aren’t counted anywhere here.</p></aside>
+  <div class="sec-head" style="margin-top:.5rem"><h3 style="font-size:var(--step-2);color:var(--bronze-hi)">Found during the beta</h3></div>
+  <ol class="finds">
+    <li><time>Late September</time><p>The Black Market Auction House, and pets in its stock.</p></li>
+    <li><time datetime="2026-09-30">September 30</time><p>Baby Crocolisk and Excitable Slime documented.</p></li>
+    <li><time>Around October 1</time><p>The Musical Gustjumper’s <code>/sing</code> solution.</p></li>
+    <li><time>October</time><p>Azurky added through the annual subscription offer.</p></li>
+    <li><time datetime="2026-10-23">October 23</time><p>Wowhead’s Forever companion guide updated for Patch 1.60.1, still listing many unknown sources.</p></li>
+    <li><time datetime="2026-10-26">October 26</time><p>The final pre-launch notes change no companions.</p></li>
+    <li><time>By October 27</time><p>The database lists the new Tiny Azure and Tiny Bronze Whelplings as sold on the Black Market, and flags many companions account-wide.</p></li>
+  </ol>
+</section>
+
+<nav class="next-book" aria-label="The appendix">
+  <a class="nb frame" href="../appendix/">
+    <span class="label">the back of the codex</span>
+    <span class="nb-t">The Appendix</span>
+    <span class="nb-s">The patch log, a glossary of Forever’s new names, and the questions veterans ask first.</span>
+    <span class="nb-arrow" aria-hidden="true">→</span>
+  </a>
+</nav>
+
+<footer class="foot">
+  <p>Compiled October 26, 2026 from Wowhead’s Forever database for Patch 1.60.1 and its companion guide (updated October 23), the user-submitted Lord of the Reins collector’s guide (updated October 21), Wowhead’s Legacy, fishing and Azeroth Commerce Authority guides, Blizzard’s Forever page and 12-month subscription offer, and Classic pet references for the comparisons. Hunter pets and Warlock demons aren’t companions and aren’t covered here.</p>
+  <p>Forever hasn’t launched, so every drop count is beta data. Some drop rates, every rare respawn, some vendor prices, cross-faction sharing and the first Forever holidays are unconfirmed, and marked where they matter. Checks in the catalog are saved only in this browser.</p>
+  <p>Sources: <a href="https://worldofwarcraft.blizzard.com/en-us/forever/">Blizzard’s Forever page</a> · <a href="https://worldofwarcraft.blizzard.com/en-us/news/24310658/unlock-a-year-of-world-of-warcraft-and-get-bonus-treasures">the 12-month offer</a> · <a href="https://www.wowhead.com/forever/guide/collections/pets-locations-sources">Wowhead’s companion guide</a> · <a href="https://www.wowhead.com/forever/items/miscellaneous/companions/group-by:level">its companion database</a> · <a href="https://www.wowhead.com/forever/guide/lotr-a-collectors-guide-to-wow-forever-34946">the Lord of the Reins guide</a> · <a href="https://www.wowhead.com/forever/guide/legacy-system-overview-rewards">Legacy</a> · <a href="https://www.wowhead.com/forever/guide/professions/fishing/overview-leveling">fishing</a> · <a href="https://www.wowhead.com/forever/guide/azeroth-commerce-authority-reputation-professions">the Azeroth Commerce Authority</a></p>
+  <p>Part of the <a href="../">Forever Codex</a>. A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
+</footer>
+</main>
+
+<script>
+(function () {
+  var d = document, KEY = "forever-codex.companions";
+
+  // the checklist: checks live in this browser only
+  var pets = [].slice.call(d.querySelectorAll(".pet")), total = pets.length, got = {};
+  try { (JSON.parse(localStorage.getItem(KEY) || "[]") || []).forEach(function (id) { got[id] = true; }); } catch (e) {}
+  var save = function () { try { localStorage.setItem(KEY, JSON.stringify(Object.keys(got))); } catch (e) {} };
+  var count = function () {
+    var n = pets.filter(function (li) { return got[li.dataset.id]; }).length;
+    d.getElementById("got").textContent = n;
+    d.getElementById("pbar").style.setProperty("--p", (n / total).toFixed(4));
+  };
+
+  // filters and search
+  var mode = "all", q = "";
+  var apply = function () {
+    var n = 0;
+    pets.forEach(function (li) {
+      var ok = (mode === "all" || (mode === "new" && li.dataset.new === "1") || (mode === "todo" && !got[li.dataset.id]))
+        && (!q || li.dataset.q.indexOf(q) !== -1);
+      li.hidden = !ok;
+      if (ok) n++;
+    });
+    d.querySelectorAll(".grp").forEach(function (g) {
+      var all = g.querySelectorAll(".pet").length, vis = g.querySelectorAll(".pet:not([hidden])").length;
+      g.hidden = vis === 0;
+      g.querySelector(".grp-n").textContent = vis === all ? all : vis + " of " + all;
+    });
+    d.getElementById("shown").textContent = n === total ? "" : "· showing " + n;
+    d.getElementById("none").hidden = n > 0;
+  };
+
+  pets.forEach(function (li) {
+    var cb = li.querySelector(".pet-c");
+    cb.checked = !!got[li.dataset.id];
+    li.classList.toggle("got", cb.checked);
+    cb.addEventListener("change", function () {
+      if (cb.checked) got[li.dataset.id] = true; else delete got[li.dataset.id];
+      li.classList.toggle("got", cb.checked);
+      save(); count();
+    });
+  });
+  var btns = [].slice.call(d.querySelectorAll(".filters button"));
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      mode = b.dataset.f;
+      btns.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+      apply();
+    });
+  });
+  var find = d.getElementById("find");
+  find.addEventListener("input", function () { q = find.value.trim().toLowerCase(); apply(); });
+  d.getElementById("clear").addEventListener("click", function () {
+    if (!Object.keys(got).length || !window.confirm("Clear every check in the catalog?")) return;
+    got = {}; save();
+    pets.forEach(function (li) { li.querySelector(".pet-c").checked = false; li.classList.remove("got"); });
+    count(); apply();
+  });
+  // a link to a pet always shows it, whatever the filter
+  var reveal = function () {
+    var t = location.hash && d.getElementById(location.hash.slice(1));
+    if (t && (t.classList.contains("pet") || t.classList.contains("grp")) && (t.hidden || (t.closest(".grp") || t).hidden)) {
+      mode = "all"; q = ""; find.value = "";
+      btns.forEach(function (o) { o.setAttribute("aria-pressed", String(o.dataset.f === "all")); });
+      apply(); t.scrollIntoView({ block: "start" });
+    }
+  };
+  window.addEventListener("hashchange", reveal);
+  count(); apply();
+
+  // highlight the section in view
+  var links = [].slice.call(d.querySelectorAll(".bar .sec-link"));
+  if ("IntersectionObserver" in window) {
+    var byId = {};
+    links.forEach(function (a) { byId[a.hash.slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var a = byId[en.target.id] || null;
+        links.forEach(function (l) {
+          l.classList.toggle("active", l === a);
+          if (l === a) l.setAttribute("aria-current", "location"); else l.removeAttribute("aria-current");
+        });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    d.querySelectorAll("#top, main > section[id]").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+<script src="../codex.js"></script>
+</body>
+</html>

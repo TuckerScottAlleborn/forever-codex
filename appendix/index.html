@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="The back of the Forever Codex: a dated patch log of WoW: Forever from its reveal to launch, a glossary of every new and changed name against Vanilla, and the questions returning veterans ask first.">
+<meta property="og:title" content="The Appendix · Forever Codex">
+<meta property="og:description" content="The back of the Forever Codex: a dated patch log of WoW: Forever from its reveal to launch, a glossary of every new and changed name against Vanilla, and the questions returning veterans ask first.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Forever Codex">
+<meta property="og:url" content="https://tuckerscottalleborn.github.io/forever-codex/appendix/">
+<meta property="og:image" content="https://tuckerscottalleborn.github.io/forever-codex/appendix/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Appendix of the Forever Codex: a patch log, a glossary and common questions">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Appendix · Forever Codex">
+<meta name="twitter:image" content="https://tuckerscottalleborn.github.io/forever-codex/appendix/og.png">
+<meta name="theme-color" content="#cf9a52">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://tuckerscottalleborn.github.io/forever-codex/appendix/">
+<title>The Appendix · Forever Codex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya:ital,wght@0,400;0,600;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../codex.css">
+<style>
+/* The Forever Codex's back matter (tokens, frames, masthead, the bar's shell and the .vs tags are in
+   codex.css). Three appendices: A, the patch log, as a dated rail; B, the glossary, a filterable
+   dictionary of every new or changed name, each linked to the book that covers it; C, questions. */
+body.appendix {
+  --atmos:
+    radial-gradient(ellipse 80rem 40rem at 50% -10rem, color-mix(in oklab, var(--glow) 18%, transparent), transparent 70%),
+    radial-gradient(ellipse 40rem 26rem at 0 24rem, color-mix(in oklab, var(--s-forever) 7%, transparent), transparent 70%);
+}
+html { scroll-padding-top: 5.25rem }
+.wrap { max-width: var(--wide); margin-inline: auto }
+h1, h2, h3, h4 { font-family: var(--f-caps) }
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(2.5rem, 6vw, 5rem) 2rem; display: grid; gap: 2rem }
+.hero-top { display: grid; gap: 1.25rem; justify-items: start }
+.thesis { font-size: var(--step-1); max-width: 42ch; line-height: 1.45 }
+.thesis em { color: var(--bronze-hi); font-style: normal }
+.hero-grid { display: grid; gap: 1.5rem; grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 60rem) { .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) } }
+.contents { padding: 1.4rem 1.5rem; display: grid; gap: .2rem; align-content: start }
+.contents a { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: .05rem .6rem; padding: .7rem 0; text-decoration: none; color: inherit; border-top: 1px solid var(--line-soft) }
+.contents a:first-of-type { border-top: 0 }
+.contents .rn { grid-row: 1 / span 2; width: 2rem; height: 2rem; display: grid; place-items: center; border-radius: 50%; border: 2px solid var(--bronze); color: var(--bronze-hi); font-family: var(--f-caps); font-size: .95rem }
+.contents b { font-family: var(--f-display); font-weight: 400; font-size: 1.2rem; color: var(--ink) }
+.contents span:last-child { font-family: var(--f-ui); font-size: .95rem; color: var(--muted) }
+.contents a:hover b { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--bronze) }
+
+/* in-game tooltip ledger: how current each book is */
+.tt {
+  background: color-mix(in oklab, var(--tt-bg) 94%, transparent);
+  border: 1px solid var(--tt-line); border-radius: 4px;
+  box-shadow: inset 0 0 0 1px #000, 0 6px 18px -8px #000;
+  padding: 1.1rem 1.2rem; font-family: var(--f-ui); font-size: .9rem; line-height: 1.35; color: var(--tt-white); color-scheme: dark; align-self: start;
+}
+.tt-h { font-size: 1.15rem; font-weight: 700 }
+.tt-sub { color: var(--tt-gold); font-size: .82rem; margin-bottom: .6rem }
+.tt ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem }
+.tt li { display: grid; gap: .05rem }
+.tt li b { font-weight: 700; color: var(--tt-white) }
+.tt li span { color: var(--tt-green) }
+.tt-foot { color: var(--tt-grey); font-size: .78rem; margin-top: .65rem; font-style: italic }
+
+/* ---------- the bar ---------- */
+@media (max-width: 40rem) { .bar-a .brand { display: none } }
+
+/* ---------- sections ---------- */
+.sec { padding-block: clamp(3rem, 7vw, 5rem) 0; display: grid; gap: 1.6rem; min-width: 0 }
+.sec-head { display: grid; gap: .5rem; max-width: 64ch }
+.sec-head h2 { font-size: var(--step-3); color: var(--bronze-hi) }
+.sec-head p:not(.label) { color: var(--muted) }
+
+/* ---------- A. the patch log ---------- */
+.hist { list-style: none; margin: 0; padding: 0; display: grid; max-width: 56rem }
+.hist > li { position: relative; display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: .2rem 1.4rem; padding-bottom: 1.8rem }
+.hist > li::before { content: ""; position: absolute; left: calc(6.5rem + .7rem - 1px); top: .9rem; bottom: -.2rem; width: 2px; background: var(--line) }
+.hist > li:last-child::before { display: none }
+.hist time { font-family: var(--f-caps); font-size: 1.15rem; color: var(--muted); text-align: right; line-height: 1.4 }
+.hist .ev { position: relative; padding-left: 1.4rem; display: grid; gap: .4rem; min-width: 0 }
+.hist .ev::before { content: ""; position: absolute; left: -.05rem; top: .45rem; width: .75rem; height: .75rem; transform: rotate(45deg); background: var(--bg); border: 2px solid var(--bronze); box-shadow: 0 0 0 3px var(--bg) }
+.hist .ev > b { font-family: var(--f-display); font-weight: 400; font-size: 1.15rem; color: var(--ink) }
+.hist .ev > p { color: var(--muted); font-size: 1rem; max-width: 66ch }
+.hist li.key time { color: var(--pc2) }
+.hist li.key .ev::before { border-color: var(--pc2); background: color-mix(in oklab, var(--pc2) 35%, var(--bg)); box-shadow: 0 0 0 3px var(--bg), 0 0 14px 1px color-mix(in oklab, var(--pc2) 55%, transparent) }
+.hist li.soon .ev::before { border-style: dashed; background: var(--bg) }
+.hist li.soon time { color: var(--s-forever) }
+.hist .cd { font-family: var(--f-label); font-weight: 700; font-size: .8rem; letter-spacing: .06em; text-transform: lowercase; color: var(--s-forever) }
+.hist h4 { font-family: var(--f-label); font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: lowercase; color: var(--bronze); margin-top: .3rem }
+.hist ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .25rem; color: var(--ink); font-size: .98rem }
+.hist .see { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .2rem }
+.hist .see a { font-family: var(--f-label); font-weight: 700; font-size: .82rem; letter-spacing: .05em; text-transform: lowercase; color: var(--bronze-hi); text-decoration: none; border: 1px solid var(--line-soft); border-radius: 3px; padding: 0 .5rem; line-height: 1.7 }
+.hist .see a:hover { border-color: var(--bronze) }
+@media (max-width: 34rem) {
+  .hist > li { grid-template-columns: minmax(0, 1fr); padding-left: 1.6rem }
+  .hist > li::before { left: .3rem; top: .9rem }
+  .hist time { text-align: left }
+  .hist .ev { padding-left: 0 }
+  .hist .ev::before { left: -1.65rem; top: -1.45rem }
+}
+.undated { border-left: 3px solid var(--line); padding: .8rem 1rem .9rem; background: color-mix(in oklab, var(--panel) 70%, transparent); max-width: 56rem; display: grid; gap: .35rem }
+.undated a { color: var(--bronze-hi); text-underline-offset: 3px }
+
+/* ---------- B. the glossary ---------- */
+.gtools { display: flex; flex-wrap: wrap; gap: .7rem 1.1rem; align-items: center; padding: .9rem 1.1rem; border: 1px solid var(--line-soft); background: color-mix(in oklab, var(--panel) 80%, transparent) }
+.gfind { flex: 1 1 14rem; display: flex }
+.gfind input {
+  width: 100%; min-height: 2.4rem; padding: .3rem .75rem; border-radius: 3px; border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  font-family: var(--f-ui); font-size: 1rem;
+}
+.gfind input::placeholder { color: var(--muted) }
+.kinds { display: flex; flex-wrap: wrap; gap: .3rem }
+.kinds button {
+  font-family: var(--f-label); font-weight: 700; font-size: .88rem; letter-spacing: .05em; text-transform: lowercase; cursor: pointer;
+  color: var(--muted); padding: .3rem .65rem; min-height: 2.2rem; border: 1px solid var(--line-soft); border-radius: 3px; background: none;
+}
+.kinds button:hover { color: var(--ink) }
+.kinds button[aria-pressed="true"] { color: var(--bronze-hi); border-color: color-mix(in oklab, var(--bronze-hi) 45%, transparent); background: color-mix(in oklab, var(--bronze-hi) 10%, transparent) }
+.kinds small { font-family: var(--f-ui); font-weight: 500; letter-spacing: 0; opacity: .8 }
+.gcount { font-family: var(--f-ui); font-size: .92rem; color: var(--muted) }
+.gkey { display: flex; flex-wrap: wrap; gap: .4rem 1rem; align-items: center; font-family: var(--f-ui); font-size: .9rem; color: var(--muted) }
+.gkey span { display: inline-flex; gap: .45rem; align-items: center }
+.az { display: flex; flex-wrap: wrap; gap: 2px }
+.az a, .az span { display: grid; place-items: center; min-width: 1.85rem; height: 2rem; font-family: var(--f-caps); font-size: .95rem; border-radius: 3px; text-decoration: none }
+.az a { color: var(--bronze-hi); border: 1px solid var(--line-soft) }
+.az a:hover { border-color: var(--bronze) }
+.az a.off { opacity: .35; pointer-events: none }
+.az span { color: var(--muted); opacity: .4 }
+.gl { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 0 1rem; padding-top: 1.1rem; border-top: 1px solid var(--line-soft) }
+.gl-h { font-family: var(--f-caps); font-weight: 400; font-size: 2rem; line-height: 1; color: var(--bronze); padding-top: .55rem }
+.gl-list { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); gap: .1rem 1.6rem }
+.ge { padding: .6rem 0 .8rem; border-bottom: 1px solid color-mix(in oklab, var(--line-soft) 60%, transparent); min-width: 0 }
+.ge dt { margin: 0 }
+.ge-t { font-family: var(--f-display); font-size: 1.15rem; line-height: 1.3; color: var(--ink); text-decoration: none }
+.ge-t:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--bronze) }
+.ge dd { margin: .25rem 0 0; display: grid; gap: .3rem }
+.ge-m { display: flex; flex-wrap: wrap; gap: .3rem; align-items: center }
+.ge dd > p:last-child { font-family: var(--f-ui); font-size: .96rem; line-height: 1.45 }
+.ge:target { background: color-mix(in oklab, var(--bronze-hi) 9%, transparent); box-shadow: 0 0 0 6px color-mix(in oklab, var(--bronze-hi) 9%, transparent) }
+.gk-system { --cc: #cf9a52 } .gk-story { --cc: #c9b085 } .gk-world { --cc: #5fcad7 }
+@media (max-width: 34rem) { .gl { grid-template-columns: minmax(0, 1fr) } .gl-h { padding-top: 0; font-size: 1.6rem } }
+.gnone { font-style: italic; color: var(--muted) }
+
+/* ---------- C. questions ---------- */
+.qgroups { display: grid; gap: 2.2rem }
+.qg { display: grid; gap: .9rem }
+.qg > h3 { font-size: var(--step-2); color: var(--bronze-hi); padding-bottom: .35rem; border-bottom: 1px solid var(--line) }
+.qs { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)) }
+.q { display: grid; gap: .4rem; align-content: start; padding: 1rem 1.15rem 1.1rem; border: 1px solid var(--line-soft); background: color-mix(in oklab, var(--panel) 80%, transparent) }
+.q h4 { font-family: var(--f-display); font-weight: 400; font-size: 1.18rem; line-height: 1.3; color: var(--ink) }
+.q p { font-size: 1rem }
+.q .more { font-family: var(--f-ui); font-size: .92rem; color: var(--bronze-hi); text-underline-offset: 3px }
+</style>
+</head>
+<body class="appendix">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-glass" viewBox="0 0 24 24">
+      <path d="M5 2.5h14v2H5zM5 19.5h14v2H5z" fill="currentColor"/>
+      <path d="M7 4.5c0 4.6 4.2 6 4.2 7.5S7 14.9 7 19.5h10c0-4.6-4.2-6-4.2-7.5S17 9.1 17 4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M8.7 7h6.6c-.7 1.8-2.5 2.9-3.3 4.3C11.2 9.9 9.4 8.8 8.7 7zM8.4 19.5c.4-2.3 2.2-3.5 3.6-3.8 1.4.3 3.2 1.5 3.6 3.8z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-index" viewBox="0 0 24 24">
+      <path d="M6 2.5h12v19l-6-4.2-6 4.2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+      <path d="M9 7.5h6M9 11h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+<a class="skip" href="#glossary">Skip to the glossary</a>
+
+<header class="mast">
+  <div class="mast-in">
+    <a class="mast-brand" href="../"><svg aria-hidden="true"><use href="#i-glass"/></svg>Forever Codex</a>
+    <nav class="mast-books" aria-label="Books">
+      <a href="../lore/"><span class="bk-n">I</span>Lore</a>
+      <a href="../classes/"><span class="bk-n">II</span>Classes</a>
+      <a href="../races/"><span class="bk-n">III</span>Races</a>
+      <a href="../companions/"><span class="bk-n">IV</span><span class="lg">Companions</span><span class="sh">Pets</span></a>
+      <a href="../appendix/" aria-current="page">Appendix</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+<header class="hero" id="top">
+  <div class="hero-top">
+    <p class="label">forever codex · the back of the book</p>
+    <h1 class="title">The Appendix</h1>
+    <p class="thesis">When things changed, <em>what the new names mean</em>, and the questions veterans ask first.</p>
+  </div>
+  <div class="hero-grid">
+    <nav class="contents frame" aria-label="The appendices">
+      <a href="#patches"><span class="rn">A</span><b>The patch log</b><span>From the September reveal to the first raids, with what each build changed</span></a>
+      <a href="#glossary"><span class="rn">B</span><b>The glossary</b><span>196 new and changed names, each set against Vanilla and linked to its book</span></a>
+      <a href="#questions"><span class="rn">C</span><b>Questions veterans ask</b><span>Short answers, from “is this Vanilla again?” to what isn’t covered yet</span></a>
+    </nav>
+    <aside class="tt" aria-labelledby="current-h">
+      <p class="tt-h" id="current-h">How current each book is</p>
+      <p class="tt-sub">Forever launches November 4, 2026</p>
+      <ul>
+        <li><b>Book I · The Lore</b><span>October 2026, from Blizzard’s recaps and dungeon and raid previews</span></li>
+        <li><b>Book II · The Classes</b><span>Through the October 16 build, compiled October 22; its racial notes follow October 26</span></li>
+        <li><b>Book III · The Races</b><span>The final October 26 pass, compiled October 26</span></li>
+        <li><b>Book IV · The Companions</b><span>Wowhead’s Forever database for Patch 1.60.1, with beta drop counts, compiled October 26</span></li>
+      </ul>
+      <p class="tt-foot">Beta values can still move before launch. Where an older guide disagrees with a later pass, the later pass wins.</p>
+    </aside>
+  </div>
+</header>
+</div>
+
+<nav class="bar bar-a" aria-label="Appendices">
+  <div class="bar-in">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#i-index"/></svg><span>The Appendix</span></a>
+    <a class="sec-link" href="#patches"><span class="rn">A</span><span class="lg">Patch log</span><span class="sh">Patches</span></a>
+    <a class="sec-link" href="#glossary"><span class="rn">B</span>Glossary</a>
+    <a class="sec-link" href="#questions"><span class="rn">C</span>Questions</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ======================= A. PATCH LOG ======================= -->
+<section class="sec" id="patches" aria-labelledby="patches-h">
+  <div class="sec-head">
+    <p class="label">appendix a</p>
+    <h2 id="patches-h">The patch log</h2>
+    <p>Every dated change the codex draws on, from the reveal to the first raid tier. A book that predates an entry here says so in its footer.</p>
+  </div>
+  <ol class="hist">
+    <li><time datetime="2026-09-12">Sep 12</time><div class="ev"><b>Forever revealed</b><p>A permanent level-60 branch of WoW, with the Skyborne and the direction for updated racials.</p><p class="see"><a href="../lore/#year-one">the lore</a><a href="../races/#history">the races</a></p></div></li>
+    <li><time datetime="2026-09-17">Sep 17</time><div class="ev"><b>The public beta opens</b><p>It runs to October 21.</p></div></li>
+    <li><time datetime="2026-09-22">Sep 22</time><div class="ev"><b>Race and class combinations</b><p>High Order and Windshaper Skyborne split by faction; Human Hunter, Gnome Priest and Dwarf Shaman highlighted for the Alliance.</p><p class="see"><a href="../races/#glance">the five races</a></p></div></li>
+    <li><time datetime="2026-09-30">Sep 30</time><div class="ev"><b>The Priest deep dive</b><p>Fear Ward and Devouring Plague become baseline for every Priest. Gnome’s Confounding Flash and Contingency Plan, Human Divine Grace and Dwarf Chastise are introduced, and Night Elf Starshards and Elune’s Grace change. Divine Grace and Contingency Plan have since gone from 5- to 10-minute cooldowns.</p><p class="see"><a href="../classes/#priest">the priest sheet</a><a href="../races/#by-priest">priest race leans</a></p></div></li>
+    <li><time datetime="2026-10-08">Oct 8</time><div class="ev"><b>Another racial pass signaled</b><p>Lead developer commentary after community concern about strong active racials and weapon-skill disparities.</p></div></li>
+    <li class="key"><time datetime="2026-10-16">Oct 16</time><div class="ev"><b>The last beta build with class changes</b><p>Also the first major racial pass.</p>
+      <h4>classes</h4>
+      <ul>
+        <li>Elemental: Lava Burst moves up to 21 points and Elemental Mastery returns at 31</li>
+        <li>Arcane Blast redesigned around stacking spell power, its raw damage cut 40%; Ice Lance against frozen targets cut from +300% to +200%</li>
+        <li>Champion of the Light cut from 20/40/60% to 10/20/30%; Righteous Fury’s Holy threat raised from 60% to 90%</li>
+        <li>Hunter pets: the Crocolisk’s healing reduction cut from 50% to 25%, the Bat’s casting slow halved, the Bird of Prey toned down; pets now inherit the player’s higher crit</li>
+        <li>Hunters can switch automatically between Auto Attack and Auto Shot, and keep one Fire and one Ice trap active at once</li>
+        <li>Shadow talents revised; Discipline’s Power in Light refined and Mental Strength moved earlier</li>
+        <li>Grace of Air can run alongside Windfury or Flametongue</li>
+        <li>Furor keeps Cat energy through a quick shift into Bear</li>
+      </ul>
+      <h4>races</h4>
+      <ul>
+        <li>Human Sword Specialization becomes Ruthless, +2% crit</li>
+        <li>Dwarf’s beta Mace Specialization becomes Earth Fury; Find Treasure gains bonus chest loot</li>
+        <li>Wind-Blessed 1% → 3%; Walk on Air to a 90-second cooldown; Read Leyline usable while moving, with more Ley Lines</li>
+        <li>Eureka! becomes an 8-second window with no charges, and supports Power Word: Shield</li>
+        <li>Quickness’s movement speed now stacks</li>
+      </ul>
+      <p class="see"><a href="../classes/#systems">the classes</a><a href="../races/#history">racial history</a></p></div></li>
+    <li><time datetime="2026-10-21">Oct 21</time><div class="ev"><b>The public beta closes</b><p>Its last day doubles as a public stress test. No new class pass.</p></div></li>
+    <li class="key"><time datetime="2026-10-26">Oct 26</time><div class="ev"><b>The final pre-launch racial pass</b>
+      <ul>
+        <li>Ruthless 2% → 1%; The Human Spirit 5% → 10%</li>
+        <li>Earth Fury removed; Artisan’s Precision, +1% hit, added</li>
+        <li>Wind-Blessed 3% → 2%; Read Leyline redesigned around 15 seconds of +50% regeneration, and an hour-long Attuned state at +100%</li>
+        <li>Night Elf and Gnome untouched</li>
+      </ul>
+      <p>Blizzard framed it as racial identity without racials so strong they override player preference, and kept weapon specializations out.</p>
+      <p class="see"><a href="../races/">the races book</a></p></div></li>
+    <li class="soon" data-date="2026-11-04"><time datetime="2026-11-04">Nov 4</time><div class="ev"><b>Launch <span class="cd" hidden></span></b><p>At 3:00 p.m. PST. Early Year 1, with new ground in Hyjal, Riverglades and Zephras Isle.</p></div></li>
+    <li class="soon" data-date="2026-12-09"><time datetime="2026-12-09">Dec 9</time><div class="ev"><b>The first raid tier <span class="cd" hidden></span></b><p>Barrow Deeps, Hyjal Summit (20 players, 13 bosses) and Onyxia’s Lair.</p><p class="see"><a href="../lore/#raids">the lore</a></p></div></li>
+  </ol>
+  <div class="undated">
+    <p class="label">undated late-beta changes</p>
+    <p>Each class sheet’s late-beta ledger lists further changes from the same weeks whose exact build isn’t pinned down here. <a href="../classes/#warrior">The ledgers start with the Warrior.</a></p>
+  </div>
+</section>
+
+<!-- ======================= B. GLOSSARY ======================= -->
+<section class="sec" id="glossary" aria-labelledby="glossary-h">
+  <div class="sec-head">
+    <p class="label">appendix b</p>
+    <h2 id="glossary-h">The glossary</h2>
+    <p>The new and changed names a veteran meets in Forever, each tagged against Vanilla and linked to the book that covers it. “New” means new against Vanilla: some of these names will be familiar from later expansions, but Forever’s versions are its own.</p>
+  </div>
+  <div class="gtools">
+    <label class="gfind"><span class="sr">Find a term</span><input type="search" id="gfind" placeholder="Find a term, class or race" autocomplete="off"></label>
+    <div class="kinds" role="group" aria-label="Show">
+      <button type="button" data-k="all" aria-pressed="true">All <small>196</small></button>
+      <button type="button" data-k="system" aria-pressed="false">Systems <small>7</small></button>
+      <button type="button" data-k="class" aria-pressed="false">Classes <small>136</small></button>
+      <button type="button" data-k="race" aria-pressed="false">Races <small>29</small></button>
+      <button type="button" data-k="story" aria-pressed="false">Story <small>6</small></button>
+      <button type="button" data-k="world" aria-pressed="false">World <small>18</small></button>
+    </div>
+    <span class="gcount" id="gcount" aria-live="polite"></span>
+  </div>
+  <p class="gkey"><span><span class="vs vs-new">New</span>not in Vanilla</span><span><span class="vs vs-changed">Changed</span>works differently</span><span><span class="vs vs-gone">Gone</span>removed</span><span><span class="vs vs-kept">Kept</span>as it was</span></p>
+  <nav class="az" aria-label="Glossary letters"><a href="#gl-a" data-l="A">A</a> <a href="#gl-b" data-l="B">B</a> <a href="#gl-c" data-l="C">C</a> <a href="#gl-d" data-l="D">D</a> <a href="#gl-e" data-l="E">E</a> <a href="#gl-f" data-l="F">F</a> <a href="#gl-g" data-l="G">G</a> <a href="#gl-h" data-l="H">H</a> <a href="#gl-i" data-l="I">I</a> <a href="#gl-j" data-l="J">J</a> <span aria-hidden="true">K</span> <a href="#gl-l" data-l="L">L</a> <a href="#gl-m" data-l="M">M</a> <a href="#gl-n" data-l="N">N</a> <a href="#gl-o" data-l="O">O</a> <a href="#gl-p" data-l="P">P</a> <a href="#gl-q" data-l="Q">Q</a> <a href="#gl-r" data-l="R">R</a> <a href="#gl-s" data-l="S">S</a> <a href="#gl-t" data-l="T">T</a> <span aria-hidden="true">U</span> <a href="#gl-v" data-l="V">V</a> <a href="#gl-w" data-l="W">W</a> <span aria-hidden="true">X</span> <a href="#gl-y" data-l="Y">Y</a> <a href="#gl-z" data-l="Z">Z</a></nav>
+  <p class="gnone" id="gnone" hidden>No term matches.</p>
+  <div class="glossary">
+    <section class="gl" id="gl-a" aria-label="A"><h3 class="gl-h" aria-hidden="true">A</h3><dl class="gl-list">
+      <div class="ge" id="g-aimed-shot" data-k="class" data-q="aimed shot hunter learned by every hunter at level 20. it no longer shares a cooldown with arcane shot; multi-shot does. changed"><dt><a class="ge-t" href="#g-aimed-shot">Aimed Shot</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-changed">Changed</span></p><p>Learned by every Hunter at level 20. It no longer shares a cooldown with Arcane Shot; Multi-Shot does.</p></dd></div>
+      <div class="ge" id="g-alcaz-prison" data-k="world" data-q="alcaz prison the world a new dungeon on alcaz island, open at last, with the defias and the naga fighting inside. new"><dt><a class="ge-t" href="#g-alcaz-prison">Alcaz Prison</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../lore/#q-stormwind">The world</a><span class="vs vs-new">New</span></p><p>A new dungeon on Alcaz Island, open at last, with the Defias and the naga fighting inside.</p></dd></div>
+      <div class="ge" id="g-arcane-blast" data-k="class" data-q="arcane blast mage each cast grants spell damage equal to 15% of intellect, up to four stacks, and raises the next one&#x27;s cost; the stacks last 15 seconds from the first. new"><dt><a class="ge-t" href="#g-arcane-blast">Arcane Blast</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-new">New</span></p><p>Each cast grants spell damage equal to 15% of Intellect, up to four stacks, and raises the next one’s cost; the stacks last 15 seconds from the first.</p></dd></div>
+      <div class="ge" id="g-arcane-wrath" data-k="class" data-q="arcane wrath mage arcane&#x27;s 16-point spell: a long cast that scales partly from maximum mana. new"><dt><a class="ge-t" href="#g-arcane-wrath">Arcane Wrath</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-new">New</span></p><p>Arcane’s 16-point spell: a long cast that scales partly from maximum mana.</p></dd></div>
+      <div class="ge" id="g-artisans-precision" data-k="race" data-q="artisan&#x27;s precision dwarf +1% chance to hit with spells and attacks; added october 26. new"><dt><a class="ge-t" href="#g-artisans-precision">Artisan’s Precision</a></dt><dd><p class="ge-m"><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><span class="vs vs-new">New</span></p><p>+1% chance to hit with spells and attacks; added October 26.</p></dd></div>
+      <div class="ge" id="g-attuned" data-k="race" data-q="attuned skyborne an hour-long state from using read leyline at a ley line, raising its effect to +100%. it persists through death. new"><dt><a class="ge-t" href="#g-attuned">Attuned</a></dt><dd><p class="ge-m"><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><span class="vs vs-new">New</span></p><p>An hour-long state from using Read Leyline at a Ley Line, raising its effect to +100%. It persists through death.</p></dd></div>
+      <div class="ge" id="g-auto-shot" data-k="class" data-q="auto shot hunter still needs half a second standing still, but can fire during aimed and sniper shot casts. an option switches automatically between auto attack and auto shot. changed"><dt><a class="ge-t" href="#g-auto-shot">Auto Shot</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-changed">Changed</span></p><p>Still needs half a second standing still, but can fire during Aimed and Sniper Shot casts. An option switches automatically between Auto Attack and Auto Shot.</p></dd></div>
+      <div class="ge" id="g-azeroth-commerce-authority" data-k="world" data-q="azeroth commerce authority the world a new trade faction with an alliance camp at three corners in redridge, where waylaid crates turn into merchant&#x27;s favor. new"><dt><a class="ge-t" href="#g-azeroth-commerce-authority">Azeroth Commerce Authority</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../companions/#p-minimule">The world</a><span class="vs vs-new">New</span></p><p>A new trade faction with an Alliance camp at Three Corners in Redridge, where Waylaid Crates turn into Merchant’s Favor.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-b" aria-label="B"><h3 class="gl-h" aria-hidden="true">B</h3><dl class="gl-list">
+      <div class="ge" id="g-bane-of-havoc" data-k="class" data-q="bane of havoc warlock marks a second target that takes part of the damage dealt elsewhere. new"><dt><a class="ge-t" href="#g-bane-of-havoc">Bane of Havoc</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-new">New</span></p><p>Marks a second target that takes part of the damage dealt elsewhere.</p></dd></div>
+      <div class="ge" id="g-banes" data-k="class" data-q="banes warlock curse of agony and curse of doom become banes, separate from utility curses, so a dot no longer replaces the group&#x27;s curse. new"><dt><a class="ge-t" href="#g-banes">Banes</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-new">New</span></p><p>Curse of Agony and Curse of Doom become Banes, separate from utility Curses, so a DoT no longer replaces the group’s curse.</p></dd></div>
+      <div class="ge" id="g-barkskin" data-k="class" data-q="barkskin druid usable in forms. changed"><dt><a class="ge-t" href="#g-barkskin">Barkskin</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-changed">Changed</span></p><p>Usable in forms.</p></dd></div>
+      <div class="ge" id="g-barrow-deeps" data-k="world" data-q="barrow deeps the world a raid in the underground complex tied to illidan&#x27;s ten-thousand-year imprisonment, with entrances linked to hyjal, winterspring and blackmaw hold. scheduled for december 9. new"><dt><a class="ge-t" href="#g-barrow-deeps">Barrow Deeps</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../lore/#q-barrow">The world</a><span class="vs vs-new">New</span></p><p>A raid in the underground complex tied to Illidan’s ten-thousand-year imprisonment, with entrances linked to Hyjal, Winterspring and Blackmaw Hold. Scheduled for December 9.</p></dd></div>
+      <div class="ge" id="g-berserk" data-k="class" data-q="berserk druid deep feral talent: removes primal bite&#x27;s cooldown, makes it hit several enemies and greatly raises the combo-point builders&#x27; crit. new"><dt><a class="ge-t" href="#g-berserk">Berserk</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-new">New</span></p><p>Deep Feral talent: removes Primal Bite’s cooldown, makes it hit several enemies and greatly raises the combo-point builders’ crit.</p></dd></div>
+      <div class="ge" id="g-big-game-hunter" data-k="race" data-q="big game hunter dwarf +5% damage against beasts. new"><dt><a class="ge-t" href="#g-big-game-hunter">Big Game Hunter</a></dt><dd><p class="ge-m"><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><span class="vs vs-new">New</span></p><p>+5% damage against Beasts.</p></dd></div>
+      <div class="ge" id="g-binding-heal" data-k="class" data-q="binding heal priest holy&#x27;s 16-point heal. new"><dt><a class="ge-t" href="#g-binding-heal">Binding Heal</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-new">New</span></p><p>Holy’s 16-point heal.</p></dd></div>
+      <div class="ge" id="g-black-market-auction-house" data-k="world" data-q="black market auction house the world a rotating auction run by madam swyndle at powderfuse port in riverglades, with no fixed stock or prices. its stock includes companions, among them two new whelplings. vanilla had nothing like it. new"><dt><a class="ge-t" href="#g-black-market-auction-house">Black Market Auction House</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../companions/#g-systems">The world</a><span class="vs vs-new">New</span></p><p>A rotating auction run by Madam Swyndle at Powderfuse Port in Riverglades, with no fixed stock or prices. Its stock includes companions, among them two new whelplings. Vanilla had nothing like it.</p></dd></div>
+      <div class="ge" id="g-blackmaw-hold" data-k="world" data-q="blackmaw hold the world a new dungeon: a furbolg city beneath azshara, where corruption is spreading. new"><dt><a class="ge-t" href="#g-blackmaw-hold">Blackmaw Hold</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../lore/#q-below">The world</a><span class="vs vs-new">New</span></p><p>A new dungeon: a furbolg city beneath Azshara, where corruption is spreading.</p></dd></div>
+      <div class="ge" id="g-blessing-of-kings" data-k="class" data-q="blessing of kings paladin baseline instead of a talent. changed"><dt><a class="ge-t" href="#g-blessing-of-kings">Blessing of Kings</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-changed">Changed</span></p><p>Baseline instead of a talent.</p></dd></div>
+      <div class="ge" id="g-bloodthirst" data-k="class" data-q="bloodthirst warrior loses its small heal and grants movement speed instead. changed"><dt><a class="ge-t" href="#g-bloodthirst">Bloodthirst</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-changed">Changed</span></p><p>Loses its small heal and grants movement speed instead.</p></dd></div>
+      <div class="ge" id="g-bloodthrill" data-k="class" data-q="bloodthrill warrior arms talent: rend enables overpower. new"><dt><a class="ge-t" href="#g-bloodthrill">Bloodthrill</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-new">New</span></p><p>Arms talent: Rend enables Overpower.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-c" aria-label="C"><h3 class="gl-h" aria-hidden="true">C</h3><dl class="gl-list">
+      <div class="ge" id="g-call-of-the-elements" data-k="class" data-q="call of the elements shaman one of three presets, with call of the spirits and call of the ancestors, that drop a whole totem set at once. new"><dt><a class="ge-t" href="#g-call-of-the-elements">Call of the Elements</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-new">New</span></p><p>One of three presets, with Call of the Spirits and Call of the Ancestors, that drop a whole totem set at once.</p></dd></div>
+      <div class="ge" id="g-champion-of-the-light" data-k="class" data-q="champion of the light paladin retribution talent converting intellect into spell damage, cut late from 20/40/60% to 10/20/30%. new"><dt><a class="ge-t" href="#g-champion-of-the-light">Champion of the Light</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>Retribution talent converting Intellect into spell damage, cut late from 20/40/60% to 10/20/30%.</p></dd></div>
+      <div class="ge" id="g-chastise" data-k="race" data-q="chastise dwarf dwarf priest spell: holy damage that immobilizes a humanoid for 2 seconds; 2-minute cooldown. new"><dt><a class="ge-t" href="#g-chastise">Chastise</a></dt><dd><p class="ge-m"><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><span class="vs vs-new">New</span></p><p>Dwarf Priest spell: Holy damage that immobilizes a Humanoid for 2 seconds; 2-minute cooldown.</p></dd></div>
+      <div class="ge" id="g-city-of-dalaran" data-k="world" data-q="city of dalaran the world a new dungeon in alterac with the old barrier down, entered after earning the kirin tor&#x27;s trust. new"><dt><a class="ge-t" href="#g-city-of-dalaran">City of Dalaran</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../lore/#q-dalaran">The world</a><span class="vs vs-new">New</span></p><p>A new dungeon in Alterac with the old barrier down, entered after earning the Kirin Tor’s trust.</p></dd></div>
+      <div class="ge" id="g-companions" data-k="world" data-q="companions the world cosmetic, non-combat pets, now learned as a summon instead of carried as a bag item, and flagged account-wide in wowhead&#x27;s forever database. there are still no pet battles. changed"><dt><a class="ge-t" href="#g-companions">Companions</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../companions/#changes">The world</a><span class="vs vs-changed">Changed</span></p><p>Cosmetic, non-combat pets, now learned as a summon instead of carried as a bag item, and flagged account-wide in Wowhead’s Forever database. There are still no pet battles.</p></dd></div>
+      <div class="ge" id="g-cone-of-cold" data-k="class" data-q="cone of cold mage full control only on the first four targets, and the finisher of the winter&#x27;s chill combo. changed"><dt><a class="ge-t" href="#g-cone-of-cold">Cone of Cold</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-changed">Changed</span></p><p>Full control only on the first four targets, and the finisher of the Winter’s Chill combo.</p></dd></div>
+      <div class="ge" id="g-conflagrate" data-k="class" data-q="conflagrate warlock now destruction&#x27;s 16-point talent, with incinerate at 31. changed"><dt><a class="ge-t" href="#g-conflagrate">Conflagrate</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-changed">Changed</span></p><p>Now Destruction’s 16-point talent, with Incinerate at 31.</p></dd></div>
+      <div class="ge" id="g-confounding-flash" data-k="race" data-q="confounding flash gnome gnome priest spell: confuses up to five enemies within 8 yards for 3 seconds; damage breaks it. new"><dt><a class="ge-t" href="#g-confounding-flash">Confounding Flash</a></dt><dd><p class="ge-m"><a class="rp c-gnome" href="../races/#gnome">Gnome</a><span class="vs vs-new">New</span></p><p>Gnome Priest spell: confuses up to five enemies within 8 yards for 3 seconds; damage breaks it.</p></dd></div>
+      <div class="ge" id="g-consecration" data-k="class" data-q="consecration paladin baseline at level 20 instead of a holy talent, with full damage and threat on the first four enemies only. changed"><dt><a class="ge-t" href="#g-consecration">Consecration</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-changed">Changed</span></p><p>Baseline at level 20 instead of a Holy talent, with full damage and threat on the first four enemies only.</p></dd></div>
+      <div class="ge" id="g-contingency-plan" data-k="race" data-q="contingency plan gnome gnome priest spell: a 30-second ward that triggers an absorb and a heal over time below 35% health. 10-minute cooldown. new"><dt><a class="ge-t" href="#g-contingency-plan">Contingency Plan</a></dt><dd><p class="ge-m"><a class="rp c-gnome" href="../races/#gnome">Gnome</a><span class="vs vs-new">New</span></p><p>Gnome Priest spell: a 30-second ward that triggers an absorb and a heal over time below 35% health. 10-minute cooldown.</p></dd></div>
+      <div class="ge" id="g-critical-mass" data-k="class" data-q="critical mass mage reaches 10% crit at five points. changed"><dt><a class="ge-t" href="#g-critical-mass">Critical Mass</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-changed">Changed</span></p><p>Reaches 10% crit at five points.</p></dd></div>
+      <div class="ge" id="g-curse-of-shadow" data-k="class" data-q="curse of shadow warlock removed as redundant; curse of the elements now covers more schools. gone"><dt><a class="ge-t" href="#g-curse-of-shadow">Curse of Shadow</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-gone">Gone</span></p><p>Removed as redundant; Curse of the Elements now covers more schools.</p></dd></div>
+      <div class="ge" id="g-cutthroat" data-k="class" data-q="cutthroat rogue subtlety talent letting backstab open up ambush-like attacks in combat. new"><dt><a class="ge-t" href="#g-cutthroat">Cutthroat</a></dt><dd><p class="ge-m"><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><span class="vs vs-new">New</span></p><p>Subtlety talent letting Backstab open up Ambush-like attacks in combat.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-d" aria-label="D"><h3 class="gl-h" aria-hidden="true">D</h3><dl class="gl-list">
+      <div class="ge" id="g-dark-inspiration" data-k="class" data-q="dark inspiration priest mind blast and fully channeled mind flays raise spirit for the party. new"><dt><a class="ge-t" href="#g-dark-inspiration">Dark Inspiration</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-new">New</span></p><p>Mind Blast and fully channeled Mind Flays raise Spirit for the party.</p></dd></div>
+      <div class="ge" id="g-dead-zone" data-k="class" data-q="dead zone hunter the classic gap between melee and ranged range remains. survival is built to move through it, not to erase it. kept"><dt><a class="ge-t" href="#g-dead-zone">Dead zone</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-kept">Kept</span></p><p>The Classic gap between melee and ranged range remains. Survival is built to move through it, not to erase it.</p></dd></div>
+      <div class="ge" id="g-death-wish" data-k="class" data-q="death wish warrior costs increased damage taken instead of armor and resistances. changed"><dt><a class="ge-t" href="#g-death-wish">Death Wish</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-changed">Changed</span></p><p>Costs increased damage taken instead of armor and resistances.</p></dd></div>
+      <div class="ge" id="g-decimation" data-k="class" data-q="decimation warlock demonology talent adding a soul fire execute. new"><dt><a class="ge-t" href="#g-decimation">Decimation</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-new">New</span></p><p>Demonology talent adding a Soul Fire execute.</p></dd></div>
+      <div class="ge" id="g-demonic-brand" data-k="class" data-q="demonic brand warlock demonology talent improving pet threat and damage. new"><dt><a class="ge-t" href="#g-demonic-brand">Demonic Brand</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-new">New</span></p><p>Demonology talent improving pet threat and damage.</p></dd></div>
+      <div class="ge" id="g-demonic-pact" data-k="class" data-q="demonic pact warlock demonology&#x27;s 31-point talent: keeps one demon&#x27;s sacrifice bonus while another is summoned and kept. new"><dt><a class="ge-t" href="#g-demonic-pact">Demonic Pact</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-new">New</span></p><p>Demonology’s 31-point talent: keeps one demon’s sacrifice bonus while another is summoned and kept.</p></dd></div>
+      <div class="ge" id="g-demonic-sacrifice" data-k="class" data-q="demonic sacrifice warlock much earlier in demonology. changed"><dt><a class="ge-t" href="#g-demonic-sacrifice">Demonic Sacrifice</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-changed">Changed</span></p><p>Much earlier in Demonology.</p></dd></div>
+      <div class="ge" id="g-desperate-prayer" data-k="race" data-q="desperate prayer dwarf now the dwarf priest&#x27;s alone; human priests get divine grace instead. changed"><dt><a class="ge-t" href="#g-desperate-prayer">Desperate Prayer</a></dt><dd><p class="ge-m"><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><span class="vs vs-changed">Changed</span></p><p>Now the Dwarf Priest’s alone; Human Priests get Divine Grace instead.</p></dd></div>
+      <div class="ge" id="g-devouring-contagion" data-k="class" data-q="devouring contagion priest spreads devouring plague to two more targets. new"><dt><a class="ge-t" href="#g-devouring-contagion">Devouring Contagion</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-new">New</span></p><p>Spreads Devouring Plague to two more targets.</p></dd></div>
+      <div class="ge" id="g-devouring-plague" data-k="class" data-q="devouring plague priest baseline for every priest, its cooldown cut from 60 to 24 seconds. changed"><dt><a class="ge-t" href="#g-devouring-plague">Devouring Plague</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-changed">Changed</span></p><p>Baseline for every Priest, its cooldown cut from 60 to 24 seconds.</p></dd></div>
+      <div class="ge" id="g-diplomacy" data-k="race" data-q="diplomacy human gone: no automatic +10% reputation. gone"><dt><a class="ge-t" href="#g-diplomacy">Diplomacy</a></dt><dd><p class="ge-m"><a class="rp c-human" href="../races/#human">Human</a><span class="vs vs-gone">Gone</span></p><p>Gone: no automatic +10% reputation.</p></dd></div>
+      <div class="ge" id="g-distract" data-k="class" data-q="distract rogue also lowers enemy stealth detection. changed"><dt><a class="ge-t" href="#g-distract">Distract</a></dt><dd><p class="ge-m"><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><span class="vs vs-changed">Changed</span></p><p>Also lowers enemy stealth detection.</p></dd></div>
+      <div class="ge" id="g-divine-aegis" data-k="class" data-q="divine aegis priest discipline talent turning direct-heal crits into absorbs. new"><dt><a class="ge-t" href="#g-divine-aegis">Divine Aegis</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-new">New</span></p><p>Discipline talent turning direct-heal crits into absorbs.</p></dd></div>
+      <div class="ge" id="g-divine-grace" data-k="race" data-q="divine grace human human priest spell: heals an ally below 50% health and removes weakened soul. 10-minute cooldown; can&#x27;t be self-cast. replaces desperate prayer. new"><dt><a class="ge-t" href="#g-divine-grace">Divine Grace</a></dt><dd><p class="ge-m"><a class="rp c-human" href="../races/#human">Human</a><span class="vs vs-new">New</span></p><p>Human Priest spell: heals an ally below 50% health and removes Weakened Soul. 10-minute cooldown; can’t be self-cast. Replaces Desperate Prayer.</p></dd></div>
+      <div class="ge" id="g-divine-spirit" data-k="class" data-q="divine spirit priest baseline instead of a talent. changed"><dt><a class="ge-t" href="#g-divine-spirit">Divine Spirit</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-changed">Changed</span></p><p>Baseline instead of a talent.</p></dd></div>
+      <div class="ge" id="g-downranking" data-k="system" data-q="downranking every class spells far below the caster&#x27;s level get less from spell power and lower proc chances. where the trick did something useful, a real spell replaces it. changed"><dt><a class="ge-t" href="#g-downranking">Downranking</a></dt><dd><p class="ge-m"><a class="rp gk-system" href="../classes/#systems">Every class</a><span class="vs vs-changed">Changed</span></p><p>Spells far below the caster’s level get less from spell power and lower proc chances. Where the trick did something useful, a real spell replaces it.</p></dd></div>
+      <div class="ge" id="g-dual-specialization" data-k="system" data-q="dual specialization every class two saved talent specs from level 40, so hybrids stop paying a respec tax to keep a healing set and a solo set. new"><dt><a class="ge-t" href="#g-dual-specialization">Dual specialization</a></dt><dd><p class="ge-m"><a class="rp gk-system" href="../classes/#systems">Every class</a><span class="vs vs-new">New</span></p><p>Two saved talent specs from level 40, so hybrids stop paying a respec tax to keep a healing set and a solo set.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-e" aria-label="E"><h3 class="gl-h" aria-hidden="true">E</h3><dl class="gl-list">
+      <div class="ge" id="g-early-demise" data-k="class" data-q="early demise priest shadow talent giving shadow word: death an execute role. new"><dt><a class="ge-t" href="#g-early-demise">Early Demise</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-new">New</span></p><p>Shadow talent giving Shadow Word: Death an execute role.</p></dd></div>
+      <div class="ge" id="g-earth-fury" data-k="race" data-q="earth fury dwarf dwarf&#x27;s short-lived offensive passive, +2% crit damage and healing, from october 16 to 26. gone"><dt><a class="ge-t" href="#g-earth-fury">Earth Fury</a></dt><dd><p class="ge-m"><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><span class="vs vs-gone">Gone</span></p><p>Dwarf’s short-lived offensive passive, +2% crit damage and healing, from October 16 to 26.</p></dd></div>
+      <div class="ge" id="g-earthbound" data-k="class" data-q="earthbound shaman elemental&#x27;s 16-point talent, building on earthbind and roots. new"><dt><a class="ge-t" href="#g-earthbound">Earthbound</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-new">New</span></p><p>Elemental’s 16-point talent, building on Earthbind and roots.</p></dd></div>
+      <div class="ge" id="g-eclipse" data-k="class" data-q="eclipse druid balance: casting wrath shortens the next starfires, a reason to alternate the two. not retail&#x27;s self-oscillating bar. new"><dt><a class="ge-t" href="#g-eclipse">Eclipse</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-new">New</span></p><p>Balance: casting Wrath shortens the next Starfires, a reason to alternate the two. Not Retail’s self-oscillating bar.</p></dd></div>
+      <div class="ge" id="g-elemental-insight" data-k="race" data-q="elemental insight skyborne +5% damage against elementals. new"><dt><a class="ge-t" href="#g-elemental-insight">Elemental Insight</a></dt><dd><p class="ge-m"><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><span class="vs vs-new">New</span></p><p>+5% damage against Elementals.</p></dd></div>
+      <div class="ge" id="g-elemental-mastery" data-k="class" data-q="elemental mastery shaman back as the 31-point capstone: a 3-minute cooldown that for 15 seconds shortens lightning bolt and lava burst casts and removes chain lightning&#x27;s cooldown. changed"><dt><a class="ge-t" href="#g-elemental-mastery">Elemental Mastery</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-changed">Changed</span></p><p>Back as the 31-point capstone: a 3-minute cooldown that for 15 seconds shortens Lightning Bolt and Lava Burst casts and removes Chain Lightning’s cooldown.</p></dd></div>
+      <div class="ge" id="g-elunes-grace" data-k="race" data-q="elune&#x27;s grace night elf night elf priest spell, reworked: enemies&#x27; chance to hit with melee and ranged attacks drops by 50% for 15 seconds, or until three attacks miss. 5-minute cooldown. changed"><dt><a class="ge-t" href="#g-elunes-grace">Elune’s Grace</a></dt><dd><p class="ge-m"><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a><span class="vs vs-changed">Changed</span></p><p>Night Elf Priest spell, reworked: enemies’ chance to hit with melee and ranged attacks drops by 50% for 15 seconds, or until three attacks miss. 5-minute cooldown.</p></dd></div>
+      <div class="ge" id="g-elunes-light" data-k="race" data-q="elune&#x27;s light night elf +10% crit with all spells and attacks for 15 seconds; 3-minute cooldown. new"><dt><a class="ge-t" href="#g-elunes-light">Elune’s Light</a></dt><dd><p class="ge-m"><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a><span class="vs vs-new">New</span></p><p>+10% crit with all spells and attacks for 15 seconds; 3-minute cooldown.</p></dd></div>
+      <div class="ge" id="g-engineering-specialization" data-k="race" data-q="engineering specialization gnome engineering devices fail or backfire 20% less often, instead of +15 skill. changed"><dt><a class="ge-t" href="#g-engineering-specialization">Engineering Specialization</a></dt><dd><p class="ge-m"><a class="rp c-gnome" href="../races/#gnome">Gnome</a><span class="vs vs-changed">Changed</span></p><p>Engineering devices fail or backfire 20% less often, instead of +15 skill.</p></dd></div>
+      <div class="ge" id="g-escape-artist" data-k="race" data-q="escape artist gnome instant: removes movement-impairing effects and grants 3 seconds of immunity. 2-minute cooldown. changed"><dt><a class="ge-t" href="#g-escape-artist">Escape Artist</a></dt><dd><p class="ge-m"><a class="rp c-gnome" href="../races/#gnome">Gnome</a><span class="vs vs-changed">Changed</span></p><p>Instant: removes movement-impairing effects and grants 3 seconds of immunity. 2-minute cooldown.</p></dd></div>
+      <div class="ge" id="g-eureka" data-k="race" data-q="eureka! gnome for 8 seconds, damaging abilities cost 10% less and deal 10% more; non-periodic damage only. the priest version covers healing and power word: shield. 2-minute cooldown. new"><dt><a class="ge-t" href="#g-eureka">Eureka!</a></dt><dd><p class="ge-m"><a class="rp c-gnome" href="../races/#gnome">Gnome</a><span class="vs vs-new">New</span></p><p>For 8 seconds, damaging abilities cost 10% less and deal 10% more; non-periodic damage only. The Priest version covers healing and Power Word: Shield. 2-minute cooldown.</p></dd></div>
+      <div class="ge" id="g-expansive-mind" data-k="race" data-q="expansive mind gnome +5% maximum mana, energy or rage instead of +5% intellect. changed"><dt><a class="ge-t" href="#g-expansive-mind">Expansive Mind</a></dt><dd><p class="ge-m"><a class="rp c-gnome" href="../races/#gnome">Gnome</a><span class="vs vs-changed">Changed</span></p><p>+5% maximum Mana, Energy or Rage instead of +5% Intellect.</p></dd></div>
+      <div class="ge" id="g-expose-armor" data-k="class" data-q="expose armor rogue equal to five sunders, and no longer blocks sunder armor. changed"><dt><a class="ge-t" href="#g-expose-armor">Expose Armor</a></dt><dd><p class="ge-m"><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><span class="vs vs-changed">Changed</span></p><p>Equal to five Sunders, and no longer blocks Sunder Armor.</p></dd></div>
+      <div class="ge" id="g-expose-prey" data-k="class" data-q="expose prey hunter survival talent: attacks on a marked target enable mongoose bite. new"><dt><a class="ge-t" href="#g-expose-prey">Expose Prey</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-new">New</span></p><p>Survival talent: attacks on a marked target enable Mongoose Bite.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-f" aria-label="F"><h3 class="gl-h" aria-hidden="true">F</h3><dl class="gl-list">
+      <div class="ge" id="g-fear-ward" data-k="class" data-q="fear ward priest learned by every priest at level 20; no longer a dwarf racial. changed"><dt><a class="ge-t" href="#g-fear-ward">Fear Ward</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-changed">Changed</span></p><p>Learned by every Priest at level 20; no longer a Dwarf racial.</p></dd></div>
+      <div class="ge" id="g-find-treasure" data-k="race" data-q="find treasure dwarf tracks treasure alongside other tracking, with a chance of extra items from most chests. changed"><dt><a class="ge-t" href="#g-find-treasure">Find Treasure</a></dt><dd><p class="ge-m"><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><span class="vs vs-changed">Changed</span></p><p>Tracks treasure alongside other tracking, with a chance of extra items from most chests.</p></dd></div>
+      <div class="ge" id="g-fingers-of-frost" data-k="class" data-q="fingers of frost mage lets attacks treat the target as frozen for shatter. new"><dt><a class="ge-t" href="#g-fingers-of-frost">Fingers of Frost</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-new">New</span></p><p>Lets attacks treat the target as frozen for Shatter.</p></dd></div>
+      <div class="ge" id="g-fire-nova" data-k="class" data-q="fire nova shaman a spell fired through the placed fire totem, trading damage for a large mana cut. changed"><dt><a class="ge-t" href="#g-fire-nova">Fire Nova</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-changed">Changed</span></p><p>A spell fired through the placed fire totem, trading damage for a large mana cut.</p></dd></div>
+      <div class="ge" id="g-fire-power" data-k="class" data-q="fire power mage adds damage for each fire effect of the mage&#x27;s on the target, up to 12%. changed"><dt><a class="ge-t" href="#g-fire-power">Fire Power</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-changed">Changed</span></p><p>Adds damage for each Fire effect of the Mage’s on the target, up to 12%.</p></dd></div>
+      <div class="ge" id="g-firestone-and-spellstone" data-k="class" data-q="firestone and spellstone warlock weapon imbues that coexist with oils. changed"><dt><a class="ge-t" href="#g-firestone-and-spellstone">Firestone and Spellstone</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-changed">Changed</span></p><p>Weapon imbues that coexist with oils.</p></dd></div>
+      <div class="ge" id="g-flawless-execution" data-k="class" data-q="flawless execution rogue combat talent lowering eviscerate&#x27;s energy cost. new"><dt><a class="ge-t" href="#g-flawless-execution">Flawless Execution</a></dt><dd><p class="ge-m"><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><span class="vs vs-new">New</span></p><p>Combat talent lowering Eviscerate’s energy cost.</p></dd></div>
+      <div class="ge" id="g-focused-fire" data-k="class" data-q="focused fire hunter beast mastery talent that, with summon hawk, makes the spec more active. new"><dt><a class="ge-t" href="#g-focused-fire">Focused Fire</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-new">New</span></p><p>Beast Mastery talent that, with Summon Hawk, makes the spec more active.</p></dd></div>
+      <div class="ge" id="g-focused-rage" data-k="class" data-q="focused rage warrior protection talent that trims ability costs. new"><dt><a class="ge-t" href="#g-focused-rage">Focused Rage</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-new">New</span></p><p>Protection talent that trims ability costs.</p></dd></div>
+      <div class="ge" id="g-form-weapon-scaling" data-k="class" data-q="form weapon scaling druid shapeshifted melee damage scales with the weapon&#x27;s dps while forms keep fixed attack speeds, and weapon effects work in forms. changed"><dt><a class="ge-t" href="#g-form-weapon-scaling">Form weapon scaling</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-changed">Changed</span></p><p>Shapeshifted melee damage scales with the weapon’s DPS while forms keep fixed attack speeds, and weapon effects work in forms.</p></dd></div>
+      <div class="ge" id="g-forsaken-kingdom" data-k="story" data-q="forsaken kingdom the story warcraft iii reforged: forsaken kingdom, the campaign that fills the four years before wow and leads straight into forever. new"><dt><a class="ge-t" href="#g-forsaken-kingdom">Forsaken Kingdom</a></dt><dd><p class="ge-m"><a class="rp gk-story" href="../lore/#bridge">The story</a><span class="vs vs-new">New</span></p><p><i>Warcraft III Reforged: Forsaken Kingdom</i>, the campaign that fills the four years before WoW and leads straight into Forever.</p></dd></div>
+      <div class="ge" id="g-frost-blast" data-k="class" data-q="frost blast mage learned at 24: a 1.5-second frost cast with a 40% slow, doing what rank 1 frostbolt used to. new"><dt><a class="ge-t" href="#g-frost-blast">Frost Blast</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-new">New</span></p><p>Learned at 24: a 1.5-second Frost cast with a 40% slow, doing what Rank 1 Frostbolt used to.</p></dd></div>
+      <div class="ge" id="g-frostfire-bolt" data-k="class" data-q="frostfire bolt mage learned at 40; counts as both fire and frost, taking whichever is better. new"><dt><a class="ge-t" href="#g-frostfire-bolt">Frostfire Bolt</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-new">New</span></p><p>Learned at 40; counts as both Fire and Frost, taking whichever is better.</p></dd></div>
+      <div class="ge" id="g-furor" data-k="class" data-q="furor druid keeps cat energy through a quick shift into bear. energy doesn&#x27;t regenerate in bear form. changed"><dt><a class="ge-t" href="#g-furor">Furor</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-changed">Changed</span></p><p>Keeps Cat energy through a quick shift into Bear. Energy doesn’t regenerate in Bear Form.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-g" aria-label="G"><h3 class="gl-h" aria-hidden="true">G</h3><dl class="gl-list">
+      <div class="ge" id="g-gift-of-the-earthmother" data-k="class" data-q="gift of the earthmother druid speeds the global cooldown on rejuvenation, swiftmend and wild growth. new"><dt><a class="ge-t" href="#g-gift-of-the-earthmother">Gift of the Earthmother</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-new">New</span></p><p>Speeds the global cooldown on Rejuvenation, Swiftmend and Wild Growth.</p></dd></div>
+      <div class="ge" id="g-gold-medal-milestone" data-k="system" data-q="gold-medal milestone every class a new talent breakpoint at 16 points, between the familiar 11 and 21. many of forever&#x27;s most distinctive talents sit there. new"><dt><a class="ge-t" href="#g-gold-medal-milestone">Gold-medal milestone</a></dt><dd><p class="ge-m"><a class="rp gk-system" href="../classes/#systems">Every class</a><span class="vs vs-new">New</span></p><p>A new talent breakpoint at 16 points, between the familiar 11 and 21. Many of Forever’s most distinctive talents sit there.</p></dd></div>
+      <div class="ge" id="g-grim-reach" data-k="class" data-q="grim reach warlock extends affliction range, replacing malediction. new"><dt><a class="ge-t" href="#g-grim-reach">Grim Reach</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-new">New</span></p><p>Extends Affliction range, replacing Malediction.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-h" aria-label="H"><h3 class="gl-h" aria-hidden="true">H</h3><dl class="gl-list">
+      <div class="ge" id="g-hack-and-slash" data-k="class" data-q="hack and slash rogue combat talent merging several weapon specializations, so a raid weapon drop is rarely the wrong type. new"><dt><a class="ge-t" href="#g-hack-and-slash">Hack and Slash</a></dt><dd><p class="ge-m"><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><span class="vs vs-new">New</span></p><p>Combat talent merging several weapon specializations, so a raid weapon drop is rarely the wrong type.</p></dd></div>
+      <div class="ge" id="g-healing-power" data-k="system" data-q="healing power every class counts one-third as damage, so healing gear no longer makes solo play miserable. changed"><dt><a class="ge-t" href="#g-healing-power">Healing power</a></dt><dd><p class="ge-m"><a class="rp gk-system" href="../classes/#systems">Every class</a><span class="vs vs-changed">Changed</span></p><p>Counts one-third as damage, so healing gear no longer makes solo play miserable.</p></dd></div>
+      <div class="ge" id="g-heating-up" data-k="class" data-q="heating up mage every fire blast adds a charge toward faster pyroblasts, two on a crit. new"><dt><a class="ge-t" href="#g-heating-up">Heating Up</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-new">New</span></p><p>Every Fire Blast adds a charge toward faster Pyroblasts, two on a crit.</p></dd></div>
+      <div class="ge" id="g-hemorrhage" data-k="class" data-q="hemorrhage rogue boosts the rogue&#x27;s own rupture instead of acting mainly as a raid physical-damage debuff. changed"><dt><a class="ge-t" href="#g-hemorrhage">Hemorrhage</a></dt><dd><p class="ge-m"><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><span class="vs vs-changed">Changed</span></p><p>Boosts the Rogue’s own Rupture instead of acting mainly as a raid physical-damage debuff.</p></dd></div>
+      <div class="ge" id="g-high-order" data-k="story" data-q="high order the story the skyborne who side with the alliance; the windshapers side with the horde. new"><dt><a class="ge-t" href="#g-high-order">High Order</a></dt><dd><p class="ge-m"><a class="rp gk-story" href="../races/#skyborne">The story</a><span class="vs vs-new">New</span></p><p>The Skyborne who side with the Alliance; the Windshapers side with the Horde.</p></dd></div>
+      <div class="ge" id="g-holy-shock" data-k="class" data-q="holy shock paladin deeper in the holy tree, on a much shorter cooldown than in vanilla; the spec now runs on it. changed"><dt><a class="ge-t" href="#g-holy-shock">Holy Shock</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-changed">Changed</span></p><p>Deeper in the Holy tree, on a much shorter cooldown than in Vanilla; the spec now runs on it.</p></dd></div>
+      <div class="ge" id="g-holy-strike" data-k="class" data-q="holy strike paladin an instant holy weapon attack, learned early in leveling. new"><dt><a class="ge-t" href="#g-holy-strike">Holy Strike</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>An instant Holy weapon attack, learned early in leveling.</p></dd></div>
+      <div class="ge" id="g-the-human-spirit" data-k="race" data-q="the human spirit human +10% spirit, double vanilla&#x27;s +5%. changed"><dt><a class="ge-t" href="#g-the-human-spirit">The Human Spirit</a></dt><dd><p class="ge-m"><a class="rp c-human" href="../races/#human">Human</a><span class="vs vs-changed">Changed</span></p><p>+10% Spirit, double Vanilla’s +5%.</p></dd></div>
+      <div class="ge" id="g-hyjal-summit" data-k="world" data-q="hyjal summit the world a 20-player raid with 13 bosses, scheduled for december 9. new"><dt><a class="ge-t" href="#g-hyjal-summit">Hyjal Summit</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../lore/#q-hyjal">The world</a><span class="vs vs-new">New</span></p><p>A 20-player raid with 13 bosses, scheduled for December 9.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-i" aria-label="I"><h3 class="gl-h" aria-hidden="true">I</h3><dl class="gl-list">
+      <div class="ge" id="g-ice-lance" data-k="class" data-q="ice lance mage hits much harder on frozen targets: +200%, cut from +300%. new"><dt><a class="ge-t" href="#g-ice-lance">Ice Lance</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-new">New</span></p><p>Hits much harder on frozen targets: +200%, cut from +300%.</p></dd></div>
+      <div class="ge" id="g-ignite" data-k="class" data-q="ignite mage tracked per caster, ending the shared-ignite ownership mess. changed"><dt><a class="ge-t" href="#g-ignite">Ignite</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-changed">Changed</span></p><p>Tracked per caster, ending the shared-Ignite ownership mess.</p></dd></div>
+      <div class="ge" id="g-incinerate" data-k="class" data-q="incinerate warlock destruction&#x27;s 31-point spell, hitting much harder on targets with immolate. new"><dt><a class="ge-t" href="#g-incinerate">Incinerate</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-new">New</span></p><p>Destruction’s 31-point spell, hitting much harder on targets with Immolate.</p></dd></div>
+      <div class="ge" id="g-infusion-of-light" data-k="class" data-q="infusion of light paladin holy talent: holy shock and flash of light crits speed up holy light. new"><dt><a class="ge-t" href="#g-infusion-of-light">Infusion of Light</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>Holy talent: Holy Shock and Flash of Light crits speed up Holy Light.</p></dd></div>
+      <div class="ge" id="g-insect-swarm" data-k="class" data-q="insect swarm druid balance&#x27;s 16-point talent. changed"><dt><a class="ge-t" href="#g-insect-swarm">Insect Swarm</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-changed">Changed</span></p><p>Balance’s 16-point talent.</p></dd></div>
+      <div class="ge" id="g-instrument-of-law" data-k="class" data-q="instrument of law paladin retribution talent improving hammer of wrath and threat. new"><dt><a class="ge-t" href="#g-instrument-of-law">Instrument of Law</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>Retribution talent improving Hammer of Wrath and threat.</p></dd></div>
+      <div class="ge" id="g-iron-creed" data-k="class" data-q="iron creed paladin protection talent tying holy strike to mitigation. new"><dt><a class="ge-t" href="#g-iron-creed">Iron Creed</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>Protection talent tying Holy Strike to mitigation.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-j" aria-label="J"><h3 class="gl-h" aria-hidden="true">J</h3><dl class="gl-list">
+      <div class="ge" id="g-judgment" data-k="class" data-q="judgment paladin no longer consumes the seal, ending vanilla&#x27;s judge-and-reseal routine. changed"><dt><a class="ge-t" href="#g-judgment">Judgment</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-changed">Changed</span></p><p>No longer consumes the Seal, ending Vanilla’s judge-and-reseal routine.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-l" aria-label="L"><h3 class="gl-h" aria-hidden="true">L</h3><dl class="gl-list">
+      <div class="ge" id="g-lacerate" data-k="class" data-q="lacerate druid bear attack learned at 42, for stacking bleed and threat. new"><dt><a class="ge-t" href="#g-lacerate">Lacerate</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-new">New</span></p><p>Bear attack learned at 42, for stacking bleed and threat.</p></dd></div>
+      <div class="ge" id="g-lacerating-strikes" data-k="class" data-q="lacerating strikes hunter survival talent turning repeated mongoose bites into a bleed. new"><dt><a class="ge-t" href="#g-lacerating-strikes">Lacerating Strikes</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-new">New</span></p><p>Survival talent turning repeated Mongoose Bites into a bleed.</p></dd></div>
+      <div class="ge" id="g-lava-burst" data-k="class" data-q="lava burst shaman elemental&#x27;s 21-point spell; flame shock duration feeds it. new"><dt><a class="ge-t" href="#g-lava-burst">Lava Burst</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-new">New</span></p><p>Elemental’s 21-point spell; Flame Shock duration feeds it.</p></dd></div>
+      <div class="ge" id="g-legacy" data-k="world" data-q="legacy the world an account-wide progress system. legacy points come from challenge-like accomplishments, buy account perks and count toward cosmetic milestones; at 25, innkeeper wiley in ratchet hands over the spectral bear cub. new"><dt><a class="ge-t" href="#g-legacy">Legacy</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../companions/#p-spectral-bear-cub">The world</a><span class="vs vs-new">New</span></p><p>An account-wide progress system. Legacy Points come from challenge-like accomplishments, buy account perks and count toward cosmetic milestones; at 25, Innkeeper Wiley in Ratchet hands over the Spectral Bear Cub.</p></dd></div>
+      <div class="ge" id="g-life-tap" data-k="class" data-q="life tap warlock scales with spirit. changed"><dt><a class="ge-t" href="#g-life-tap">Life Tap</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-changed">Changed</span></p><p>Scales with Spirit.</p></dd></div>
+      <div class="ge" id="g-lights-vigil" data-k="class" data-q="light&#x27;s vigil paladin holy&#x27;s 31-point spell: resets holy shock, then adds a damage or party-heal payoff depending on the target. new"><dt><a class="ge-t" href="#g-lights-vigil">Light’s Vigil</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>Holy’s 31-point spell: resets Holy Shock, then adds a damage or party-heal payoff depending on the target.</p></dd></div>
+      <div class="ge" id="g-lightwell" data-k="class" data-q="lightwell priest removed. gone"><dt><a class="ge-t" href="#g-lightwell">Lightwell</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-gone">Gone</span></p><p>Removed.</p></dd></div>
+      <div class="ge" id="g-litany-of-light" data-k="class" data-q="litany of light priest holy talent rewarding switching between different heals. new"><dt><a class="ge-t" href="#g-litany-of-light">Litany of Light</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-new">New</span></p><p>Holy talent rewarding switching between different heals.</p></dd></div>
+      <div class="ge" id="g-lone-wolf" data-k="class" data-q="lone wolf hunter marksmanship talent giving a large damage bonus while playing without a pet. new"><dt><a class="ge-t" href="#g-lone-wolf">Lone Wolf</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-new">New</span></p><p>Marksmanship talent giving a large damage bonus while playing without a pet.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-m" aria-label="M"><h3 class="gl-h" aria-hidden="true">M</h3><dl class="gl-list">
+      <div class="ge" id="g-maelstrom-weapon" data-k="class" data-q="maelstrom weapon shaman speeds enhancement&#x27;s lightning bolt and chain lightning casts as a fight goes on, potentially to instant. new"><dt><a class="ge-t" href="#g-maelstrom-weapon">Maelstrom Weapon</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-new">New</span></p><p>Speeds Enhancement’s Lightning Bolt and Chain Lightning casts as a fight goes on, potentially to instant.</p></dd></div>
+      <div class="ge" id="g-malice" data-k="class" data-q="malice rogue now feeds poison crits. changed"><dt><a class="ge-t" href="#g-malice">Malice</a></dt><dd><p class="ge-m"><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><span class="vs vs-changed">Changed</span></p><p>Now feeds poison crits.</p></dd></div>
+      <div class="ge" id="g-mana-tide" data-k="class" data-q="mana tide shaman restoration&#x27;s 16-point talent, with a new rank at level 38. changed"><dt><a class="ge-t" href="#g-mana-tide">Mana Tide</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-changed">Changed</span></p><p>Restoration’s 16-point talent, with a new rank at level 38.</p></dd></div>
+      <div class="ge" id="g-master-of-defense" data-k="class" data-q="master of defense warrior protection talent that generates rage from shield avoidance. new"><dt><a class="ge-t" href="#g-master-of-defense">Master of Defense</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-new">New</span></p><p>Protection talent that generates rage from shield avoidance.</p></dd></div>
+      <div class="ge" id="g-meditation" data-k="class" data-q="meditation priest lets 50% of spirit regeneration continue while casting, which gives spirit real endgame weight. changed"><dt><a class="ge-t" href="#g-meditation">Meditation</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../races/#human">Priest</a><span class="vs vs-changed">Changed</span></p><p>Lets 50% of Spirit regeneration continue while casting, which gives Spirit real endgame weight.</p></dd></div>
+      <div class="ge" id="g-merged-hit-and-crit" data-k="system" data-q="merged hit and crit every class hit and crit are no longer split into physical and spell versions, and caster weapons carry real spell power. changed"><dt><a class="ge-t" href="#g-merged-hit-and-crit">Merged hit and crit</a></dt><dd><p class="ge-m"><a class="rp gk-system" href="../classes/#systems">Every class</a><span class="vs vs-changed">Changed</span></p><p>Hit and crit are no longer split into physical and spell versions, and caster weapons carry real spell power.</p></dd></div>
+      <div class="ge" id="g-missile-barrage" data-k="class" data-q="missile barrage mage procs from arcane missiles, much earlier in the tree. new"><dt><a class="ge-t" href="#g-missile-barrage">Missile Barrage</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-new">New</span></p><p>Procs from Arcane Missiles, much earlier in the tree.</p></dd></div>
+      <div class="ge" id="g-mutilate" data-k="class" data-q="mutilate rogue assassination&#x27;s 21-point attack: hits with both daggers, does more to poisoned targets and awards two combo points. new"><dt><a class="ge-t" href="#g-mutilate">Mutilate</a></dt><dd><p class="ge-m"><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><span class="vs vs-new">New</span></p><p>Assassination’s 21-point attack: hits with both daggers, does more to poisoned targets and awards two combo points.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-n" aria-label="N"><h3 class="gl-h" aria-hidden="true">N</h3><dl class="gl-list">
+      <div class="ge" id="g-natures-splendor" data-k="class" data-q="nature&#x27;s splendor druid balance talent extending the druid&#x27;s effects. new"><dt><a class="ge-t" href="#g-natures-splendor">Nature’s Splendor</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-new">New</span></p><p>Balance talent extending the Druid’s effects.</p></dd></div>
+      <div class="ge" id="g-nightclaw-druids" data-k="world" data-q="nightclaw druids the world a zephras isle reputation: five al&#x27;aketh cultist&#x27;s ears turn in for 1,000, and revered sells the shadowgale squirrel. new"><dt><a class="ge-t" href="#g-nightclaw-druids">Nightclaw Druids</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../companions/#p-shadowgale-squirrel">The world</a><span class="vs vs-new">New</span></p><p>A Zephras Isle reputation: five Al’Aketh Cultist’s Ears turn in for 1,000, and Revered sells the Shadowgale Squirrel.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-o" aria-label="O"><h3 class="gl-h" aria-hidden="true">O</h3><dl class="gl-list">
+      <div class="ge" id="g-omen-of-clarity" data-k="class" data-q="omen of clarity druid baseline at level 20. changed"><dt><a class="ge-t" href="#g-omen-of-clarity">Omen of Clarity</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-changed">Changed</span></p><p>Baseline at level 20.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-p" aria-label="P"><h3 class="gl-h" aria-hidden="true">P</h3><dl class="gl-list">
+      <div class="ge" id="g-pandemic" data-k="class" data-q="pandemic warlock affliction talent letting dots and drains crit. new"><dt><a class="ge-t" href="#g-pandemic">Pandemic</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-new">New</span></p><p>Affliction talent letting DoTs and drains crit.</p></dd></div>
+      <div class="ge" id="g-penance" data-k="class" data-q="penance priest discipline&#x27;s 21-point spell: damages an enemy or heals an ally. new"><dt><a class="ge-t" href="#g-penance">Penance</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-new">New</span></p><p>Discipline’s 21-point spell: damages an enemy or heals an ally.</p></dd></div>
+      <div class="ge" id="g-pet-utility-abilities" data-k="class" data-q="pet utility abilities hunter every pet family has a utility ability of its own, and pets inherit stats from the hunter&#x27;s gear. blizzard keeps trimming the strongest. new"><dt><a class="ge-t" href="#g-pet-utility-abilities">Pet utility abilities</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-new">New</span></p><p>Every pet family has a utility ability of its own, and pets inherit stats from the Hunter’s gear. Blizzard keeps trimming the strongest.</p></dd></div>
+      <div class="ge" id="g-poisons" data-k="class" data-q="poisons rogue more charges, and they stack with sharpening and weight stones. changed"><dt><a class="ge-t" href="#g-poisons">Poisons</a></dt><dd><p class="ge-m"><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><span class="vs vs-changed">Changed</span></p><p>More charges, and they stack with sharpening and weight stones.</p></dd></div>
+      <div class="ge" id="g-power-in-light" data-k="class" data-q="power in light priest links smite and penance to targets carrying holy fire or shadow word: pain, so damage is woven into healing on purpose. new"><dt><a class="ge-t" href="#g-power-in-light">Power in Light</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-new">New</span></p><p>Links Smite and Penance to targets carrying Holy Fire or Shadow Word: Pain, so damage is woven into healing on purpose.</p></dd></div>
+      <div class="ge" id="g-prayer-of-mending" data-k="class" data-q="prayer of mending priest holy&#x27;s 31-point spell: a heal that bounces between allies. new"><dt><a class="ge-t" href="#g-prayer-of-mending">Prayer of Mending</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-new">New</span></p><p>Holy’s 31-point spell: a heal that bounces between allies.</p></dd></div>
+      <div class="ge" id="g-predators-edge" data-k="class" data-q="predator&#x27;s edge hunter survival talent boosting melee crit damage and off-hand play. new"><dt><a class="ge-t" href="#g-predators-edge">Predator’s Edge</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-new">New</span></p><p>Survival talent boosting melee crit damage and off-hand play.</p></dd></div>
+      <div class="ge" id="g-primal-bite" data-k="class" data-q="primal bite druid a key feral active attack. new"><dt><a class="ge-t" href="#g-primal-bite">Primal Bite</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-new">New</span></p><p>A key Feral active attack.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-q" aria-label="Q"><h3 class="gl-h" aria-hidden="true">Q</h3><dl class="gl-list">
+      <div class="ge" id="g-quickness" data-k="race" data-q="quickness night elf +1% dodge and now +2% movement speed. changed"><dt><a class="ge-t" href="#g-quickness">Quickness</a></dt><dd><p class="ge-m"><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a><span class="vs vs-changed">Changed</span></p><p>+1% dodge and now +2% movement speed.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-r" aria-label="R"><h3 class="gl-h" aria-hidden="true">R</h3><dl class="gl-list">
+      <div class="ge" id="g-raging-blows" data-k="class" data-q="raging blows warrior fury&#x27;s 16-point talent: improves whirlwind&#x27;s dual-wield interaction and makes cleave cheaper. new"><dt><a class="ge-t" href="#g-raging-blows">Raging Blows</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-new">New</span></p><p>Fury’s 16-point talent: improves Whirlwind’s dual-wield interaction and makes Cleave cheaper.</p></dd></div>
+      <div class="ge" id="g-raid-wide-buffs" data-k="system" data-q="raid-wide buffs every class battle shout, trueshot aura, moonkin aura, leader of the pack and shaman&#x27;s grace of air, strength of earth, windfury and flametongue reach the whole raid, not one party. changed"><dt><a class="ge-t" href="#g-raid-wide-buffs">Raid-wide buffs</a></dt><dd><p class="ge-m"><a class="rp gk-system" href="../classes/#systems">Every class</a><span class="vs vs-changed">Changed</span></p><p>Battle Shout, Trueshot Aura, Moonkin Aura, Leader of the Pack and Shaman’s Grace of Air, Strength of Earth, Windfury and Flametongue reach the whole raid, not one party.</p></dd></div>
+      <div class="ge" id="g-read-leyline" data-k="race" data-q="read leyline skyborne a 2-second cast, usable while moving: +50% health and mana regeneration for 15 seconds, or +100% while attuned. can&#x27;t be used while innervate is active. new"><dt><a class="ge-t" href="#g-read-leyline">Read Leyline</a></dt><dd><p class="ge-m"><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><span class="vs vs-new">New</span></p><p>A 2-second cast, usable while moving: +50% Health and Mana regeneration for 15 seconds, or +100% while Attuned. Can’t be used while Innervate is active.</p></dd></div>
+      <div class="ge" id="g-renewed-hope" data-k="class" data-q="renewed hope priest discipline talent keyed off weakened soul. new"><dt><a class="ge-t" href="#g-renewed-hope">Renewed Hope</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-new">New</span></p><p>Discipline talent keyed off Weakened Soul.</p></dd></div>
+      <div class="ge" id="g-retaliation-and-shield-wall" data-k="class" data-q="retaliation and shield wall warrior no longer share a cooldown with each other or with recklessness, and drop to 15 minutes. changed"><dt><a class="ge-t" href="#g-retaliation-and-shield-wall">Retaliation and Shield Wall</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-changed">Changed</span></p><p>No longer share a cooldown with each other or with Recklessness, and drop to 15 minutes.</p></dd></div>
+      <div class="ge" id="g-reverence" data-k="class" data-q="reverence paladin holy talent improving in-combat spirit regeneration. new"><dt><a class="ge-t" href="#g-reverence">Reverence</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>Holy talent improving in-combat Spirit regeneration.</p></dd></div>
+      <div class="ge" id="g-revive" data-k="class" data-q="revive druid an out-of-combat resurrection. new"><dt><a class="ge-t" href="#g-revive">Revive</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-new">New</span></p><p>An out-of-combat resurrection.</p></dd></div>
+      <div class="ge" id="g-riptide" data-k="class" data-q="riptide shaman restoration&#x27;s 31-point spell: an instant heal and hot that strengthens chain heal on that target. new"><dt><a class="ge-t" href="#g-riptide">Riptide</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-new">New</span></p><p>Restoration’s 31-point spell: an instant heal and HoT that strengthens Chain Heal on that target.</p></dd></div>
+      <div class="ge" id="g-riverglades" data-k="world" data-q="riverglades the world new territory between familiar eastern kingdoms regions. powderfuse port and its black market auction house are there. new"><dt><a class="ge-t" href="#g-riverglades">Riverglades</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../lore/#year-one">The world</a><span class="vs vs-new">New</span></p><p>New territory between familiar Eastern Kingdoms regions. Powderfuse Port and its Black Market Auction House are there.</p></dd></div>
+      <div class="ge" id="g-ruthless" data-k="race" data-q="ruthless human +1% crit with any weapon, replacing +5 sword and mace skill. it was +2% from october 16 to 26. new"><dt><a class="ge-t" href="#g-ruthless">Ruthless</a></dt><dd><p class="ge-m"><a class="rp c-human" href="../races/#human">Human</a><span class="vs vs-new">New</span></p><p>+1% crit with any weapon, replacing +5 Sword and Mace skill. It was +2% from October 16 to 26.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-s" aria-label="S"><h3 class="gl-h" aria-hidden="true">S</h3><dl class="gl-list">
+      <div class="ge" id="g-sacred-arbiter" data-k="class" data-q="sacred arbiter paladin retribution&#x27;s 16-point talent: empowers holy strike and refreshes active judgments. new"><dt><a class="ge-t" href="#g-sacred-arbiter">Sacred Arbiter</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>Retribution’s 16-point talent: empowers Holy Strike and refreshes active Judgments.</p></dd></div>
+      <div class="ge" id="g-salvation" data-k="class" data-q="salvation paladin no longer takes a blessing slot. changed"><dt><a class="ge-t" href="#g-salvation">Salvation</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-changed">Changed</span></p><p>No longer takes a Blessing slot.</p></dd></div>
+      <div class="ge" id="g-sap" data-k="class" data-q="sap rogue no longer breaks stealth. changed"><dt><a class="ge-t" href="#g-sap">Sap</a></dt><dd><p class="ge-m"><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><span class="vs vs-changed">Changed</span></p><p>No longer breaks Stealth.</p></dd></div>
+      <div class="ge" id="g-seal-of-fury" data-k="class" data-q="seal of fury paladin protection&#x27;s central seal: adds holy damage, favors fast attacks, turns some of it into absorbs with a shield equipped, and its judgment taunts. new"><dt><a class="ge-t" href="#g-seal-of-fury">Seal of Fury</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>Protection’s central seal: adds Holy damage, favors fast attacks, turns some of it into absorbs with a shield equipped, and its Judgment taunts.</p></dd></div>
+      <div class="ge" id="g-shadow-weaving" data-k="class" data-q="shadow weaving priest a personal buff now, not a debuff for the raid&#x27;s warlocks. changed"><dt><a class="ge-t" href="#g-shadow-weaving">Shadow Weaving</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-changed">Changed</span></p><p>A personal buff now, not a debuff for the raid’s Warlocks.</p></dd></div>
+      <div class="ge" id="g-shadow-word-death" data-k="class" data-q="shadow word: death priest baseline, on an 18-second cooldown; early demise gives it an execute role. new"><dt><a class="ge-t" href="#g-shadow-word-death">Shadow Word: Death</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-new">New</span></p><p>Baseline, on an 18-second cooldown; Early Demise gives it an execute role.</p></dd></div>
+      <div class="ge" id="g-shadowform" data-k="class" data-q="shadowform priest allows more non-healing spells and adds big mana efficiency and crit damage. changed"><dt><a class="ge-t" href="#g-shadowform">Shadowform</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-changed">Changed</span></p><p>Allows more non-healing spells and adds big mana efficiency and crit damage.</p></dd></div>
+      <div class="ge" id="g-shadowmeld" data-k="race" data-q="shadowmeld night elf usable in combat, where it works like fade, not vanish: no stealth-required abilities. changed"><dt><a class="ge-t" href="#g-shadowmeld">Shadowmeld</a></dt><dd><p class="ge-m"><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a><span class="vs vs-changed">Changed</span></p><p>Usable in combat, where it works like Fade, not Vanish: no Stealth-required abilities.</p></dd></div>
+      <div class="ge" id="g-shapers-terrace" data-k="world" data-q="shaper&#x27;s terrace the world a new dungeon: an ancient installation in un&#x27;goro. new"><dt><a class="ge-t" href="#g-shapers-terrace">Shaper’s Terrace</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../lore/#q-below">The world</a><span class="vs vs-new">New</span></p><p>A new dungeon: an ancient installation in Un’Goro.</p></dd></div>
+      <div class="ge" id="g-shendralar" data-k="story" data-q="shen&#x27;dralar the story the highborne who stayed in eldre&#x27;thalas, old dire maul. forever gives them more attention. kept"><dt><a class="ge-t" href="#g-shendralar">Shen’dralar</a></dt><dd><p class="ge-m"><a class="rp gk-story" href="../lore/#q-highborne">The story</a><span class="vs vs-kept">Kept</span></p><p>The Highborne who stayed in Eldre’Thalas, old Dire Maul. Forever gives them more attention.</p></dd></div>
+      <div class="ge" id="g-shifting-power" data-k="class" data-q="shifting power druid replaces tiger&#x27;s fury: converts a chunk of base mana into energy on a cooldown, so powershifting becomes a talent. new"><dt><a class="ge-t" href="#g-shifting-power">Shifting Power</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-new">New</span></p><p>Replaces Tiger’s Fury: converts a chunk of base mana into Energy on a cooldown, so powershifting becomes a talent.</p></dd></div>
+      <div class="ge" id="g-skyborne" data-k="story" data-q="skyborne the story the shen&#x27;dorei, “hidden people”: descendants of highborne rebels who fled eldre&#x27;thalas after the war of the ancients. their wind patrons have disappeared. new"><dt><a class="ge-t" href="#g-skyborne">Skyborne</a></dt><dd><p class="ge-m"><a class="rp gk-story" href="../lore/#skyborne">The story</a><span class="vs vs-new">New</span></p><p>The shen’dorei, “hidden people”: descendants of Highborne rebels who fled Eldre’Thalas after the War of the Ancients. Their wind patrons have disappeared.</p></dd></div>
+      <div class="ge" id="g-skyborne-epic-pack" data-k="world" data-q="skyborne epic pack the world a higher paid forever upgrade. it and the warcraft forever collection include the zergling, panda cub, mini diablo and pachimari companions. new"><dt><a class="ge-t" href="#g-skyborne-epic-pack">Skyborne Epic Pack</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../companions/#g-paid">The world</a><span class="vs vs-new">New</span></p><p>A higher paid Forever upgrade. It and the Warcraft Forever Collection include the Zergling, Panda Cub, Mini Diablo and Pachimari companions.</p></dd></div>
+      <div class="ge" id="g-skyborne-heroic-pack" data-k="world" data-q="skyborne heroic pack the world a paid forever upgrade. blizzard gates the skyborne race, and the zephras isle starting questline, behind it or a higher pack. new"><dt><a class="ge-t" href="#g-skyborne-heroic-pack">Skyborne Heroic Pack</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../races/#skyborne">The world</a><span class="vs vs-new">New</span></p><p>A paid Forever upgrade. Blizzard gates the Skyborne race, and the Zephras Isle starting questline, behind it or a higher pack.</p></dd></div>
+      <div class="ge" id="g-slam" data-k="class" data-q="slam warrior immune to pushback, and improved slam no longer delays or interrupts the auto swing. changed"><dt><a class="ge-t" href="#g-slam">Slam</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-changed">Changed</span></p><p>Immune to pushback, and Improved Slam no longer delays or interrupts the auto swing.</p></dd></div>
+      <div class="ge" id="g-sniper-shot" data-k="class" data-q="sniper shot hunter marksmanship&#x27;s 31-point capstone: a long-cast, extreme-range precision shot. new"><dt><a class="ge-t" href="#g-sniper-shot">Sniper Shot</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-new">New</span></p><p>Marksmanship’s 31-point capstone: a long-cast, extreme-range precision shot.</p></dd></div>
+      <div class="ge" id="g-soul-siphon" data-k="class" data-q="soul siphon warlock affliction talent rewarding stacked affliction effects on a target. new"><dt><a class="ge-t" href="#g-soul-siphon">Soul Siphon</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-new">New</span></p><p>Affliction talent rewarding stacked Affliction effects on a target.</p></dd></div>
+      <div class="ge" id="g-soul-warding" data-k="class" data-q="soul warding priest discipline talent improving repeated shields. new"><dt><a class="ge-t" href="#g-soul-warding">Soul Warding</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-new">New</span></p><p>Discipline talent improving repeated shields.</p></dd></div>
+      <div class="ge" id="g-spearing-strike" data-k="class" data-q="spearing strike warrior arms&#x27; 16-point milestone talent. new"><dt><a class="ge-t" href="#g-spearing-strike">Spearing Strike</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-new">New</span></p><p>Arms’ 16-point milestone talent.</p></dd></div>
+      <div class="ge" id="g-starshards" data-k="race" data-q="starshards night elf night elf priest spell, its damage raised substantially, now on a 30-second cooldown. changed"><dt><a class="ge-t" href="#g-starshards">Starshards</a></dt><dd><p class="ge-m"><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a><span class="vs vs-changed">Changed</span></p><p>Night Elf Priest spell, its damage raised substantially, now on a 30-second cooldown.</p></dd></div>
+      <div class="ge" id="g-stoneform" data-k="race" data-q="stoneform dwarf removes bleed, poison and disease effects and grants immunity, and cuts physical damage taken by 10% for 8 seconds instead of adding armor. changed"><dt><a class="ge-t" href="#g-stoneform">Stoneform</a></dt><dd><p class="ge-m"><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><span class="vs vs-changed">Changed</span></p><p>Removes Bleed, Poison and Disease effects and grants immunity, and cuts Physical damage taken by 10% for 8 seconds instead of adding armor.</p></dd></div>
+      <div class="ge" id="g-stormstrike" data-k="class" data-q="stormstrike shaman up to 16 points, on an 8-second cooldown; its debuff boosts the next lightning bolt, chain lightning or earth shock. changed"><dt><a class="ge-t" href="#g-stormstrike">Stormstrike</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-changed">Changed</span></p><p>Up to 16 points, on an 8-second cooldown; its debuff boosts the next Lightning Bolt, Chain Lightning or Earth Shock.</p></dd></div>
+      <div class="ge" id="g-stranglethorn-fishing-extravaganza" data-k="world" data-q="stranglethorn fishing extravaganza the world still sundays, 2–4 pm, but now the first 50 master angler turn-ins each get the arcanite fishing pole and an extravagant extravaganza coin, which buys the bitter baitling. changed"><dt><a class="ge-t" href="#g-stranglethorn-fishing-extravaganza">Stranglethorn Fishing Extravaganza</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../companions/#p-bitter-baitling">The world</a><span class="vs vs-changed">Changed</span></p><p>Still Sundays, 2–4 PM, but now the first 50 Master Angler turn-ins each get the Arcanite Fishing Pole and an Extravagant Extravaganza Coin, which buys the Bitter Baitling.</p></dd></div>
+      <div class="ge" id="g-strider-kick" data-k="class" data-q="strider kick hunter survival&#x27;s weapon attack tied to movement. new"><dt><a class="ge-t" href="#g-strider-kick">Strider Kick</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-new">New</span></p><p>Survival’s weapon attack tied to movement.</p></dd></div>
+      <div class="ge" id="g-summon-hawk" data-k="class" data-q="summon hawk hunter beast mastery&#x27;s 16-point talent: a temporary second attacker tied to the hunter&#x27;s target. new"><dt><a class="ge-t" href="#g-summon-hawk">Summon Hawk</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-new">New</span></p><p>Beast Mastery’s 16-point talent: a temporary second attacker tied to the Hunter’s target.</p></dd></div>
+      <div class="ge" id="g-swift-judgment" data-k="class" data-q="swift judgment paladin protection talent that recovers judgment faster. new"><dt><a class="ge-t" href="#g-swift-judgment">Swift Judgment</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>Protection talent that recovers Judgment faster.</p></dd></div>
+      <div class="ge" id="g-swiftmend" data-k="class" data-q="swiftmend druid restoration&#x27;s 16-point spell, and no longer consumes the hot it uses. changed"><dt><a class="ge-t" href="#g-swiftmend">Swiftmend</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-changed">Changed</span></p><p>Restoration’s 16-point spell, and no longer consumes the HoT it uses.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-t" aria-label="T"><h3 class="gl-h" aria-hidden="true">T</h3><dl class="gl-list">
+      <div class="ge" id="g-tactical-mastery" data-k="class" data-q="tactical mastery warrior baseline at level 14: keeps 10 rage through stance changes, with no arms points spent. changed"><dt><a class="ge-t" href="#g-tactical-mastery">Tactical Mastery</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-changed">Changed</span></p><p>Baseline at level 14: keeps 10 rage through stance changes, with no Arms points spent.</p></dd></div>
+      <div class="ge" id="g-templars-bulwark" data-k="class" data-q="templar&#x27;s bulwark paladin protection&#x27;s large absorb cooldown, based on maximum health. new"><dt><a class="ge-t" href="#g-templars-bulwark">Templar’s Bulwark</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>Protection’s large absorb cooldown, based on maximum health.</p></dd></div>
+      <div class="ge" id="g-thousand-cuts" data-k="class" data-q="thousand cuts rogue subtlety&#x27;s 31-point talent: rupture ticks lower the energy cost of hemorrhage and backstab. new"><dt><a class="ge-t" href="#g-thousand-cuts">Thousand Cuts</a></dt><dd><p class="ge-m"><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><span class="vs vs-new">New</span></p><p>Subtlety’s 31-point talent: Rupture ticks lower the energy cost of Hemorrhage and Backstab.</p></dd></div>
+      <div class="ge" id="g-tigers-fury" data-k="class" data-q="tiger&#x27;s fury druid replaced by shifting power. gone"><dt><a class="ge-t" href="#g-tigers-fury">Tiger’s Fury</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-gone">Gone</span></p><p>Replaced by Shifting Power.</p></dd></div>
+      <div class="ge" id="g-time-bubble" data-k="story" data-q="time bubble the story forever&#x27;s continuity rule: the established history stays, and from original wow onward, events are free to unfold differently. new"><dt><a class="ge-t" href="#g-time-bubble">Time bubble</a></dt><dd><p class="ge-m"><a class="rp gk-story" href="../lore/#top">The story</a><span class="vs vs-new">New</span></p><p>Forever’s continuity rule: the established history stays, and from original WoW onward, events are free to unfold differently.</p></dd></div>
+      <div class="ge" id="g-totem-global-cooldown" data-k="class" data-q="totem global cooldown shaman one second instead of 1.5, and buff totems last five minutes instead of two. changed"><dt><a class="ge-t" href="#g-totem-global-cooldown">Totem global cooldown</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-changed">Changed</span></p><p>One second instead of 1.5, and buff totems last five minutes instead of two.</p></dd></div>
+      <div class="ge" id="g-totemic-projection" data-k="class" data-q="totemic projection shaman moves existing totems. new"><dt><a class="ge-t" href="#g-totemic-projection">Totemic Projection</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-new">New</span></p><p>Moves existing totems.</p></dd></div>
+      <div class="ge" id="g-totemic-recall" data-k="class" data-q="totemic recall shaman recalls totems and refunds some mana. new"><dt><a class="ge-t" href="#g-totemic-recall">Totemic Recall</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-new">New</span></p><p>Recalls totems and refunds some mana.</p></dd></div>
+      <div class="ge" id="g-traps" data-k="class" data-q="traps hunter usable in combat. fire and ice traps run on separate cooldowns, with one of each active at once. changed"><dt><a class="ge-t" href="#g-traps">Traps</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-changed">Changed</span></p><p>Usable in combat. Fire and Ice traps run on separate cooldowns, with one of each active at once.</p></dd></div>
+      <div class="ge" id="g-trueshot-aura" data-k="class" data-q="trueshot aura hunter deeper in marksmanship, and raid-wide. changed"><dt><a class="ge-t" href="#g-trueshot-aura">Trueshot Aura</a></dt><dd><p class="ge-m"><a class="rp c-hunter" href="../classes/#hunter">Hunter</a><span class="vs vs-changed">Changed</span></p><p>Deeper in Marksmanship, and raid-wide.</p></dd></div>
+      <div class="ge" id="g-twist-of-light" data-k="class" data-q="twist of light paladin seal twisting as a talent: the previous seal echoes into the next melee hit. new"><dt><a class="ge-t" href="#g-twist-of-light">Twist of Light</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>Seal twisting as a talent: the previous Seal echoes into the next melee hit.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-v" aria-label="V"><h3 class="gl-h" aria-hidden="true">V</h3><dl class="gl-list">
+      <div class="ge" id="g-vampiric-embrace" data-k="class" data-q="vampiric embrace priest an activated, unresistable 30-second cooldown. changed"><dt><a class="ge-t" href="#g-vampiric-embrace">Vampiric Embrace</a></dt><dd><p class="ge-m"><a class="rp c-priest" href="../classes/#priest">Priest</a><span class="vs vs-changed">Changed</span></p><p>An activated, unresistable 30-second cooldown.</p></dd></div>
+      <div class="ge" id="g-vanguard" data-k="class" data-q="vanguard warrior protection talent that lets charge lead into defensive stance play. new"><dt><a class="ge-t" href="#g-vanguard">Vanguard</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-new">New</span></p><p>Protection talent that lets Charge lead into Defensive Stance play.</p></dd></div>
+      <div class="ge" id="g-venom" data-k="class" data-q="venom rogue assassination&#x27;s 31-point finisher, buffing poison damage and application. new"><dt><a class="ge-t" href="#g-venom">Venom</a></dt><dd><p class="ge-m"><a class="rp c-rogue" href="../classes/#rogue">Rogue</a><span class="vs vs-new">New</span></p><p>Assassination’s 31-point finisher, buffing poison damage and application.</p></dd></div>
+      <div class="ge" id="g-victory-rush" data-k="class" data-q="victory rush warrior learned at level 20; heals for 10% of maximum health after a qualifying kill. new"><dt><a class="ge-t" href="#g-victory-rush">Victory Rush</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-new">New</span></p><p>Learned at level 20; heals for 10% of maximum health after a qualifying kill.</p></dd></div>
+      <div class="ge" id="g-vindication" data-k="class" data-q="vindication paladin lowers the enemy&#x27;s attack power and raises the paladin&#x27;s. changed"><dt><a class="ge-t" href="#g-vindication">Vindication</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-changed">Changed</span></p><p>Lowers the enemy’s attack power and raises the Paladin’s.</p></dd></div>
+      <div class="ge" id="g-voice-of-truth" data-k="class" data-q="voice of truth paladin holy talent that resists silences and interrupts. new"><dt><a class="ge-t" href="#g-voice-of-truth">Voice of Truth</a></dt><dd><p class="ge-m"><a class="rp c-paladin" href="../classes/#paladin">Paladin</a><span class="vs vs-new">New</span></p><p>Holy talent that resists silences and interrupts.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-w" aria-label="W"><h3 class="gl-h" aria-hidden="true">W</h3><dl class="gl-list">
+      <div class="ge" id="g-walk-on-air" data-k="race" data-q="walk on air skyborne a controlled downward glide for 10 seconds; 90-second cooldown. new"><dt><a class="ge-t" href="#g-walk-on-air">Walk on Air</a></dt><dd><p class="ge-m"><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><span class="vs vs-new">New</span></p><p>A controlled downward glide for 10 seconds; 90-second cooldown.</p></dd></div>
+      <div class="ge" id="g-warcraft-forever-collection" data-k="world" data-q="warcraft forever collection the world a paid bundle, advertised as limited-time through january 11, 2027, that includes the collector&#x27;s edition companion trio and pachimari. new"><dt><a class="ge-t" href="#g-warcraft-forever-collection">Warcraft Forever Collection</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../companions/#g-paid">The world</a><span class="vs vs-new">New</span></p><p>A paid bundle, advertised as limited-time through January 11, 2027, that includes the Collector’s Edition companion trio and Pachimari.</p></dd></div>
+      <div class="ge" id="g-water-shield" data-k="class" data-q="water shield shaman restores mana, and can trigger from any shaman spell crit. new"><dt><a class="ge-t" href="#g-water-shield">Water Shield</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-new">New</span></p><p>Restores mana, and can trigger from any Shaman spell crit.</p></dd></div>
+      <div class="ge" id="g-waylaid-crates-and-merchants-favor" data-k="world" data-q="waylaid crates and merchant&#x27;s favor the world waylaid crates turn in to marcy baker at the azeroth commerce authority&#x27;s camp at three corners, redridge, for merchant&#x27;s favor. 1,500 favor, with revered, buys the minimule. new"><dt><a class="ge-t" href="#g-waylaid-crates-and-merchants-favor">Waylaid Crates and Merchant’s Favor</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../companions/#p-minimule">The world</a><span class="vs vs-new">New</span></p><p>Waylaid Crates turn in to Marcy Baker at the Azeroth Commerce Authority’s camp at Three Corners, Redridge, for Merchant’s Favor. 1,500 Favor, with Revered, buys the Minimule.</p></dd></div>
+      <div class="ge" id="g-weapon-imbues" data-k="class" data-q="weapon imbues shaman last much longer, and stack with temporary weapon enchants. changed"><dt><a class="ge-t" href="#g-weapon-imbues">Weapon imbues</a></dt><dd><p class="ge-m"><a class="rp c-shaman" href="../classes/#shaman">Shaman</a><span class="vs vs-changed">Changed</span></p><p>Last much longer, and stack with temporary weapon enchants.</p></dd></div>
+      <div class="ge" id="g-weapon-skill-racials" data-k="system" data-q="weapon-skill racials every class gone for good. blizzard keeps weapon specializations out so that loot isn&#x27;t judged by a race&#x27;s “required” weapon type. gone"><dt><a class="ge-t" href="#g-weapon-skill-racials">Weapon-skill racials</a></dt><dd><p class="ge-m"><a class="rp gk-system" href="../races/#top">Every class</a><span class="vs vs-gone">Gone</span></p><p>Gone for good. Blizzard keeps weapon specializations out so that loot isn’t judged by a race’s “required” weapon type.</p></dd></div>
+      <div class="ge" id="g-weaponmaster" data-k="class" data-q="weaponmaster warrior arms talent replacing the old sword, axe and mace specializations: axes and polearms favor crit, maces and staves armor penetration, and swords keep their extra attacks. new"><dt><a class="ge-t" href="#g-weaponmaster">Weaponmaster</a></dt><dd><p class="ge-m"><a class="rp c-warrior" href="../classes/#warrior">Warrior</a><span class="vs vs-new">New</span></p><p>Arms talent replacing the old sword, axe and mace specializations: axes and polearms favor crit, maces and staves armor penetration, and swords keep their extra attacks.</p></dd></div>
+      <div class="ge" id="g-wild-growth" data-k="class" data-q="wild growth druid restoration&#x27;s 31-point spell: heals several party or group members over time. new"><dt><a class="ge-t" href="#g-wild-growth">Wild Growth</a></dt><dd><p class="ge-m"><a class="rp c-druid" href="../classes/#druid">Druid</a><span class="vs vs-new">New</span></p><p>Restoration’s 31-point spell: heals several party or group members over time.</p></dd></div>
+      <div class="ge" id="g-will-to-survive" data-k="race" data-q="will to survive human removes all stun effects; 3-minute cooldown. new"><dt><a class="ge-t" href="#g-will-to-survive">Will to Survive</a></dt><dd><p class="ge-m"><a class="rp c-human" href="../races/#human">Human</a><span class="vs vs-new">New</span></p><p>Removes all Stun effects; 3-minute cooldown.</p></dd></div>
+      <div class="ge" id="g-wind-blessed" data-k="race" data-q="wind-blessed skyborne +2% melee, ranged and spellcasting haste. new"><dt><a class="ge-t" href="#g-wind-blessed">Wind-Blessed</a></dt><dd><p class="ge-m"><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><span class="vs vs-new">New</span></p><p>+2% melee, ranged and spellcasting haste.</p></dd></div>
+      <div class="ge" id="g-winters-chill" data-k="class" data-q="winter&#x27;s chill mage no longer a stacking frost crit debuff. frostbolt, frost blast and fingers-empowered ice lance build stacks that the next cone of cold consumes. changed"><dt><a class="ge-t" href="#g-winters-chill">Winter’s Chill</a></dt><dd><p class="ge-m"><a class="rp c-mage" href="../classes/#mage">Mage</a><span class="vs vs-changed">Changed</span></p><p>No longer a stacking Frost crit debuff. Frostbolt, Frost Blast and Fingers-empowered Ice Lance build stacks that the next Cone of Cold consumes.</p></dd></div>
+      <div class="ge" id="g-wisp-spirit" data-k="race" data-q="wisp spirit night elf +75% movement speed while dead, up from +50%. changed"><dt><a class="ge-t" href="#g-wisp-spirit">Wisp Spirit</a></dt><dd><p class="ge-m"><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a><span class="vs vs-changed">Changed</span></p><p>+75% movement speed while dead, up from +50%.</p></dd></div>
+      <div class="ge" id="g-wrack" data-k="class" data-q="wrack warlock affliction&#x27;s 31-point channel: a shadow filler that amplifies the dots already running. new"><dt><a class="ge-t" href="#g-wrack">Wrack</a></dt><dd><p class="ge-m"><a class="rp c-warlock" href="../classes/#warlock">Warlock</a><span class="vs vs-new">New</span></p><p>Affliction’s 31-point channel: a Shadow filler that amplifies the DoTs already running.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-y" aria-label="Y"><h3 class="gl-h" aria-hidden="true">Y</h3><dl class="gl-list">
+      <div class="ge" id="g-year-1" data-k="story" data-q="year 1 the story where forever picks up the story: after forsaken kingdom, before molten core, and before kazzak reopens the dark portal. new"><dt><a class="ge-t" href="#g-year-1">Year 1</a></dt><dd><p class="ge-m"><a class="rp gk-story" href="../lore/#year-one">The story</a><span class="vs vs-new">New</span></p><p>Where Forever picks up the story: after <i>Forsaken Kingdom</i>, before Molten Core, and before Kazzak reopens the Dark Portal.</p></dd></div>
+    </dl></section>
+    <section class="gl" id="gl-z" aria-label="Z"><h3 class="gl-h" aria-hidden="true">Z</h3><dl class="gl-list">
+      <div class="ge" id="g-zephras-isle" data-k="world" data-q="zephras isle the world a new zone, home of the nightclaw druids. blizzard gates the skyborne race and the island&#x27;s starting questline behind the skyborne heroic pack or higher; whether the rest of the island needs it isn&#x27;t settled. new"><dt><a class="ge-t" href="#g-zephras-isle">Zephras Isle</a></dt><dd><p class="ge-m"><a class="rp gk-world" href="../companions/#g-systems">The world</a><span class="vs vs-new">New</span></p><p>A new zone, home of the Nightclaw Druids. Blizzard gates the Skyborne race and the island’s starting questline behind the Skyborne Heroic Pack or higher; whether the rest of the island needs it isn’t settled.</p></dd></div>
+    </dl></section>
+  </div>
+</section>
+
+<!-- ======================= C. QUESTIONS ======================= -->
+<section class="sec" id="questions" aria-labelledby="questions-h">
+  <div class="sec-head">
+    <p class="label">appendix c</p>
+    <h2 id="questions-h">Questions veterans ask</h2>
+    <p>Short answers, each pointing to the page with the long one.</p>
+  </div>
+  <div class="qgroups">
+    <div class="qg">
+      <h3>The game</h3>
+      <div class="qs">
+        <article class="q" id="q-vanilla"><h4>Is Forever just Vanilla again?</h4><p>No. It keeps the old world, its pace and its rules: outdoor mobs still take 10–15 seconds to kill, and threat, crowd control, mana and positioning still matter. But classes, races and systems change wherever Vanilla was incomplete or awkward, and the story is free to go somewhere new.</p><a class="more" href="../classes/#top">The classes book</a></article>
+        <article class="q" id="q-retail"><h4>Is it Retail rewound, then?</h4><p>Not that either. New abilities rarely turn a class into Wrath, Cataclysm or modern rotational WoW. Mostly they add a meaningful action every few seconds, repair a broken resource loop, or give a spec a real capstone.</p><a class="more" href="../classes/#top">How the classes changed</a></article>
+        <article class="q" id="q-dates"><h4>When does it launch, and when do raids open?</h4><p>Launch is November 4, 2026. The first raid tier, Barrow Deeps, Hyjal Summit and Onyxia’s Lair, is scheduled for December 9.</p><a class="more" href="#patches">The patch log</a></article>
+        <article class="q" id="q-cap"><h4>What’s the level cap?</h4><p>60. Blizzard describes Forever as a permanent level-60 branch.</p><a class="more" href="#patches">The reveal, in the patch log</a></article>
+        <article class="q" id="q-dual"><h4>Is there dual spec?</h4><p>Yes, from level 40. It’s one of the biggest lifestyle changes for Paladins, Priests, Druids and Shamans.</p><a class="more" href="../classes/#systems">System changes</a></article>
+        <article class="q" id="q-downrank"><h4>Does downranking still work?</h4><p>Much less. Spells far below the caster’s level lose spell-power benefit and proc chances. Where the trick did something useful, a real spell replaces it, like the Mage’s Frost Blast.</p><a class="more" href="../classes/#systems">System changes</a></article>
+        <article class="q" id="q-buffs"><h4>Do buffs still have to be juggled across parties?</h4><p>Far less. Battle Shout, Trueshot Aura, Moonkin Aura, Leader of the Pack and four Shaman totems are raid-wide, and Salvation no longer competes with other Blessings.</p><a class="more" href="../classes/#systems">System changes</a></article>
+      </div>
+    </div>
+    <div class="qg">
+      <h3>Classes</h3>
+      <div class="qs">
+        <article class="q" id="q-most"><h4>Which classes changed the most?</h4><p>Paladin, Shaman and Druid, on the codex’s own reckoning. Hunter, Priest, Mage and Warlock gain distinct spec loops; Warrior and Rogue stay closest to their Classic originals.</p><a class="more" href="../classes/#dist-h">Distance from Vanilla</a></article>
+        <article class="q" id="q-taunt"><h4>Do Alliance Paladins finally have a taunt?</h4><p>Yes. Protection’s Seal of Fury has a Judgment that taunts, and Consecration is baseline at level 20.</p><a class="more" href="../classes/#paladin">The Paladin sheet</a></article>
+        <article class="q" id="q-shaman"><h4>Can the Alliance play Shaman?</h4><p>Yes, as Dwarves only, and the class is heavily redesigned besides: one-second totem globals, five-minute buff totems and presets that drop a whole set.</p><a class="more" href="../classes/#shaman">The Shaman sheet</a></article>
+        <article class="q" id="q-powershift"><h4>Is powershifting still a thing?</h4><p>Formalized. Tiger’s Fury is gone, and Shifting Power converts base mana into Energy on a cooldown, so the old trick is now a talent.</p><a class="more" href="../classes/#druid">The Druid sheet</a></article>
+        <article class="q" id="q-deadzone"><h4>Do Hunters still have a dead zone?</h4><p>Yes. Survival is built to move through the ranges with useful actions on both sides, not to erase range management.</p><a class="more" href="../classes/#hunter">The Hunter sheet</a></article>
+        <article class="q" id="q-final"><h4>Are the class numbers final?</h4><p>No. The October 16 build was the last with class changes, and Blizzard has said talents and abilities can keep moving. Mechanical identity is a better guide than a beta damage ranking.</p><a class="more" href="../classes/#choose">Choosing a path</a></article>
+      </div>
+    </div>
+    <div class="qg">
+      <h3>Races</h3>
+      <div class="qs">
+        <article class="q" id="q-human"><h4>Is Human still the melee race?</h4><p>No. Weapon-skill racials are gone for good: Human’s Sword and Mace Specialization became +1% crit with any weapon.</p><a class="more" href="../races/#human">The Human sheet</a></article>
+        <article class="q" id="q-fearward"><h4>Do raids still need Dwarf Priests for Fear Ward?</h4><p>No. Every Priest learns Fear Ward at level 20, and Devouring Plague is baseline too.</p><a class="more" href="../races/#dwarf">The Dwarf sheet</a></article>
+        <article class="q" id="q-pairs"><h4>Which race and class pairs are new?</h4><p>Human Hunter, Gnome Priest and Dwarf Shaman, plus the High Order Skyborne, who can be Warriors, Hunters, Rogues, Druids and Mages.</p><a class="more" href="../races/#glance">The five races</a></article>
+        <article class="q" id="q-skyborne-pack"><h4>Can any account play a Skyborne?</h4><p>No. Blizzard gates the Skyborne race, and the Zephras Isle starting questline, behind the Skyborne Heroic Pack or higher.</p><a class="more" href="../races/#skyborne">The Skyborne sheet</a></article>
+        <article class="q" id="q-draenei"><h4>Are Draenei or Worgen in?</h4><p>Not at launch, and none of Retail’s later Alliance races. Blizzard has said more race and class combinations can come later, which isn’t the same as new playable races.</p><a class="more" href="../races/#absent">Not on the roster</a></article>
+        <article class="q" id="q-meld"><h4>Is Shadowmeld a second Vanish now?</h4><p>No. In combat it works like Fade: threat and targeting relief, but no Stealth-required abilities.</p><a class="more" href="../races/#checks">Tooltip checks</a></article>
+        <article class="q" id="q-best"><h4>Which race is best?</h4><p>Too early to say. The final racial pass landed nine days before launch and no mature level-60 data exists; for most specs no race is wrong.</p><a class="more" href="../races/#by-class">Race leans by class</a></article>
+      </div>
+    </div>
+    <div class="qg">
+      <h3>Companions</h3>
+      <div class="qs">
+        <article class="q" id="q-ce"><h4>Can the Collector’s Edition pets be had now?</h4><p>Yes. Forever’s Skyborne Epic Pack and Warcraft Forever Collection include the Zergling, Panda Cub and Mini Diablo, along with the new Pachimari. The Collection is advertised through January 11, 2027; the Epic Pack has no stated end.</p><a class="more" href="../companions/#g-paid">Paid and subscription pets</a></article>
+        <article class="q" id="q-share"><h4>Do companions carry over between characters?</h4><p>Within the account, it seems: Wowhead’s Forever database flags many companions account-wide. Whether they cross factions isn’t confirmed, and Blizzard hasn’t published the rules.</p><a class="more" href="../companions/#changes">What changed</a></article>
+        <article class="q" id="q-rates"><h4>Are the old pet drop rates the same?</h4><p>Not all of them. On the beta, Cookie’s Siamese dropped about 9–10% of the time, against Classic’s 20%, while the Hyacinth Macaw stayed a one-in-several-thousand farm.</p><a class="more" href="../companions/#odds">The odds, measured</a></article>
+        <article class="q" id="q-battles"><h4>Are there pet battles?</h4><p>No. Forever’s companions are cosmetic and non-combat.</p><a class="more" href="../companions/">The companions book</a></article>
+      </div>
+    </div>
+    <div class="qg">
+      <h3>The story</h3>
+      <div class="qs">
+        <article class="q" id="q-tbc"><h4>Does Forever follow The Burning Crusade and Wrath?</h4><p>Not necessarily. Forever lives in its own time bubble: history up to early Year 1 is foundation, and the later expansions are precedent, not destiny. Blizzard hasn’t committed to replaying any of them.</p><a class="more" href="../lore/#assumptions">Three things not to assume</a></article>
+        <article class="q" id="q-hyjal"><h4>Could Forever change how the battle at Hyjal went?</h4><p>No. Archimonde’s defeat is already part of Forever’s history; the branch comes later.</p><a class="more" href="../lore/#third-war">The Third War</a></article>
+        <article class="q" id="q-skyborne"><h4>Who are the Skyborne?</h4><p>Descendants of Highborne rebels who fled Eldre’Thalas after the War of the Ancients, now losing their wind patrons. The High Order side with the Alliance.</p><a class="more" href="../lore/#skyborne">The Skyborne, briefly</a></article>
+      </div>
+    </div>
+    <div class="qg">
+      <h3>This codex</h3>
+      <div class="qs">
+        <article class="q" id="q-official"><h4>Is this official?</h4><p>No. It’s a fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p><a class="more" href="../">The title page</a></article>
+        <article class="q" id="q-current"><h4>How current is it?</h4><p>Each book carries its own date. The ledger at the top of this page lists them side by side, and the patch log shows what landed after each.</p><a class="more" href="#top">How current each book is</a></article>
+        <article class="q" id="q-missing"><h4>What isn’t covered yet?</h4><p>Dungeon and raid details, gear and stats, professions and PvP. The codex covers the Alliance side only.</p><a class="more" href="../">What’s different, area by area</a></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="next-book" aria-label="The first book">
+  <a class="nb frame" href="../lore/">
+    <span class="label">book i · back to the beginning</span>
+    <span class="nb-t">The Lore</span>
+    <span class="nb-s">What’s canon, what’s new and what’s still unwritten: the history Forever inherits, the page where it picks up the story, and the pages still blank.</span>
+    <span class="nb-arrow" aria-hidden="true">→</span>
+  </a>
+</nav>
+
+<footer class="foot">
+  <p>Compiled October 26, 2026 from the codex’s four books and their sources: Blizzard’s Forever recaps, class deep dives, dungeon and raid previews and development notes through the October 16 build, the October 26 racial tuning pass, and Wowhead’s Forever companion coverage.</p>
+  <p>The glossary covers names the books describe. A name with no definition here may simply not have been covered yet.</p>
+  <p>Part of the <a href="../">Forever Codex</a>. A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
+</footer>
+</main>
+
+<script>
+(function () {
+  var d = document;
+
+  // the patch log: upcoming dates count down
+  try {
+    var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    d.querySelectorAll(".hist li[data-date]").forEach(function (li) {
+      var p = li.dataset.date.split("-"), days = Math.round((new Date(+p[0], p[1] - 1, +p[2]) - today) / 864e5);
+      var cd = li.querySelector(".cd");
+      if (days < 0) { li.classList.remove("soon"); return; }
+      cd.textContent = days > 1 ? "in " + days + " days" : days === 1 ? "tomorrow" : "today";
+      cd.hidden = false;
+    });
+  } catch (e) {}
+
+  // the glossary: search and kinds
+  var entries = [].slice.call(d.querySelectorAll(".ge")), total = entries.length, kind = "all", q = "";
+  var input = d.getElementById("gfind"), count = d.getElementById("gcount"), none = d.getElementById("gnone");
+  var btns = [].slice.call(d.querySelectorAll(".kinds button"));
+  var letters = {};
+  [].forEach.call(d.querySelectorAll(".az a"), function (a) { letters[a.hash.slice(1)] = a; });
+  var apply = function () {
+    var n = 0;
+    entries.forEach(function (el) {
+      var ok = (kind === "all" || el.dataset.k === kind) && (!q || el.dataset.q.indexOf(q) !== -1);
+      el.hidden = !ok;
+      if (ok) n++;
+    });
+    d.querySelectorAll(".gl").forEach(function (g) {
+      var vis = g.querySelectorAll(".ge:not([hidden])").length;
+      g.hidden = vis === 0;
+      if (letters[g.id]) letters[g.id].classList.toggle("off", vis === 0);
+    });
+    count.textContent = n === total ? total + " terms" : n + " of " + total + " terms";
+    none.hidden = n > 0;
+  };
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      kind = b.dataset.k;
+      btns.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+      apply();
+    });
+  });
+  input.addEventListener("input", function () { q = input.value.trim().toLowerCase().replace(/[‘’]/g, "'"); apply(); });
+  // a link to a term always shows it, whatever the filter
+  var reveal = function () {
+    var t = location.hash && d.getElementById(location.hash.slice(1));
+    if (t && t.classList.contains("ge") && (t.hidden || t.closest(".gl").hidden)) {
+      kind = "all"; q = ""; input.value = "";
+      btns.forEach(function (o) { o.setAttribute("aria-pressed", String(o.dataset.k === "all")); });
+      apply(); t.scrollIntoView({ block: "center" });
+    }
+  };
+  window.addEventListener("hashchange", reveal);
+  apply();
+
+  // highlight the appendix in view
+  var links = [].slice.call(d.querySelectorAll(".bar .sec-link"));
+  if ("IntersectionObserver" in window) {
+    var byId = {};
+    links.forEach(function (a) { byId[a.hash.slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var a = byId[en.target.id] || null;
+        links.forEach(function (l) {
+          l.classList.toggle("active", l === a);
+          if (l === a) l.setAttribute("aria-current", "location"); else l.removeAttribute("aria-current");
+        });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    d.querySelectorAll("#top, main > section[id]").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+<script src="../codex.js"></script>
+</body>
+</html>

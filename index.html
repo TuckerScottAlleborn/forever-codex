@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
-<meta name="description" content="A codex to World of Warcraft: Forever for Warcraft veterans, in three books: the lore, on what’s canon and what’s still unwritten; the classes, on how the nine Alliance classes change against Vanilla; and the five Alliance races after the final racial pass.">
+<meta name="description" content="A codex for returning Warcraft veterans: what World of Warcraft: Forever changes against the Vanilla they remember. The story, the classes, the races and companion pets, area by area, with a briefing for every Alliance class and race, a patch log, a glossary and common questions.">
 <meta property="og:title" content="Forever Codex">
-<meta property="og:description" content="A codex to World of Warcraft: Forever for Warcraft veterans, in three books: the lore, on what’s canon and what’s still unwritten; the classes, on how the nine Alliance classes change against Vanilla; and the five Alliance races after the final racial pass.">
+<meta property="og:description" content="A codex for returning Warcraft veterans: what World of Warcraft: Forever changes against the Vanilla they remember. The story, the classes, the races and companion pets, area by area, with a briefing for every Alliance class and race.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Forever Codex">
 <meta property="og:url" content="https://tuckerscottalleborn.github.io/forever-codex/">
 <meta property="og:image" content="https://tuckerscottalleborn.github.io/forever-codex/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Forever Codex: an hourglass above its three books, The Lore, The Classes and The Races">
+<meta property="og:image:alt" content="Forever Codex, a codex for returning veterans: an hourglass above its four books, The Lore, The Classes, The Races and The Companions">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Forever Codex">
 <meta name="twitter:image" content="https://tuckerscottalleborn.github.io/forever-codex/og.png">
@@ -28,15 +28,17 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya:ital,wght@0,400;0,600;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&family=Alegreya+Sans:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="codex.css">
 <style>
-/* The codex's title page (tokens, frames and the masthead are in codex.css). A title, the
-   calendar Forever runs on, then one framed cover per book with its table of contents. A new
-   book is one more <article class="book"> in .books; the grid makes room for it. */
+/* The codex's landing page (tokens, frames and the masthead are in codex.css). Who it's for, the
+   calendar, what's different area by area (Vanilla beside Forever, each row pointing at its book),
+   a "coming back as" briefing for each class and race, then one framed cover per book and the
+   appendix. A new book is one more <article class="book"> in .books, and one more row in .diffs. */
 body.home {
   --atmos:
     radial-gradient(ellipse 70rem 34rem at 50% -12rem, color-mix(in oklab, var(--glow) 22%, transparent), transparent 70%),
     radial-gradient(ellipse 40rem 26rem at 100% 30rem, color-mix(in oklab, var(--alliance) 12%, transparent), transparent 70%),
     radial-gradient(ellipse 40rem 26rem at 0 34rem, color-mix(in oklab, var(--s-forever) 7%, transparent), transparent 70%);
 }
+html { scroll-padding-top: 1rem }
 .home-col { max-width: 80rem; margin-inline: auto }
 .home-col > .hero, .home-col > .cal { max-width: 66rem; margin-inline: auto }
 
@@ -44,9 +46,16 @@ body.home {
 .hero { padding-block: clamp(3rem, 8vw, 5.5rem) 0; display: grid; gap: 1.25rem; justify-items: center; text-align: center }
 .emblem { width: 4.25rem; height: 4.25rem; color: var(--bronze-hi); filter: drop-shadow(0 0 18px color-mix(in oklab, var(--glow) 45%, transparent)) }
 .hero .title { font-size: clamp(3rem, 1.8rem + 5.6vw, 5.6rem); line-height: 1 }
-.thesis { font-size: clamp(1.35rem, 1.1rem + 1.1vw, 1.8rem); line-height: 1.35; max-width: 32ch }
+.thesis { font-size: clamp(1.35rem, 1.1rem + 1.1vw, 1.8rem); line-height: 1.35; max-width: 34ch }
 .thesis em { color: var(--bronze-hi); font-style: normal }
-.lede { max-width: 60ch; color: var(--muted); font-size: 1.08rem; text-wrap: pretty }
+.lede { max-width: 62ch; color: var(--muted); font-size: 1.08rem; text-wrap: pretty }
+.hero-go { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin-top: .25rem }
+.hero-go a {
+  display: inline-flex; align-items: center; gap: .45rem; min-height: 2.6rem; padding: .35rem 1rem; border-radius: 3px; text-decoration: none;
+  font-family: var(--f-label); font-weight: 700; font-size: .95rem; letter-spacing: .05em; text-transform: lowercase;
+  color: var(--bronze-hi); border: 1px solid color-mix(in oklab, var(--bronze-hi) 45%, transparent); background: color-mix(in oklab, var(--bronze-hi) 8%, transparent);
+}
+.hero-go a:hover { background: color-mix(in oklab, var(--bronze-hi) 16%, transparent) }
 
 /* ---------- the calendar ---------- */
 .cal { margin-top: clamp(2.5rem, 6vw, 3.5rem); display: grid; gap: .9rem; justify-items: center }
@@ -72,22 +81,90 @@ body.home {
   .cal-rail span { max-width: none }
 }
 
+/* ---------- section heads ---------- */
+.part-h { margin-top: clamp(3.5rem, 8vw, 5rem); display: grid; gap: .45rem; justify-items: center; text-align: center }
+.part-h h2 { font-family: var(--f-caps); font-size: var(--step-3); color: var(--bronze-hi) }
+.part-h p:not(.label) { color: var(--muted); max-width: 60ch }
+
+/* ---------- what's different: Vanilla beside Forever ---------- */
+.diffs { list-style: none; margin: 1.75rem auto 0; padding: 0; display: grid; gap: 1rem; max-width: 70rem }
+.dr {
+  --dc: var(--bronze-hi);
+  display: grid; grid-template-columns: 15rem minmax(0, 1fr) 2rem minmax(0, 1fr); gap: .6rem 1rem; align-items: stretch;
+  padding: 1.1rem 1.25rem; border: 1px solid var(--line-soft); border-left: 3px solid var(--dc);
+  background: linear-gradient(90deg, color-mix(in oklab, var(--dc) 8%, var(--panel)), var(--panel) 40%);
+}
+.dr-h { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: .1rem .75rem; align-content: start; align-items: center }
+.dr-ic { grid-row: 1 / span 2; width: 2.6rem; height: 2.6rem; padding: .55rem; border-radius: 50%; color: var(--dc); border: 2px solid color-mix(in oklab, var(--dc) 65%, transparent); background: var(--bg) }
+.dr-h h3 { font-family: var(--f-caps); font-size: 1.3rem; line-height: 1.15; color: var(--ink) }
+.dr-go { font-family: var(--f-label); font-weight: 700; font-size: .84rem; letter-spacing: .04em; text-transform: lowercase; color: var(--dc); text-decoration: none; align-self: start }
+.dr-go:hover { text-decoration: underline; text-underline-offset: 3px }
+.dr-was, .dr-now { display: grid; gap: .3rem; align-content: start; min-width: 0 }
+.dr-l { font-family: var(--f-label); font-weight: 700; font-size: .76rem; letter-spacing: .08em; text-transform: lowercase }
+.dr-was .dr-l { color: var(--pc1) }
+.dr-now .dr-l { color: var(--s-forever) }
+.dr-was p { color: var(--muted); font-size: 1rem }
+.dr-now p { font-size: 1rem }
+.dr-arrow { align-self: center; justify-self: center; font-family: var(--f-ui); font-size: 1.5rem; color: var(--bronze) }
+.diffs-f { margin: 1rem auto 0; max-width: 70rem; font-family: var(--f-ui); font-size: .95rem; color: var(--muted); text-align: center }
+.diffs-f a { color: var(--bronze-hi); text-underline-offset: 3px }
+@media (max-width: 56rem) {
+  .dr { grid-template-columns: minmax(0, 1fr) }
+  .dr-arrow { display: none }
+  .dr-h { grid-template-columns: 2.3rem minmax(0, 1fr) }
+  .dr-ic { width: 2.3rem; height: 2.3rem; padding: .45rem }
+}
+
+/* ---------- coming back as ---------- */
+.back { margin: 1.75rem auto 0; max-width: 70rem; display: grid; gap: 1rem }
+.pick { display: grid; gap: .6rem; justify-items: center }
+.pick-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 5px }
+.pick-l { width: 100%; text-align: center; font-family: var(--f-label); font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: lowercase; color: var(--muted) }
+.pick .slot { width: 2.9rem; height: 2.9rem }
+/* nine classes always fit one row, as on the classes book's bar */
+@media (max-width: 40rem) { .pick .slot { width: min(2.9rem, calc((100vw - 32px - 48px) / 9)); height: auto; aspect-ratio: 1 } }
+.pick .slot.active { box-shadow: inset 0 0 0 2px var(--bronze-hi), 0 0 14px -2px var(--bronze-hi); transform: translateY(-2px) }
+.brief {
+  display: grid; gap: 1.1rem; padding: clamp(1.2rem, 3vw, 1.6rem); min-width: 0;
+  border: 1px solid color-mix(in oklab, var(--cc) 35%, var(--line-soft)); border-top: 3px solid var(--cc);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--cc) 8%, var(--panel)), var(--panel) 50%);
+}
+.js-pick .brief { display: none }
+.js-pick .brief.on { display: grid }
+.brief-h { display: flex; gap: 1rem; align-items: center }
+.brief-h .slot { width: 3.6rem; height: 3.6rem; flex: none }
+.brief-h h3 { font-family: var(--f-caps); font-size: var(--step-3); line-height: 1.05; color: var(--cc-ink) }
+.brief-sub { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .7rem; margin-top: .3rem; font-family: var(--f-ui); font-size: .92rem; color: var(--muted) }
+.brief-sub b { color: var(--cc-ink); font-weight: 700 }
+.xp { width: 6.5rem; height: .75rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 2px; background: #000; border: 1px solid var(--line); border-radius: 2px }
+.xp i { display: block; background: color-mix(in oklab, var(--cc) 12%, #1a1a1a) }
+.xp i.on { background: linear-gradient(180deg, color-mix(in oklab, var(--cc) 75%, #fff), var(--cc) 55%, color-mix(in oklab, var(--cc) 60%, #000)) }
+.xp i.half { background: linear-gradient(90deg, var(--cc) 50%, color-mix(in oklab, var(--cc) 12%, #1a1a1a) 50%) }
+.brief-cols { display: grid; gap: 1.1rem 1.6rem; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) minmax(0, 1fr) }
+.brief-cols > div { display: grid; gap: .4rem; align-content: start; padding-top: .7rem; border-top: 2px solid color-mix(in oklab, var(--cc) 45%, transparent) }
+.brief-cols h4 { font-family: var(--f-label); font-weight: 700; font-size: .82rem; letter-spacing: .08em; text-transform: lowercase; color: var(--cc-ink) }
+.brief-cols p, .brief-cols li { font-size: 1rem; line-height: 1.5 }
+.brief-cols ul { margin: 0; padding-left: 1.05rem; display: grid; gap: .35rem }
+.brief-cols li::marker { color: var(--cc) }
+@media (max-width: 52rem) { .brief-cols { grid-template-columns: minmax(0, 1fr) } }
+.brief-f { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .8rem 1.5rem; padding-top: .9rem; border-top: 1px solid var(--line-soft) }
+.brief-f .leans { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem }
+.brief-f .leans .label { margin-right: .3rem }
+.brief-f small { font-family: var(--f-ui); font-size: .85rem; color: var(--muted) }
+.brief-f .go { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem }
+.brief-f .go a { font-family: var(--f-ui); font-weight: 500; color: var(--bronze-hi); text-underline-offset: 3px }
+
 /* ---------- the books ---------- */
-.books-h { margin-top: clamp(3.5rem, 8vw, 5rem); display: flex; align-items: center; gap: 1rem; justify-content: center }
-.books-h::before, .books-h::after { content: ""; flex: 1; max-width: 12rem; height: 1px; background: linear-gradient(90deg, transparent, var(--line)) }
-.books-h::after { background: linear-gradient(90deg, var(--line), transparent) }
-/* one column, then two with the third book across both, then three */
-.books { margin-top: 1.5rem; display: grid; gap: 1.75rem; grid-template-columns: minmax(0, 1fr) }
+.books { margin-top: 1.75rem; display: grid; gap: 1.75rem; grid-template-columns: minmax(0, 1fr) }
 @media (min-width: 52rem) { .books { grid-template-columns: repeat(2, minmax(0, 1fr)) } .books > .book:nth-child(odd):last-child { grid-column: 1 / -1 } }
-@media (min-width: 72rem) { .books { grid-template-columns: repeat(3, minmax(0, 1fr)) } .books > .book:nth-child(odd):last-child { grid-column: auto } }
-.book { align-content: start }
 .book {
   --bk: var(--bronze-hi);
-  display: grid; gap: 1.25rem; padding: clamp(1.25rem, 3vw, 1.75rem); min-width: 0;
+  display: grid; gap: 1.25rem; padding: clamp(1.25rem, 3vw, 1.75rem); min-width: 0; align-content: start;
   background: radial-gradient(ellipse 34rem 14rem at 50% 0, color-mix(in oklab, var(--bk) 13%, transparent), transparent 72%), var(--panel);
 }
 .bk-cls { --bk: var(--f-alliance) }
 .bk-race { --bk: var(--races) }
+.bk-pets { --bk: var(--pets) }
 .cover { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .25rem 1.1rem; align-items: center; text-decoration: none; color: inherit }
 .cover-motif {
   grid-row: 1 / span 2; width: 4rem; height: 4rem; padding: .85rem; border-radius: 50%; color: var(--bk);
@@ -95,10 +172,10 @@ body.home {
   box-shadow: 0 0 0 4px var(--panel), 0 0 22px -6px var(--bk);
 }
 .cover .label { color: var(--bk); align-self: end }
-.cover h2 { font-family: var(--f-caps); font-size: var(--step-3); line-height: 1.05; color: var(--ink); align-self: start; display: flex; align-items: baseline; gap: .6rem }
-.cover h2 i { font-style: normal; font-family: var(--f-ui); font-size: 1.5rem; color: var(--bk); transition: transform .15s }
-.cover:hover h2 span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; text-decoration-color: var(--bk) }
-.cover:hover h2 i { transform: translateX(4px) }
+.cover h3 { font-family: var(--f-caps); font-size: var(--step-3); line-height: 1.05; color: var(--ink); align-self: start; display: flex; align-items: baseline; gap: .6rem }
+.cover h3 i { font-style: normal; font-family: var(--f-ui); font-size: 1.5rem; color: var(--bk); transition: transform .15s }
+.cover:hover h3 span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; text-decoration-color: var(--bk) }
+.cover:hover h3 i { transform: translateX(4px) }
 .book-thesis { font-size: 1.12rem; line-height: 1.45; font-style: italic; padding-bottom: 1rem; border-bottom: 1px solid var(--line-soft) }
 .book-thesis em { font-style: normal; color: var(--bk) }
 
@@ -117,7 +194,7 @@ body.home {
 .spoil-n { display: inline-flex; align-items: center; gap: .3em; margin-left: .35rem; font-family: var(--f-label); font-weight: 700; font-size: .78rem; letter-spacing: .06em; text-transform: lowercase; color: var(--s-warn); white-space: nowrap }
 .spoil-n::before { content: ""; width: 1.1em; height: 1.1em; background: currentColor; -webkit-mask: var(--i-spoil) center / contain no-repeat; mask: var(--i-spoil) center / contain no-repeat }
 
-/* the nine class sheets, as an action bar */
+/* the class and race sheets, as an action bar */
 .toc .sheets { padding: .7rem 0 .8rem; display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: .5rem .5rem }
 .sheets .rn { grid-row: 1 / span 2 }
 .sheets-t { text-decoration: none; color: inherit; align-self: center }
@@ -126,6 +203,14 @@ body.home {
 .sheets .slots.five { --k: 5 }
 .sheets .slot { width: auto; height: auto; aspect-ratio: 1 }
 @media (max-width: 26rem) { .sheets .slot kbd { display: none } }
+
+/* ---------- the back of the book ---------- */
+.bm { margin-top: 1.75rem; padding: .4rem clamp(1rem, 3vw, 1.5rem); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 0 1.5rem }
+.bm a { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: .05rem .6rem; padding: 1rem 0; text-decoration: none; color: inherit }
+.bm .rn { grid-row: 1 / span 2; width: 2rem; height: 2rem; display: grid; place-items: center; border-radius: 50%; border: 2px solid var(--bronze); color: var(--bronze-hi); font-family: var(--f-caps); font-size: .95rem }
+.bm b { font-family: var(--f-display); font-weight: 400; font-size: 1.2rem; color: var(--ink) }
+.bm span:last-child { font-family: var(--f-ui); font-size: .95rem; color: var(--muted) }
+.bm a:hover b { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--bronze) }
 </style>
 </head>
 <body class="home">
@@ -141,6 +226,15 @@ body.home {
       <path d="M6.5 3.5a2 2 0 0 0-2 2v1.5h4V5.5a2 2 0 0 0-2-2zM6.5 20.5a2 2 0 0 1-2-2V17h4v1.5a2 2 0 0 1-2 2z" fill="currentColor"/>
       <path d="M6.5 7v10M11 8.5h5M11 12h5M11 15.5h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     </symbol>
+    <symbol id="i-door" viewBox="0 0 24 24">
+      <path d="M4.5 21.5V11a7.5 7.5 0 0 1 15 0v10.5z" fill="currentColor" opacity=".18"/>
+      <path d="M4.5 21.5V11a7.5 7.5 0 0 1 15 0v10.5M2.5 21.5h19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M8.5 21.5V12a3.5 3.5 0 0 1 7 0v9.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    </symbol>
+    <symbol id="i-tree" viewBox="0 0 24 24">
+      <path d="M12 6.5v4.5M12 11l-6.5 5.2M12 11l6.5 5.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      <circle cx="12" cy="4.6" r="2.6" fill="currentColor"/><circle cx="5.3" cy="18.2" r="2.6" fill="currentColor"/><circle cx="18.7" cy="18.2" r="2.6" fill="currentColor"/>
+    </symbol>
     <symbol id="i-crest" viewBox="0 0 24 24">
       <path d="M12 2.2 L21.8 12 L12 21.8 L2.2 12 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
       <path d="M12 7.1 L16.9 12 L12 16.9 L7.1 12 Z" fill="currentColor"/>
@@ -148,6 +242,13 @@ body.home {
     <symbol id="i-banner" viewBox="0 0 24 24">
       <path d="M6 2.5v19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
       <path d="M6.9 3.5h12l-2.6 4.2 2.6 4.3h-12z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="15.9" rx="5" ry="4.2" fill="currentColor"/>
+      <ellipse cx="5.4" cy="10.7" rx="2.05" ry="2.6" transform="rotate(-20 5.4 10.7)" fill="currentColor"/>
+      <ellipse cx="9.5" cy="6.6" rx="2.1" ry="2.7" transform="rotate(-7 9.5 6.6)" fill="currentColor"/>
+      <ellipse cx="14.5" cy="6.6" rx="2.1" ry="2.7" transform="rotate(7 14.5 6.6)" fill="currentColor"/>
+      <ellipse cx="18.6" cy="10.7" rx="2.05" ry="2.6" transform="rotate(20 18.6 10.7)" fill="currentColor"/>
     </symbol>
     <symbol id="i-human" viewBox="0 0 24 24"><path d="M12 2.5 L20 5.5 V11.5 C20 16.5 16.6 20 12 21.5 C7.4 20 4 16.5 4 11.5 V5.5 Z" fill="currentColor"/><path d="M12 6.5v10M8 10.5h8" stroke="#07090e" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-dwarf" viewBox="0 0 24 24"><path d="M2.5 7.5h12.5c0 2.6 2.2 4.2 6.5 4.2V13.6h-6l-1.3 3.4h2.8v2.5H7v-2.5h2.8L8.5 13.6H6.2C4 13.6 2.5 11.2 2.5 7.5z" fill="currentColor"/></symbol>
@@ -166,7 +267,7 @@ body.home {
     <symbol id="i-druid" viewBox="0 0 24 24"><path d="M5 19 C5 9 11 4 20 4 C20 13 15 19 5 19 Z" fill="currentColor"/><path d="M5 19 L14 10" stroke="#07090e" stroke-width="1.4" stroke-linecap="round"/></symbol>
   </defs>
 </svg>
-<a class="skip" href="#books">Skip to the books</a>
+<a class="skip" href="#different">Skip to what’s different</a>
 
 <header class="mast">
   <div class="mast-in">
@@ -175,6 +276,8 @@ body.home {
       <a href="lore/"><span class="bk-n">I</span>Lore</a>
       <a href="classes/"><span class="bk-n">II</span>Classes</a>
       <a href="races/"><span class="bk-n">III</span>Races</a>
+      <a href="companions/"><span class="bk-n">IV</span><span class="lg">Companions</span><span class="sh">Pets</span></a>
+      <a href="appendix/">Appendix</a>
     </nav>
   </div>
 </header>
@@ -182,10 +285,11 @@ body.home {
 <main class="home-col">
   <header class="hero">
     <svg class="emblem" aria-hidden="true"><use href="#i-glass"/></svg>
-    <p class="label">world of warcraft: forever · a codex for veterans</p>
+    <p class="label">world of warcraft: forever · for returning veterans</p>
     <h1 class="title">Forever Codex</h1>
-    <p class="thesis">The old world on a new branch: its story is <em>precedent, not destiny</em>, and its classes are <em>Classic, finished</em>.</p>
-    <p class="lede">Forever isn’t Vanilla again, and it isn’t retail rewound. It keeps the world and the history Warcraft veterans know, then lets both move. This codex reads it in three books: the lore, on what’s canon and what’s still unwritten; the classes, on how the nine Alliance classes play against Vanilla; and the races, on what each Alliance race is for now that weapon skill is gone.</p>
+    <p class="thesis">A codex for veterans coming back to Azeroth: <em>what’s different</em>, set beside the Vanilla they remember.</p>
+    <p class="lede">Forever isn’t Vanilla again, and it isn’t Retail rewound. It keeps the old world, its rules and its history, then changes them on purpose. Each book here takes one part of the game and reads it against Vanilla: the story, the classes, the races and the companion pets. A patch log, a glossary and the common questions sit at the back.</p>
+    <p class="hero-go"><a href="#different">What’s different</a><a href="#returning">Coming back as…</a><a href="#books">The books</a></p>
   </header>
 
   <section class="cal" aria-labelledby="cal-h">
@@ -198,14 +302,227 @@ body.home {
     </ol>
   </section>
 
-  <h2 class="books-h label" id="books">the books</h2>
-  <div class="books">
+  <!-- ======================= WHAT'S DIFFERENT ======================= -->
+  <section id="different" aria-labelledby="diff-h">
+    <div class="part-h">
+      <p class="label">vanilla, then forever</p>
+      <h2 id="diff-h">What’s different, area by area</h2>
+      <p>Six places where a veteran’s memory will mislead, each with the book that sets it straight.</p>
+    </div>
+    <ol class="diffs">
+      <li class="dr">
+        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-scroll"/></svg><h3>The story</h3><a class="dr-go" href="lore/">book i · the lore →</a></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>One road ahead: Molten Core, then the Dark Portal, Outland and Northrend.</p></div>
+        <span class="dr-arrow" aria-hidden="true">→</span>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>Its own time bubble from early Year 1. The old history stands, and what came after it in Retail is precedent, not destiny.</p></div>
+      </li>
+      <li class="dr">
+        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-door"/></svg><h3>The world</h3><a class="dr-go" href="lore/#waiting">book i · what’s waiting →</a></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Closed gates and unfinished roads: Hyjal off-limits, Dalaran behind its barrier, Alcaz Prison shut.</p></div>
+        <span class="dr-arrow" aria-hidden="true">→</span>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>New ground in Hyjal, Riverglades and Zephras Isle, nine new dungeons, and a first raid tier on December 9: Barrow Deeps, Hyjal Summit and Onyxia’s Lair.</p></div>
+      </li>
+      <li class="dr" style="--dc: var(--f-alliance)">
+        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-tree"/></svg><h3>The rules</h3><a class="dr-go" href="classes/#systems">book ii · system changes →</a></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Separate physical and spell hit and crit, downranking, party-only auras and totems, and a respec bill for every hybrid.</p></div>
+        <span class="dr-arrow" aria-hidden="true">→</span>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>Merged hit and crit, downranking curtailed, raid-wide buffs, dual spec at level 40 and a new 16-point talent milestone.</p></div>
+      </li>
+      <li class="dr" style="--dc: var(--f-alliance)">
+        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-crest"/></svg><h3>The classes</h3><a class="dr-go" href="classes/">book ii · the classes →</a></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Specs that barely did their advertised job: Protection Paladins without a taunt, Feral weapons as stat sticks, Arcane and Survival as support trees.</p></div>
+        <span class="dr-arrow" aria-hidden="true">→</span>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>A Classic skeleton with complete specs: Seal of Fury taunts, Feral damage scales with the weapon, Arcane Blast builds an engine and Survival fights in melee.</p></div>
+      </li>
+      <li class="dr" style="--dc: var(--races)">
+        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-banner"/></svg><h3>The races</h3><a class="dr-go" href="races/">book iii · the races →</a></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Weapon skill and resistances decided it: Humans for swords, Dwarves for Fear Ward, Gnomes for Intellect.</p></div>
+        <span class="dr-arrow" aria-hidden="true">→</span>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>Weapon skill is gone and every Priest learns Fear Ward. Each race carries a kind of power, with Dwarf Shaman, Human Hunter, Gnome Priest and the new Skyborne.</p></div>
+      </li>
+      <li class="dr" style="--dc: var(--pets)">
+        <div class="dr-h"><svg class="dr-ic" aria-hidden="true"><use href="#i-paw"/></svg><h3>The companions</h3><a class="dr-go" href="companions/">book iv · the companions →</a></div>
+        <div class="dr-was"><span class="dr-l">in vanilla</span><p>Bag-space vanity items, a few brutal world drops, and the Collector’s Edition trio out of reach for good.</p></div>
+        <span class="dr-arrow" aria-hidden="true">→</span>
+        <div class="dr-now"><span class="dr-l">in forever</span><p>Learned, account-wide companions, new ones from rares, quests, emotes, Legacy and reputation, a Black Market Auction House, and the Zergling, Panda Cub and Mini Diablo sold again.</p></div>
+      </li>
+    </ol>
+    <p class="diffs-f">Not yet covered: dungeon and raid details, gear and stats, professions and PvP. The codex covers the Alliance side. <a href="appendix/#patches">The patch log</a> dates every change it draws on.</p>
+  </section>
+
+  <!-- ======================= COMING BACK AS ======================= -->
+  <section id="returning" aria-labelledby="back-h">
+    <div class="part-h">
+      <p class="label">picking up an old main</p>
+      <h2 id="back-h">Coming back as…</h2>
+      <p>A short briefing for each Alliance class and race: what still holds, what changed most, and what to relearn first.</p>
+    </div>
+    <div class="back">
+      <nav class="pick" aria-label="Choose a class or race">
+        <p class="pick-l">class</p>
+        <div class="pick-row">
+          <a class="slot c-warrior" href="#as-warrior"><svg aria-hidden="true"><use href="#i-warrior"/></svg><span class="sr">Warrior</span></a>
+          <a class="slot c-paladin" href="#as-paladin"><svg aria-hidden="true"><use href="#i-paladin"/></svg><span class="sr">Paladin</span></a>
+          <a class="slot c-hunter" href="#as-hunter"><svg aria-hidden="true"><use href="#i-hunter"/></svg><span class="sr">Hunter</span></a>
+          <a class="slot c-rogue" href="#as-rogue"><svg aria-hidden="true"><use href="#i-rogue"/></svg><span class="sr">Rogue</span></a>
+          <a class="slot c-priest" href="#as-priest"><svg aria-hidden="true"><use href="#i-priest"/></svg><span class="sr">Priest</span></a>
+          <a class="slot c-shaman" href="#as-shaman"><svg aria-hidden="true"><use href="#i-shaman"/></svg><span class="sr">Shaman</span></a>
+          <a class="slot c-mage" href="#as-mage"><svg aria-hidden="true"><use href="#i-mage"/></svg><span class="sr">Mage</span></a>
+          <a class="slot c-warlock" href="#as-warlock"><svg aria-hidden="true"><use href="#i-warlock"/></svg><span class="sr">Warlock</span></a>
+          <a class="slot c-druid" href="#as-druid"><svg aria-hidden="true"><use href="#i-druid"/></svg><span class="sr">Druid</span></a>
+        </div>
+        <p class="pick-l">race</p>
+        <div class="pick-row">
+          <a class="slot c-human" href="#as-human"><svg aria-hidden="true"><use href="#i-human"/></svg><span class="sr">Human</span></a>
+          <a class="slot c-dwarf" href="#as-dwarf"><svg aria-hidden="true"><use href="#i-dwarf"/></svg><span class="sr">Dwarf</span></a>
+          <a class="slot c-nightelf" href="#as-nightelf"><svg aria-hidden="true"><use href="#i-nightelf"/></svg><span class="sr">Night Elf</span></a>
+          <a class="slot c-gnome" href="#as-gnome"><svg aria-hidden="true"><use href="#i-gnome"/></svg><span class="sr">Gnome</span></a>
+          <a class="slot c-skyborne" href="#as-skyborne"><svg aria-hidden="true"><use href="#i-skyborne"/></svg><span class="sr">High Order Skyborne</span></a>
+        </div>
+      </nav>
+    <article class="brief c-warrior" id="as-warrior" aria-labelledby="as-warrior-h">
+      <header class="brief-h"><span class="slot c-warrior"><svg aria-hidden="true"><use href="#i-warrior"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-warrior-h">Warrior</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="half"></i><i></i><i></i></span><span>Distance from Vanilla: <b>Low–moderate</b></span></p></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>Rage, stances, weapon swings and threat all still need managing. Of the nine classes, Warrior changes least in concept.</p></div>
+        <div><h4>changed most</h4><ul><li>Rage from damage taken is counted before armor and absorbs, so better gear or a Priest’s shield no longer starves it.</li><li>Tactical Mastery is baseline at 14, and Victory Rush at 20 heals 10% of max health after a kill.</li><li>Recklessness, Retaliation and Shield Wall stop sharing a cooldown, and Battle Shout is raid-wide.</li><li>Arms’ Weaponmaster replaces the old weapon specializations, so no weapon type is the wrong one.</li></ul></div>
+        <div><h4>relearn first</h4><p>Arms around Overpower, Rend and Slam, with Rend enabling Overpower; Fury around Raging Blows, a better dual-wield Whirlwind and cheaper Cleave.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-dwarf" href="races/#dwarf">Dwarf</a><a class="rp c-skyborne" href="races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="races/#nightelf">Night Elf</a></div><p class="go"><a href="classes/#warrior">The Warrior sheet →</a><a href="races/#by-warrior">Race leans by spec →</a></p></footer>
+    </article>
+    <article class="brief c-paladin" id="as-paladin" aria-labelledby="as-paladin-h">
+      <header class="brief-h"><span class="slot c-paladin"><svg aria-hidden="true"><use href="#i-paladin"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-paladin-h">Paladin</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span>Distance from Vanilla: <b>Very high</b></span></p></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>Slow, mana-hungry, seal-and-judgment Paladin.</p></div>
+        <div><h4>changed most</h4><ul><li>Judgment no longer consumes the Seal, ending the judge-and-reseal routine.</li><li>Holy Strike comes early, and Consecration is baseline at 20, at full strength on the first four targets.</li><li>Protection’s Seal of Fury has a Judgment that taunts: an Alliance Paladin finally has a real taunt.</li><li>Salvation no longer takes a Blessing slot.</li></ul></div>
+        <div><h4>relearn first</h4><p>Retribution’s Twist of Light makes seal twisting a talent, and Holy now runs on Holy Shock, with Light’s Vigil at 31.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-dwarf" href="races/#dwarf">Dwarf</a><a class="rp c-human" href="races/#human">Human</a></div><p class="go"><a href="classes/#paladin">The Paladin sheet →</a><a href="races/#by-paladin">Race leans by spec →</a></p></footer>
+    </article>
+    <article class="brief c-hunter" id="as-hunter" aria-labelledby="as-hunter-h">
+      <header class="brief-h"><span class="slot c-hunter"><svg aria-hidden="true"><use href="#i-hunter"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-hunter-h">Hunter</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span>Distance from Vanilla: <b>High</b></span></p></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>Old-school Hunter rules: the dead zone, half a second standing still for Auto Shot, and shot timing.</p></div>
+        <div><h4>changed most</h4><ul><li>Every Hunter learns Aimed Shot at 20, sharing a cooldown with Multi-Shot, not Arcane Shot.</li><li>Traps work in combat, with one Fire and one Ice trap active at once.</li><li>Pets inherit stats from the Hunter’s gear, and every family has its own utility ability.</li><li>Survival is a melee and ranged hybrid; Marksmanship’s Lone Wolf rewards leaving the pet behind.</li></ul></div>
+        <div><h4>relearn first</h4><p>Pet family choice, which matters more than in Vanilla, and Survival’s close-range play around Mongoose Bite and Strider Kick.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-nightelf" href="races/#nightelf">Night Elf</a><a class="rp c-skyborne" href="races/#skyborne">Skyborne</a><a class="rp c-dwarf" href="races/#dwarf">Dwarf</a></div><p class="go"><a href="classes/#hunter">The Hunter sheet →</a><a href="races/#by-hunter">Race leans by spec →</a></p></footer>
+    </article>
+    <article class="brief c-rogue" id="as-rogue" aria-labelledby="as-rogue-h">
+      <header class="brief-h"><span class="slot c-rogue"><svg aria-hidden="true"><use href="#i-rogue"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-rogue-h">Rogue</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span><span>Distance from Vanilla: <b>Moderate</b></span></p></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>Energy, combo points, positionals, poisons, stealth and control.</p></div>
+        <div><h4>changed most</h4><ul><li>Poisons carry more charges and stack with sharpening and weight stones.</li><li>Sap no longer breaks Stealth, and one-handed axes are usable.</li><li>Expose Armor equals five Sunders and no longer blocks Sunder Armor.</li><li>Assassination becomes the dagger and poison spec, with Mutilate at 21 and the Venom finisher at 31.</li></ul></div>
+        <div><h4>relearn first</h4><p>Assassination’s upkeep of Slice and Dice and Venom, and Subtlety’s Hemorrhage, which now feeds the Rogue’s own Rupture.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-dwarf" href="races/#dwarf">Dwarf</a><a class="rp c-skyborne" href="races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="races/#nightelf">Night Elf</a></div><p class="go"><a href="classes/#rogue">The Rogue sheet →</a><a href="races/#by-rogue">Race leans by spec →</a></p></footer>
+    </article>
+    <article class="brief c-priest" id="as-priest" aria-labelledby="as-priest-h">
+      <header class="brief-h"><span class="slot c-priest"><svg aria-hidden="true"><use href="#i-priest"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-priest-h">Priest</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span>Distance from Vanilla: <b>High</b></span></p></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>Classic mana management and cast speed.</p></div>
+        <div><h4>changed most</h4><ul><li>Fear Ward and Devouring Plague are for every Priest, and Divine Spirit and Shadow Word: Death are baseline.</li><li>Discipline is a shield-healing and damage-weaving spec, built on Penance and Divine Aegis.</li><li>Holy gains Binding Heal and Prayer of Mending; Lightwell is gone.</li><li>Shadow Weaving is a personal buff, and Vampiric Embrace an activated cooldown.</li></ul></div>
+        <div><h4>relearn first</h4><p>Discipline, the spec veterans most need to relearn: Power in Light ties Smite and Penance to targets carrying Holy Fire or Shadow Word: Pain.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-gnome" href="races/#gnome">Gnome</a><a class="rp c-human" href="races/#human">Human</a><a class="rp c-nightelf" href="races/#nightelf">Night Elf</a><a class="rp c-dwarf" href="races/#dwarf">Dwarf</a></div><p class="go"><a href="classes/#priest">The Priest sheet →</a><a href="races/#by-priest">Race leans by spec →</a></p></footer>
+    </article>
+    <article class="brief c-shaman" id="as-shaman" aria-labelledby="as-shaman-h">
+      <header class="brief-h"><span class="slot c-shaman"><svg aria-hidden="true"><use href="#i-shaman"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-shaman-h">Shaman</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span>Distance from Vanilla: <b>Very high</b></span></p></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>Totems still get placed and thought about.</p></div>
+        <div><h4>changed most</h4><ul><li>New to the Alliance, as Dwarf Shaman.</li><li>Totems use a one-second global cooldown, buff totems last five minutes, and three Call presets drop a whole set.</li><li>Grace of Air, Strength of Earth, Windfury and Flametongue are raid-wide.</li><li>Elemental gets Lava Burst and Elemental Mastery, Enhancement Maelstrom Weapon, Restoration Riptide.</li></ul></div>
+        <div><h4>relearn first</h4><p>The totem bar itself, even for anyone who has played a Shaman before: Totemic Recall, Totemic Projection and the presets replace the four-global totem piano.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-dwarf" href="races/#dwarf">Dwarf</a> <small>the only Alliance Shaman race</small></div><p class="go"><a href="classes/#shaman">The Shaman sheet →</a><a href="races/#by-shaman">Race leans by spec →</a></p></footer>
+    </article>
+    <article class="brief c-mage" id="as-mage" aria-labelledby="as-mage-h">
+      <header class="brief-h"><span class="slot c-mage"><svg aria-hidden="true"><use href="#i-mage"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-mage-h">Mage</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span>Distance from Vanilla: <b>High</b></span></p></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>The Classic control chassis: Blink, Polymorph, Counterspell, Frost Nova and Classic casting.</p></div>
+        <div><h4>changed most</h4><ul><li>Frostfire Bolt at 40 counts as both Fire and Frost.</li><li>Rank 1 Frostbolt is penalized; Frost Blast at 24 keeps its slow.</li><li>Arcane is a real damage spec: Arcane Blast stacks spell power against a rising mana cost.</li><li>Fire runs on Heating Up and Pyroblast; Frost on Fingers of Frost, Ice Lance and a redesigned Winter’s Chill.</li></ul></div>
+        <div><h4>relearn first</h4><p>Big pulls: Improved Blizzard slows less, and Cone of Cold’s full control reaches only the first four targets.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-skyborne" href="races/#skyborne">Skyborne</a><a class="rp c-gnome" href="races/#gnome">Gnome</a><a class="rp c-human" href="races/#human">Human</a></div><p class="go"><a href="classes/#mage">The Mage sheet →</a><a href="races/#by-mage">Race leans by spec →</a></p></footer>
+    </article>
+    <article class="brief c-warlock" id="as-warlock" aria-labelledby="as-warlock-h">
+      <header class="brief-h"><span class="slot c-warlock"><svg aria-hidden="true"><use href="#i-warlock"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-warlock-h">Warlock</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span>Distance from Vanilla: <b>High</b></span></p></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>The Classic Warlock toolbox. Vanilla Warlock already worked.</p></div>
+        <div><h4>changed most</h4><ul><li>Curse of Agony and Curse of Doom become Banes, separate from utility Curses; Curse of Shadow is gone.</li><li>Life Tap scales with Spirit, and Firestones and Spellstones are imbues that stack with oils.</li><li>Demonology’s Demonic Pact keeps one demon’s sacrifice bonus with another demon out.</li><li>Destruction gets Incinerate as a real Fire filler, and Bane of Havoc for two-target cleave.</li></ul></div>
+        <div><h4>relearn first</h4><p>Where each tree ends: Affliction in Wrack and critting DoTs, Demonology with the demon, Destruction in Immolate and Incinerate.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-gnome" href="races/#gnome">Gnome</a><a class="rp c-human" href="races/#human">Human</a></div><p class="go"><a href="classes/#warlock">The Warlock sheet →</a><a href="races/#by-warlock">Race leans by spec →</a></p></footer>
+    </article>
+    <article class="brief c-druid" id="as-druid" aria-labelledby="as-druid-h">
+      <header class="brief-h"><span class="slot c-druid"><svg aria-hidden="true"><use href="#i-druid"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-druid-h">Druid</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span>Distance from Vanilla: <b>Very high</b></span></p></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>Vanilla Druid: forms, HoTs, Healing Touch and slow-cast Balance.</p></div>
+        <div><h4>changed most</h4><ul><li>Shapeshifted damage scales with the weapon’s DPS, and weapon effects work in forms.</li><li>Tiger’s Fury is replaced by Shifting Power, which turns base mana into Energy: powershifting as a talent.</li><li>Omen of Clarity is baseline at 20, Barkskin works in forms, and Druids get an out-of-combat Revive.</li><li>Swiftmend no longer consumes its HoT, and Wild Growth sits at 31.</li></ul></div>
+        <div><h4>relearn first</h4><p>Feral around Primal Bite and Berserk, and Balance’s Eclipse, where Wrath shortens the next Starfires.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-skyborne" href="races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="races/#nightelf">Night Elf</a></div><p class="go"><a href="classes/#druid">The Druid sheet →</a><a href="races/#by-druid">Race leans by spec →</a></p></footer>
+    </article>
+    <article class="brief c-human" id="as-human" aria-labelledby="as-human-h">
+      <header class="brief-h"><span class="slot c-human"><svg aria-hidden="true"><use href="#i-human"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-human-h">Human</h3></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>Perception, for stealth detection.</p></div>
+        <div><h4>changed most</h4><ul><li>Sword and Mace Specialization become Ruthless: +1% crit with any weapon.</li><li>The Human Spirit doubles to +10% Spirit.</li><li>Diplomacy is gone: no automatic +10% reputation.</li><li>Will to Survive, a new stun break.</li></ul></div>
+        <div><h4>relearn first</h4><p>No longer the default melee race: now the broad PvP pick, and a coherent Spirit-healing Priest.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">plays</span><a class="rp c-warrior" href="classes/#warrior">Warrior</a><a class="rp c-paladin" href="classes/#paladin">Paladin</a><a class="rp c-hunter" href="classes/#hunter">Hunter <small>new</small></a><a class="rp c-rogue" href="classes/#rogue">Rogue</a><a class="rp c-priest" href="classes/#priest">Priest</a><a class="rp c-mage" href="classes/#mage">Mage</a><a class="rp c-warlock" href="classes/#warlock">Warlock</a></div><p class="go"><a href="races/#human">The Human sheet →</a></p></footer>
+    </article>
+    <article class="brief c-dwarf" id="as-dwarf" aria-labelledby="as-dwarf-h">
+      <header class="brief-h"><span class="slot c-dwarf"><svg aria-hidden="true"><use href="#i-dwarf"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-dwarf-h">Dwarf</h3></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>Stoneform, now the cleanest defensive cooldown on the Alliance.</p></div>
+        <div><h4>changed most</h4><ul><li>Gun Specialization and Frost Resistance are gone.</li><li>Artisan’s Precision: +1% hit with spells and attacks.</li><li>Stoneform cuts Physical damage by 10% instead of adding armor.</li><li>Big Game Hunter adds 5% damage against Beasts, and Find Treasure can turn up extra chest loot.</li></ul></div>
+        <div><h4>relearn first</h4><p>No longer the Fear Ward race, and now the only Alliance Shaman race.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">plays</span><a class="rp c-warrior" href="classes/#warrior">Warrior</a><a class="rp c-paladin" href="classes/#paladin">Paladin</a><a class="rp c-hunter" href="classes/#hunter">Hunter</a><a class="rp c-rogue" href="classes/#rogue">Rogue</a><a class="rp c-priest" href="classes/#priest">Priest</a><a class="rp c-shaman" href="classes/#shaman">Shaman <small>new</small></a></div><p class="go"><a href="races/#dwarf">The Dwarf sheet →</a></p></footer>
+    </article>
+    <article class="brief c-nightelf" id="as-nightelf" aria-labelledby="as-nightelf-h">
+      <header class="brief-h"><span class="slot c-nightelf"><svg aria-hidden="true"><use href="#i-nightelf"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-nightelf-h">Night Elf</h3></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>Shadowmeld, and Quickness’s dodge.</p></div>
+        <div><h4>changed most</h4><ul><li>Elune’s Light: +10% crit for 15 seconds, every 3 minutes.</li><li>Shadowmeld works in combat, like Fade rather than Vanish.</li><li>Quickness adds 2% movement speed, and Wisp Spirit rises to +75%.</li><li>Nature Resistance is gone.</li></ul></div>
+        <div><h4>relearn first</h4><p>Combat Shadowmeld opens no Stealth-only abilities: there’s no Retail-style restealth.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">plays</span><a class="rp c-warrior" href="classes/#warrior">Warrior</a><a class="rp c-hunter" href="classes/#hunter">Hunter</a><a class="rp c-rogue" href="classes/#rogue">Rogue</a><a class="rp c-priest" href="classes/#priest">Priest</a><a class="rp c-druid" href="classes/#druid">Druid</a></div><p class="go"><a href="races/#nightelf">The Night Elf sheet →</a></p></footer>
+    </article>
+    <article class="brief c-gnome" id="as-gnome" aria-labelledby="as-gnome-h">
+      <header class="brief-h"><span class="slot c-gnome"><svg aria-hidden="true"><use href="#i-gnome"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-gnome-h">Gnome</h3></div></header>
+      <div class="brief-cols">
+        <div><h4>still holds</h4><p>Escape Artist, for roots and snares.</p></div>
+        <div><h4>changed most</h4><ul><li>Expansive Mind: +5% maximum Mana, Energy or Rage, not +5% Intellect.</li><li>Eureka!: 8 seconds of cheaper, stronger damaging abilities, every 2 minutes.</li><li>Escape Artist is instant, with 3 seconds of immunity.</li><li>Engineering Specialization means 20% fewer device failures, not +15 skill; Arcane Resistance is gone.</li></ul></div>
+        <div><h4>relearn first</h4><p>Gnome Priest is new, with Confounding Flash and Contingency Plan, and among the strongest-looking Alliance Priests.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">plays</span><a class="rp c-warrior" href="classes/#warrior">Warrior</a><a class="rp c-rogue" href="classes/#rogue">Rogue</a><a class="rp c-priest" href="classes/#priest">Priest <small>new</small></a><a class="rp c-mage" href="classes/#mage">Mage</a><a class="rp c-warlock" href="classes/#warlock">Warlock</a></div><p class="go"><a href="races/#gnome">The Gnome sheet →</a></p></footer>
+    </article>
+    <article class="brief c-skyborne" id="as-skyborne" aria-labelledby="as-skyborne-h">
+      <header class="brief-h"><span class="slot c-skyborne"><svg aria-hidden="true"><use href="#i-skyborne"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-skyborne-h">Skyborne</h3><p class="brief-sub"><span>High Order Skyborne, new in Forever</span></p></div></header>
+      <div class="brief-cols">
+        <div><h4>who they are</h4><p>An entirely new race: descendants of Highborne rebels who fled Eldre’Thalas after the War of the Ancients. The High Order side with the Alliance.</p></div>
+        <div><h4>what they bring</h4><ul><li>Wind-Blessed: +2% haste, always on.</li><li>Read Leyline: regeneration anywhere, doubled once Attuned at a Ley Line.</li><li>Walk on Air: a 10-second glide, every 90 seconds.</li><li>Elemental Insight: +5% damage against Elementals.</li></ul></div>
+        <div><h4>worth knowing</h4><p>Playing one needs the Skyborne Heroic Pack or higher, per Blizzard. Its racials are also the ones whose level-60 value most needs testing after launch.</p></div>
+      </div>
+      <footer class="brief-f"><div class="leans"><span class="label">plays</span><a class="rp c-warrior" href="classes/#warrior">Warrior</a><a class="rp c-hunter" href="classes/#hunter">Hunter</a><a class="rp c-rogue" href="classes/#rogue">Rogue</a><a class="rp c-mage" href="classes/#mage">Mage</a><a class="rp c-druid" href="classes/#druid">Druid</a></div><p class="go"><a href="races/#skyborne">The Skyborne sheet →</a></p></footer>
+    </article>
+    </div>
+  </section>
+
+  <!-- ======================= THE BOOKS ======================= -->
+  <section id="books" aria-labelledby="books-h">
+    <div class="part-h">
+      <p class="label">the books</p>
+      <h2 id="books-h">Four books</h2>
+      <p>Each one stands alone, and each links into the others where they meet.</p>
+    </div>
+    <div class="books">
 
     <article class="book bk-lore frame" aria-labelledby="bk1-h">
       <a class="cover" href="lore/">
         <svg class="cover-motif" aria-hidden="true"><use href="#i-scroll"/></svg>
         <span class="label">book i · lore and canon</span>
-        <h2 id="bk1-h"><span>The Lore</span><i aria-hidden="true">→</i></h2>
+        <h3 id="bk1-h"><span>The Lore</span><i aria-hidden="true">→</i></h3>
       </a>
       <p class="book-thesis">History up to Year 1 is <em>foundation</em>. Everything after it is <em>precedent, not destiny</em>.</p>
       <ol class="toc" aria-label="The Lore: contents">
@@ -220,7 +537,7 @@ body.home {
       <a class="cover" href="classes/">
         <svg class="cover-motif" aria-hidden="true"><use href="#i-crest"/></svg>
         <span class="label">book ii · alliance classes</span>
-        <h2 id="bk2-h"><span>The Classes</span><i aria-hidden="true">→</i></h2>
+        <h3 id="bk2-h"><span>The Classes</span><i aria-hidden="true">→</i></h3>
       </a>
       <p class="book-thesis">A <em>Classic skeleton</em> with more complete specs and less mandatory jank.</p>
       <ol class="toc" aria-label="The Classes: contents">
@@ -251,7 +568,7 @@ body.home {
       <a class="cover" href="races/">
         <svg class="cover-motif" aria-hidden="true"><use href="#i-banner"/></svg>
         <span class="label">book iii · alliance races</span>
-        <h2 id="bk3-h"><span>The Races</span><i aria-hidden="true">→</i></h2>
+        <h3 id="bk3-h"><span>The Races</span><i aria-hidden="true">→</i></h3>
       </a>
       <p class="book-thesis">Weapon skill is gone for good. A race now picks <em>a kind of power</em>, not a weapon.</p>
       <ol class="toc" aria-label="The Races: contents">
@@ -274,20 +591,43 @@ body.home {
       </ol>
     </article>
 
-  </div>
+    <article class="book bk-pets frame" aria-labelledby="bk4-h">
+      <a class="cover" href="companions/">
+        <svg class="cover-motif" aria-hidden="true"><use href="#i-paw"/></svg>
+        <span class="label">book iv · companion pets</span>
+        <h3 id="bk4-h"><span>The Companions</span><i aria-hidden="true">→</i></h3>
+      </a>
+      <p class="book-thesis">The Vanilla menagerie is still here. <em>The collection built around it is new.</em></p>
+      <ol class="toc" aria-label="The Companions: contents">
+        <li style="--pc: var(--pets)"><a href="companions/#changes"><span class="rn">I</span><b>What changed</b><span>Learned companions, the Collector’s Edition trio, new sources and moved odds</span></a></li>
+        <li style="--pc: var(--pets)"><a href="companions/#catalog"><span class="rn">II</span><b>The catalog</b><span>Sixty-four companions within Alliance reach, as a checklist, with the beta’s drop counts</span></a></li>
+        <li style="--pc: var(--pets)"><a href="companions/#route"><span class="rn">III</span><b>Collecting in order</b><span>An Alliance route, and the pets easiest to miss</span></a></li>
+        <li class="dash" style="--pc: var(--pets)"><a href="companions/#tiers"><span class="rn">✦</span><b>Difficulty and the unsolved</b><span>Effort tiers, and 23 companions nobody can get yet</span></a></li>
+      </ol>
+    </article>
+
+    </div>
+
+    <nav class="bm frame" aria-label="The appendix">
+      <a href="appendix/#patches"><span class="rn">A</span><b>The patch log</b><span>Every dated change, from the reveal to the first raids</span></a>
+      <a href="appendix/#glossary"><span class="rn">B</span><b>The glossary</b><span>Forever’s new and changed names, each against Vanilla</span></a>
+      <a href="appendix/#questions"><span class="rn">C</span><b>Questions veterans ask</b><span>Short answers, pointing to the long ones</span></a>
+    </nav>
+  </section>
 
   <footer class="foot">
-    <p>Compiled in October 2026 from Blizzard’s Forever recaps, class deep dives and dungeon and raid previews, beta development notes through the October 16 build, the October 26 racial tuning pass, and <i>Warcraft III Reforged: Forsaken Kingdom</i>. Each book lists its own sources.</p>
+    <p>Compiled in October 2026 from Blizzard’s Forever recaps, class deep dives and dungeon and raid previews, beta development notes through the October 16 build, the October 26 racial tuning pass, Wowhead’s Forever companion coverage, and <i>Warcraft III Reforged: Forsaken Kingdom</i>. Each book lists its own sources.</p>
     <p>A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
   </footer>
 </main>
 
 <script>
-// the calendar: past dates fill in, the next one glows and counts down
 (function () {
+  var d = document;
+  // the calendar: past dates fill in, the next one glows and counts down
   try {
     var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate()), next = null;
-    document.querySelectorAll(".cal-rail li[data-date]").forEach(function (li) {
+    d.querySelectorAll(".cal-rail li[data-date]").forEach(function (li) {
       var p = li.dataset.date.split("-"), day = new Date(+p[0], p[1] - 1, +p[2]);
       var days = Math.round((day - today) / 864e5), cd = li.querySelector(".cd");
       if (days < 0) { li.classList.add("past"); return; }
@@ -295,6 +635,28 @@ body.home {
       if (cd) { cd.textContent = days > 1 ? "in " + days + " days" : days === 1 ? "tomorrow" : "today"; cd.hidden = false; }
     });
   } catch (e) {}
+
+  // coming back as: one briefing at a time; without this script, all of them show
+  var tabs = [].slice.call(d.querySelectorAll(".pick a")), briefs = [].slice.call(d.querySelectorAll(".brief"));
+  if (!tabs.length || !briefs.length) return;
+  d.documentElement.classList.add("js-pick");
+  var show = function (id) {
+    briefs.forEach(function (b) { b.classList.toggle("on", b.id === id); });
+    tabs.forEach(function (t) {
+      var on = t.hash.slice(1) === id;
+      t.classList.toggle("active", on);
+      if (on) t.setAttribute("aria-current", "true"); else t.removeAttribute("aria-current");
+    });
+  };
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      show(t.hash.slice(1));
+      try { history.replaceState(null, "", t.hash); } catch (e) {}
+    });
+  });
+  var h = location.hash.slice(1);
+  show(briefs.some(function (b) { return b.id === h; }) ? h : briefs[0].id);
 })();
 </script>
 </body>

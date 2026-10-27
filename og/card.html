@@ -29,15 +29,16 @@
     background: linear-gradient(180deg, #f4c76b, #cf9a52 75%); -webkit-background-clip: text; background-clip: text; color: transparent;
     filter: drop-shadow(0 3px 0 rgba(0,0,0,.6));
   }
-  .books { position: absolute; left: 80px; right: 80px; bottom: 84px; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 26px; text-align: center }
+  .books { position: absolute; left: 62px; right: 62px; bottom: 80px; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; align-items: center; gap: 16px; text-align: center }
   .bk { display: grid; gap: 4px }
-  .bk .n { font-family: "Alegreya Sans SC", sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .14em; text-transform: lowercase }
-  .bk b { font-family: "Marcellus SC", Georgia, serif; font-weight: 400; font-size: 46px; line-height: 1.05 }
-  .bk i { font-size: 23px; color: #b9ae96 }
+  .bk .n { font-family: "Alegreya Sans SC", sans-serif; font-weight: 700; font-size: 18px; letter-spacing: .14em; text-transform: lowercase }
+  .bk b { font-family: "Marcellus SC", Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1.05; white-space: nowrap }
+  .bk i { font-size: 20px; color: #b9ae96 }
   .lore .n, .lore b { color: #f4c76b }
   .cls .n, .cls b { color: #8fb0f2 }
   .race .n, .race b { color: #c39af2 }
-  .sep { width: 18px; height: 18px; background: #cf9a52; transform: rotate(45deg); box-shadow: 0 0 0 7px #0d0c14, 0 0 0 9px rgba(207,154,82,.45) }
+  .pets .n, .pets b { color: #84d39c }
+  .sep { width: 14px; height: 14px; background: #cf9a52; transform: rotate(45deg); box-shadow: 0 0 0 6px #0d0c14, 0 0 0 8px rgba(207,154,82,.45) }
 </style>
 </head>
 <body>
@@ -48,15 +49,17 @@
     <path d="M7 4.5c0 4.6 4.2 6 4.2 7.5S7 14.9 7 19.5h10c0-4.6-4.2-6-4.2-7.5S17 9.1 17 4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
     <path d="M8.7 7h6.6c-.7 1.8-2.5 2.9-3.3 4.3C11.2 9.9 9.4 8.8 8.7 7zM8.4 19.5c.4-2.3 2.2-3.5 3.6-3.8 1.4.3 3.2 1.5 3.6 3.8z" fill="currentColor"/>
   </svg>
-  <div class="eyebrow">world of warcraft: forever · a codex for veterans</div>
+  <div class="eyebrow">world of warcraft: forever · for returning veterans</div>
   <h1>Forever Codex</h1>
 </div>
 <div class="books">
-  <div class="bk lore"><span class="n">book i</span><b>The Lore</b><i>precedent, not destiny</i></div>
+  <div class="bk lore"><span class="n">book i</span><b>Lore</b><i>precedent, not destiny</i></div>
   <span class="sep"></span>
-  <div class="bk cls"><span class="n">book ii</span><b>The Classes</b><i>Classic, finished</i></div>
+  <div class="bk cls"><span class="n">book ii</span><b>Classes</b><i>Classic, finished</i></div>
   <span class="sep"></span>
-  <div class="bk race"><span class="n">book iii</span><b>The Races</b><i>a kind of power</i></div>
+  <div class="bk race"><span class="n">book iii</span><b>Races</b><i>a kind of power</i></div>
+  <span class="sep"></span>
+  <div class="bk pets"><span class="n">book iv</span><b>Companions</b><i>a new collection</i></div>
 </div>
 </body>
 </html>

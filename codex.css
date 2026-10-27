@@ -19,6 +19,7 @@ img,svg{max-width:100%}
   --glow: #cf9a52;
   --alliance: #3a6cd0;
   --races: #c39af2;
+  --pets: #84d39c;
   /* the lore book's three parts: sepia past, bright present, misty future */
   --pc1: #c9b085;
   --pc2: #ffc85e;
@@ -71,7 +72,7 @@ img,svg{max-width:100%}
   :root:not([data-theme="dark"]) {
     --bg: #ebdfc3; --panel: #f5ecd6; --panel-2: #e9dab6; --ink: #2a1c0e; --muted: #6b583c;
     --bronze: #8a5414; --bronze-hi: #7a4300; --line: color-mix(in oklab, #8a5414 40%, transparent);
-    --line-soft: color-mix(in oklab, #8a5414 18%, transparent); --glow: #b8792a; --alliance: #1f478f; --races: #6b3fa5;
+    --line-soft: color-mix(in oklab, #8a5414 18%, transparent); --glow: #b8792a; --alliance: #1f478f; --races: #6b3fa5; --pets: #2c6b40;
     --pc1: #6e5a3a; --pc2: #8c4a00; --pc3: #0b6b78;
     --s-found: #8a5a12; --s-bridge: #6b3fa5; --s-forever: #0b6b78; --s-unspec: #4a5880; --s-other: #6c645a;
     --s-warn: #8a4c00; --s-bad: #a82a1d; --s-theory: #6b5530;
@@ -84,7 +85,7 @@ img,svg{max-width:100%}
 :root[data-theme="light"] {
   --bg: #ebdfc3; --panel: #f5ecd6; --panel-2: #e9dab6; --ink: #2a1c0e; --muted: #6b583c;
   --bronze: #8a5414; --bronze-hi: #7a4300; --line: color-mix(in oklab, #8a5414 40%, transparent);
-  --line-soft: color-mix(in oklab, #8a5414 18%, transparent); --glow: #b8792a; --alliance: #1f478f; --races: #6b3fa5;
+  --line-soft: color-mix(in oklab, #8a5414 18%, transparent); --glow: #b8792a; --alliance: #1f478f; --races: #6b3fa5; --pets: #2c6b40;
   --pc1: #6e5a3a; --pc2: #8c4a00; --pc3: #0b6b78;
   --s-found: #8a5a12; --s-bridge: #6b3fa5; --s-forever: #0b6b78; --s-unspec: #4a5880; --s-other: #6c645a;
   --s-warn: #8a4c00; --s-bad: #a82a1d; --s-theory: #6b5530;
@@ -192,6 +193,16 @@ a { color: inherit }
 .mast-books a:hover { color: var(--ink) }
 .mast-books a[aria-current="page"] { color: var(--bronze-hi); border-color: color-mix(in oklab, var(--bronze-hi) 40%, transparent); background: color-mix(in oklab, var(--bronze-hi) 9%, transparent) }
 .mast-books .bk-n { font-family: var(--f-caps); font-weight: 400; letter-spacing: 0; opacity: .8 }
+.mast-books .sh { display: none }
+/* on a phone the books take their own row, numerals and long names folded away; it scrolls if it still can't fit */
+@media (max-width: 40rem) {
+  .mast-books { width: 100%; margin: 0 -.4rem .1rem; justify-content: space-between; overflow-x: auto; scrollbar-width: none }
+  .mast-books::-webkit-scrollbar { display: none }
+  .mast-books a { flex: none; padding-inline: .4rem; min-height: 2.4rem }
+  .mast-books .bk-n, .mast-books .lg { display: none }
+  .mast-books .sh { display: inline }
+}
+@media (max-width: 22rem) { .mast-books a { padding-inline: .25rem; letter-spacing: .03em } }
 
 /* ---------- the sticky bar's shell; each book fills it with its own navigation ---------- */
 .bar {
@@ -245,6 +256,19 @@ a { color: inherit }
 }
 a.rp:hover { background: color-mix(in oklab, var(--cc) 22%, transparent) }
 .rp small { font-family: var(--f-ui); font-weight: 500; font-size: .8rem; letter-spacing: 0; color: var(--muted) }
+
+/* how something compares with Vanilla: shape and word, never colour alone */
+.vs {
+  --v: var(--s-found);
+  display: inline-flex; align-items: center; gap: .35em; white-space: nowrap; border-radius: 999px; padding: 0 .6em .05em;
+  font-family: var(--f-label); font-weight: 700; font-size: .74rem; letter-spacing: .06em; text-transform: lowercase; line-height: 1.5;
+  color: var(--v); border: 1px solid color-mix(in oklab, var(--v) 50%, transparent); background: color-mix(in oklab, var(--v) 12%, transparent);
+}
+.vs::before { content: ""; width: .5em; height: .5em; background: currentColor; transform: rotate(45deg) }
+.vs-new { --v: var(--s-forever) } .vs-new::before { width: .8em; height: .8em; transform: none; clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%) }
+.vs-kept { --v: var(--s-found) }
+.vs-changed { --v: var(--s-warn) } .vs-changed::before { content: "↻"; width: auto; height: auto; background: none; transform: none; font-size: 1.1em; line-height: 1 }
+.vs-gone { --v: var(--s-bad) } .vs-gone::before { content: "×"; width: auto; height: auto; background: none; transform: none; font-size: 1.15em; line-height: 1 }
 
 /* ---------- action-bar slots: the class icons, an in-game object ---------- */
 .slot {
