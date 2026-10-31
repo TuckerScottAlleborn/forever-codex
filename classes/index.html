@@ -30,7 +30,8 @@
 <style>
 /* Book II of the Forever Codex (tokens, frames, masthead and the bar's shell are in codex.css).
    Layout: Alliance UI frame. A hero codex plate, a sticky 1–9 action bar, then one
-   "character sheet" per class (crest + ledger aside, spec column), ending in a choose-your-path board. */
+   "character sheet" per class (crest + ledger aside, spec column), a leveling-speed table,
+   and a choose-your-path board to end. */
 body.classes {
   --atmos: radial-gradient(ellipse 80rem 40rem at 50% -10rem, color-mix(in oklab, var(--alliance) 22%, transparent), transparent 70%);
 }
@@ -192,6 +193,65 @@ h1, h2, h3, h4 { font-family: var(--f-caps) }
 .verdict { padding: clamp(1.5rem, 4vw, 2.5rem); display: grid; gap: 1rem; text-align: left }
 .verdict p.big { font-family: var(--f-display); font-size: var(--step-2); line-height: 1.3; color: var(--bronze-hi); max-width: 34ch }
 .verdict p { max-width: 66ch }
+
+/* ---------- leveling speed: a table of tiers, and a strip of them on each class sheet ---------- */
+/* tier gems, coloured like item quality from common to epic: in-game objects, the same in both themes */
+.pt {
+  display: inline-grid; place-items: center; flex: none; width: 2rem; height: 2rem; border-radius: 4px;
+  font-family: var(--f-display); font-size: 1.15rem; line-height: 1; font-weight: 400; color: #fff;
+  border: 1px solid #000; text-shadow: 0 1px 1px rgba(0,0,0,.65);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -1px 0 rgba(0,0,0,.3), 0 1px 0 #000;
+}
+.t-s { background: linear-gradient(160deg, #d9a3ff, #a335ee 50%, #561591) }
+.t-a { background: linear-gradient(160deg, #78bbff, #0070dd 50%, #00397a) }
+.t-b { background: linear-gradient(160deg, #b4ff9e, #1ec700 50%, #0a5e00); color: #051a00; text-shadow: 0 1px 0 rgba(255,255,255,.35) }
+.t-c { background: linear-gradient(160deg, #fff, #d4d4d4 50%, #8c8c8c); color: #15161b; text-shadow: 0 1px 0 rgba(255,255,255,.6) }
+/* where Forever moves a class, its Vanilla tier stands before it as an outline, then an arrow */
+.tv { display: inline-flex; align-items: center; gap: .25rem }
+.pv {
+  display: inline-grid; place-items: center; flex: none; width: 1.2rem; height: 1.2rem; border-radius: 3px;
+  border: 1px solid color-mix(in oklab, var(--muted) 75%, transparent); font-family: var(--f-display); font-size: .78rem; line-height: 1; color: var(--muted);
+}
+.pv-to { font-family: var(--f-ui); font-size: .8rem; line-height: 1; color: var(--muted) }
+.pace-key { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; align-items: center; font-family: var(--f-ui); font-size: .95rem; color: var(--muted) }
+.pace-key li { display: inline-flex; align-items: center; gap: .5rem }
+.pace-key .pt { width: 1.7rem; height: 1.7rem; font-size: 1rem }
+.pace-t { padding: 1.1rem 1.25rem 1.2rem; min-width: 0 }
+.pace { width: 100%; border-collapse: collapse; font-family: var(--f-ui); font-size: .96rem; line-height: 1.45 }
+.pace col.k-cls { width: 9.5rem } .pace col.k-t { width: 4.4rem } .pace col.k-all { width: 6.4rem }
+.pace th, .pace td { text-align: left; vertical-align: middle; padding: .7rem .9rem .7rem 0; border-top: 1px solid var(--line-soft) }
+.pace th:last-child, .pace td:last-child { padding-right: 0 }
+.pace thead th { border-top: 0; padding-top: 0; font-family: var(--f-label); font-weight: 700; font-size: .76rem; letter-spacing: .07em; text-transform: lowercase; color: var(--muted) }
+.pace .t { text-align: center; white-space: nowrap }
+.pace .all { padding-left: .9rem; border-left: 1px solid var(--line-soft) }
+.pace tbody th { font-family: var(--f-display); font-weight: 400; font-size: 1.08rem; white-space: nowrap }
+.pace .cl { display: inline-flex; align-items: center; gap: .6rem; color: var(--cc-ink); text-decoration: none }
+.pace .cl .slot { width: 2.1rem; height: 2.1rem }
+.pace .cl:hover span:last-child { text-decoration: underline; text-underline-offset: 3px }
+.pace td.why { color: var(--muted) }
+/* on narrower screens each class becomes a card: name, the four tiers in a row, then why */
+@media (max-width: 52rem) {
+  .pace, .pace tbody { display: block }
+  .pace thead, .pace colgroup { display: none }
+  .pace tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.4fr); gap: .65rem .5rem; padding: 1rem 0; border-top: 1px solid var(--line-soft) }
+  .pace tbody tr:first-child { border-top: 0; padding-top: .15rem }
+  .pace th, .pace td { display: block; border: 0; padding: 0 }
+  .pace tbody th, .pace td.why { grid-column: 1 / -1 }
+  .pace td.t { display: grid; justify-items: center; align-content: start; gap: .3rem }
+  .pace td.t::before { content: attr(data-l); font-family: var(--f-label); font-weight: 700; font-size: .74rem; letter-spacing: .07em; color: var(--muted) }
+  .pace td.all { padding-left: 0; border-left: 1px solid var(--line-soft) }
+  .pace .pt { width: 1.85rem; height: 1.85rem }
+  .pace .tv { gap: .18rem }
+  .pace .pv { width: 1.05rem; height: 1.05rem; font-size: .7rem }
+}
+.pace-n p { font-size: 1rem }
+.pace-s { display: grid; gap: .45rem; justify-items: start }
+.pace-l { list-style: none; margin: 0; padding: 0; display: flex; gap: .6rem; align-items: end }
+.pace-l li { display: grid; justify-items: center; gap: .25rem }
+.pace-l li > span:first-child { font-family: var(--f-label); font-weight: 700; font-size: .72rem; letter-spacing: .06em; color: var(--muted) }
+.pace-l li.all { padding-left: .7rem; border-left: 1px solid var(--line-soft) }
+.pace-l .pt { width: 1.8rem; height: 1.8rem; font-size: 1.02rem }
+.pace-s .xref { font-size: .95rem }
 
 /* ---------- podcast ---------- */
 .i-pause { display: none }
@@ -405,6 +465,7 @@ body.player-open { padding-bottom: 6rem }
   <aside class="cls-aside">
     <div class="crest"><span class="slot c-warrior"><svg><use href="#i-warrior"/></svg><kbd>1</kbd></span><div><h2 id="warrior-h">Warrior</h2><p class="specs-l">Arms · Fury · Protection</p></div></div>
     <div class="dist"><span class="xp"><i class="on"></i><i class="half"></i><i></i><i></i></span><p><span>Distance from Vanilla</span><b>Low–moderate</b></p></div>
+    <div class="pace-s"><p class="label">leveling speed</p><ol class="pace-l"><li><span>1–20</span><b class="pt t-c">C</b></li><li><span>20–40</span><b class="pt t-c">C</b></li><li><span>40–60</span><b class="pt t-b">B</b></li><li class="all"><span>1–60</span><b class="pt t-c">C</b></li></ol><a class="xref" href="#leveling">Every class, bracket by bracket</a></div>
     <button type="button" class="listen" data-ch="warrior" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Warrior chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>Warrior is the pick for a player who specifically doesn’t want Forever to feel like another expansion’s class design. Rage, stances, weapon swings and threat all still need managing. Forever mostly removes the places where Vanilla Warrior fought its own mechanics.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a></div><a class="xref" href="../races/#by-warrior">Spec by spec, in the races book</a></div>
@@ -452,6 +513,7 @@ body.player-open { padding-bottom: 6rem }
   <aside class="cls-aside">
     <div class="crest"><span class="slot c-paladin"><svg><use href="#i-paladin"/></svg><kbd>2</kbd></span><div><h2 id="paladin-h">Paladin</h2><p class="specs-l">Holy · Protection · Retribution</p></div></div>
     <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><p><span>Distance from Vanilla</span><b>Very high</b></p></div>
+    <div class="pace-s"><p class="label">leveling speed</p><ol class="pace-l"><li><span>1–20</span><b class="pt t-b">B</b></li><li><span>20–40</span><b class="pt t-b">B</b></li><li><span>40–60</span><b class="pt t-b">B</b></li><li class="all"><span>1–60</span><span class="tv"><span class="pv"><span class="sr">Vanilla </span>C</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-b"><span class="sr">Forever </span>B</b></span></li></ol><a class="xref" href="#leveling">Every class, bracket by bracket</a></div>
     <button type="button" class="listen" data-ch="paladin" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Paladin chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>For anyone who liked the idea of Vanilla Paladin but not what happened when tanking or playing Ret at 60, this is the clearest “play it again, it’s different” pick. It is still slow, mana-hungry, seal-and-judgment Paladin, but all three specs finally have enough to work with.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><a class="rp c-human" href="../races/#human">Human</a></div><a class="xref" href="../races/#by-paladin">Spec by spec, in the races book</a></div>
@@ -509,6 +571,7 @@ body.player-open { padding-bottom: 6rem }
   <aside class="cls-aside">
     <div class="crest"><span class="slot c-hunter"><svg><use href="#i-hunter"/></svg><kbd>3</kbd></span><div><h2 id="hunter-h">Hunter</h2><p class="specs-l">Beast Mastery · Marksmanship · Survival</p></div></div>
     <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p><span>Distance from Vanilla</span><b>High</b></p></div>
+    <div class="pace-s"><p class="label">leveling speed</p><ol class="pace-l"><li><span>1–20</span><b class="pt t-s">S</b></li><li><span>20–40</span><b class="pt t-s">S</b></li><li><span>40–60</span><b class="pt t-s">S</b></li><li class="all"><span>1–60</span><b class="pt t-s">S</b></li></ol><a class="xref" href="#leveling">Every class, bracket by bracket</a></div>
     <button type="button" class="listen" data-ch="hunter" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Hunter chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>A Hunter that still follows old-school Hunter rules but has three genuinely different fantasies. Compared with Vanilla, Survival is close to a new spec.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a></div><a class="xref" href="../races/#by-hunter">Spec by spec, in the races book</a></div>
@@ -560,6 +623,7 @@ body.player-open { padding-bottom: 6rem }
   <aside class="cls-aside">
     <div class="crest"><span class="slot c-rogue"><svg><use href="#i-rogue"/></svg><kbd>4</kbd></span><div><h2 id="rogue-h">Rogue</h2><p class="specs-l">Assassination · Combat · Subtlety</p></div></div>
     <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i></i><i></i></span><p><span>Distance from Vanilla</span><b>Moderate</b></p></div>
+    <div class="pace-s"><p class="label">leveling speed</p><ol class="pace-l"><li><span>1–20</span><b class="pt t-a">A</b></li><li><span>20–40</span><b class="pt t-b">B</b></li><li><span>40–60</span><b class="pt t-b">B</b></li><li class="all"><span>1–60</span><b class="pt t-b">B</b></li></ol><a class="xref" href="#leveling">Every class, bracket by bracket</a></div>
     <button type="button" class="listen" data-ch="rogue" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Rogue chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>For someone who already likes Classic Rogue and wants better-defined trees. It is not the class for anyone after something radically new.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a></div><a class="xref" href="../races/#by-rogue">Spec by spec, in the races book</a></div>
@@ -606,6 +670,7 @@ body.player-open { padding-bottom: 6rem }
   <aside class="cls-aside">
     <div class="crest"><span class="slot c-priest"><svg><use href="#i-priest"/></svg><kbd>5</kbd></span><div><h2 id="priest-h">Priest</h2><p class="specs-l">Discipline · Holy · Shadow</p></div></div>
     <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p><span>Distance from Vanilla</span><b>High</b></p></div>
+    <div class="pace-s"><p class="label">leveling speed</p><ol class="pace-l"><li><span>1–20</span><b class="pt t-c">C</b></li><li><span>20–40</span><b class="pt t-b">B</b></li><li><span>40–60</span><b class="pt t-a">A</b></li><li class="all"><span>1–60</span><span class="tv"><span class="pv"><span class="sr">Vanilla </span>C</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-b"><span class="sr">Forever </span>B</b></span></li></ol><a class="xref" href="#leveling">Every class, bracket by bracket</a></div>
     <button type="button" class="listen" data-ch="priest" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Priest chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>Priest suits a player who wants to stay recognizably Classic but feel the spec matter in every fight. Disc is the spec veterans will most need to relearn.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-gnome" href="../races/#gnome">Gnome</a><a class="rp c-human" href="../races/#human">Human</a><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a></div><a class="xref" href="../races/#by-priest">Spec by spec, in the races book</a></div>
@@ -658,6 +723,7 @@ body.player-open { padding-bottom: 6rem }
   <aside class="cls-aside">
     <div class="crest"><span class="slot c-shaman"><svg><use href="#i-shaman"/></svg><kbd>6</kbd></span><div><h2 id="shaman-h">Shaman</h2><p class="specs-l">Elemental · Enhancement · Restoration</p></div></div>
     <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><p><span>Distance from Vanilla</span><b>Very high</b></p></div>
+    <div class="pace-s"><p class="label">leveling speed</p><ol class="pace-l"><li><span>1–20</span><b class="pt t-a">A</b></li><li><span>20–40</span><b class="pt t-a">A</b></li><li><span>40–60</span><b class="pt t-a">A</b></li><li class="all"><span>1–60</span><span class="tv"><span class="pv"><span class="sr">Vanilla </span>B</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-a"><span class="sr">Forever </span>A</b></span></li></ol><a class="xref" href="#leveling">Every class, bracket by bracket</a></div>
     <button type="button" class="listen" data-ch="shaman" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Shaman chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>For an Alliance veteran who wants something that still feels like old WoW but couldn’t be played on Alliance before, Dwarf Shaman belongs high on the shortlist. Totems still get placed and thought about. They just stop eating half the globals to rebuild the same four.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a> <small>the only Alliance Shaman race</small></div><a class="xref" href="../races/#by-shaman">Spec by spec, in the races book</a></div>
@@ -712,6 +778,7 @@ body.player-open { padding-bottom: 6rem }
   <aside class="cls-aside">
     <div class="crest"><span class="slot c-mage"><svg><use href="#i-mage"/></svg><kbd>7</kbd></span><div><h2 id="mage-h">Mage</h2><p class="specs-l">Arcane · Fire · Frost</p></div></div>
     <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p><span>Distance from Vanilla</span><b>High</b></p></div>
+    <div class="pace-s"><p class="label">leveling speed</p><ol class="pace-l"><li><span>1–20</span><b class="pt t-a">A</b></li><li><span>20–40</span><b class="pt t-a">A</b></li><li><span>40–60</span><b class="pt t-a">A</b></li><li class="all"><span>1–60</span><span class="tv"><span class="pv"><span class="sr">Vanilla </span>S</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-a"><span class="sr">Forever </span>A</b></span></li></ol><a class="xref" href="#leveling">Every class, bracket by bracket</a></div>
     <button type="button" class="listen" data-ch="mage" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Mage chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>A strong pick for anyone whose Vanilla complaint was that the toolkit is great but raiding becomes one button. Forever’s answer isn’t Retail Mage. It’s Classic Mage with an engine for each spec. Arcane in particular is a newly legitimate spec.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-gnome" href="../races/#gnome">Gnome</a><a class="rp c-human" href="../races/#human">Human</a></div><a class="xref" href="../races/#by-mage">Spec by spec, in the races book</a></div>
@@ -767,6 +834,7 @@ body.player-open { padding-bottom: 6rem }
   <aside class="cls-aside">
     <div class="crest"><span class="slot c-warlock"><svg><use href="#i-warlock"/></svg><kbd>8</kbd></span><div><h2 id="warlock-h">Warlock</h2><p class="specs-l">Affliction · Demonology · Destruction</p></div></div>
     <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p><span>Distance from Vanilla</span><b>High</b></p></div>
+    <div class="pace-s"><p class="label">leveling speed</p><ol class="pace-l"><li><span>1–20</span><b class="pt t-s">S</b></li><li><span>20–40</span><b class="pt t-s">S</b></li><li><span>40–60</span><b class="pt t-s">S</b></li><li class="all"><span>1–60</span><b class="pt t-s">S</b></li></ol><a class="xref" href="#leveling">Every class, bracket by bracket</a></div>
     <button type="button" class="listen" data-ch="warlock" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Warlock chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>Fewer headline fixes than Paladin or Druid, because Vanilla Warlock already worked, but the specs are much better defined. For anyone who loves the Classic Warlock toolbox but dislikes how optimal PvE builds blur the trees together, this is a big improvement.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-gnome" href="../races/#gnome">Gnome</a><a class="rp c-human" href="../races/#human">Human</a></div><a class="xref" href="../races/#by-warlock">Spec by spec, in the races book</a></div>
@@ -813,6 +881,7 @@ body.player-open { padding-bottom: 6rem }
   <aside class="cls-aside">
     <div class="crest"><span class="slot c-druid"><svg><use href="#i-druid"/></svg><kbd>9</kbd></span><div><h2 id="druid-h">Druid</h2><p class="specs-l">Balance · Feral · Restoration</p></div></div>
     <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><p><span>Distance from Vanilla</span><b>Very high</b></p></div>
+    <div class="pace-s"><p class="label">leveling speed</p><ol class="pace-l"><li><span>1–20</span><b class="pt t-b">B</b></li><li><span>20–40</span><b class="pt t-a">A</b></li><li><span>40–60</span><b class="pt t-a">A</b></li><li class="all"><span>1–60</span><span class="tv"><span class="pv"><span class="sr">Vanilla </span>B</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-a"><span class="sr">Forever </span>A</b></span></li></ol><a class="xref" href="#leveling">Every class, bracket by bracket</a></div>
     <button type="button" class="listen" data-ch="druid" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Druid chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>Anyone who knows Classic deeply will notice the changes constantly. Weapon upgrades matter in forms, powershifting is formalized, Bear has better threat tools, Balance has a spell cycle and Resto gets core healing tools. It is still Vanilla Druid, minus a remarkable number of its structural oddities.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a></div><a class="xref" href="../races/#by-druid">Spec by spec, in the races book</a></div>
@@ -855,6 +924,45 @@ body.player-open { padding-bottom: 6rem }
         <div class="prose"><p><b>Swiftmend no longer consumes the HoT it uses</b>, a big usability win. <b>Wild Growth</b> heals several party or group members over time. <b>Gift of the Earthmother</b> speeds up the global cooldown on Rejuvenation, Swiftmend and Wild Growth. Mark of the Wild upgrades no longer eat premium talent points, and Spirit regen is better. Resto keeps its Classic HoT and Healing Touch identity and gains a real instant reactive heal and a sustained group HoT.</p></div>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ======================= LEVELING ======================= -->
+<section class="sec" id="leveling" aria-labelledby="lvl-h">
+  <div class="sec-head">
+    <p class="label">the road to 60</p>
+    <h2 id="lvl-h">Leveling speed</h2>
+    <p>How fast each class should level alone, bracket by bracket. Like the distance ratings, these tiers are an editorial expectation, not a measurement: each starts from how the class levels in Vanilla and moves by what Forever changes in its kit.</p>
+  </div>
+  <ul class="pace-key" aria-label="The tiers">
+    <li><b class="pt t-s">S</b>fastest</li>
+    <li><b class="pt t-a">A</b>quick</li>
+    <li><b class="pt t-b">B</b>steady</li>
+    <li><b class="pt t-c">C</b>slow</li>
+    <li><span class="tv" aria-hidden="true"><span class="pv">C</span><span class="pv-to">→</span><b class="pt t-b">B</b></span>moved from its Vanilla tier</li>
+  </ul>
+  <div class="pace-t frame">
+    <table class="pace">
+      <caption class="sr">Expected solo leveling speed for each Alliance class, by level bracket</caption>
+      <colgroup><col class="k-cls"><col class="k-t"><col class="k-t"><col class="k-t"><col class="k-all"><col></colgroup>
+      <thead><tr><th scope="col">Class</th><th scope="col" class="t">1–20</th><th scope="col" class="t">20–40</th><th scope="col" class="t">40–60</th><th scope="col" class="t all">1–60</th><th scope="col">Why</th></tr></thead>
+      <tbody>
+        <tr class="c-hunter"><th scope="row"><a class="cl" href="#hunter"><span class="slot"><svg aria-hidden="true"><use href="#i-hunter"/></svg></span><span>Hunter</span></a></th><td class="t" data-l="1–20"><b class="pt t-s">S</b></td><td class="t" data-l="20–40"><b class="pt t-s">S</b></td><td class="t" data-l="40–60"><b class="pt t-s">S</b></td><td class="t all" data-l="1–60"><b class="pt t-s">S</b></td><td class="why">Still the benchmark: the pet takes the hits while the Hunter shoots, so downtime and deaths stay rare. Forever adds Aimed Shot for every Hunter at 20 and traps that work in combat, and pets now draw on the Hunter’s gear, so every upgrade counts twice.</td></tr>
+        <tr class="c-warlock"><th scope="row"><a class="cl" href="#warlock"><span class="slot"><svg aria-hidden="true"><use href="#i-warlock"/></svg></span><span>Warlock</span></a></th><td class="t" data-l="1–20"><b class="pt t-s">S</b></td><td class="t" data-l="20–40"><b class="pt t-s">S</b></td><td class="t" data-l="40–60"><b class="pt t-s">S</b></td><td class="t all" data-l="1–60"><b class="pt t-s">S</b></td><td class="why">A demon takes the hits and Life Tap turns health into mana, now scaling with Spirit. Drain Soul yields shards more reliably, demons inherit more of the Warlock’s stats, and Demonology’s Demonic Pact keeps a sacrificed demon’s bonus while another fights.</td></tr>
+        <tr class="c-shaman"><th scope="row"><a class="cl" href="#shaman"><span class="slot"><svg aria-hidden="true"><use href="#i-shaman"/></svg></span><span>Shaman</span></a></th><td class="t" data-l="1–20"><b class="pt t-a">A</b></td><td class="t" data-l="20–40"><b class="pt t-a">A</b></td><td class="t" data-l="40–60"><b class="pt t-a">A</b></td><td class="t all" data-l="1–60"><span class="tv"><span class="pv"><span class="sr">Vanilla </span>B</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-a"><span class="sr">Forever </span>A</b></span></td><td class="why">Durable and self-healing as before, and far less fiddly: one-second totem globals, five-minute buff totems and longer imbues save mana and time between pulls. Enhancement reaches Stormstrike at 16 points, level 25 rather than 40, and Maelstrom Weapon can make its Lightning Bolts instant.</td></tr>
+        <tr class="c-mage"><th scope="row"><a class="cl" href="#mage"><span class="slot"><svg aria-hidden="true"><use href="#i-mage"/></svg></span><span>Mage</span></a></th><td class="t" data-l="1–20"><b class="pt t-a">A</b></td><td class="t" data-l="20–40"><b class="pt t-a">A</b></td><td class="t" data-l="40–60"><b class="pt t-a">A</b></td><td class="t all" data-l="1–60"><span class="tv"><span class="pv"><span class="sr">Vanilla </span>S</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-a"><span class="sr">Forever </span>A</b></span></td><td class="why">Still quick and full of control, but Forever deliberately trims the mass-pull AoE farming that put Vanilla Mages among the fastest at 40–60: Improved Blizzard slows less, and Cone of Cold fully controls only four targets. Small packs and Frost’s shatter combos still fall fast.</td></tr>
+        <tr class="c-druid"><th scope="row"><a class="cl" href="#druid"><span class="slot"><svg aria-hidden="true"><use href="#i-druid"/></svg></span><span>Druid</span></a></th><td class="t" data-l="1–20"><b class="pt t-b">B</b></td><td class="t" data-l="20–40"><b class="pt t-a">A</b></td><td class="t" data-l="40–60"><b class="pt t-a">A</b></td><td class="t all" data-l="1–60"><span class="tv"><span class="pv"><span class="sr">Vanilla </span>B</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-a"><span class="sr">Forever </span>A</b></span></td><td class="why">Slow in caster form, then quick. Cat and Bear damage now follows weapon DPS, Omen of Clarity is baseline at 20, and Shifting Power turns mana into Energy, so feral’s old leveling problem, slow kills, is largely solved.</td></tr>
+        <tr class="c-paladin"><th scope="row"><a class="cl" href="#paladin"><span class="slot"><svg aria-hidden="true"><use href="#i-paladin"/></svg></span><span>Paladin</span></a></th><td class="t" data-l="1–20"><b class="pt t-b">B</b></td><td class="t" data-l="20–40"><b class="pt t-b">B</b></td><td class="t" data-l="40–60"><b class="pt t-b">B</b></td><td class="t all" data-l="1–60"><span class="tv"><span class="pv"><span class="sr">Vanilla </span>C</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-b"><span class="sr">Forever </span>B</b></span></td><td class="why">Forever’s clearest leveling repair. Holy Strike and Seals that survive Judgment give the early levels something to press, and Consecration is baseline at 20 for small packs. Still mana-hungry and slow-swinging, so steady rather than quick, but very hard to kill.</td></tr>
+        <tr class="c-rogue"><th scope="row"><a class="cl" href="#rogue"><span class="slot"><svg aria-hidden="true"><use href="#i-rogue"/></svg></span><span>Rogue</span></a></th><td class="t" data-l="1–20"><b class="pt t-a">A</b></td><td class="t" data-l="20–40"><b class="pt t-b">B</b></td><td class="t" data-l="40–60"><b class="pt t-b">B</b></td><td class="t all" data-l="1–60"><b class="pt t-b">B</b></td><td class="why">Fast early, while mobs die before the Rogue needs to eat; steady after, since there’s still no self-healing and food and bandages set the pace. Poisons that stack with stones and a Sap that keeps Stealth help, but this is Vanilla Rogue pace.</td></tr>
+        <tr class="c-priest"><th scope="row"><a class="cl" href="#priest"><span class="slot"><svg aria-hidden="true"><use href="#i-priest"/></svg></span><span>Priest</span></a></th><td class="t" data-l="1–20"><b class="pt t-c">C</b></td><td class="t" data-l="20–40"><b class="pt t-b">B</b></td><td class="t" data-l="40–60"><b class="pt t-a">A</b></td><td class="t all" data-l="1–60"><span class="tv"><span class="pv"><span class="sr">Vanilla </span>C</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-b"><span class="sr">Forever </span>B</b></span></td><td class="why">Wand, Shadow Word: Pain and shields at first, as in Vanilla. Then Shadow comes into its own: Devouring Plague for every race, Shadow Word: Death baseline, Vampiric Embrace on a 30-second cooldown and a Shadowform with real mana efficiency make 40–60 one of the smoothest stretches of any class.</td></tr>
+        <tr class="c-warrior"><th scope="row"><a class="cl" href="#warrior"><span class="slot"><svg aria-hidden="true"><use href="#i-warrior"/></svg></span><span>Warrior</span></a></th><td class="t" data-l="1–20"><b class="pt t-c">C</b></td><td class="t" data-l="20–40"><b class="pt t-c">C</b></td><td class="t" data-l="40–60"><b class="pt t-b">B</b></td><td class="t all" data-l="1–60"><b class="pt t-c">C</b></td><td class="why">Still the slowest alone. Victory Rush at 20, baseline Tactical Mastery and steadier rage take the edge off, but a Warrior still eats after most pulls and leans hard on its weapon. Better from 40 with a strong two-hander, and far better with a healer.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose pace-n">
+    <p>Rows run from fastest to slowest over the whole climb; within a tier, classes keep the book’s usual order. The tiers assume solo questing and grinding at even level, in ordinary leveling gear, by a player who knows the class, and race moves them only at the margins. <a class="xref" href="../races/">What each race adds while leveling, in the races book.</a></p>
+    <p>Groups change the order. A Warrior with a healer beside it, or any tank in a dungeon, levels far faster than its letters suggest. Blizzard did cut dungeon-quest XP on the beta, though, which leaves more of the road to the open world, where these tiers apply.</p>
+    <p>Forever hasn’t published its XP curve, and outdoor mobs still take 10–15 seconds to kill, so Vanilla’s relative pace is the best guide until live realms produce real times. Legacy perks such as Talented and Well Rested speed up every class, so they barely move the tiers. <a class="xref" href="../world/#systems">Rested XP, riding and the rest of leveling, in the world book.</a></p>
   </div>
 </section>
 
@@ -942,7 +1050,7 @@ body.player-open { padding-bottom: 6rem }
 
 <footer class="foot">
   <p>Compiled October 22, 2026 from Blizzard’s class deep dives, beta development notes through the October 16 build, datamined client changes and current class guides. The October 21 activity was the public stress test, not a new class pass.</p>
-  <p>Everything here is launch-candidate. Blizzard has said repeatedly that talents and abilities can keep changing during beta. The “distance from Vanilla” ratings and the shortlist are editorial judgments, not Blizzard rankings. Racial values follow Blizzard’s October 26 tuning pass, which landed after this book was compiled.</p>
+  <p>Everything here is launch-candidate. Blizzard has said repeatedly that talents and abilities can keep changing during beta. The “distance from Vanilla” ratings, the leveling tiers and the shortlist are editorial judgments, not Blizzard rankings. The leveling tiers were added October 31, before any live-realm leveling times existed. Racial values follow Blizzard’s October 26 tuning pass, which landed after this book was compiled.</p>
   <p>Part of the <a href="../">Forever Codex</a>. A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
 </footer>
 </main>

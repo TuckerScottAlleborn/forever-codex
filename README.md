@@ -6,7 +6,7 @@ A codex to *World of Warcraft: Forever* for returning Warcraft veterans: what's 
 | --- | --- |
 | `index.html` | The landing page: who it's for, the calendar, what's different area by area (Vanilla beside Forever, each row pointing at its book), a "coming back as…" briefing for every Alliance class and race, then each book's table of contents |
 | `lore/` | Book I, **The Lore**: what's canon, what's new and what's still unwritten, in three parts, plus an epilogue and reading stack |
-| `classes/` | Book II, **The Classes**: how Forever changes the nine Alliance classes compared with Vanilla, with a narrated episode |
+| `classes/` | Book II, **The Classes**: how Forever changes the nine Alliance classes compared with Vanilla, with a narrated episode. Its leveling-speed tiers (1–20, 20–40, 40–60, 1–60) appear twice, in the `#leveling` table and in the strip on each class sheet, so change them together |
 | `classes/<class>/` | Share pages with their own Discord/Open Graph embed; they forward to that class's sheet |
 | `races/` | Book III, **The Races**: the five Alliance races against Vanilla after Blizzard's final October 26 racial pass, with race leans for every class and spec. The class sheets link into its leans |
 | `world/` | Book IV, **The World**: everything outside classes and races against Vanilla: the nine new dungeons and the old ones' keys and levels, the December raid tier, gear and stats, professions and camping, Legacy, transmog, regions and rulesets, what costs money, and PvP |
