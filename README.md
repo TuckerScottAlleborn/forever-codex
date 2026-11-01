@@ -17,6 +17,8 @@ A codex to *World of Warcraft: Forever* for returning Warcraft veterans: what's 
 
 Each page links `codex.css` and keeps only its own layout inline. The masthead on every page lists Home, the five books and the appendix, and marks the page it's on with `aria-current="page"`, in that book's color. Each book's sticky bar opens with the same icon as its cover on the landing page.
 
+Under the masthead, every page (and `404.html`) carries the same build stamp, `p.mast-build`: the patch and client build the codex reads, now Patch 1.60.1, build 70707, with the server hotfixes of October 30, 2026. It links to the appendix's `#build` ledger, which dates each book against that build. When the codex moves to a newer build, change the stamp on every page, the ledger and the patch log together.
+
 To add a book, add a folder with its own `index.html` and `body` class, a link in the `.mast-books` of every page and of `404.html`, its color in `codex.css`, an `<article class="book">` and a row in `.diffs` on the landing page, a card in `404.html`, and its date in the appendix's "how current" ledger.
 
 Research briefs for ChatGPT deep research, and the reports they return, live in `research/`, which git ignores: working files, not site content.

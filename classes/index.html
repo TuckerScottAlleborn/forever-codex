@@ -357,6 +357,7 @@ body.player-open { padding-bottom: 6rem }
       <a href="../appendix/">Appendix</a>
     </nav>
   </div>
+  <p class="mast-build"><span class="label">built on</span><b>Patch 1.60.1</b> · build 70707 · server hotfixes of October 30, 2026<a href="../appendix/#build">What each book covers</a></p>
 </header>
 
 <div class="wrap">
@@ -378,7 +379,7 @@ body.player-open { padding-bottom: 6rem }
       </div>
       <div class="facts">
         <div class="fact"><b id="cd">Nov 4, 2026</b><span id="cd-sub">launch date</span></div>
-        <div class="fact"><b>Oct 16</b><span>latest build with class changes</span></div>
+        <div class="fact"><b>Oct 30</b><span>latest class changes, in hotfixes</span></div>
         <div class="fact"><b>Level 40</b><span>dual specialization</span></div>
         <div class="fact"><b>16 points</b><span>new gold-medal milestone</span></div>
       </div>
@@ -446,11 +447,11 @@ body.player-open { padding-bottom: 6rem }
     </article>
     <article class="sys frame">
       <h3>Downranking curtailed</h3>
-      <p>Spells far below the caster’s level get reduced benefit from spell power and lower proc chances. Blizzard’s example is a level 60 Mage spamming Rank 1 Frostbolt, which no longer gets normal Frostbite behavior. Where the trick did something useful, they add a real spell instead, such as the Mage’s <b>Frost Blast</b>.</p>
+      <p>Spells far below the caster’s level get reduced benefit from spell power and lower proc chances. Blizzard’s example is a level 60 Mage spamming Rank 1 Frostbolt, which no longer gets normal Frostbite behavior. The beta added a real spell to take over that trick’s slow, the Mage’s <b>Frost Blast</b>, but the launch build no longer has trainers teach it.</p>
     </article>
     <article class="sys frame">
       <h3>Raid-wide utility</h3>
-      <p>Late beta made <b>Battle Shout</b>, <b>Trueshot Aura</b>, <b>Moonkin Aura</b>, <b>Leader of the Pack</b>, and Shaman <b>Grace of Air, Strength of Earth, Windfury and Flametongue</b> all raid-wide. Salvation no longer competes with other Blessings. There is far less shuffling of five-player buff groups and stacking copies of a class to cover each subgroup.</p>
+      <p>Late beta made <b>Battle Shout</b>, <b>Trueshot Aura</b>, <b>Moonkin Aura</b>, <b>Leader of the Pack</b>, and Shaman <b>Grace of Air, Strength of Earth, Windfury and Flametongue</b> all raid-wide. The launch hotfixes make Leader of the Pack and Moonkin Aura raise every kind of crit by 3%, melee and spells alike, and take Salvation away from Paladins altogether. There is far less shuffling of five-player buff groups and stacking copies of a class to cover each subgroup.</p>
     </article>
     <article class="sys frame alt">
       <h3>Alliance-specific notes</h3>
@@ -469,8 +470,8 @@ body.player-open { padding-bottom: 6rem }
     <button type="button" class="listen" data-ch="warrior" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Warrior chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>Warrior is the pick for a player who specifically doesn’t want Forever to feel like another expansion’s class design. Rage, stances, weapon swings and threat all still need managing. Forever mostly removes the places where Vanilla Warrior fought its own mechanics.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a></div><a class="xref" href="../races/#by-warrior">Spec by spec, in the races book</a></div>
-    <div class="tt" role="group" aria-label="Late-beta changes">
-      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Warrior</p>
+    <div class="tt" role="group" aria-label="Late changes">
+      <p class="tt-h">Late-change ledger</p><p class="tt-sub">Warrior</p>
       <ul>
         <li><span>Tactical Mastery</span><span>Baseline, lvl 14</span></li>
         <li><span>Rage kept on stance swap</span><span>10</span></li>
@@ -478,6 +479,7 @@ body.player-open { padding-bottom: 6rem }
         <li><span>Retaliation / Shield Wall</span><span>15 min, unshared</span></li>
         <li><span>Battle Shout</span><span><s>Party</s> Raid-wide</span></li>
         <li><span>Slam</span><span>Immune to pushback</span></li>
+        <li><span>Revenge</span><span>Scales with attack power</span></li>
       </ul>
     </div>
   </aside>
@@ -502,7 +504,7 @@ body.player-open { padding-bottom: 6rem }
       </article>
       <article class="spec">
         <div class="spec-head"><h3>Protection</h3></div>
-        <div class="prose"><p>Still recognizable sword-and-board, with cleaner resource and threat systems. Shield Specialization gives more rage from blocks. <b>Master of Defense</b> generates rage from shield avoidance, <b>Vanguard</b> lets Charge lead into Defensive Stance play, and <b>Focused Rage</b> trims ability costs. Shield Slam scales better with block value. Improved Shield Block and Improved Taunt functionality move toward baseline.</p></div>
+        <div class="prose"><p>Still recognizable sword-and-board, with cleaner resource and threat systems. Shield Specialization gives more rage from blocks. <b>Master of Defense</b> generates rage from shield avoidance, <b>Vanguard</b> lets Charge lead into Defensive Stance play, and <b>Focused Rage</b> trims ability costs. Shield Slam scales better with block value, and since the launch build <b>Revenge</b> adds 22.5% of attack power to every rank. Improved Shield Block and Improved Taunt functionality move toward baseline.</p></div>
       </article>
     </div>
   </div>
@@ -517,17 +519,19 @@ body.player-open { padding-bottom: 6rem }
     <button type="button" class="listen" data-ch="paladin" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Paladin chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>For anyone who liked the idea of Vanilla Paladin but not what happened when tanking or playing Ret at 60, this is the clearest “play it again, it’s different” pick. It is still slow, mana-hungry, seal-and-judgment Paladin, but all three specs finally have enough to work with.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><a class="rp c-human" href="../races/#human">Human</a></div><a class="xref" href="../races/#by-paladin">Spec by spec, in the races book</a></div>
-    <div class="tt" role="group" aria-label="Late-beta changes">
-      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Paladin</p>
+    <div class="tt" role="group" aria-label="Late changes">
+      <p class="tt-h">Late-change ledger</p><p class="tt-sub">Paladin</p>
       <ul>
         <li><span>Consecration</span><span>Baseline, lvl 20</span></li>
         <li><span>Consecration full effect</span><span>First 4 targets</span></li>
         <li><span>Righteous Fury Holy threat</span><span><s>60%</s> 90%</span></li>
-        <li><span>Champion of the Light (Int→SP)</span><span><s>20/40/60%</s> 10/20/30%</span></li>
-        <li><span>Reckoning charges</span><span>Up to 4</span></li>
-        <li><span>Salvation</span><span>No longer a Blessing slot</span></li>
+        <li><span>Righteous Fury</span><span><s>Lvl 16</s> Lvl 10, +33% all threat</span></li>
+        <li><span>Champion of the Light</span><span>Up to 60% of Int as SP</span></li>
+        <li><span>Salvation, Blessing of Light</span><span>No longer taught</span></li>
+        <li><span>Voice of Truth</span><span><s>Talent</s> Trained, lvl 20</span></li>
+        <li><span>Light’s Vigil</span><span>Allies only</span></li>
       </ul>
-      <p class="tt-foot">Consecration’s spell power coefficient was also lowered significantly.</p>
+      <p class="tt-foot">Consecration’s spell power coefficient was also lowered significantly. A mid-October cut of Champion of the Light to 10/20/30% was undone the same day. Everything from the 33% threat down came with the October 30 hotfixes.</p>
     </div>
   </aside>
   <div class="cls-main">
@@ -536,30 +540,32 @@ body.player-open { padding-bottom: 6rem }
       <h3>Baseline</h3>
       <div class="prose">
         <p>Paladins learn <b>Holy Strike</b>, an instant Holy weapon attack, early in leveling. More importantly, <b>Judgment no longer consumes the Seal</b>. That one change removes the judge-and-reseal routine that made Vanilla Paladin feel so passive.</p>
-        <p><b>Consecration</b> is baseline at 20 instead of a Holy talent. Only the first four enemies take full damage and threat. Late tuning cut its coefficient and raised Righteous Fury’s Holy threat from 60% to 90%, steering Prot toward deliberate tank threat instead of a scaling AoE bomb.</p>
+        <p><b>Consecration</b> is baseline at 20 instead of a Holy talent. Only the first four enemies take full damage and threat. Late tuning cut its coefficient and raised Righteous Fury’s Holy threat from 60% to 90%, steering Prot toward deliberate tank threat instead of a scaling AoE bomb. Righteous Fury now arrives at level 10, and since the launch hotfixes it adds 33% to all threat on top of that Holy bonus.</p>
         <p><b>Reckoning</b> keeps its Classic behavior. It stores up to four charges and releases them on the next autoattack, and instant attacks no longer reset the swing.</p>
+        <p>The same hotfixes trimmed the Blessings. Trainers no longer teach <b>Blessing of Light</b>, <b>Salvation</b> or their Greater and Mass versions, and <b>Voice of Truth</b>, once a Holy talent, is a level 20 spell for every Paladin: six seconds immune to silences and interrupts.</p>
       </div>
     </div>
     <div class="specs">
       <article class="spec">
-        <div class="spec-head"><h3>Protection</h3><div class="ms-row"><span class="ms"><i>★</i>Seal of Fury</span></div></div>
+        <div class="spec-head"><h3>Protection</h3><div class="ms-row"><span class="ms"><i>★</i>Seal of Fury</span><span class="ms g31"><i>31</i>Shieldsworn</span></div></div>
         <div class="prose">
-          <p><b>Seal of Fury</b> is the center of the spec. It adds Holy damage, favors fast attacks, and turns some of that into absorb shields while a shield is equipped. Its <b>Judgment taunts</b>, so Alliance Paladins finally have a real taunt.</p>
-          <p>Talents build around it. The Seal’s mitigation returns mana, <b>Swift Judgment</b> recovers Judgment faster, <b>Iron Creed</b> ties Holy Strike to mitigation, and <b>Templar’s Bulwark</b> is a big absorb cooldown based on max health. Prot now has a tank seal, a taunt, baseline Consecration, stronger threat, real mitigation, mana sustain and a serious defensive cooldown. Five-man groups no longer have to work around a missing taunt.</p>
+          <p><b>Seal of Fury</b> is the center of the spec. It adds Holy damage, favors fast attacks, and turns some of that into absorb shields while a shield is equipped. Its <b>Judgment taunts</b>, for three seconds, so Alliance Paladins finally have a real taunt.</p>
+          <p>The October 30 hotfixes rebuilt the tree around it. <b>Swift Judgment</b> now unleashes a Seal’s Judgment without consuming the Seal, on a cooldown of its own, so it works as a second Judgment. <b>Holy Shield</b> moves up to 21 points, and the new 31-point <b>Shieldsworn</b> shortens Holy Strike’s cooldown and makes it strike with the shield, setting off Holy Shield and Shield Specialization without spending their charges and letting the Paladin block spells for six seconds. <b>Iron Creed</b> ties Holy Strike to threat and mitigation, <b>Templar’s Bulwark</b> is still a big absorb cooldown based on max health, and One-Handed Weapon Specialization is gone.</p>
+          <p>Prot now has a tank seal, a taunt, baseline Consecration, stronger threat, real mitigation, mana sustain and a serious defensive cooldown. Five-man groups no longer have to work around a missing taunt.</p>
         </div>
       </article>
       <article class="spec">
         <div class="spec-head"><h3>Retribution</h3><div class="ms-row"><span class="ms g16"><i>16</i>Sacred Arbiter</span></div></div>
         <div class="prose">
-          <p><b>Sacred Arbiter</b> empowers Holy Strike and refreshes active Judgments. <b>Champion of the Light</b> converts Intellect into spell damage, cut late from 20/40/60% to 10/20/30%. <b>Vindication</b> now lowers the enemy’s attack power and raises the Paladin’s, and <b>Instrument of Law</b> improves Hammer of Wrath and threat.</p>
-          <p><b>Twist of Light</b> makes seal twisting a talent. Instead of an accidental swing-timer trick, the previous Seal echoes into the next melee hit. Ret keeps seal twisting, but it’s learned from the tree, not from a latency guide.</p>
+          <p><b>Sacred Arbiter</b> empowers Holy Strike and refreshes active Judgments. <b>Champion of the Light</b> converts up to 60% of Intellect into spell damage over five ranks and now also shortens Hammer of Wrath’s cast by up to a second. <b>Conviction</b> gives up to 6% crit with spells as well as attacks, and <b>Two-Handed Weapon Specialization</b> raises all physical damage while cutting threat by 20% with a two-hander equipped. <b>Vindication</b> lowers the enemy’s attack power but no longer raises the Paladin’s, and Instrument of Law is gone, its Hammer of Wrath and threat effects folded into those two talents.</p>
+          <p><b>Unsealed Wrath</b>, which replaced Twist of Light on October 30, makes seal twisting a talent. Melee swings store copies of the active Seal, up to three, and the first hit under a different Seal releases them, each with the stored Seal’s normal chance to fire. Ret keeps seal twisting, but it’s learned from the tree, not from a latency guide.</p>
         </div>
       </article>
       <article class="spec">
-        <div class="spec-head"><h3>Holy</h3><div class="ms-row"><span class="ms g16"><i>16</i>Divine Favor</span><span class="ms g31"><i>31</i>Light’s Vigil</span></div></div>
+        <div class="spec-head"><h3>Holy</h3><div class="ms-row"><span class="ms g16"><i>16</i>Oath of Light</span><span class="ms g31"><i>31</i>Light’s Vigil</span></div></div>
         <div class="prose">
-          <p>The smallest role change, but much more choice in which spell to cast. <b>Voice of Truth</b> resists silences and interrupts, <b>Reverence</b> improves in-combat Spirit regen, and <b>Infusion of Light</b> makes Holy Shock and Flash of Light crits speed up Holy Light. Holy Shock sits deeper in the tree on a much shorter cooldown than in Vanilla.</p>
-          <p><b>Light’s Vigil</b> is an expensive spell that resets Holy Shock, then adds a damage or party-heal payoff depending on the target. Holy now runs on Holy Shock instead of collapsing into rank-picked Flash of Light and Holy Light spam.</p>
+          <p>The smallest role change, but much more choice in which spell to cast. <b>Reverence</b> keeps up to 30% of mana regeneration going while casting, <b>Infusion of Light</b> makes Holy Shock and Flash of Light crits speed up Holy Light, and <b>Holy Power</b> now enlarges Holy crits instead of making them likelier. Holy Shock sits deeper in the tree on a much shorter cooldown than in Vanilla.</p>
+          <p>The October 30 hotfixes center the tree on one ally. <b>Oath of Light</b>, the new 16-point talent, swears an Oath on a single target for five minutes, and Holy Light, Flash of Light and Holy Shock heal that target for more; <b>Boundless Light</b> gives Holy Shock extra crit on everyone else. <b>Light’s Vigil</b>, at 31, now works on allies only: the Paladin’s next Holy Shock on that target skips its cooldown and refunds most of the Vigil’s mana, with no damage or party-heal payoff any more. Holy runs on Holy Shock instead of collapsing into rank-picked Flash of Light and Holy Light spam.</p>
         </div>
       </article>
     </div>
@@ -575,17 +581,18 @@ body.player-open { padding-bottom: 6rem }
     <button type="button" class="listen" data-ch="hunter" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Hunter chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>A Hunter that still follows old-school Hunter rules but has three genuinely different fantasies. Compared with Vanilla, Survival is close to a new spec.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a></div><a class="xref" href="../races/#by-hunter">Spec by spec, in the races book</a></div>
-    <div class="tt" role="group" aria-label="Late-beta changes">
-      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Hunter</p>
+    <div class="tt" role="group" aria-label="Late changes">
+      <p class="tt-h">Late-change ledger</p><p class="tt-sub">Hunter</p>
       <ul>
         <li><span>Aimed Shot</span><span>All Hunters, lvl 20</span></li>
         <li><span>Croc Dismember heal cut</span><span><s>50%</s> 25%</span></li>
         <li><span>Bat Sonic Blast cast slow</span><span>Halved</span></li>
-        <li><span>Trueshot Aura</span><span>Raid-wide</span></li>
+        <li><span>Trueshot Aura</span><span>Raid-wide, <s>75</s> 40 AP</span></li>
+        <li><span>Aspect of the Hawk</span><span><s>90</s> 47 AP</span></li>
         <li><span>Active traps</span><span>1 Fire + 1 Ice</span></li>
         <li><span>Auto Shot stand still</span><span>0.5 sec</span></li>
       </ul>
-      <p class="tt-foot">Dismember’s duration and cooldown were also nerfed, and Bird of Prey’s Mine! was restrained.</p>
+      <p class="tt-foot">Dismember’s duration and cooldown were also nerfed, and Bird of Prey’s Mine! was restrained. The two attack power cuts, shown at each spell’s top rank, came with the launch build.</p>
     </div>
   </aside>
   <div class="cls-main">
@@ -596,6 +603,7 @@ body.player-open { padding-bottom: 6rem }
         <p><b>Aimed Shot</b> is learned by every Hunter at 20. Arcane Shot no longer shares a cooldown with it; <b>Multi-Shot does</b>. Traps work in combat, and fire and ice traps run on separate cooldowns. The latest build fixed it so one Fire Trap and one Ice Trap can be active at once. Traps become part of combat, not just pull prep and Feign Death gymnastics.</p>
         <p><b>Pets</b> get one of the deepest redesigns. They inherit stats from the Hunter’s gear, every family gets basic tools such as Bite or Claw and Dash or Dive, and each family has its own <b>utility ability</b>. Blizzard keeps nerfing the strongest of those, so family choice matters more than in Vanilla, but early-beta pet utility is unlikely to survive intact.</p>
         <p>The Oct 16 build added an option to switch automatically between Auto Attack and Auto Shot. Auto Shot still needs half a second standing still, but it can fire during Aimed and Sniper Shot casts. Shot timing remains part of the class.</p>
+        <p>The launch build cut <b>Aspect of the Hawk</b> and <b>Trueshot Aura</b> to about half their beta attack power: 47 instead of 90 at the Aspect’s top rank. Less of a Hunter’s damage now comes from buffs, and more from gear and the pet.</p>
       </div>
     </div>
     <div class="specs">
@@ -605,7 +613,7 @@ body.player-open { padding-bottom: 6rem }
       </article>
       <article class="spec">
         <div class="spec-head"><h3>Marksmanship</h3><div class="ms-row"><span class="ms g31"><i>31</i>Sniper Shot</span></div></div>
-        <div class="prose"><p><b>Lone Wolf</b> gives a large damage bonus when played without a pet. Trueshot Aura moves deeper into MM and becomes raid-wide. <b>Sniper Shot</b>, the 31-point capstone, is a long-cast, extreme-range precision shot. For Hunters who only kept a pet because Vanilla forced it, this spec explicitly supports leaving it behind.</p></div>
+        <div class="prose"><p><b>Lone Wolf</b> gives a large damage bonus when played without a pet. Trueshot Aura moves deeper into MM and becomes raid-wide, at about half its beta strength since the launch build. <b>Sniper Shot</b>, the 31-point capstone, is a long-cast, extreme-range precision shot. For Hunters who only kept a pet because Vanilla forced it, this spec explicitly supports leaving it behind.</p></div>
       </article>
       <article class="spec">
         <div class="spec-head"><h3>Survival</h3><div class="ms-row"><span class="ms"><i>★</i>Melee hybrid</span></div></div>
@@ -627,8 +635,8 @@ body.player-open { padding-bottom: 6rem }
     <button type="button" class="listen" data-ch="rogue" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Rogue chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>For someone who already likes Classic Rogue and wants better-defined trees. It is not the class for anyone after something radically new.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a></div><a class="xref" href="../races/#by-rogue">Spec by spec, in the races book</a></div>
-    <div class="tt" role="group" aria-label="Late-beta changes">
-      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Rogue</p>
+    <div class="tt" role="group" aria-label="Late changes">
+      <p class="tt-h">Late-change ledger</p><p class="tt-sub">Rogue</p>
       <ul>
         <li><span>Expose Armor</span><span>= 5 Sunders</span></li>
         <li><span>Expose Armor + Sunder</span><span>Both can apply</span></li>
@@ -674,16 +682,19 @@ body.player-open { padding-bottom: 6rem }
     <button type="button" class="listen" data-ch="priest" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Priest chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>Priest suits a player who wants to stay recognizably Classic but feel the spec matter in every fight. Disc is the spec veterans will most need to relearn.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-gnome" href="../races/#gnome">Gnome</a><a class="rp c-human" href="../races/#human">Human</a><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a></div><a class="xref" href="../races/#by-priest">Spec by spec, in the races book</a></div>
-    <div class="tt" role="group" aria-label="Late-beta changes">
-      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Priest</p>
+    <div class="tt" role="group" aria-label="Late changes">
+      <p class="tt-h">Late-change ledger</p><p class="tt-sub">Priest</p>
       <ul>
         <li><span>Devouring Plague cooldown</span><span><s>60 sec</s> 24 sec</span></li>
         <li><span>Shadow Word: Death cooldown</span><span><s>12 sec</s> 18 sec</span></li>
+        <li><span>Shadow Word: Death backlash</span><span><s>10%</s> 30% of max HP</span></li>
+        <li><span>Binding Heal</span><span><s>Talent</s> Trained, lvl 25</span></li>
         <li><span>Vampiric Embrace</span><span>30 sec CD, unresistable</span></li>
         <li><span>Devouring Contagion</span><span>+2 targets</span></li>
         <li><span>Fear Ward, Devouring Plague</span><span>All races</span></li>
         <li><span>Lightwell</span><span>Removed</span></li>
       </ul>
+      <p class="tt-foot">The backlash and Binding Heal lines came with the October 30 hotfixes, which also let Cure Disease and Abolish Disease work in Shadowform.</p>
     </div>
   </aside>
   <div class="cls-main">
@@ -691,7 +702,7 @@ body.player-open { padding-bottom: 6rem }
     <div class="base">
       <h3>Baseline</h3>
       <div class="prose">
-        <p><b>Fear Ward and Devouring Plague are no longer race-locked</b>, and every race still gets two racial Priest spells of its own. <b>Divine Spirit</b> and <b>Shadow Word: Death</b> are baseline. Prayer of Healing can target another party, several Priests can keep Renew on one target, and Fade drops more threat.</p>
+        <p><b>Fear Ward and Devouring Plague are no longer race-locked</b>, and every race still gets two racial Priest spells of its own. <b>Divine Spirit</b> and <b>Shadow Word: Death</b> are baseline, and since the October 30 hotfixes so is <b>Binding Heal</b>, trained from level 25. A Shadow Word: Death that fails to kill now costs the Priest 30% of maximum health instead of 10%. Prayer of Healing can target another party, several Priests can keep Renew on one target, and Fade drops more threat.</p>
         <p>For the Alliance, Humans have Divine Grace and Feedback, Dwarves Desperate Prayer and Chastise, Night Elves a reworked Starshards and Elune’s Grace, and new <b>Gnome Priests</b> Confounding Flash and Contingency Plan. Race still matters, but raids no longer need a Dwarf for Fear Ward. <a class="xref" href="../races/#by-priest">Race leans for each Priest spec.</a></p>
       </div>
     </div>
@@ -704,13 +715,13 @@ body.player-open { padding-bottom: 6rem }
         </div>
       </article>
       <article class="spec">
-        <div class="spec-head"><h3>Holy</h3><div class="ms-row"><span class="ms g16"><i>16</i>Binding Heal</span><span class="ms g31"><i>31</i>Prayer of Mending</span></div></div>
-        <div class="prose"><p><b>Litany of Light</b> rewards switching between different heals instead of repeating one. <b>Prayer of Mending</b> bounces between allies, as veterans remember it. Lightwell is removed. Vanilla Holy had many good ranks but settled on the efficient few, and Forever rewards using the whole healing kit.</p></div>
+        <div class="spec-head"><h3>Holy</h3><div class="ms-row"><span class="ms g16"><i>16</i>Holy Binding</span><span class="ms g31"><i>31</i>Prayer of Mending</span></div></div>
+        <div class="prose"><p><b>Litany of Light</b> rewards switching between different heals instead of repeating one. <b>Prayer of Mending</b> bounces between allies, as veterans remember it. <b>Holy Binding</b>, which took Binding Heal’s talent slot on October 30, heals the Priest for half of every Flash Heal cast on someone else. Lightwell is removed. Vanilla Holy had many good ranks but settled on the efficient few, and Forever rewards using the whole healing kit.</p></div>
       </article>
       <article class="spec">
         <div class="spec-head"><h3>Shadow</h3></div>
         <div class="prose">
-          <p>Fixes famous Vanilla limits without becoming modern Shadow. Shadowform allows more non-healing spells and adds big mana efficiency and crit damage. <b>Shadow Weaving is now a personal buff</b>, so a Shadow Priest is less likely to be brought just as the Warlocks’ debuff Priest.</p>
+          <p>Fixes famous Vanilla limits without becoming modern Shadow. Shadowform allows more non-healing spells, Cure Disease and Abolish Disease among them since the launch hotfixes, and adds big mana efficiency and crit damage. <b>Shadow Weaving is now a personal buff</b>, so a Shadow Priest is less likely to be brought just as the Warlocks’ debuff Priest.</p>
           <p><b>Vampiric Embrace</b> becomes an activated 30-second cooldown. <b>Devouring Contagion</b> spreads Devouring Plague to two more targets, and <b>Early Demise</b> gives Shadow Word: Death an execute role. <b>Dark Inspiration</b> makes Mind Blast and fully channeled Mind Flays raise Spirit for the party, and Improved Mind Flay ramps damage on each tick, so the filler finally has a reason to finish the channel.</p>
         </div>
       </article>
@@ -727,8 +738,8 @@ body.player-open { padding-bottom: 6rem }
     <button type="button" class="listen" data-ch="shaman" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Shaman chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>For an Alliance veteran who wants something that still feels like old WoW but couldn’t be played on Alliance before, Dwarf Shaman belongs high on the shortlist. Totems still get placed and thought about. They just stop eating half the globals to rebuild the same four.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-dwarf" href="../races/#dwarf">Dwarf</a> <small>the only Alliance Shaman race</small></div><a class="xref" href="../races/#by-shaman">Spec by spec, in the races book</a></div>
-    <div class="tt" role="group" aria-label="Late-beta changes">
-      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Shaman</p>
+    <div class="tt" role="group" aria-label="Late changes">
+      <p class="tt-h">Late-change ledger</p><p class="tt-sub">Shaman</p>
       <ul>
         <li><span>Totem global cooldown</span><span><s>1.5 sec</s> 1 sec</span></li>
         <li><span>Buff totem duration</span><span><s>2 min</s> 5 min</span></li>
@@ -782,18 +793,19 @@ body.player-open { padding-bottom: 6rem }
     <button type="button" class="listen" data-ch="mage" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Mage chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>A strong pick for anyone whose Vanilla complaint was that the toolkit is great but raiding becomes one button. Forever’s answer isn’t Retail Mage. It’s Classic Mage with an engine for each spec. Arcane in particular is a newly legitimate spec.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-gnome" href="../races/#gnome">Gnome</a><a class="rp c-human" href="../races/#human">Human</a></div><a class="xref" href="../races/#by-mage">Spec by spec, in the races book</a></div>
-    <div class="tt" role="group" aria-label="Late-beta changes">
-      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Mage</p>
+    <div class="tt" role="group" aria-label="Late changes">
+      <p class="tt-h">Late-change ledger</p><p class="tt-sub">Mage</p>
       <ul>
-        <li><span>Arcane Blast cast</span><span>1.5 sec</span></li>
-        <li><span>Arcane Blast stack</span><span>+15% Int as SP, ×4</span></li>
-        <li><span>Arcane Blast stack duration</span><span>15 sec from first stack</span></li>
-        <li><span>Arcane Blast damage</span><span>−40%</span></li>
-        <li><span>Ice Lance vs. frozen</span><span><s>+300%</s> +200%</span></li>
-        <li><span>Critical Mass (5 pts)</span><span>10% crit</span></li>
-        <li><span>Fire Power</span><span>Up to 12%</span></li>
-        <li><span>Frost Blast (lvl 24)</span><span>1.5 sec, 40% slow</span></li>
+        <li><span>Arcane Blast stack</span><span><s>+15%</s> +12% Int as SP, ×4</span></li>
+        <li><span>Arcane Blast mana per stack</span><span><s>+175%</s> +100%</span></li>
+        <li><span>Arcane Blast stack duration</span><span><s>15 sec</s> 18 sec</span></li>
+        <li><span>Ice Lance vs. frozen</span><span><s>+200%</s> +300%</span></li>
+        <li><span>Ice Lance cooldown</span><span>8 sec, every rank</span></li>
+        <li><span>Critical Mass</span><span><s>10%, 5 pts</s> 6%, 3 pts</span></li>
+        <li><span>Precision (all spells)</span><span>6% hit</span></li>
+        <li><span>Frost Blast (lvl 24)</span><span>No longer taught</span></li>
       </ul>
+      <p class="tt-foot">Arcane Blast’s raw damage was cut 40% in mid-October, and Ice Lance’s bonus fell to 200% before the launch hotfixes restored it. Arcane Focus and Piercing Ice are gone, Incineration reaches 10% crit, and Ice Barrier adds 15% Frost damage. Nothing after October 16 came with notes.</p>
     </div>
   </aside>
   <div class="cls-main">
@@ -803,26 +815,26 @@ body.player-open { padding-bottom: 6rem }
       <div class="prose">
         <p><b>Frostfire Bolt</b> arrives at 40. It counts as both Fire and Frost, taking whichever resistance and damage interactions are better, and exists to make Fire/Frost hybrid builds legitimate.</p>
         <p>Blizzard also goes after the most degenerate mass-control and farming patterns. Improved Blizzard slows less, and Cone of Cold’s large-group control was toned down. The October build restored full Cone control on the <b>first four targets</b>, keeping small-pack power without letting Mages dominate huge mob trains.</p>
-        <p>Rank 1 Frostbolt is penalized, so <b>Frost Blast</b> arrives at 24: a 1.5-second Frost cast with a 40% slow that benefits from Frostbolt talents. It keeps the control Rank 1 Frostbolt used to provide and closes the downranking loophole.</p>
+        <p>Rank 1 Frostbolt is penalized. The beta’s answer was <b>Frost Blast</b> at 24, a 1.5-second Frost cast with a 40% slow, but the launch build no longer has trainers teach it, though Frost talents still name it. Until launch settles whether it’s gone for good, Frostbolt’s own chill is the Mage’s kiting slow.</p>
       </div>
     </div>
     <div class="specs">
       <article class="spec">
         <div class="spec-head"><h3>Arcane</h3><div class="ms-row"><span class="ms g16"><i>16</i>Arcane Wrath</span></div></div>
         <div class="prose">
-          <p>No longer a support tree for another school. It is a real damage spec. Each <b>Arcane Blast</b> grants spell damage equal to 15% of the Mage’s Intellect, up to four stacks, and makes the next one cost more. Stacks last 15 seconds from the first application. Raw damage was cut 40% as part of that redesign.</p>
-          <p>That makes a Classic resource puzzle: ramp up a large spell-power state, then decide how hard to push it before the mana cost ramp hurts. <b>Missile Barrage</b> can proc from Arcane Missiles and moved much earlier. <b>Arcane Wrath</b> is a long cast that scales partly from <b>maximum mana</b>, so the mana pool becomes an offensive stat.</p>
+          <p>No longer a support tree for another school. It is a real damage spec. Each <b>Arcane Blast</b> grants spell damage equal to 12% of the Mage’s Intellect, up to four stacks, and makes the next one cost 100% more. Stacks last 18 seconds from the first application. Raw damage was cut 40% as part of that redesign, and the launch hotfixes eased the stacks and their mana cost together.</p>
+          <p>That makes a Classic resource puzzle: ramp up a large spell-power state, then decide how hard to push it before the mana cost ramp hurts. <b>Missile Barrage</b>, early in the tree, gives Arcane Blast a 40% chance, and other nukes 20%, to make the next Arcane Missiles fire twice as fast for free. <b>Arcane Wrath</b> is a long cast that scales partly from <b>maximum mana</b>, so the mana pool becomes an offensive stat, and Fire’s <b>Accelerant</b>, the old Improved Fireball, now shortens it too. The launch build removed Arcane Focus, leaving the Frost tree’s Precision as the Mage’s hit talent for every school.</p>
         </div>
       </article>
       <article class="spec">
         <div class="spec-head"><h3>Fire</h3></div>
-        <div class="prose"><p>Much more proc-driven. <b>Heating Up</b> builds toward faster Pyroblasts: every Fire Blast adds a charge, and a Fire Blast crit adds two. <b>Critical Mass</b> reaches 10% crit at five points. <b>Fire Power</b> adds damage per Fire effect of the Mage’s on the target, up to 12%. Ignite is tracked per caster, ending the old shared-Ignite ownership mess. The play is stacking Fire effects on a target and turning crits into Pyroblasts, instead of spamming Fireball, keeping Scorch up and hoping Ignite behaves.</p></div>
+        <div class="prose"><p>Much more proc-driven. <b>Heating Up</b> builds toward faster Pyroblasts: every Fire Blast adds a charge, and a Fire Blast crit adds two. <b>Critical Mass</b> is back to Vanilla’s 6% crit over three ranks since the launch build, while <b>Incineration</b> gives Fire Blast, Scorch, Ice Lance and Arcane Blast up to 10% more crit. <b>Fire Power</b> adds damage per Fire effect of the Mage’s on the target, up to 12%. Ignite is tracked per caster, ending the old shared-Ignite ownership mess. The play is stacking Fire effects on a target and turning crits into Pyroblasts, instead of spamming Fireball, keeping Scorch up and hoping Ignite behaves.</p></div>
       </article>
       <article class="spec">
         <div class="spec-head"><h3>Frost</h3></div>
         <div class="prose">
-          <p>Gets the most familiar later-WoW imports. <b>Fingers of Frost</b> lets attacks treat the target as frozen for Shatter, and <b>Ice Lance</b> hits much harder on frozen targets (+200%, down from +300%).</p>
-          <p><b>Winter’s Chill</b> is completely redesigned. It is no longer a stacking Frost crit debuff. Frostbolt, Frost Blast and Fingers-empowered Ice Lance build stacks, and the next <b>Cone of Cold</b> consumes them for much more damage. Cone becomes the finisher of a single-target or small-pack combo, not just an emergency slow.</p>
+          <p>Gets the most familiar later-WoW imports. <b>Fingers of Frost</b> lets attacks treat the target as frozen for Shatter, and <b>Ice Lance</b> hits frozen targets for 300% more, back from a mid-October cut to 200%. Since the launch build it has an 8-second cooldown, so it’s a shatter finisher, not a spam. <b>Ice Barrier</b> now adds 15% Frost damage for a minute and 5% more while the shield holds, <b>Precision</b> gives up to 6% hit with every school, and Piercing Ice is gone.</p>
+          <p><b>Winter’s Chill</b> is completely redesigned. It is no longer a stacking Frost crit debuff. Frostbolt and Fingers-empowered Ice Lance build stacks, each adding 20% to the next <b>Cone of Cold</b>, which consumes them. Cone becomes the finisher of a single-target or small-pack combo, not just an emergency slow.</p>
         </div>
       </article>
     </div>
@@ -838,8 +850,8 @@ body.player-open { padding-bottom: 6rem }
     <button type="button" class="listen" data-ch="warlock" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Warlock chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>Fewer headline fixes than Paladin or Druid, because Vanilla Warlock already worked, but the specs are much better defined. For anyone who loves the Classic Warlock toolbox but dislikes how optimal PvE builds blur the trees together, this is a big improvement.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-gnome" href="../races/#gnome">Gnome</a><a class="rp c-human" href="../races/#human">Human</a></div><a class="xref" href="../races/#by-warlock">Spec by spec, in the races book</a></div>
-    <div class="tt" role="group" aria-label="Late-beta changes">
-      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Warlock</p>
+    <div class="tt" role="group" aria-label="Late changes">
+      <p class="tt-h">Late-change ledger</p><p class="tt-sub">Warlock</p>
       <ul>
         <li><span>Shadow Mastery</span><span><s>1–5%</s> 2/4/6/8/10%</span></li>
         <li><span>Malediction</span><span>Replaced by Grim Reach</span></li>
@@ -847,6 +859,7 @@ body.player-open { padding-bottom: 6rem }
         <li><span>Curse of Shadow</span><span>Removed</span></li>
         <li><span>Life Tap</span><span>Scales with Spirit</span></li>
         <li><span>Firestone / Spellstone</span><span>Imbues, coexist with oils</span></li>
+        <li><span>Improved Drains</span><span>Drain Mana, <s>Wrack</s></span></li>
       </ul>
     </div>
   </aside>
@@ -881,21 +894,23 @@ body.player-open { padding-bottom: 6rem }
   <aside class="cls-aside">
     <div class="crest"><span class="slot c-druid"><svg><use href="#i-druid"/></svg><kbd>9</kbd></span><div><h2 id="druid-h">Druid</h2><p class="specs-l">Balance · Feral · Restoration</p></div></div>
     <div class="dist"><span class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><p><span>Distance from Vanilla</span><b>Very high</b></p></div>
-    <div class="pace-s"><p class="label">leveling speed</p><ol class="pace-l"><li><span>1–20</span><b class="pt t-b">B</b></li><li><span>20–40</span><b class="pt t-a">A</b></li><li><span>40–60</span><b class="pt t-a">A</b></li><li class="all"><span>1–60</span><span class="tv"><span class="pv"><span class="sr">Vanilla </span>B</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-a"><span class="sr">Forever </span>A</b></span></li></ol><a class="xref" href="#leveling">Every class, bracket by bracket</a></div>
+    <div class="pace-s"><p class="label">leveling speed</p><ol class="pace-l"><li><span>1–20</span><b class="pt t-b">B</b></li><li><span>20–40</span><b class="pt t-b">B</b></li><li><span>40–60</span><b class="pt t-a">A</b></li><li class="all"><span>1–60</span><b class="pt t-b">B</b></li></ol><a class="xref" href="#leveling">Every class, bracket by bracket</a></div>
     <button type="button" class="listen" data-ch="druid" data-pod><span class="ico"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/></svg></span><span class="lbl">Listen to the Druid chapter</span><span class="dur"></span></button>
     <div class="read frame"><p class="label">verdict</p><p>Anyone who knows Classic deeply will notice the changes constantly. Weapon upgrades matter in forms, powershifting is formalized, Bear has better threat tools, Balance has a spell cycle and Resto gets core healing tools. It is still Vanilla Druid, minus a remarkable number of its structural oddities.</p></div>
     <div class="races-l"><p class="label">race leans</p><div><a class="rp c-skyborne" href="../races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="../races/#nightelf">Night Elf</a></div><a class="xref" href="../races/#by-druid">Spec by spec, in the races book</a></div>
-    <div class="tt" role="group" aria-label="Late-beta changes">
-      <p class="tt-h">Late-beta ledger</p><p class="tt-sub">Druid</p>
+    <div class="tt" role="group" aria-label="Late changes">
+      <p class="tt-h">Late-change ledger</p><p class="tt-sub">Druid</p>
       <ul>
         <li><span>Omen of Clarity</span><span>Baseline, lvl 20</span></li>
-        <li><span>Lacerate</span><span>Baseline, lvl 42</span></li>
-        <li><span>Tiger’s Fury</span><span><s>Removed</s> Shifting Power</span></li>
+        <li><span>Primal Bite</span><span><s>16 pts</s> 31 pts, lvl 40</span></li>
+        <li><span>Berserk</span><span>Removed</span></li>
+        <li><span>Shifting Power</span><span>31 pts, 8 sec CD</span></li>
+        <li><span>Lacerate</span><span><s>Lvl 42</s> 16-pt talent</span></li>
         <li><span>Furor, Cat → Bear → Cat</span><span>Energy kept</span></li>
-        <li><span>Moonkin Aura</span><span>Raid-wide, spell crit</span></li>
-        <li><span>Barkskin</span><span>Usable in forms</span></li>
+        <li><span>Leader of the Pack, Moonkin Aura</span><span>Raid-wide, every crit</span></li>
+        <li><span>Wild Growth</span><span><s>Instant</s> 3 sec cast</span></li>
       </ul>
-      <p class="tt-foot">Energy does not regenerate while in Bear Form.</p>
+      <p class="tt-foot">Energy does not regenerate while in Bear Form. Everything from Primal Bite down, Furor aside, came with the October 30 hotfixes.</p>
     </div>
   </aside>
   <div class="cls-main">
@@ -904,24 +919,24 @@ body.player-open { padding-bottom: 6rem }
       <h3>Baseline</h3>
       <div class="prose">
         <p><b>Shapeshifted melee damage scales with the weapon’s DPS</b>, while forms keep fixed attack speeds. That ends the Vanilla assumption that a Feral weapon is a stat stick and that oddities like Manual Crowd Pummeler define the spec. Better weapons now mean better Cat and Bear damage, and weapon effects can work in forms.</p>
-        <p>Forms can use more objects, consumables and racials, and <b>Barkskin works while shifted</b>. Entangling Roots works indoors, Nature’s Grasp is baseline early, <b>Omen of Clarity</b> is baseline at 20, and Druids finally get an out-of-combat <b>Revive</b>. Bear gets <b>Lacerate</b> at 42 for stacking bleed and threat, and Swipe scales with AP. Forms are immune to Disarm once shifted, but a Disarm landed before the shift still hurts.</p>
+        <p>Forms can use more objects, consumables and racials, and <b>Barkskin works while shifted</b>. Entangling Roots works indoors, Nature’s Grasp is baseline early, <b>Omen of Clarity</b> is baseline at 20, and Druids finally get an out-of-combat <b>Revive</b>. Swipe scales with AP, and Ferocious Bite gains an early rank at 24. Forms are immune to Disarm once shifted, but a Disarm landed before the shift still hurts.</p>
       </div>
     </div>
     <div class="specs">
       <article class="spec">
         <div class="spec-head"><h3>Balance</h3><div class="ms-row"><span class="ms g16"><i>16</i>Insect Swarm</span></div></div>
-        <div class="prose"><p>Built around a new <b>Eclipse</b>, not the modern self-oscillating bar. Casting Wrath shortens the next Starfires, giving a reason to alternate the two nukes. Nature’s Splendor extends the Druid’s effects, and Moonkin Form allows more non-healing spells. Omen of Clarity does more for casters in Moonkin, and Moonglow helps mana efficiency. It is no longer a Starfire/Wrath caster with chronic mana problems and a novelty aura. It’s still slow-cast Classic Balance, with no Retail Astral Power.</p></div>
+        <div class="prose"><p>Built around a new <b>Eclipse</b>, not the modern self-oscillating bar. Casting Wrath shortens the next Starfires, giving a reason to alternate the two nukes. Nature’s Splendor extends the Druid’s effects, Genesis now adds up to 10% to periodic damage and healing, and Moonkin Form allows more non-healing spells, its aura raising every kind of crit since the launch hotfixes. Omen of Clarity does more for casters in Moonkin, and Moonglow helps mana efficiency. It is no longer a Starfire/Wrath caster with chronic mana problems and a novelty aura. It’s still slow-cast Classic Balance, with no Retail Astral Power.</p></div>
       </article>
       <article class="spec">
-        <div class="spec-head"><h3>Feral</h3><div class="ms-row"><span class="ms"><i>★</i>Shifting Power</span><span class="ms g31"><i>↓</i>Berserk</span></div></div>
+        <div class="spec-head"><h3>Feral</h3><div class="ms-row"><span class="ms g16"><i>16</i>Lacerate</span><span class="ms g31"><i>31</i>Primal Bite</span><span class="ms g31"><i>31</i>Shifting Power</span></div></div>
         <div class="prose">
-          <p>The most fascinating change for anyone who understands Classic powershifting. Tiger’s Fury is gone, replaced by <b>Shifting Power</b>, which converts a chunk of base mana into Energy on a cooldown. Mana stays a secondary resource spent for Cat damage, but as a deliberate talent, not by canceling and re-entering Cat Form with Wolfshead Helm and Furor.</p>
-          <p>Claw, Shred and Rake scale better, and <b>Primal Bite</b> becomes a key active attack. <b>Berserk</b>, deep in the tree, removes Primal Bite’s cooldown, makes it hit several enemies and greatly raises the combo-point builders’ crit chance. The rhythm itself changes. Blizzard took powershifting’s core resource-conversion idea and made it supported design.</p>
+          <p>The most fascinating change for anyone who understands Classic powershifting. Tiger’s Fury is gone, replaced by <b>Shifting Power</b>, which turns 55% of base mana into 40 Energy every eight seconds. Mana stays a secondary resource spent for Cat damage, but as a deliberate talent, not by canceling and re-entering Cat Form with Wolfshead Helm and Furor.</p>
+          <p>Claw, Shred and Rake scale better, and <b>Primal Bite</b>, a weapon strike with high threat, is the key active attack. The October 30 hotfixes moved both it and Shifting Power to 31 points, in Berserk’s old row, and removed <b>Berserk</b>, so Feral’s signature tools now arrive together at level 40. <b>Lacerate</b>, the stacking bleed, takes the 16-point row with trained ranks up to 58, beside <b>Predatory Discipline</b>, which lets Ferocious Bite deal its extra-Energy damage without spending the Energy. Leader of the Pack now raises every kind of crit, spells included. The rhythm itself changes: Blizzard took powershifting’s core resource-conversion idea and made it supported design.</p>
         </div>
       </article>
       <article class="spec">
         <div class="spec-head"><h3>Restoration</h3><div class="ms-row"><span class="ms g16"><i>16</i>Swiftmend</span><span class="ms g31"><i>31</i>Wild Growth</span></div></div>
-        <div class="prose"><p><b>Swiftmend no longer consumes the HoT it uses</b>, a big usability win. <b>Wild Growth</b> heals several party or group members over time. <b>Gift of the Earthmother</b> speeds up the global cooldown on Rejuvenation, Swiftmend and Wild Growth. Mark of the Wild upgrades no longer eat premium talent points, and Spirit regen is better. Resto keeps its Classic HoT and Healing Touch identity and gains a real instant reactive heal and a sustained group HoT.</p></div>
+        <div class="prose"><p><b>Swiftmend</b> was announced as no longer consuming the HoT it uses, a big usability win, but the launch tooltip says it consumes it, so that needs checking at launch. <b>Wild Growth</b> heals several party or group members over time, with a three-second cast since October 30 that Naturalist trims. <b>Bloom</b>, which replaced Gift of the Earthmother the same day, heals a target for the Druid’s Spirit whenever their Rejuvenation or Regrowth runs out. Mark of the Wild upgrades no longer eat premium talent points, and Spirit regen is better. Resto keeps its Classic HoT and Healing Touch identity and gains a real instant reactive heal and a sustained group HoT.</p></div>
       </article>
     </div>
   </div>
@@ -947,14 +962,14 @@ body.player-open { padding-bottom: 6rem }
       <colgroup><col class="k-cls"><col class="k-t"><col class="k-t"><col class="k-t"><col class="k-all"><col></colgroup>
       <thead><tr><th scope="col">Class</th><th scope="col" class="t">1–20</th><th scope="col" class="t">20–40</th><th scope="col" class="t">40–60</th><th scope="col" class="t all">1–60</th><th scope="col">Why</th></tr></thead>
       <tbody>
-        <tr class="c-hunter"><th scope="row"><a class="cl" href="#hunter"><span class="slot"><svg aria-hidden="true"><use href="#i-hunter"/></svg></span><span>Hunter</span></a></th><td class="t" data-l="1–20"><b class="pt t-s">S</b></td><td class="t" data-l="20–40"><b class="pt t-s">S</b></td><td class="t" data-l="40–60"><b class="pt t-s">S</b></td><td class="t all" data-l="1–60"><b class="pt t-s">S</b></td><td class="why">Still the benchmark: the pet takes the hits while the Hunter shoots, so downtime and deaths stay rare. Forever adds Aimed Shot for every Hunter at 20 and traps that work in combat, and pets now draw on the Hunter’s gear, so every upgrade counts twice.</td></tr>
+        <tr class="c-hunter"><th scope="row"><a class="cl" href="#hunter"><span class="slot"><svg aria-hidden="true"><use href="#i-hunter"/></svg></span><span>Hunter</span></a></th><td class="t" data-l="1–20"><b class="pt t-s">S</b></td><td class="t" data-l="20–40"><b class="pt t-s">S</b></td><td class="t" data-l="40–60"><b class="pt t-s">S</b></td><td class="t all" data-l="1–60"><b class="pt t-s">S</b></td><td class="why">Still the benchmark: the pet takes the hits while the Hunter shoots, so downtime and deaths stay rare. Forever adds Aimed Shot for every Hunter at 20 and traps that work in combat, and pets now draw on the Hunter’s gear, so every upgrade counts twice. The launch build roughly halves Aspect of the Hawk, a real cut to the Hunter’s own damage, but not one that costs the top tier.</td></tr>
         <tr class="c-warlock"><th scope="row"><a class="cl" href="#warlock"><span class="slot"><svg aria-hidden="true"><use href="#i-warlock"/></svg></span><span>Warlock</span></a></th><td class="t" data-l="1–20"><b class="pt t-s">S</b></td><td class="t" data-l="20–40"><b class="pt t-s">S</b></td><td class="t" data-l="40–60"><b class="pt t-s">S</b></td><td class="t all" data-l="1–60"><b class="pt t-s">S</b></td><td class="why">A demon takes the hits and Life Tap turns health into mana, now scaling with Spirit. Drain Soul yields shards more reliably, demons inherit more of the Warlock’s stats, and Demonology’s Demonic Pact keeps a sacrificed demon’s bonus while another fights.</td></tr>
         <tr class="c-shaman"><th scope="row"><a class="cl" href="#shaman"><span class="slot"><svg aria-hidden="true"><use href="#i-shaman"/></svg></span><span>Shaman</span></a></th><td class="t" data-l="1–20"><b class="pt t-a">A</b></td><td class="t" data-l="20–40"><b class="pt t-a">A</b></td><td class="t" data-l="40–60"><b class="pt t-a">A</b></td><td class="t all" data-l="1–60"><span class="tv"><span class="pv"><span class="sr">Vanilla </span>B</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-a"><span class="sr">Forever </span>A</b></span></td><td class="why">Durable and self-healing as before, and far less fiddly: one-second totem globals, five-minute buff totems and longer imbues save mana and time between pulls. Enhancement reaches Stormstrike at 16 points, level 25 rather than 40, and Maelstrom Weapon can make its Lightning Bolts instant.</td></tr>
-        <tr class="c-mage"><th scope="row"><a class="cl" href="#mage"><span class="slot"><svg aria-hidden="true"><use href="#i-mage"/></svg></span><span>Mage</span></a></th><td class="t" data-l="1–20"><b class="pt t-a">A</b></td><td class="t" data-l="20–40"><b class="pt t-a">A</b></td><td class="t" data-l="40–60"><b class="pt t-a">A</b></td><td class="t all" data-l="1–60"><span class="tv"><span class="pv"><span class="sr">Vanilla </span>S</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-a"><span class="sr">Forever </span>A</b></span></td><td class="why">Still quick and full of control, but Forever deliberately trims the mass-pull AoE farming that put Vanilla Mages among the fastest at 40–60: Improved Blizzard slows less, and Cone of Cold fully controls only four targets. Small packs and Frost’s shatter combos still fall fast.</td></tr>
-        <tr class="c-druid"><th scope="row"><a class="cl" href="#druid"><span class="slot"><svg aria-hidden="true"><use href="#i-druid"/></svg></span><span>Druid</span></a></th><td class="t" data-l="1–20"><b class="pt t-b">B</b></td><td class="t" data-l="20–40"><b class="pt t-a">A</b></td><td class="t" data-l="40–60"><b class="pt t-a">A</b></td><td class="t all" data-l="1–60"><span class="tv"><span class="pv"><span class="sr">Vanilla </span>B</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-a"><span class="sr">Forever </span>A</b></span></td><td class="why">Slow in caster form, then quick. Cat and Bear damage now follows weapon DPS, Omen of Clarity is baseline at 20, and Shifting Power turns mana into Energy, so feral’s old leveling problem, slow kills, is largely solved.</td></tr>
+        <tr class="c-mage"><th scope="row"><a class="cl" href="#mage"><span class="slot"><svg aria-hidden="true"><use href="#i-mage"/></svg></span><span>Mage</span></a></th><td class="t" data-l="1–20"><b class="pt t-a">A</b></td><td class="t" data-l="20–40"><b class="pt t-a">A</b></td><td class="t" data-l="40–60"><b class="pt t-a">A</b></td><td class="t all" data-l="1–60"><span class="tv"><span class="pv"><span class="sr">Vanilla </span>S</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-a"><span class="sr">Forever </span>A</b></span></td><td class="why">Still quick and full of control, but Forever deliberately trims the mass-pull AoE farming that put Vanilla Mages among the fastest at 40–60: Improved Blizzard slows less, and Cone of Cold fully controls only four targets. Small packs still fall fast, though Ice Lance’s new 8-second cooldown limits how often a shatter combo lands.</td></tr>
         <tr class="c-paladin"><th scope="row"><a class="cl" href="#paladin"><span class="slot"><svg aria-hidden="true"><use href="#i-paladin"/></svg></span><span>Paladin</span></a></th><td class="t" data-l="1–20"><b class="pt t-b">B</b></td><td class="t" data-l="20–40"><b class="pt t-b">B</b></td><td class="t" data-l="40–60"><b class="pt t-b">B</b></td><td class="t all" data-l="1–60"><span class="tv"><span class="pv"><span class="sr">Vanilla </span>C</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-b"><span class="sr">Forever </span>B</b></span></td><td class="why">Forever’s clearest leveling repair. Holy Strike and Seals that survive Judgment give the early levels something to press, and Consecration is baseline at 20 for small packs. Still mana-hungry and slow-swinging, so steady rather than quick, but very hard to kill.</td></tr>
         <tr class="c-rogue"><th scope="row"><a class="cl" href="#rogue"><span class="slot"><svg aria-hidden="true"><use href="#i-rogue"/></svg></span><span>Rogue</span></a></th><td class="t" data-l="1–20"><b class="pt t-a">A</b></td><td class="t" data-l="20–40"><b class="pt t-b">B</b></td><td class="t" data-l="40–60"><b class="pt t-b">B</b></td><td class="t all" data-l="1–60"><b class="pt t-b">B</b></td><td class="why">Fast early, while mobs die before the Rogue needs to eat; steady after, since there’s still no self-healing and food and bandages set the pace. Poisons that stack with stones and a Sap that keeps Stealth help, but this is Vanilla Rogue pace.</td></tr>
-        <tr class="c-priest"><th scope="row"><a class="cl" href="#priest"><span class="slot"><svg aria-hidden="true"><use href="#i-priest"/></svg></span><span>Priest</span></a></th><td class="t" data-l="1–20"><b class="pt t-c">C</b></td><td class="t" data-l="20–40"><b class="pt t-b">B</b></td><td class="t" data-l="40–60"><b class="pt t-a">A</b></td><td class="t all" data-l="1–60"><span class="tv"><span class="pv"><span class="sr">Vanilla </span>C</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-b"><span class="sr">Forever </span>B</b></span></td><td class="why">Wand, Shadow Word: Pain and shields at first, as in Vanilla. Then Shadow comes into its own: Devouring Plague for every race, Shadow Word: Death baseline, Vampiric Embrace on a 30-second cooldown and a Shadowform with real mana efficiency make 40–60 one of the smoothest stretches of any class.</td></tr>
+        <tr class="c-priest"><th scope="row"><a class="cl" href="#priest"><span class="slot"><svg aria-hidden="true"><use href="#i-priest"/></svg></span><span>Priest</span></a></th><td class="t" data-l="1–20"><b class="pt t-c">C</b></td><td class="t" data-l="20–40"><b class="pt t-b">B</b></td><td class="t" data-l="40–60"><b class="pt t-a">A</b></td><td class="t all" data-l="1–60"><span class="tv"><span class="pv"><span class="sr">Vanilla </span>C</span><span class="pv-to" aria-hidden="true">→</span><b class="pt t-b"><span class="sr">Forever </span>B</b></span></td><td class="why">Wand, Shadow Word: Pain and shields at first, as in Vanilla. Then Shadow comes into its own: Devouring Plague for every race, Shadow Word: Death baseline, Vampiric Embrace on a 30-second cooldown and a Shadowform with real mana efficiency make 40–60 one of the smoothest stretches of any class, though a Shadow Word: Death that fails to kill now costs 30% of the Priest’s health.</td></tr>
+        <tr class="c-druid"><th scope="row"><a class="cl" href="#druid"><span class="slot"><svg aria-hidden="true"><use href="#i-druid"/></svg></span><span>Druid</span></a></th><td class="t" data-l="1–20"><b class="pt t-b">B</b></td><td class="t" data-l="20–40"><b class="pt t-b">B</b></td><td class="t" data-l="40–60"><b class="pt t-a">A</b></td><td class="t all" data-l="1–60"><b class="pt t-b">B</b></td><td class="why">Slow in caster form, steady in Cat, then quick from 40. Cat and Bear damage now follows weapon DPS and Omen of Clarity is baseline at 20, but the October 30 hotfixes moved Primal Bite and Shifting Power to 31 points, so feral’s full kit, and its pace, wait for level 40. Over the whole climb that leaves Druid about where it was in Vanilla.</td></tr>
         <tr class="c-warrior"><th scope="row"><a class="cl" href="#warrior"><span class="slot"><svg aria-hidden="true"><use href="#i-warrior"/></svg></span><span>Warrior</span></a></th><td class="t" data-l="1–20"><b class="pt t-c">C</b></td><td class="t" data-l="20–40"><b class="pt t-c">C</b></td><td class="t" data-l="40–60"><b class="pt t-b">B</b></td><td class="t all" data-l="1–60"><b class="pt t-c">C</b></td><td class="why">Still the slowest alone. Victory Rush at 20, baseline Tactical Mastery and steadier rage take the edge off, but a Warrior still eats after most pulls and leans hard on its weapon. Better from 40 with a strong two-hander, and far better with a healer.</td></tr>
       </tbody>
     </table>
@@ -1002,7 +1017,7 @@ body.player-open { padding-bottom: 6rem }
     </article>
     <article class="path frame">
       <h3>Priest healing trees felt the same</h3>
-      <p>Disc may be the biggest sleeper pick. Penance, Divine Aegis, better shields and damage weaving make it a real spec. Holy gets Binding Heal, Prayer of Mending and rewards for alternating spells.</p>
+      <p>Disc may be the biggest sleeper pick. Penance, Divine Aegis, better shields and damage weaving make it a real spec. Every Priest now learns Binding Heal, and Holy adds Prayer of Mending, Holy Binding and rewards for alternating spells.</p>
       <div class="pills"><a class="pill c-priest" href="#priest">Priest</a></div>
     </article>
     <article class="path frame">
@@ -1035,7 +1050,7 @@ body.player-open { padding-bottom: 6rem }
     <p class="label">the conclusion</p>
     <p class="big">The question isn’t which Vanilla class is already the favorite. It’s which one had a fantasy worth loving and mechanics Blizzard never finished.</p>
     <p>Forever’s class work is aimed overwhelmingly at that second question. Paladin, Druid and Shaman are the most transformed. Hunter, Priest, Mage and Warlock gain distinct spec loops. Warrior and Rogue stay closest to refined Classic originals.</p>
-    <p>Final raid DPS, the tank hierarchy and healing throughput are the things most likely to move. In mid-October Blizzard was still changing coefficients, talent positions, raid buffs and cooldowns. The same late build redesigned Arcane Blast, moved Lava Burst, restored Elemental Mastery, cut Champion of the Light, changed Paladin threat, nerfed Hunter pet abilities, adjusted Ice Lance and revised Shadow talents. Mechanical identity is a better guide than an October beta damage ranking.</p>
+    <p>Final raid DPS, the tank hierarchy and healing throughput are the things most likely to move. Blizzard kept changing coefficients, talent positions, raid buffs and cooldowns right up to launch. The mid-October build redesigned Arcane Blast, moved Lava Burst, restored Elemental Mastery, changed Paladin threat and nerfed Hunter pet abilities; then the launch builds and the October 30 hotfixes, posted without notes, rebuilt the Paladin trees, moved Feral’s key talents to 40, put Ice Lance on a cooldown and halved Aspect of the Hawk. Mechanical identity is a better guide than any pre-launch damage ranking.</p>
   </div>
 </section>
 
@@ -1049,8 +1064,8 @@ body.player-open { padding-bottom: 6rem }
 </nav>
 
 <footer class="foot">
-  <p>Compiled October 22, 2026 from Blizzard’s class deep dives, beta development notes through the October 16 build, datamined client changes and current class guides. The October 21 activity was the public stress test, not a new class pass.</p>
-  <p>Everything here is launch-candidate. Blizzard has said repeatedly that talents and abilities can keep changing during beta. The “distance from Vanilla” ratings, the leveling tiers and the shortlist are editorial judgments, not Blizzard rankings. The leveling tiers were added October 31, before any live-realm leveling times existed. Racial values follow Blizzard’s October 26 tuning pass, which landed after this book was compiled.</p>
+  <p>Compiled October 22, 2026 from Blizzard’s class deep dives, beta development notes through the October 16 build, datamined client changes and current class guides. Updated November 1 for Patch 1.60.1’s launch client, build 70707, and the server hotfixes of October 30. Blizzard posted no notes for those: their changes were read from the client by two independent data trackers, whose readings agree, and spot-checked against the build’s own spell data.</p>
+  <p>Everything here is launch-candidate: live hotfixes can keep changing talents and abilities. The “distance from Vanilla” ratings, the leveling tiers and the shortlist are editorial judgments, not Blizzard rankings. The leveling tiers were added October 31 and revised November 1 for the Feral changes, before any live-realm leveling times existed. Racial values follow Blizzard’s October 26 tuning pass.</p>
   <p>Part of the <a href="../">Forever Codex</a>. A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
 </footer>
 </main>

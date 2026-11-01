@@ -59,7 +59,7 @@ html { scroll-padding-top: 1rem }
 
 /* ---------- the calendar ---------- */
 .cal { margin-top: clamp(2.5rem, 6vw, 3.5rem); display: grid; gap: .9rem; justify-items: center }
-.cal-rail { --n: 4; list-style: none; margin: 0; padding: 0; width: 100%; max-width: 60rem; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); position: relative }
+.cal-rail { --n: 5; list-style: none; margin: 0; padding: 0; width: 100%; max-width: 60rem; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); position: relative }
 .cal-rail::before { content: ""; position: absolute; left: calc(50% / var(--n)); right: calc(50% / var(--n)); top: .9rem; height: 2px; background: linear-gradient(90deg, var(--line), var(--bronze) 50%, var(--line)) }
 .cal-rail li { position: relative; display: grid; justify-items: center; align-content: start; gap: .15rem; text-align: center; padding: 0 .5rem; min-width: 0 }
 .cal-mk {
@@ -304,6 +304,7 @@ html { scroll-padding-top: 1rem }
       <a href="appendix/">Appendix</a>
     </nav>
   </div>
+  <p class="mast-build"><span class="label">built on</span><b>Patch 1.60.1</b> · build 70707 · server hotfixes of October 30, 2026<a href="appendix/#build">What each book covers</a></p>
 </header>
 
 <main class="home-col">
@@ -319,8 +320,9 @@ html { scroll-padding-top: 1rem }
   <section class="cal" aria-labelledby="cal-h">
     <h2 class="label" id="cal-h">the calendar</h2>
     <ol class="cal-rail">
-      <li data-date="2026-10-16"><i class="cal-mk" aria-hidden="true"></i><b>Oct 16</b><span>The last beta build with class changes</span></li>
+      <li data-date="2026-10-16"><i class="cal-mk" aria-hidden="true"></i><b>Oct 16</b><span>The last beta build with class notes</span></li>
       <li data-date="2026-10-26"><i class="cal-mk" aria-hidden="true"></i><b>Oct 26</b><span>The final racial tuning pass</span><span class="cd" hidden></span></li>
+      <li data-date="2026-10-30"><i class="cal-mk" aria-hidden="true"></i><b>Oct 30</b><span>Launch hotfixes rebuild Paladin and Feral talents</span><span class="cd" hidden></span></li>
       <li data-date="2026-11-04"><i class="cal-mk" aria-hidden="true"></i><b>Nov 4</b><span>Launch, early Year 1</span><span class="cd" hidden></span></li>
       <li data-date="2026-12-09"><i class="cal-mk" aria-hidden="true"></i><b>Dec 9</b><span>First raids: Barrow Deeps, Hyjal Summit, Onyxia’s Lair</span><span class="cd" hidden></span></li>
     </ol>
@@ -435,8 +437,8 @@ html { scroll-padding-top: 1rem }
       <header class="brief-h"><span class="slot c-paladin"><svg aria-hidden="true"><use href="#i-paladin"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-paladin-h">Paladin</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span>Distance from Vanilla: <b>Very high</b></span></p></div></header>
       <div class="brief-cols">
         <div><h4>still holds</h4><p>Slow, mana-hungry, seal-and-judgment Paladin.</p></div>
-        <div><h4>changed most</h4><ul><li>Judgment no longer consumes the Seal, ending the judge-and-reseal routine.</li><li>Holy Strike comes early, and Consecration is baseline at 20, at full strength on the first four targets.</li><li>Protection’s Seal of Fury has a Judgment that taunts: an Alliance Paladin finally has a real taunt.</li><li>Salvation no longer takes a Blessing slot.</li></ul></div>
-        <div><h4>relearn first</h4><p>Retribution’s Twist of Light makes seal twisting a talent, and Holy now runs on Holy Shock, with Light’s Vigil at 31.</p></div>
+        <div><h4>changed most</h4><ul><li>Judgment no longer consumes the Seal, ending the judge-and-reseal routine.</li><li>Holy Strike comes early, and Consecration is baseline at 20, at full strength on the first four targets.</li><li>Protection’s Seal of Fury has a Judgment that taunts: an Alliance Paladin finally has a real taunt.</li><li>Salvation and Blessing of Light are no longer taught, and Righteous Fury adds a third to all threat.</li></ul></div>
+        <div><h4>relearn first</h4><p>The trees, rebuilt on October 30: Retribution’s Unsealed Wrath makes seal twisting a talent, Protection ends in Shieldsworn, and Holy runs on Holy Shock around Oath of Light.</p></div>
       </div>
       <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-dwarf" href="races/#dwarf">Dwarf</a><a class="rp c-human" href="races/#human">Human</a></div><p class="go"><a href="classes/#paladin">The Paladin sheet →</a><a href="races/#by-paladin">Race leans by spec →</a></p></footer>
     </article>
@@ -444,7 +446,7 @@ html { scroll-padding-top: 1rem }
       <header class="brief-h"><span class="slot c-hunter"><svg aria-hidden="true"><use href="#i-hunter"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-hunter-h">Hunter</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span>Distance from Vanilla: <b>High</b></span></p></div></header>
       <div class="brief-cols">
         <div><h4>still holds</h4><p>Old-school Hunter rules: the dead zone, half a second standing still for Auto Shot, and shot timing.</p></div>
-        <div><h4>changed most</h4><ul><li>Every Hunter learns Aimed Shot at 20, sharing a cooldown with Multi-Shot, not Arcane Shot.</li><li>Traps work in combat, with one Fire and one Ice trap active at once.</li><li>Pets inherit stats from the Hunter’s gear, and every family has its own utility ability.</li><li>Survival is a melee and ranged hybrid; Marksmanship’s Lone Wolf rewards leaving the pet behind.</li></ul></div>
+        <div><h4>changed most</h4><ul><li>Every Hunter learns Aimed Shot at 20, sharing a cooldown with Multi-Shot, not Arcane Shot.</li><li>Traps work in combat, with one Fire and one Ice trap active at once.</li><li>Pets inherit stats from the Hunter’s gear, and every family has its own utility ability.</li><li>Survival is a melee and ranged hybrid; Marksmanship’s Lone Wolf rewards leaving the pet behind.</li><li>Aspect of the Hawk and Trueshot Aura give about half the attack power they did in the beta.</li></ul></div>
         <div><h4>relearn first</h4><p>Pet family choice, which matters more than in Vanilla, and Survival’s close-range play around Mongoose Bite and Strider Kick.</p></div>
       </div>
       <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-nightelf" href="races/#nightelf">Night Elf</a><a class="rp c-skyborne" href="races/#skyborne">Skyborne</a><a class="rp c-dwarf" href="races/#dwarf">Dwarf</a></div><p class="go"><a href="classes/#hunter">The Hunter sheet →</a><a href="races/#by-hunter">Race leans by spec →</a></p></footer>
@@ -462,7 +464,7 @@ html { scroll-padding-top: 1rem }
       <header class="brief-h"><span class="slot c-priest"><svg aria-hidden="true"><use href="#i-priest"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-priest-h">Priest</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span>Distance from Vanilla: <b>High</b></span></p></div></header>
       <div class="brief-cols">
         <div><h4>still holds</h4><p>Classic mana management and cast speed.</p></div>
-        <div><h4>changed most</h4><ul><li>Fear Ward and Devouring Plague are for every Priest, and Divine Spirit and Shadow Word: Death are baseline.</li><li>Discipline is a shield-healing and damage-weaving spec, built on Penance and Divine Aegis.</li><li>Holy gains Binding Heal and Prayer of Mending; Lightwell is gone.</li><li>Shadow Weaving is a personal buff, and Vampiric Embrace an activated cooldown.</li></ul></div>
+        <div><h4>changed most</h4><ul><li>Fear Ward and Devouring Plague are for every Priest, and Divine Spirit and Shadow Word: Death are baseline.</li><li>Discipline is a shield-healing and damage-weaving spec, built on Penance and Divine Aegis.</li><li>Every Priest learns Binding Heal at 25; Holy gains Prayer of Mending, and Lightwell is gone.</li><li>Shadow Weaving is a personal buff, and Vampiric Embrace an activated cooldown.</li></ul></div>
         <div><h4>relearn first</h4><p>Discipline, the spec veterans most need to relearn: Power in Light ties Smite and Penance to targets carrying Holy Fire or Shadow Word: Pain.</p></div>
       </div>
       <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-gnome" href="races/#gnome">Gnome</a><a class="rp c-human" href="races/#human">Human</a><a class="rp c-nightelf" href="races/#nightelf">Night Elf</a><a class="rp c-dwarf" href="races/#dwarf">Dwarf</a></div><p class="go"><a href="classes/#priest">The Priest sheet →</a><a href="races/#by-priest">Race leans by spec →</a></p></footer>
@@ -480,7 +482,7 @@ html { scroll-padding-top: 1rem }
       <header class="brief-h"><span class="slot c-mage"><svg aria-hidden="true"><use href="#i-mage"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-mage-h">Mage</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span>Distance from Vanilla: <b>High</b></span></p></div></header>
       <div class="brief-cols">
         <div><h4>still holds</h4><p>The Classic control chassis: Blink, Polymorph, Counterspell, Frost Nova and Classic casting.</p></div>
-        <div><h4>changed most</h4><ul><li>Frostfire Bolt at 40 counts as both Fire and Frost.</li><li>Rank 1 Frostbolt is penalized; Frost Blast at 24 keeps its slow.</li><li>Arcane is a real damage spec: Arcane Blast stacks spell power against a rising mana cost.</li><li>Fire runs on Heating Up and Pyroblast; Frost on Fingers of Frost, Ice Lance and a redesigned Winter’s Chill.</li></ul></div>
+        <div><h4>changed most</h4><ul><li>Frostfire Bolt at 40 counts as both Fire and Frost.</li><li>Rank 1 Frostbolt is penalized, and Frost Blast, the beta’s replacement, isn’t taught in the launch build.</li><li>Arcane is a real damage spec: Arcane Blast stacks spell power against a rising mana cost.</li><li>Fire runs on Heating Up and Pyroblast; Frost on Fingers of Frost, an Ice Lance with an 8-second cooldown, and a redesigned Winter’s Chill.</li></ul></div>
         <div><h4>relearn first</h4><p>Big pulls: Improved Blizzard slows less, and Cone of Cold’s full control reaches only the first four targets.</p></div>
       </div>
       <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-skyborne" href="races/#skyborne">Skyborne</a><a class="rp c-gnome" href="races/#gnome">Gnome</a><a class="rp c-human" href="races/#human">Human</a></div><p class="go"><a href="classes/#mage">The Mage sheet →</a><a href="races/#by-mage">Race leans by spec →</a></p></footer>
@@ -498,8 +500,8 @@ html { scroll-padding-top: 1rem }
       <header class="brief-h"><span class="slot c-druid"><svg aria-hidden="true"><use href="#i-druid"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-druid-h">Druid</h3><p class="brief-sub"><span class="xp" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span>Distance from Vanilla: <b>Very high</b></span></p></div></header>
       <div class="brief-cols">
         <div><h4>still holds</h4><p>Vanilla Druid: forms, HoTs, Healing Touch and slow-cast Balance.</p></div>
-        <div><h4>changed most</h4><ul><li>Shapeshifted damage scales with the weapon’s DPS, and weapon effects work in forms.</li><li>Tiger’s Fury is replaced by Shifting Power, which turns base mana into Energy: powershifting as a talent.</li><li>Omen of Clarity is baseline at 20, Barkskin works in forms, and Druids get an out-of-combat Revive.</li><li>Swiftmend no longer consumes its HoT, and Wild Growth sits at 31.</li></ul></div>
-        <div><h4>relearn first</h4><p>Feral around Primal Bite and Berserk, and Balance’s Eclipse, where Wrath shortens the next Starfires.</p></div>
+        <div><h4>changed most</h4><ul><li>Shapeshifted damage scales with the weapon’s DPS, and weapon effects work in forms.</li><li>Tiger’s Fury is replaced by Shifting Power, which turns base mana into Energy: powershifting as a talent.</li><li>Omen of Clarity is baseline at 20, Barkskin works in forms, and Druids get an out-of-combat Revive.</li><li>Restoration gets Swiftmend at 16, Wild Growth at 31 with a 3-second cast, and Bloom, which heals as HoTs expire.</li></ul></div>
+        <div><h4>relearn first</h4><p>Feral before and after 40: Primal Bite and Shifting Power both wait for 31 points, and Berserk is gone. And Balance’s Eclipse, where Wrath shortens the next Starfires.</p></div>
       </div>
       <footer class="brief-f"><div class="leans"><span class="label">race leans</span><a class="rp c-skyborne" href="races/#skyborne">Skyborne</a><a class="rp c-nightelf" href="races/#nightelf">Night Elf</a></div><p class="go"><a href="classes/#druid">The Druid sheet →</a><a href="races/#by-druid">Race leans by spec →</a></p></footer>
     </article>
@@ -543,7 +545,7 @@ html { scroll-padding-top: 1rem }
       <header class="brief-h"><span class="slot c-skyborne"><svg aria-hidden="true"><use href="#i-skyborne"/></svg></span><div><p class="label">coming back as a</p><h3 id="as-skyborne-h">Skyborne</h3><p class="brief-sub"><span>High Order Skyborne, new in Forever</span></p></div></header>
       <div class="brief-cols">
         <div><h4>who they are</h4><p>An entirely new race: descendants of Highborne rebels who fled Eldre’Thalas after the War of the Ancients. The High Order side with the Alliance.</p></div>
-        <div><h4>what they bring</h4><ul><li>Wind-Blessed: +2% haste, always on.</li><li>Read Leyline: regeneration anywhere, doubled once Attuned at a Ley Line.</li><li>Walk on Air: a 10-second glide, every 90 seconds.</li><li>Elemental Insight: +5% damage against Elementals.</li></ul></div>
+        <div><h4>what they bring</h4><ul><li>Wind-Blessed: +2% haste, always on.</li><li>Read Leyline: regeneration anywhere, doubled once Attuned at a Ley Line, outside raids.</li><li>Walk on Air: a 10-second glide, every 90 seconds.</li><li>Elemental Insight: +5% damage against Elementals.</li></ul></div>
         <div><h4>worth knowing</h4><p>Playing one needs the Skyborne Heroic Pack or higher, per Blizzard. Its racials are also the ones whose level-60 value most needs testing after launch.</p></div>
       </div>
       <footer class="brief-f"><div class="leans"><span class="label">plays</span><a class="rp c-warrior" href="classes/#warrior">Warrior</a><a class="rp c-hunter" href="classes/#hunter">Hunter</a><a class="rp c-rogue" href="classes/#rogue">Rogue</a><a class="rp c-mage" href="classes/#mage">Mage</a><a class="rp c-druid" href="classes/#druid">Druid</a></div><p class="go"><a href="races/#skyborne">The Skyborne sheet →</a></p></footer>
@@ -661,7 +663,7 @@ html { scroll-padding-top: 1rem }
         <li style="--pc: var(--pets)"><a href="companions/#changes"><span class="rn">I</span><b>What changed</b><span>Learned companions, the Collector’s Edition trio, new sources and moved odds</span></a></li>
         <li style="--pc: var(--pets)"><a href="companions/#catalog"><span class="rn">II</span><b>The catalog</b><span>Sixty-four companions within Alliance reach, as a checklist, with the beta’s drop counts</span></a></li>
         <li style="--pc: var(--pets)"><a href="companions/#route"><span class="rn">III</span><b>Collecting in order</b><span>An Alliance route, and the pets easiest to miss</span></a></li>
-        <li class="dash" style="--pc: var(--pets)"><a href="companions/#tiers"><span class="rn">✦</span><b>Difficulty and the unsolved</b><span>Effort tiers, and 23 companions nobody can get yet</span></a></li>
+        <li class="dash" style="--pc: var(--pets)"><a href="companions/#tiers"><span class="rn">✦</span><b>Difficulty and the unsolved</b><span>Effort tiers, and 25 companions nobody can get yet</span></a></li>
       </ol>
     </article>
 
@@ -675,7 +677,7 @@ html { scroll-padding-top: 1rem }
   </section>
 
   <footer class="foot">
-    <p>Compiled in October 2026 from Blizzard’s Forever recaps, deep dives, previews and development notes through the October 26 racial tuning pass, Wowhead’s Forever coverage and its Patch 1.60.1 database, and <i>Warcraft III Reforged: Forsaken Kingdom</i>. Each book lists its own sources.</p>
+    <p>Compiled in October 2026 from Blizzard’s Forever recaps, deep dives, previews and development notes through the October 26 racial tuning pass, Wowhead’s Forever coverage and its Patch 1.60.1 database, and <i>Warcraft III Reforged: Forsaken Kingdom</i>. Updated November 1 for Patch 1.60.1’s launch client, build 70707, and the server hotfixes of October 30, read from the client because Blizzard posted no notes for them. Each book lists its own sources.</p>
     <p>A fan-made guide, not affiliated with or endorsed by Blizzard Entertainment.</p>
   </footer>
 </main>

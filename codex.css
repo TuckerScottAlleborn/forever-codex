@@ -214,6 +214,11 @@ a { color: inherit }
   .mast-books .sh { display: inline }
 }
 @media (max-width: 22rem) { .mast-books { --pad: .15rem } .mast-books a { letter-spacing: 0; font-size: .78rem } }
+/* the build stamp under the masthead: which patch every page reads */
+.mast-build { max-width: var(--wide); margin: 0 auto; padding: .15rem 0 .1rem; font-family: var(--f-ui); font-size: var(--step--1); line-height: 1.45; color: var(--muted) }
+.mast-build .label { margin-right: .45rem }
+.mast-build b { font-weight: 700; color: var(--ink) }
+.mast-build a { margin-left: .5rem; color: var(--bronze-hi); text-underline-offset: 3px; white-space: nowrap }
 
 /* ---------- the sticky bar's shell; each book fills it with its own navigation ---------- */
 .bar {
