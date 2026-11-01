@@ -192,28 +192,47 @@ a { color: inherit }
 }
 .mast-brand svg { width: 1.35rem; height: 1.35rem; flex: none }
 .mast-brand:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px }
-.mast-books { display: flex; gap: .2rem; margin-right: -.5rem }
-.mast-books a {
-  display: inline-flex; align-items: center; gap: .45rem; min-height: 2.6rem; padding: .2rem .7rem; border: 1px solid transparent; border-radius: 3px;
-  font-family: var(--f-label); font-weight: 700; font-size: .92rem; letter-spacing: .05em; text-transform: lowercase; text-decoration: none; color: var(--muted);
+/* the main topics stay in view at every width; More opens an index of every section, hung from the masthead */
+.mast { position: relative }
+.mast-books { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: .1rem .15rem; margin-right: -.5rem }
+.mast-books > a, .mast-more > summary {
+  display: inline-flex; align-items: center; gap: .4rem; min-height: 2.6rem; padding: .2rem .6rem; border: 1px solid transparent; border-radius: 3px;
+  font-family: var(--f-label); font-weight: 700; font-size: .92rem; letter-spacing: .05em; text-transform: lowercase; text-decoration: none; color: var(--muted); white-space: nowrap;
 }
-.mast-books a:hover { color: var(--ink) }
-.mast-books a[aria-current="page"] { color: var(--book); border-color: color-mix(in oklab, var(--book) 45%, transparent); background: color-mix(in oklab, var(--book) 10%, transparent) }
-.mast-books .bk-n { font-family: var(--f-caps); font-weight: 400; letter-spacing: 0; opacity: .8 }
+.mast-books > a:hover, .mast-more > summary:hover { color: var(--ink) }
+.mast-books > a[aria-current], .mast-more.here > summary { color: var(--book); border-color: color-mix(in oklab, var(--book) 45%, transparent); background: color-mix(in oklab, var(--book) 10%, transparent) }
 .mast-books .sh { display: none }
-/* on a phone the books take their own row, numerals and long names folded away; it scrolls if it still can't fit */
-@media (max-width: 40rem) {
-  /* the row reaches past the gutters by its links' padding, so the first and last names line up with the page */
-  .mast-books {
-    --pad: .25rem; width: calc(100% + 2 * var(--pad) + 2px); margin: 0 calc(-1 * var(--pad) - 1px) .1rem; gap: 0;
-    justify-content: space-between; overflow-x: auto; scrollbar-width: none;
-  }
-  .mast-books::-webkit-scrollbar { display: none }
-  .mast-books a { flex: none; padding-inline: var(--pad); min-height: 2.4rem; font-size: .82rem; letter-spacing: .01em }
-  .mast-books .bk-n, .mast-books .lg { display: none }
-  .mast-books .sh { display: inline }
+.mast-more > summary { cursor: pointer; list-style: none; user-select: none }
+.mast-more > summary::-webkit-details-marker { display: none }
+.mast-more > summary::after { content: ""; width: .38em; height: .38em; margin: -.25em 0 0 .05rem; border: solid currentColor; border-width: 0 .14em .14em 0; transform: rotate(45deg); transition: transform .15s }
+.mast-more[open] > summary { color: var(--ink); border-color: var(--line); background: var(--panel) }
+.mast-more[open] > summary::after { margin-top: .25em; transform: rotate(-135deg) }
+.mast-menu {
+  position: absolute; z-index: 40; top: calc(100% - 1px); left: 16px; right: 16px; max-width: var(--wide); margin-inline: auto;
+  max-height: min(74vh, 42rem); overflow: auto; overscroll-behavior: contain; padding: 1.1rem 1.3rem .3rem;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 0 0 4px 4px; box-shadow: 0 22px 40px -22px #000;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 1.6rem;
 }
-@media (max-width: 22rem) { .mast-books { --pad: .15rem } .mast-books a { letter-spacing: 0; font-size: .78rem } }
+.mm-g { margin: 0 0 1.1rem }
+.mm-h { display: flex; align-items: baseline; gap: .4rem; margin-bottom: .25rem; font-family: var(--f-caps); font-size: 1.05rem; color: var(--mm-c); text-decoration: none }
+.mm-h[aria-current] { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px }
+.mm-n { font-size: .8em; opacity: .75 }
+.mm-g ul { list-style: none; margin: 0; padding: 0 }
+.mm-g li a { display: block; padding: .2rem 0; font-family: var(--f-ui); font-size: .92rem; line-height: 1.35; color: var(--muted); text-decoration: none }
+.mm-h:hover, .mm-g li a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px }
+/* on a phone the links take their own two rows, long names folded away: they wrap rather than scroll, so every one stays in view */
+@media (max-width: 40rem) {
+  .mast-books {
+    --pad: .3rem; display: grid; grid-template-columns: repeat(5, auto); justify-content: space-between; justify-items: start; gap: 0 .1rem;
+    width: calc(100% + 2 * var(--pad) + 2px); margin: 0 calc(-1 * var(--pad) - 1px) .1rem;
+  }
+  .mast-books > a, .mast-more > summary { padding-inline: var(--pad); min-height: 2.4rem; font-size: .82rem; letter-spacing: .01em }
+  .mast-books .lg { display: none }
+  .mast-books .sh { display: inline }
+  .mast-menu { left: 10px; right: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1rem; padding: .9rem 1rem .2rem }
+  .mm-g li a { padding: .26rem 0 }
+}
+@media (max-width: 22rem) { .mast-books { --pad: .18rem } .mast-books > a, .mast-more > summary { letter-spacing: 0; font-size: .78rem } }
 /* the build stamp under the masthead: which patch every page reads */
 .mast-build { max-width: var(--wide); margin: 0 auto; padding: .15rem 0 .1rem; font-family: var(--f-ui); font-size: var(--step--1); line-height: 1.45; color: var(--muted) }
 .mast-build .label { margin-right: .45rem }

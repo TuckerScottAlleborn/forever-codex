@@ -276,14 +276,24 @@ h1, h2, h3, h4 { font-family: var(--f-caps) }
 <header class="mast">
   <div class="mast-in">
     <a class="mast-brand" href="../"><svg aria-hidden="true"><use href="#i-glass"/></svg>Forever Codex</a>
-    <nav class="mast-books" aria-label="Books">
+    <nav class="mast-books" aria-label="Site">
       <a href="../">Home</a>
-      <a href="../lore/"><span class="bk-n">I</span>Lore</a>
-      <a href="../classes/"><span class="bk-n">II</span>Classes</a>
-      <a href="../races/" aria-current="page"><span class="bk-n">III</span>Races</a>
-      <a href="../world/"><span class="bk-n">IV</span>World</a>
-      <a href="../companions/"><span class="bk-n">V</span><span class="lg">Companions</span><span class="sh">Pets</span></a>
-      <a href="../appendix/">Appendix</a>
+      <a href="../lore/">Lore</a>
+      <a href="../classes/">Classes</a>
+      <a href="../races/" aria-current="page">Races</a>
+      <a href="../world/#professions" data-spy="professions camping market"><span class="lg">Professions</span><span class="sh">Crafts</span></a>
+      <a href="../world/#dungeons" data-spy="dungeons raids"><span class="lg">Dungeons &amp; raids</span><span class="sh">Dungeons</span></a>
+      <a href="../world/#pvp" data-spy="pvp">PvP</a>
+      <a href="../companions/"><span class="lg">Companions</span><span class="sh">Pets</span></a>
+      <details class="mast-more">
+        <summary>More</summary>
+        <div class="mast-menu" role="group" aria-label="Every section">
+          <div class="mm-col"><section class="mm-g" style="--mm-c: var(--bronze-hi)"><a class="mm-h" href="../">Front page</a><ul><li><a href="../#different">What’s different</a></li><li><a href="../#returning">Coming back as…</a></li><li><a href="../#books">The books</a></li></ul></section><section class="mm-g" style="--mm-c: var(--bronze-hi)"><a class="mm-h" href="../lore/"><span class="mm-n">I</span>The Lore</a><ul><li><a href="../lore/#written">Already written</a></li><li><a href="../lore/#page-one">Page one</a></li><li><a href="../lore/#unwritten">Still unwritten</a></li><li><a href="../lore/#rule">Filing old knowledge</a></li><li><a href="../lore/#reading">The reading stack</a></li></ul></section><section class="mm-g" style="--mm-c: var(--bronze-hi)"><a class="mm-h" href="../appendix/">The Appendix</a><ul><li><a href="../appendix/#build">What the codex is built on</a></li><li><a href="../appendix/#patches">The patch log</a></li><li><a href="../appendix/#glossary">The glossary</a></li><li><a href="../appendix/#questions">Questions</a></li></ul></section></div>
+          <div class="mm-col"><section class="mm-g" style="--mm-c: var(--f-alliance)"><a class="mm-h" href="../classes/"><span class="mm-n">II</span>The Classes</a><ul><li><a href="../classes/#systems">System changes</a></li><li><a href="../classes/#warrior">Warrior</a></li><li><a href="../classes/#paladin">Paladin</a></li><li><a href="../classes/#hunter">Hunter</a></li><li><a href="../classes/#rogue">Rogue</a></li><li><a href="../classes/#priest">Priest</a></li><li><a href="../classes/#shaman">Shaman</a></li><li><a href="../classes/#mage">Mage</a></li><li><a href="../classes/#warlock">Warlock</a></li><li><a href="../classes/#druid">Druid</a></li><li><a href="../classes/#leveling">Leveling speed</a></li><li><a href="../classes/#choose">Choosing a path</a></li></ul></section></div>
+          <div class="mm-col"><section class="mm-g" style="--mm-c: var(--races)"><a class="mm-h" href="../races/" aria-current="page"><span class="mm-n">III</span>The Races</a><ul><li><a href="../races/#glance">At a glance</a></li><li><a href="../races/#human">Human</a></li><li><a href="../races/#dwarf">Dwarf</a></li><li><a href="../races/#nightelf">Night Elf</a></li><li><a href="../races/#gnome">Gnome</a></li><li><a href="../races/#skyborne">High Order Skyborne</a></li><li><a href="../races/#by-class">Leans by class</a></li><li><a href="../races/#checks">Tooltip checks</a></li><li><a href="../races/#history">Tuning history</a></li><li><a href="../races/#bottom">Choosing a race</a></li></ul></section><section class="mm-g" style="--mm-c: var(--pets)"><a class="mm-h" href="../companions/"><span class="mm-n">V</span>The Companions</a><ul><li><a href="../companions/#changes">What changed</a></li><li><a href="../companions/#catalog">The catalog</a></li><li><a href="../companions/#odds">The odds</a></li><li><a href="../companions/#route">Collecting in order</a></li><li><a href="../companions/#tiers">Difficulty</a></li><li><a href="../companions/#unsolved">Still unsolved</a></li></ul></section></div>
+          <div class="mm-col"><section class="mm-g" style="--mm-c: var(--world)"><a class="mm-h" href="../world/"><span class="mm-n">IV</span>The World</a><ul><li><a href="../world/#dungeons">Dungeons</a></li><li><a href="../world/#raids">Raids</a></li><li><a href="../world/#gear">Gear and stats</a></li><li><a href="../world/#professions">Professions</a></li><li><a href="../world/#camping">Camping</a></li><li><a href="../world/#market">Merchant’s Favor</a></li><li><a href="../world/#systems">Leveling and systems</a></li><li><a href="../world/#interface">The interface</a></li><li><a href="../world/#legacy">Legacy</a></li><li><a href="../world/#rulesets">Rulesets</a></li><li><a href="../world/#cost">The packs</a></li><li><a href="../world/#pvp">PvP</a></li></ul></section></div>
+        </div>
+      </details>
     </nav>
   </div>
   <p class="mast-build"><span class="label">built on</span><b>Patch 1.60.1</b> · build 70707 · server hotfixes of October 30, 2026<a href="../appendix/#build">What each book covers</a></p>
